@@ -3,6 +3,8 @@ import axios from "axios";
 export default {
 
     getTest: function(){
-        return axios.get("http://localhost:5000/api/test/hello")
+        var url = window.location.hostname;
+        console.log(url);
+        return axios.get("http://"+url+":5000/api/test/hello")
     }
 }

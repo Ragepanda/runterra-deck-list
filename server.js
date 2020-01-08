@@ -5,6 +5,10 @@ const port = process.env.PORT || 5000;
 const bodyParser = require("body-parser");
 const db = require("./models");
 const path = require("path");
+const cors = require('cors');
+//MAKE SURE TO WHITELIST ONLY OUR OWN WEBSITE AND ALLOW FOR NO OTHER OUTER REQUESTS
+//enable cross origin requests for different port numbers
+app.use(cors());
 
 // Define middleware here
 app.use(bodyParser.urlencoded({ extended: true }));

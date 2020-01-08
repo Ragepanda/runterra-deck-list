@@ -1,0 +1,10 @@
+{
+    "development":{
+        "username": "jVe6cCrfrO",
+        "password": "pdFALsXPEW",
+        "database": "jVe6cCrfrO",
+        "host": "remotemysql.com",
+        "port": 3306,
+        "dialect": "mysql"
+      }
+}

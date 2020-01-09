@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import baseSet from "../../card_info/set1.json";
-class Drink extends React.Component {
+class Set extends React.Component {
 
 
   createHelmet(){
@@ -16,22 +16,21 @@ class Drink extends React.Component {
             <meta name="keywords" content={metacontent} />
             <meta name="author" content="thedrinksly.com"/>
             <meta http-equiv="Content-Language" content="en-US"/>
-            <meta name="rating" content="adults"/>
+            <meta name="rating" content="kids"/>
             <meta http-equiv="content-type" content="text/html" charSet="utf-8" />
             </Helmet>;
 
         return helmet;
   }
 
-  createRows(){
+  createRows() {
     const list = baseSet.map((card, index) =>
-      return(
         <a><li className="list-container" key={index}>
-          <img className="image-container" src={card.assets.gameAbsolutePath} alt="card.name" />
-          <div className="text-container"> card.name </div>
+          <img className="image-container" src={card.cardCode} alt={card.name} />
+          <div className="text-container"> {card.name} </div>
         </li></a>
       );
-    );
+    return list;
   }
 
   render() {
@@ -46,4 +45,4 @@ class Drink extends React.Component {
   }
 };
 
-export default Card;
+export default Set;

@@ -1,4 +1,5 @@
 import React from "react";
+
 import baseSet from "../../card_info/set1.json"
 import { Helmet } from "react-helmet";
 class Card extends React.Component {

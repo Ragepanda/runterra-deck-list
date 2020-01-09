@@ -1,20 +1,20 @@
 import React from "react";
-// import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet";
 class Drink extends React.Component {
 
   render() {
 
     return (
       <div>                                                            
-        // <Helmet>
-        //   <title>{"card.name" + " |  Legends of Runeterra Cards"}</title>
-        //   <meta name="description" content={card.name + " is one of the many cards in Legends of Runeterra. This page will help you evaluate " +card.name+" as well as other Legends of Runeterra cards." } />
-        //   <meta name="keywords" content={"Legends,Runeterra, cards, lor, decks, best, card, library, list"} />
-        //   <meta name="author" content="runeterrahub.com" />
-        //   <meta http-equiv="Content-Language" content="en-US" />
-        //   <meta name="rating" content="kids" />
-        //   <meta http-equiv="content-type" content="text/html" charSet="utf-8" />
-        // </Helmet>                            
+        <Helmet>
+          <title>{"card.name" + " |  Legends of Runeterra Cards"}</title>
+          <meta name="description" content={card.name + " is one of the many cards in Legends of Runeterra. This page will help you evaluate " +card.name+" as well as other Legends of Runeterra cards." } />
+          <meta name="keywords" content={ card.name + ", Legends,Runeterra, cards, lor, decks, best, card, library, list"} />
+          <meta name="author" content="runeterrahub.com" />
+          <meta http-equiv="Content-Language" content="en-US" />
+          <meta name="rating" content="kids" />
+          <meta http-equiv="content-type" content="text/html" charSet="utf-8" />
+        </Helmet>                            
         <div className="cardName">                
           <h2>{card.name}</h2>
         </div>

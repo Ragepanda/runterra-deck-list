@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import api from "./utils/api";
+import set1 from "./card_info/set1.json";
 
 class App extends React.Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class App extends React.Component {
         isLoaded: true, 
         items: res.data});
         console.log(res.data);
+        console.log(set1);
     })
     .catch(err=>{
       this.setState({

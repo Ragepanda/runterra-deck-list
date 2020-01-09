@@ -23,6 +23,9 @@ class Navbar extends React.Component {
                                 <a className="dropdown-item" href="#">Base Set</a>
                                 <a className="dropdown-item" href="#">Expansion Set</a>
                             </div>
+                        <li><NavLink className="nav-link" to="/login">Login</NavLink></li>
+                        <li><NavLink className="nav-link" to="/register">Register</NavLink></li>
+                        <li><NavLink className="nav-link" to="/tracker">Hub Tracker</NavLink></li>
                     </ul>
                 </nav>
             </div>

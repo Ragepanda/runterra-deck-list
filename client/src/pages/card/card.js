@@ -1,11 +1,18 @@
 import React from "react";
+
+import baseSet from "../../card_info/set1.json"
 import { Helmet } from "react-helmet";
-class Drink extends React.Component {
+class Card extends React.Component {
 
+  componentDidMount(){
+    console.log(this.props.match.params.name);
+    console.log(baseSet);
+  }
   render() {
-
+    var card = {name: "Name", cost: "Cost", region: "Region", type: "Type", subtype: "Subtype", attack: "Attack", health: "Health", 
+    rarity: "Rarity", description: "Description", flavorText: "Flavor Text", keywords: "Keywork" }
     return (
-      <div>                                                            
+      <div>
         <Helmet>
           <title>{"card.name" + " |  Legends of Runeterra Cards"}</title>
           <meta name="description" content={card.name + " is one of the many cards in Legends of Runeterra. This page will help you evaluate " +card.name+" as well as other Legends of Runeterra cards." } />
@@ -20,7 +27,7 @@ class Drink extends React.Component {
         </div>
 
         <div>
-          // <img className="cardImg" src={""} alt={card.name}/>
+           <img className="cardImg" src={""} alt={card.name}/>
         </div>
 
         <div className="cardSpecs">

@@ -1,6 +1,7 @@
 import React from "react";
+
 import baseSet from "../../card_info/set1.json"
-// import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet";
 class Card extends React.Component {
 
   componentDidMount(){
@@ -11,16 +12,16 @@ class Card extends React.Component {
     var card = {name: "Name", cost: "Cost", region: "Region", type: "Type", subtype: "Subtype", attack: "Attack", health: "Health", 
     rarity: "Rarity", description: "Description", flavorText: "Flavor Text", keywords: "Keywork" }
     return (
-      <div>                                                            
-        {/* // <Helmet>
-        //   <title>{"card.name" + " |  Legends of Runeterra Cards"}</title>
-        //   <meta name="description" content={card.name + " is one of the many cards in Legends of Runeterra. This page will help you evaluate " +card.name+" as well as other Legends of Runeterra cards." } />
-        //   <meta name="keywords" content={"Legends,Runeterra, cards, lor, decks, best, card, library, list"} />
-        //   <meta name="author" content="runeterrahub.com" />
-        //   <meta http-equiv="Content-Language" content="en-US" />
-        //   <meta name="rating" content="kids" />
-        //   <meta http-equiv="content-type" content="text/html" charSet="utf-8" />
-        // </Helmet>                             */}
+      <div>
+        <Helmet>
+          <title>{"card.name" + " |  Legends of Runeterra Cards"}</title>
+          <meta name="description" content={card.name + " is one of the many cards in Legends of Runeterra. This page will help you evaluate " +card.name+" as well as other Legends of Runeterra cards." } />
+          <meta name="keywords" content={ card.name + ", Legends,Runeterra, cards, lor, decks, best, card, library, list"} />
+          <meta name="author" content="runeterrahub.com" />
+          <meta http-equiv="Content-Language" content="en-US" />
+          <meta name="rating" content="kids" />
+          <meta http-equiv="content-type" content="text/html" charSet="utf-8" />
+        </Helmet>                            
         <div className="cardName">                
           <h2>{card.name}</h2>
         </div>

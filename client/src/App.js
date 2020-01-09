@@ -1,68 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import api from "./utils/api";
-import set1 from "./card_info/set1.json";
+import {
+  BrowserRouter as
+    Router,
+  Route,
+  Switch
+} from 'react-router-dom';
+
+import Home from "./pages/Home/Home";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      error: null,
-      isLoaded: false,
-      items: []
-    };
-  }
-
-  componentDidMount(){
-    api.getTest()
-    .then(res =>{
-      this.setState({
-        isLoaded: true, 
-        items: res.data});
-        console.log(res.data);
-        console.log(set1);
-    })
-    .catch(err=>{
-      this.setState({
-        isLoaded: true,
-        error: err
-      })
-    });
+    console.log(props);
   }
 
   render() {
-    const error = this.state.error;
-    const isLoaded = this.state.isLoaded;
-    const items = this.state.items;
-
-    if (error) {
-      return <div>Error: {error.message}</div>
-    }
-    else if (!isLoaded) {
-      return <div>Loading...</div>
-    }
-    else {
-
-      return (
+    return (
+      <Router>
         <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-              Here is our API being passed: {this.state.items.express}
-        </p>
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-        </a>
-          </header>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/home" exact component={Home} />
+          </Switch>
         </div>
-        );
-    }
+      </Router>
+    );
   }
 }
 

@@ -36,7 +36,7 @@ class Card extends React.Component {
       return (
         <div>
            <Helmet>
-           <title>{"card.name" + " |  Legends of Runeterra Cards"}</title>
+           <title>{card.name + " |  Legends of Runeterra Cards"}</title>
            <meta name="description" content={card.name + " is one of the many cards in Legends of Runeterra. This page will help you evaluate " +card.name+" as well as other Legends of Runeterra cards." } />
            <meta name="keywords" content={"Legends,Runeterra, cards, lor, decks, best, card, library, list"} />
            <meta name="author" content="runeterrahub.com" />

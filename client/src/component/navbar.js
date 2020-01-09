@@ -3,8 +3,10 @@ import { NavLink } from 'react-router-dom';
 
 // import './NavBar.css';
 class Navbar extends React.Component {
-    constructor() {
-
+    constructor(props) {
+        super(props); // ✅ We passed props
+        console.log(props);      // ✅ {}
+        console.log(this.props); // ✅ {}
       }
 
     render() {
@@ -20,7 +22,7 @@ class Navbar extends React.Component {
                         <li><NavLink className="nav-link" to="/deckbuilder">Deckbuilder</NavLink></li>
                         <li><NavLink className="nav-link dropdown dropdown-toggle" to="/cards">Card Library</NavLink></li>
                             <div className="dropdown-menu">
-                                <a className="dropdown-item" href="/cards/base">Base Set</a>
+                                <a className="dropdown-item" href="/set">Base Set</a>
                                 <a className="dropdown-item" href="/cards/expansion">Expansion Set</a>
                             </div>
                         <li><NavLink className="nav-link" to="/login">Login</NavLink></li>

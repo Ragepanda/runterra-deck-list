@@ -25,7 +25,7 @@ class Set extends React.Component {
 
   createRows() {
     const list = baseSet.map((card, index) =>
-        <a><li className="list-container" key={index}>
+        <a href={"/card/"+card.name.replace(/ /g, "_")}><li className="list-container" key={index}>
           <img className="image-container" src={card.cardCode} alt={card.name} />
           <div className="text-container"> {card.name} </div>
         </li></a>

@@ -11,6 +11,8 @@ import Home from "./pages/Home/Home";
 import Card from "./pages/Card/Card";
 import Set from "./pages/Set/Set";
 
+import Navbar from "./component/navbar";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -21,6 +23,7 @@ class App extends React.Component {
     return (
       <Router>
         <div className="App">
+          <Navbar/>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/home" exact component={Home} />

@@ -31,9 +31,9 @@ class Card extends React.Component {
       return (
         <div>
            <Helmet>
-           <title>{card.name + " |  Legends of Runeterra Cards"}</title>
-           <meta name="description" content={card.name + " is one of the many cards in Legends of Runeterra. This page will help you evaluate " +card.name+" as well as other Legends of Runeterra cards." } />
-           <meta name="keywords" content={"Legends,Runeterra, cards, lor, decks, best, card, library, list"} />
+           <title>{card.name + " |  Legends of Runeterra Cards on Runeterra Hub"}</title>
+           <meta name="description" content={card.name + " is one of the many cards in Legends of Runeterra. Runeterra Hub is the place to help you evaluate " +card.name+" as well as other Legends of Runeterra cards." } />
+           <meta name="keywords" content={card.name + ", " + card.type + ", " + card.spellSpeed + ", " + card.region + ", " + card.rarity + ", " + " Legends, Runeterra, hub, cards, lor,deck,decklist, decks,new,champion,champions, best, card, library, list,lists"} />
            <meta name="author" content="runeterrahub.com" />
            <meta http-equiv="Content-Language" content="en-US" />
            <meta name="rating" content="kids" />

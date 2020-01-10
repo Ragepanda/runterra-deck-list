@@ -8,7 +8,34 @@ a{
 }
 
 a:visited{
-  color: #BCC2B0
+  color: #246268
+}
+
+a:hover{
+	color:#A3926d !important;
+}
+
+p {
+	color:#BCC2B0;
+}
+
+body{
+	background-color:#294137;
+	color: #BCC2B0;
+}
+
+.navbar-brand {
+	color: #BCC2B0 !important;
+}
+
+.bg-dark {
+	background-color: #566C52 !important;
+	color:#BCC2B0 !important;
+}
+
+.navbar-dark {
+	background-color: #566C52 !important;
+	color:#BCC2B0 !important;
 }
 
 /* Ideas on color complementing

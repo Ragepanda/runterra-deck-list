@@ -2,7 +2,7 @@ import React from "react";
 import api from "../../utils/api";
 import set1 from "../../card_info/set1.json";
 import logo from '../../logo.svg';
-
+import { Helmet } from "react-helmet";
 class Home extends React.Component{
     constructor(props) {
         super(props);
@@ -29,6 +29,25 @@ class Home extends React.Component{
           })
         });
       }
+
+      createHelmet(){
+
+            let metatitle = "Runeterra Hub  | Legends of Runeterra Decks, Cards, Guides and Community";
+            let descrip = "Runeterra Hub is your spot for Legends of Runeterra decks, Legends of Runeterra cards, and Legends of Runeterra guides.";
+            let metacontent = "cards, hub, card library, lor, legend, legends, runeterra, deck, decklist, decklists, decks, set, sets, spell, spells, community, guides, guide, faction, factions, champion, champions";
+
+            let helmet = <Helmet>
+                <title>{metatitle}</title>
+                <meta name="description" content={descrip}/>
+                <meta name="keywords" content={metacontent} />
+                <meta name="author" content="runeterrahub.com"/>
+                <meta http-equiv="Content-Language" content="en-US"/>
+                <meta name="rating" content="kids"/>
+                <meta http-equiv="content-type" content="text/html" charSet="utf-8" />
+                </Helmet>;
+
+            return helmet;
+      }
     
       render() {
         const error = this.state.error;
@@ -45,6 +64,7 @@ class Home extends React.Component{
     
           return (
             <div className="App">
+              {this.createHelmet()}
               <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
                 <p>

@@ -25,21 +25,21 @@ class Set extends React.Component {
 
   createRows() {
     const list = baseSet.map((card, index) =>
-        <a href={"/card/"+card.name.replace(/ /g, "_").replace(/:/g,"")}><li className="list-container" key={index}>
-          <img className="image-container" src={card.cardCode} alt={card.name} />
-          <div className="text-container"> {card.name} </div>
-        </li></a>
+        <div className="col-3" key={index}>
+          <a href={"/card/"+card.name.replace(/ /g, "_").replace(/:/g,"")}><img className="image-container img-fluid" src={"/img/cards/"+card.cardCode+".png"} alt={card.name} /></a>
+          <a href={"/card/"+card.name.replace(/ /g, "_").replace(/:/g,"")}><div className="caption">{card.name}</div></a>
+        </div>
       );
     return list;
   }
 
   render() {
       return (
-          <div>
+          <div className="container">
             {this.createHelmet()}
-            <div className="setName">this.props.setName</div>
+            <div className="setName">Legends of Runeterra Base Set</div>
             <div className="filterTools"></div>
-            <ul className="cardRows">{this.createRows()}</ul>
+            <div className="row">{this.createRows()}</div>
           </div>
       );
   }

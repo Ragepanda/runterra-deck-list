@@ -15,16 +15,11 @@ class Card extends React.Component {
   componentDidMount() {
     var cardName = this.props.match.params.name.replace(/_/g, " ");
 
-    console.log(cardName);
-    console.log(baseSet);
-
     for (var index = 0; index < baseSet.length; index++) {
       var searchCard = baseSet[index];
 
-      if (searchCard.name === cardName) {
+      if (searchCard.name.replace(/:/g, "") === cardName) {
         this.setState({ card: searchCard, isLoaded: true });
-        console.log("Card matched");
-        console.log(baseSet[index]);
         break;
       }
     }

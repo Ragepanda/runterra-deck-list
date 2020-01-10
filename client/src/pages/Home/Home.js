@@ -19,8 +19,6 @@ class Home extends React.Component{
           this.setState({
             isLoaded: true, 
             items: res.data});
-            console.log(res.data);
-            console.log(set1);
         })
         .catch(err=>{
           this.setState({
@@ -63,22 +61,13 @@ class Home extends React.Component{
         else {
     
           return (
-            <div className="App">
-              {this.createHelmet()}
-              <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
+            <div className="Home">
+              
                 <p>
                   Here is our API being passed: {this.state.items.express}
             </p>
-                <a
-                  className="App-link"
-                  href="https://reactjs.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Learn React
-            </a>
-              </header>
+                
+  
             </div>
             );
         }

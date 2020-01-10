@@ -1,38 +1,21 @@
-.App {
+html {
   text-align: center;
+  background-color: #294137
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+a{
+  color: #4E918D
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a:visited{
+  color: #BCC2B0
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+/* Ideas on color complementing
+- Darkest green as background
+- Slightly lighter green as a box color for framing elements
+- The light grey for text
+- THe dark grey for line separators for text
+- The blues for something else that is yet undecided. Probably accenting. 
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+Ideas sourced largely off of MTGArena.pro designs*/

@@ -6,7 +6,7 @@ class Navbar extends React.Component {
     constructor(props) {
         super(props); // ✅ We passed props
       }
-
+//navbar
     render() {
         return (
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">

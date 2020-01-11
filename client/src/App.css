@@ -4,16 +4,18 @@ html {
 }
 
 a{
-  color: #4E918D
+  color: #BCC2B0
 }
 
 a:visited{
-  color: #246268
+  color: #BCC2B0
 }
 
 a:hover{
 	color:#A3926d !important;
+	text-decoration:none !important;
 }
+
 
 p {
 	color:#BCC2B0;

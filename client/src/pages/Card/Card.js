@@ -42,6 +42,7 @@ class Card extends React.Component {
          </Helmet>                            
           <div className="cardName">
             <h2>{card.name}</h2>
+            <p>{card.name + " is one of the many cards in Legends of Runeterra. Runeterra Hub is the place to help you evaluate " +card.name+" as well as other Legends of Runeterra cards."}</p>
           </div>
 
           <div className="row">
@@ -92,7 +93,7 @@ class Card extends React.Component {
               <hr/>
               <div className="row">
                 <div className="col">Keywords</div>
-                <div className="col">{card.keywords.map(kw => (<a className="" href="#" key={kw}>{kw}</a> ))}</div>
+                <div className="col">{card.keywords.map(kw => (<a className="p-1" href="#" key={kw}>{kw}</a> ))}</div>
               </div>
               <hr/>
               <div className="row">

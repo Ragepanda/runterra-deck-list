@@ -4,11 +4,40 @@ html {
 }
 
 a{
-  color: #4E918D
+  color: #BCC2B0
 }
 
 a:visited{
   color: #BCC2B0
+}
+
+a:hover{
+	color:#A3926d !important;
+	text-decoration:none !important;
+}
+
+
+p {
+	color:#BCC2B0;
+}
+
+body{
+	background-color:#294137;
+	color: #BCC2B0;
+}
+
+.navbar-brand {
+	color: #BCC2B0 !important;
+}
+
+.bg-dark {
+	background-color: #566C52 !important;
+	color:#BCC2B0 !important;
+}
+
+.navbar-dark {
+	background-color: #566C52 !important;
+	color:#BCC2B0 !important;
 }
 
 /* Ideas on color complementing
@@ -17,5 +46,4 @@ a:visited{
 - The light grey for text
 - THe dark grey for line separators for text
 - The blues for something else that is yet undecided. Probably accenting. 
-
 Ideas sourced largely off of MTGArena.pro designs*/

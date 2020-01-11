@@ -2,7 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import baseSet from "../../card_info/set1.json";
 class Set extends React.Component {
-
+    
 
   createHelmet(){
 

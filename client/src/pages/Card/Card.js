@@ -2,6 +2,7 @@ import React from "react";
 
 import baseSet from "../../card_info/set1.json"
 import { Helmet } from "react-helmet";
+import "./Card.css";
 class Card extends React.Component {
   constructor(props) {
     super(props);
@@ -43,54 +44,67 @@ class Card extends React.Component {
             <h2>{card.name}</h2>
           </div>
 
-          <div>
-            <img className="cardImg" src={""} alt={card.name} />
-          </div>
-
-          <div className="cardSpecs">
-            <div className="row">
-              <div>Name</div>
-              <div>{card.name}</div>
+          <div className="row">
+            <div className="col-sm-6">
+              <img className="cardImg img-fluid" src={"/img/cards/"+card.cardCode+".png"} alt={card.name} />
             </div>
-            <div className="row">
-              <div>Mana Cost</div>
-              <div>{card.cost}</div>
-            </div>
-            <div className="row">
-              <div>Faction</div>
-              <div>{card.region}</div>
-            </div>
-            <div className="row">
-              <div>Card Type</div>
-              <div>{card.type} - {card.subtype}</div>
-            </div>
-            <div className="row">
-              <div>Attack / Health</div>
-              <div>{card.attack} / {card.health}</div>
-            </div>
-            <div className="row">
-              <div>Rarity</div>
-              <div>{card.rarity}</div>
-            </div>
-            <div className="row">
-              <div>Text</div>
-              <div>{card.description}</div>
-            </div>
-            <div className="row">
-              <div>Flavor Text</div>
-              <div>{card.flavorText}</div>
-            </div>
-            <div className="row">
-              <div>Keywords</div>
-              <div>{card.keywords}</div>
-            </div>
-            <div className="row">
-              <div>Decks with this Card</div>
-              <div>CLICK HERE FOR DECKS WITH THIS CARD</div>
-            </div>
-            <div className="row">
-              <div>Card Evaluation</div>
-              <div>Data on how card fares in diff types of matches</div>
+  
+            <div className="cardSpecs col-sm-6">
+              <div className="row">
+                <div className="col">Name</div>
+                <div className="col">{card.name}</div>
+              </div>
+              <hr/>
+              <div className="row">
+                <div className="col">Mana Cost</div>
+                <div className="col">{card.cost}</div>
+              </div>
+              <hr/>
+              <div className="row">
+                <div className="col">Faction</div>
+                <div className="col">{card.region}</div>
+              </div>
+              <hr/>
+              <div className="row">
+                <div className="col">Card Type</div>
+                <div className="col">{card.type} - {card.subtype}</div>
+              </div>
+              <hr/>
+              <div className="row">
+                <div className="col">Attack / Health</div>
+                <div className="col">{card.attack} / {card.health}</div>
+              </div>
+              <hr/>
+              <div className="row">
+                <div className="col">Rarity</div>
+                <div className="col">{card.rarity}</div>
+              </div>
+              <hr/>
+              <div className="row">
+                <div className="col">Text</div>
+                <div className="col">{card.descriptionRaw}</div>
+              </div>
+              <hr/>
+              <div className="row">
+                <div className="col">Flavor Text</div>
+                <div className="col">{card.flavorText}</div>
+              </div>
+              <hr/>
+              <div className="row">
+                <div className="col">Keywords</div>
+                <div className="col">{card.keywords.map(kw => (<a className="" href="#" key={kw}>{kw}</a> ))}</div>
+              </div>
+              <hr/>
+              <div className="row">
+                <div className="col">Decks with this Card</div>
+                <div className="col"><a className="" href="#">Click Here</a></div>
+              </div>
+              <hr/>
+              <div className="row">
+                <div className="col">Card Evaluation</div>
+                <div className="col">Data App</div>
+              </div>
+              <hr/>
             </div>
           </div>
         </div>

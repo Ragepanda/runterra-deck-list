@@ -11,7 +11,7 @@ import Home from "./pages/Home/Home";
 import Card from "./pages/Card/Card";
 import Set from "./pages/Set/Set";
 
-import Navbar from "./component/navbar";
+import Navbar from "./component/Navbar";
 
 class App extends React.Component {
   constructor(props) {

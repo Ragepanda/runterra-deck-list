@@ -25,9 +25,9 @@ class Set extends React.Component {
 
   createRows() {
     const list = baseSet.map((card, index) =>
-        <div className="col-3" key={index}>
+        <div className="col-3 p-2" key={index}>
           <a href={"/card/"+card.name.replace(/ /g, "_").replace(/:/g,"")}><img className="image-container img-fluid" src={"/img/cards/"+card.cardCode+".png"} alt={card.name} /></a>
-          <a href={"/card/"+card.name.replace(/ /g, "_").replace(/:/g,"")}><div className="caption">{card.name}</div></a>
+          <div className="text-center pb-3"><a href={"/card/"+card.name.replace(/ /g, "_").replace(/:/g,"")}>{card.name}</a></div>
         </div>
       );
     return list;
@@ -37,7 +37,8 @@ class Set extends React.Component {
       return (
           <div className="container">
             {this.createHelmet()}
-            <div className="setName">Legends of Runeterra Base Set</div>
+            <div className="setName text-center pt-4"><h2>Legends of Runeterra Base Set</h2></div>
+            <div className="setName text-center pb-5 pt-1"><p>This is the list of Legends of Runeterra cards in the Legends of Runeterra base set. Runeterra Hub is the spot to view new Legends of Runeterra sets.</p></div>
             <div className="filterTools"></div>
             <div className="row">{this.createRows()}</div>
           </div>

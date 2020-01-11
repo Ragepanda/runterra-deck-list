@@ -29,7 +29,7 @@ class Card extends React.Component {
     if (this.state.isLoaded) {
       var card = this.state.card;
       return (
-        <div>
+        <div className="container">
            <Helmet>
            <title>{card.name + " |  Legends of Runeterra Cards on Runeterra Hub"}</title>
            <meta name="description" content={card.name + " is one of the many cards in Legends of Runeterra. Runeterra Hub is the place to help you evaluate " +card.name+" as well as other Legends of Runeterra cards." } />

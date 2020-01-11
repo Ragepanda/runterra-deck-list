@@ -93,7 +93,7 @@ class Card extends React.Component {
               <hr/>
               <div className="row">
                 <div className="col">Keywords</div>
-                <div className="col">{card.keywords.map(kw => (<a className="p-1" href="#" key={kw}>{kw}</a> ))}</div>
+                <div className="col"><div className="row">{card.keywords.map(kw => (<a className="col-12" href="#" key={kw}>{kw}</a> ))}</div></div>
               </div>
               <hr/>
               <div className="row">

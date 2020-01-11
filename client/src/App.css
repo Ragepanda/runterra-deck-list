@@ -5,6 +5,7 @@ html {
 
 a{
   color: #BCC2B0;
+  word-break: break-word;
 }
 
 a:visited{

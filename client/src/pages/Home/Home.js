@@ -63,9 +63,12 @@ class Home extends React.Component{
           return (
             <div className="Home">
                 {this.createHelmet()}
+
+                <div className="setName text-center pt-4"><h2>Runeterra Hub</h2></div>
+                <div className="setName text-center pb-5 pt-1"><p>Runeterra Hub is your spot for Legends of Runeterra decks, Legends of Runeterra cards, and Legends of Runeterra guides.</p></div>
                 <p>
                   Here is our API being passed: {this.state.items.express}
-            </p>
+                </p>
                 
   
             </div>

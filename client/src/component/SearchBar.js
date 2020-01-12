@@ -26,9 +26,9 @@ class SearchBar extends React.Component {
     render() {
 
         return(
-        <div class="row justify-content-center">
+        <div className="row justify-content-center">
             <form >
-                <div class = "col-8">
+                <div className= "col-8">
                         <input className="text" type="text" name="cardSearch" placeholder="Search Cards..." value={this.state.searchText} onChange={this.setSearch} />                    
                 </div>
             </form>

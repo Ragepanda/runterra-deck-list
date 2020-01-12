@@ -4,11 +4,12 @@ html {
 }
 
 a{
-  color: #BCC2B0
+  color: #BCC2B0;
+  word-break: break-word;
 }
 
 a:visited{
-  color: #BCC2B0
+  color: #BCC2B0;
 }
 
 a:hover{
@@ -46,5 +47,4 @@ body{
 - The light grey for text
 - THe dark grey for line separators for text
 - The blues for something else that is yet undecided. Probably accenting. 
-
 Ideas sourced largely off of MTGArena.pro designs*/

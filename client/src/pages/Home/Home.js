@@ -30,7 +30,7 @@ class Home extends React.Component{
 
       createHelmet(){
 
-            let metatitle = "Runeterra Hub  | Legends of Runeterra Decks, Cards, Guides and Community";
+            let metatitle = "Runeterra Hub | Legends of Runeterra Decks, Cards, Guides and Community";
             let descrip = "Runeterra Hub is your spot for Legends of Runeterra decks, Legends of Runeterra cards, and Legends of Runeterra guides.";
             let metacontent = "cards, hub, card library, lor, legend, legends, runeterra, deck, decklist, decklists, decks, set, sets, spell, spells, community, guides, guide, faction, factions, champion, champions";
 
@@ -53,16 +53,16 @@ class Home extends React.Component{
         const items = this.state.items;
     
         if (error) {
-          return <div>Error: {error.message}</div>
+          return <div>{this.createHelmet()}Error: {error.message}</div>
         }
         else if (!isLoaded) {
-          return <div>Loading...</div>
+          return <div>{this.createHelmet()}Loading...</div>
         }
         else {
     
           return (
             <div className="Home">
-              
+                {this.createHelmet()}
                 <p>
                   Here is our API being passed: {this.state.items.express}
             </p>

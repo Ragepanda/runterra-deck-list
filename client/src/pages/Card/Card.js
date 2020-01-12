@@ -32,7 +32,7 @@ class Card extends React.Component {
       return (
         <div className="container">
            <Helmet>
-           <title>{card.name + " |  Legends of Runeterra Cards on Runeterra Hub"}</title>
+           <title>{card.name + " | Legends of Runeterra Cards on Runeterra Hub"}</title>
            <meta name="description" content={card.name + " is one of the many cards in Legends of Runeterra. Runeterra Hub is the place to help you evaluate " +card.name+" as well as other Legends of Runeterra cards." } />
            <meta name="keywords" content={card.name + ", " + card.type + ", " + card.spellSpeed + ", " + card.region + ", " + card.rarity + ", " + " Legends, Runeterra, hub, cards, lor,deck,decklist, decks,new,champion,champions, best, card, library, list,lists"} />
            <meta name="author" content="runeterrahub.com" />
@@ -40,9 +40,9 @@ class Card extends React.Component {
            <meta name="rating" content="kids" />
            <meta http-equiv="content-type" content="text/html" charSet="utf-8" />
          </Helmet>                            
-          <div className="cardName">
-            <h2>{card.name}</h2>
-            <p>{card.name + " is one of the many cards in Legends of Runeterra. Runeterra Hub is the place to help you evaluate " +card.name+" as well as other Legends of Runeterra cards."}</p>
+          <div className="text-center cardName">
+            <h2 className="pt-4">{card.name}</h2>
+            <p className="pb-5 pt-1">{card.name + " is one of the many cards in Legends of Runeterra. Runeterra Hub is the place to help you evaluate " +card.name+" as well as other Legends of Runeterra cards."}</p>
           </div>
 
           <div className="row">
@@ -50,7 +50,7 @@ class Card extends React.Component {
               <img className="cardImg img-fluid" src={"/img/cards/"+card.cardCode+".png"} alt={card.name} />
             </div>
   
-            <div className="cardSpecs col-sm-6">
+            <div className=" pt-5 cardSpecs col-sm-6">
               <div className="row">
                 <div className="col">Name</div>
                 <div className="col">{card.name}</div>
@@ -93,7 +93,7 @@ class Card extends React.Component {
               <hr/>
               <div className="row">
                 <div className="col">Keywords</div>
-                <div className="col">{card.keywords.map(kw => (<a className="p-1" href="#" key={kw}>{kw}</a> ))}</div>
+                <div className="col"><div className="row">{card.keywords.map(kw => (<a className="col-12" href="#" key={kw}>{kw}</a> ))}</div></div>
               </div>
               <hr/>
               <div className="row">

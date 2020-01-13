@@ -18,16 +18,16 @@ class Navbar extends React.Component {
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                   <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Meta</a>
+                    <a class="nav-link disabled" href="/set">Meta</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Decks</a>
+                    <a class="nav-link disabled" href="/set">Decks</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Deckbuilder</a>
+                    <a class="nav-link disabled" href="/set">Deckbuilder</a>
                   </li>
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="/set" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Card Library
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -35,13 +35,13 @@ class Navbar extends React.Component {
                     </div>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Login</a>
+                    <a class="nav-link disabled" href="/set">Login</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Register</a>
+                    <a class="nav-link disabled" href="/set">Register</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Hub Tracker</a>
+                    <a class="nav-link disabled" href="/set">Hub Tracker</a>
                   </li>
                 </ul>
               </div>

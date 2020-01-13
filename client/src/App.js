@@ -22,12 +22,23 @@ class App extends React.Component {
     return (
       <Router>
         <div className="App">
-          <Navbar/>
+          <Navbar />
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/home" exact component={Home} />
-            <Route exact path="/card/:name" component={Card} />
-            <Route exact path="/set/" component={Set} />
+            <Route exact path="/" >
+              <Home />
+            </Route>
+
+            <Route exact path="/home"  >
+              <Home />
+            </Route>
+
+            <Route exact path="/card/:name">
+              <Card />
+            </Route>
+            
+            <Route exact path="/set">
+              <Set />
+            </Route>
           </Switch>
         </div>
       </Router>

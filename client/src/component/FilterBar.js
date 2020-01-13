@@ -18,7 +18,6 @@ class FilterBar extends React.Component {
             cmc5Toggle: false,
             cmc6Toggle: false,
             cmc7Toggle: false,
-            cmc8Toggle: false,
 
             demToggle: false,
             freToggle: false,
@@ -26,6 +25,22 @@ class FilterBar extends React.Component {
             noxToggle: false,
             pilToggle: false,
             shaToggle: false,
+
+            cmc0Classname: "btn btn-outline btn-sm",
+            cmc1Classname: "btn btn-outline btn-sm",
+            cmc2Classname: "btn btn-outline btn-sm",
+            cmc3Classname: "btn btn-outline btn-sm",
+            cmc4Classname: "btn btn-outline btn-sm",
+            cmc5Classname: "btn btn-outline btn-sm",
+            cmc6Classname: "btn btn-outline btn-sm",
+            cmc7Classname: "btn btn-outline btn-sm",
+
+            demClassname: "btn btn-outline btn-sm",
+            freClassname: "btn btn-outline btn-sm",
+            ionClassname: "btn btn-outline btn-sm",
+            noxClassname: "btn btn-outline btn-sm",
+            pilClassname: "btn btn-outline btn-sm",
+            shaClassname: "btn btn-outline btn-sm",
         };
 
         this.cmc0State = this.cmc0State.bind(this);
@@ -36,7 +51,6 @@ class FilterBar extends React.Component {
         this.cmc5State = this.cmc5State.bind(this);
         this.cmc6State = this.cmc6State.bind(this);
         this.cmc7State = this.cmc7State.bind(this);
-        this.cmc8State = this.cmc8State.bind(this);
 
         this.demState = this.demState.bind(this);
         this.freState = this.freState.bind(this);
@@ -158,24 +172,14 @@ class FilterBar extends React.Component {
             var cmc7Filter = [];
             cmc7Filter = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
                 var reducedCost = card.cost;
-                return reducedCost === 7;
+                return reducedCost >= 7;
             })
             cmc7Filter.forEach(object => {
                 cmcFilter.push(object);
             })
         }
 
-
-        if (this.state.cmc8Toggle === true) {
-            var cmc8Filter = [];
-            cmc8Filter = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
-                var reducedCost = card.cost;
-                return reducedCost >= 8;
-            })
-            cmc8Filter.forEach(object => {
-                cmcFilter.push(object);
-            })
-        }   
+ 
 
 
         if (this.state.demToggle === true) {
@@ -302,7 +306,7 @@ class FilterBar extends React.Component {
     allFalseCMC() {
         if (this.state.cmc1Toggle === false && this.state.cmc0Toggle === false && this.state.cmc3Toggle === false &&
             this.state.cmc2Toggle === false && this.state.cmc4Toggle === false && this.state.cmc5Toggle === false &&
-            this.state.cmc8Toggle === false && this.state.cmc7Toggle === false && this.state.cmc6Toggle === false    ){
+            this.state.cmc7Toggle === false && this.state.cmc6Toggle === false    ){
             return true;
         }
         else {
@@ -314,12 +318,12 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.cmc0Toggle === false) {
             this.setState({ cmc0Toggle: true });
-            this.setState({ cmc0Classname: "button small selectedFilter" });
+            this.setState({ cmc0Classname: "btn btn-outline active btn-sm" });
         }
 
         else {
             this.setState({ cmc0Toggle: false });
-            this.setState({ cmc0Classname: "button small" })
+            this.setState({ cmc0Classname: "btn btn-outline btn-sm" })
         }
 
     }
@@ -328,12 +332,12 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.cmc1Toggle === false) {
             this.setState({ cmc1Toggle: true });
-            this.setState({ cmc1Classname: "button small selectedFilter" });
+            this.setState({ cmc1Classname: "btn btn-outline active btn-sm" });
         }
 
         else {
             this.setState({ cmc1Toggle: false });
-            this.setState({ cmc1Classname: "button small" })
+            this.setState({ cmc1Classname: "btn btn-outline btn-sm" })
         }
 
     }
@@ -342,12 +346,12 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.cmc2Toggle === false) {
             this.setState({ cmc2Toggle: true });
-            this.setState({ cmc2Classname: "button small selectedFilter" });
+            this.setState({ cmc2Classname: "btn btn-outline active btn-sm" });
         }
 
         else {
             this.setState({ cmc2Toggle: false });
-            this.setState({ cmc2Classname: "button small" })
+            this.setState({ cmc2Classname: "btn btn-outline btn-sm" })
         }
 
     }
@@ -356,12 +360,12 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.cmc3Toggle === false) {
             this.setState({ cmc3Toggle: true });
-            this.setState({ cmc3Classname: "button small selectedFilter" });
+            this.setState({ cmc3Classname: "btn btn-outline active btn-sm" });
         }
 
         else {
             this.setState({ cmc3Toggle: false });
-            this.setState({ cmc3Classname: "button small" })
+            this.setState({ cmc3Classname: "btn btn-outline btn-sm" })
         }
 
     }
@@ -370,12 +374,12 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.cmc4Toggle === false) {
             this.setState({ cmc4Toggle: true });
-            this.setState({ cmc4Classname: "button small selectedFilter" });
+            this.setState({ cmc4Classname: "btn btn-outline active btn-sm" });
         }
 
         else {
             this.setState({ cmc4Toggle: false });
-            this.setState({ cmc4Classname: "button small" })
+            this.setState({ cmc4Classname: "btn btn-outline btn-sm" })
         }
 
     }
@@ -384,12 +388,12 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.cmc5Toggle === false) {
             this.setState({ cmc5Toggle: true });
-            this.setState({ cmc5Classname: "button small selectedFilter" });
+            this.setState({ cmc5Classname: "btn btn-outline active btn-sm" });
         }
 
         else {
             this.setState({ cmc5Toggle: false });
-            this.setState({ cmc5Classname: "button small" })
+            this.setState({ cmc5Classname: "btn btn-outline btn-sm" })
         }
 
     }
@@ -398,12 +402,12 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.cmc6Toggle === false) {
             this.setState({ cmc6Toggle: true });
-            this.setState({ cmc6Classname: "button small selectedFilter" });
+            this.setState({ cmc6Classname: "btn btn-outline active btn-sm" });
         }
 
         else {
             this.setState({ cmc6Toggle: false });
-            this.setState({ cmc6Classname: "button small" })
+            this.setState({ cmc6Classname: "btn btn-outline btn-sm" })
         }
 
     }
@@ -412,26 +416,12 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.cmc7Toggle === false) {
             this.setState({ cmc7Toggle: true });
-            this.setState({ cmc7Classname: "button small selectedFilter" });
+            this.setState({ cmc7Classname: "btn btn-outline active btn-sm" });
         }
 
         else {
             this.setState({ cmc7Toggle: false });
-            this.setState({ cmc7Classname: "button small" })
-        }
-
-    }
-
-    cmc8State(e) {
-        e.preventDefault();
-        if (this.state.cmc8Toggle === false) {
-            this.setState({ cmc8Toggle: true });
-            this.setState({ cmc8Classname: "button small selectedFilter" });
-        }
-
-        else {
-            this.setState({ cmc8Toggle: false });
-            this.setState({ cmc8Classname: "button small" })
+            this.setState({ cmc7Classname: "btn btn-outline btn-sm" })
         }
 
     }
@@ -442,12 +432,12 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.demToggle === false) {
             this.setState({ demToggle: true });
-            this.setState({ demClassname: "button small selectedFilter" });
+            this.setState({ demClassname: "btn btn-outline active" });
         }
 
         else {
             this.setState({ demToggle: false });
-            this.setState({ demClassname: "button small" })
+            this.setState({ demClassname: "btn btn-outline" })
         }
 
     }
@@ -456,12 +446,12 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.freToggle === false) {
             this.setState({ freToggle: true });
-            this.setState({ freClassname: "button small selectedFilter" });
+            this.setState({ freClassname: "btn btn-outline active" });
         }
 
         else {
             this.setState({ freToggle: false });
-            this.setState({ freClassname: "button small" })
+            this.setState({ freClassname: "btn btn-outline" })
         }
 
     }
@@ -470,12 +460,12 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.ionToggle === false) {
             this.setState({ ionToggle: true });
-            this.setState({ ionClassname: "button small selectedFilter" });
+            this.setState({ ionClassname: "btn btn-outline active" });
         }
 
         else {
             this.setState({ ionToggle: false });
-            this.setState({ ionClassname: "button small" })
+            this.setState({ ionClassname: "btn btn-outline" })
         }
 
     }
@@ -484,12 +474,12 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.noxToggle === false) {
             this.setState({ noxToggle: true });
-            this.setState({ noxClassname: "button small selectedFilter" });
+            this.setState({ noxClassname: "btn btn-outline active" });
         }
 
         else {
             this.setState({ noxToggle: false });
-            this.setState({ noxClassname: "button small" })
+            this.setState({ noxClassname: "btn btn-outline" })
         }
 
     }
@@ -498,12 +488,12 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.pilToggle === false) {
             this.setState({ pilToggle: true });
-            this.setState({ pilClassname: "button small selectedFilter" });
+            this.setState({ pilClassname: "btn btn-outline active" });
         }
 
         else {
             this.setState({ pilToggle: false });
-            this.setState({ pilClassname: "button small" })
+            this.setState({ pilClassname: "btn btn-outline" })
         }
 
     }
@@ -512,12 +502,12 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.shaToggle === false) {
             this.setState({ shaToggle: true });
-            this.setState({ shaClassname: "button small selectedFilter" });
+            this.setState({ shaClassname: "btn btn-outline active" });
         }
 
         else {
             this.setState({ shaToggle: false });
-            this.setState({ shaClassname: "button small" })
+            this.setState({ shaClassname: "btn btn-outline" })
         }
 
     }
@@ -542,28 +532,23 @@ class FilterBar extends React.Component {
         return(
         <div>
             <div className="row">
-                <div className= "col-6">
-                    <div className="row">
-                        <button className={this.state.cmc0Classname +" col-1"} onClick={this.cmc0State}>0</button>
-                        <button className={this.state.cmc1Classname +" col-1"} onClick={this.cmc1State}>1</button>
-                        <button className={this.state.cmc2Classname +" col-1"} onClick={this.cmc2State}>2</button>
-                        <button className={this.state.cmc3Classname +" col-1"} onClick={this.cmc3State}>3</button>
-                        <button className={this.state.cmc4Classname +" col-1"} onClick={this.cmc4State}>4</button>
-                        <button className={this.state.cmc5Classname +" col-1"} onClick={this.cmc5State}>5</button>
-                        <button className={this.state.cmc6Classname +" col-1"} onClick={this.cmc6State}>6</button>
-                        <button className={this.state.cmc7Classname +" col-1"} onClick={this.cmc7State}>7</button>
-                        <button className={this.state.cmc8Classname +" col-1"} onClick={this.cmc8State}>8+</button>   
-                    </div>           
+                <div className="col">
+                    <button type="button" className={this.state.cmc0Classname +""} onClick={this.cmc0State}>0</button>
+                    <button type="button" className={this.state.cmc1Classname +""} onClick={this.cmc1State}>1</button>
+                    <button type="button" className={this.state.cmc2Classname +""} onClick={this.cmc2State}>2</button>
+                    <button type="button" className={this.state.cmc3Classname +""} onClick={this.cmc3State}>3</button>
+                    <button type="button" className={this.state.cmc4Classname +""} onClick={this.cmc4State}>4</button>
+                    <button type="button" className={this.state.cmc5Classname +""} onClick={this.cmc5State}>5</button>
+                    <button type="button" className={this.state.cmc6Classname +""} onClick={this.cmc6State}>6</button>
+                    <button type="button" className={this.state.cmc7Classname +""} onClick={this.cmc7State}>7+</button>           
                 </div>
-                <div className= "col-6">
-                    <div className="row">
-                        <button className={this.state.demClassname +" col-2"} onClick={this.demState}>Demacia</button>
-                        <button className={this.state.freClassname +" col-2"} onClick={this.freState}>Freljord</button>
-                        <button className={this.state.ionClassname +" col-2"} onClick={this.ionState}>Ionia</button>
-                        <button className={this.state.noxClassname +" col-2"} onClick={this.noxState}>Noxus</button>
-                        <button className={this.state.pilClassname +" col-2"} onClick={this.pilState}>Piltover & Zaum</button>
-                        <button className={this.state.shaClassname +" col-2"} onClick={this.shaState}>Shadow Isles</button>
-                    </div>
+                <div className= "col">
+                        <button type="button" className={this.state.demClassname +""} onClick={this.demState}>Demacia</button>
+                        <button type="button" className={this.state.freClassname +""} onClick={this.freState}>Freljord</button>
+                        <button type="button" className={this.state.ionClassname +""} onClick={this.ionState}>Ionia</button>
+                        <button type="button" className={this.state.noxClassname +""} onClick={this.noxState}>Noxus</button>
+                        <button type="button" className={this.state.pilClassname +""} onClick={this.pilState}>Piltover & Zaum</button>
+                        <button type="button" className={this.state.shaClassname +""} onClick={this.shaState}>Shadow Isles</button>
                 </div>
             </div>
             <div className="row">{this.createRows()}</div>

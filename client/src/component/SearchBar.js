@@ -15,7 +15,6 @@ class SearchBar extends React.Component {
     }
 
     componentDidMount() {
-        console.log("Search bar found");
     }
 
     setSearch(e) {

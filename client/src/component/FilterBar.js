@@ -35,6 +35,14 @@ class FilterBar extends React.Component {
             epicToggle: false,
             legnToggle: false,
 
+            cardSet : [],
+            workingSet : [],
+
+            cmcFilter : [],
+            typeFilter : [],
+            rarityFilter : [],
+            factionFilter : [],
+
             cmc0Classname: "btn btn-outline btn-sm",
             cmc1Classname: "btn btn-outline btn-sm",
             cmc2Classname: "btn btn-outline btn-sm",
@@ -87,6 +95,14 @@ class FilterBar extends React.Component {
         this.legnState = this.legnState.bind(this);
 
         this.filterCards = this.filterCards.bind(this);
+
+        this.cardSet = baseSet;
+        this.workingSet = baseSet;
+
+        this.cmcFilter = [];
+        this.typeFilter = [];
+        this.factionFilter = [];
+        this.rarityFilter = [];
     }
 
     componentDidMount() {
@@ -94,13 +110,9 @@ class FilterBar extends React.Component {
 
 
 
-
-
     filterCards() {
 
-        const cardSet = baseSet;
-
-        var subset = cardSet;
+        //var subset = this.workingSet;
         // if (this.state.searchText === "")
         //     subset = cardSet.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name));
         // else {
@@ -109,315 +121,52 @@ class FilterBar extends React.Component {
         //         return reducedName.includes(this.state.searchText.toLowerCase(), 0);
         //     })
         // }
-        var cmcFilter = [];
-        var factionFilter = [];
-        var typeFilter = [];
-        var rarityFilter = [];
-
-        if (this.state.cmc0Toggle === true) {
-            var cmc0Filter = [];
-            cmc0Filter = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
-                var reducedCost = card.cost;
-                return reducedCost === 0;
-            })
-            cmc0Filter.forEach(object => {
-                cmcFilter.push(object);
-            })
-        }
 
 
-        if (this.state.cmc1Toggle === true) {
-            var cmc1Filter = [];
-            cmc1Filter = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
-                var reducedCost = card.cost;
-                return reducedCost === 1;
-            })
-            cmc1Filter.forEach(object => {
-                cmcFilter.push(object);
-            })
-        }
+        var filteredSet = this.workingSet.filter(card => {
+            var cmcMatch     = this.allFalseCMC()      ? true : false;
+            var rarityMatch  = this.allFalseRarity()   ? true : false;
+            var typeMatch    = this.allFalseType()     ? true : false;
+            var factionMatch = this.allFalseFactions() ? true : false;
+            this.cmcFilter.some(cmcGood => {
+                if (cmcGood !== 7){
+                    if (card.cost === cmcGood){
+                        cmcMatch = true;
+                        return;
+                    }
+                }
+                else{
+                    if (card.cost >= cmcGood){
+                        cmcMatch = true;
+                        return;
+                    }
+                }
+            });
 
+            this.rarityFilter.some(rarityGood => {
+                if (card.rarity.toLowerCase() === rarityGood){
+                    rarityMatch = true;
+                    return;
+                }
+            });
 
-        if (this.state.cmc2Toggle === true) {
-            var cmc2Filter = [];
-            cmc2Filter = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
-                var reducedCost = card.cost;
-                return reducedCost === 2;
-            })
-            cmc2Filter.forEach(object => {
-                cmcFilter.push(object);
-            })
-        }
+            this.typeFilter.some(typeGood => {
+                if (card.type.toLowerCase() === typeGood || card.supertype.toLowerCase() === typeGood){
+                    typeMatch = true;
+                    return;
+                }
+            });
 
-
-        if (this.state.cmc3Toggle === true) {
-            var cmc3Filter = [];
-            cmc3Filter = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
-                var reducedCost = card.cost;
-                return reducedCost === 3;
-            })
-            cmc3Filter.forEach(object => {
-                cmcFilter.push(object);
-            })
-        }
-
-
-        if (this.state.cmc4Toggle === true) {
-            var cmc4Filter = [];
-            cmc4Filter = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
-                var reducedCost = card.cost;
-                return reducedCost === 4;
-            })
-            cmc4Filter.forEach(object => {
-                cmcFilter.push(object);
-            })
-        }
-
-
-        if (this.state.cmc5Toggle === true) {
-            var cmc5Filter = [];
-            cmc5Filter = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
-                var reducedCost = card.cost;
-                return reducedCost === 5;
-            })
-            cmc5Filter.forEach(object => {
-                cmcFilter.push(object);
-            })
-        }
-
-        if (this.state.cmc6Toggle === true) {
-            var cmc6Filter = [];
-            cmc6Filter = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
-                var reducedCost = card.cost;
-                return reducedCost === 6;
-            })
-            cmc6Filter.forEach(object => {
-                cmcFilter.push(object);
-            })
-        }
-
-
-        if (this.state.cmc7Toggle === true) {
-            var cmc7Filter = [];
-            cmc7Filter = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
-                var reducedCost = card.cost;
-                return reducedCost >= 7;
-            })
-            cmc7Filter.forEach(object => {
-                cmcFilter.push(object);
-            })
-        }
-
- 
-
-
-        if (this.state.demToggle === true) {
-            var demFilter = [];
-            demFilter = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
-                var reducedType = card.regionRef.toLowerCase();
-                var filterString = "demacia";
-                return reducedType === filterString;
-            })
-            demFilter.forEach(object => {
-                factionFilter.push(object);
-            })
-        }
-
-        if (this.state.freToggle === true) {
-            var freToggle = [];
-            freToggle = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
-                var reducedType = card.regionRef.toLowerCase();
-                var filterString = "freljord";
-                return reducedType === filterString;
-            })
-            freToggle.forEach(object => {
-                factionFilter.push(object);
-            })
-        }
-
-        if (this.state.ionToggle === true) {
-            var ionFilter = [];
-            ionFilter = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
-                var reducedType = card.regionRef.toLowerCase();
-                var filterString = "ionia";
-                return reducedType === filterString;
-            })
-            ionFilter.forEach(object => {
-                factionFilter.push(object);
-            })
-        }
-
-        if (this.state.noxToggle === true) {
-            var noxFilter = [];
-            noxFilter = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
-                var reducedType = card.regionRef.toLowerCase();
-                var filterString = "noxus";
-                return reducedType === filterString;
-            })
-            noxFilter.forEach(object => {
-                factionFilter.push(object);
-            })
-        }
-
-        if (this.state.pilToggle === true) {
-            var pilFilter = [];
-            pilFilter = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
-                var reducedType = card.regionRef.toLowerCase();
-                var filterString = "piltoverzaun";
-                return reducedType === filterString;
-            })
-            pilFilter.forEach(object => {
-                factionFilter.push(object);
-            })
-        }
-
-        if (this.state.shaToggle === true) {
-            var shaToggle = [];
-            shaToggle = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
-                var reducedType = card.regionRef.toLowerCase();
-                var filterString = "shadowisles";
-                return reducedType === filterString;
-            })
-            shaToggle.forEach(object => {
-                factionFilter.push(object);
-            })
-        }
-
-
-
-        if (this.state.chamToggle === true) {
-            var chamToggle = [];
-            chamToggle = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
-                var reducedType = card.type.toLowerCase();
-                var filterString = "unit";
-                return reducedType === filterString && card.supertype === "Champion";
-            })
-            chamToggle.forEach(object => {
-                typeFilter.push(object);
-            })
-        }
-
-        if (this.state.spelToggle === true) {
-            var spelToggle = [];
-            spelToggle = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
-                var reducedType = card.type.toLowerCase();
-                var filterString = "spell";
-                return reducedType === filterString;
-            })
-            spelToggle.forEach(object => {
-                typeFilter.push(object);
-            })
-        }
-
-        if (this.state.follToggle === true) {
-            var follToggle = [];
-            follToggle = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
-                var reducedType = card.type.toLowerCase();
-                var filterString = "unit" && card.supertype != "Champion";
-                return reducedType === filterString;
-            })
-            follToggle.forEach(object => {
-                typeFilter.push(object);
-            })
-        }
-
-
-
-        if (this.state.commToggle === true) {
-            var commToggle = [];
-            commToggle = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
-                var reducedType = card.rarity.toLowerCase();
-                var filterString = "common";
-                return reducedType === filterString;
-            })
-            commToggle.forEach(object => {
-                rarityFilter.push(object);
-            })
-        }
-
-        if (this.state.rareToggle === true) {
-            var rareToggle = [];
-            rareToggle = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
-                var reducedType = card.rarity.toLowerCase();
-                var filterString = "rare";
-                return reducedType === filterString;
-            })
-            rareToggle.forEach(object => {
-                rarityFilter.push(object);
-            })
-        }
-
-        if (this.state.epicToggle === true) {
-            var epicToggle = [];
-            epicToggle = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
-                var reducedType = card.rarity.toLowerCase();
-                var filterString = "epic";
-                return reducedType === filterString;
-            })
-            epicToggle.forEach(object => {
-                rarityFilter.push(object);
-            })
-        }
-
-        if (this.state.legnToggle === true) {
-            var legnToggle = [];
-            legnToggle = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
-                var reducedType = card.rarity.toLowerCase();
-                var filterString = "champion";
-                return reducedType === filterString;
-            })
-            legnToggle.forEach(object => {
-                rarityFilter.push(object);
-            })
-        }
-
-
-
-
-        if (this.allFalseCMC() && this.allFalseFactions() && this.allFalseRarity() && this.allFalseType()) { // full card list
-            console.log("hereree");
-            return subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name));           
-        }
-
-        else if (this.allFalseFactions() && this.allFalseRarity() && this.allFalseType()) { //only cmc
-            return cmcFilter.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name));
-        }
-
-        else if (this.allFalseCMC() && this.allFalseRarity() && this.allFalseType()) {//only faction
-            return factionFilter.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name));
-        }
-        else if (this.allFalseCMC() && this.allFalseFactions() && this.allFalseType()) {//only rarity
-            return rarityFilter.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name));
-        }
-        else if (this.allFalseCMC() && this.allFalseFactions() && this.allFalseRarity()) {//only type
-            return typeFilter.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name));
-        }
-        else {
-
-            if (factionFilter.length >= cmcFilter.length) {
-                var doubleFilter = factionFilter.filter(factionObject => {
-                    var match = false;
-                    cmcFilter.forEach(cmcObject => {
-                        if (factionObject.name.includes(cmcObject.name))
-                            match = true;
-                    });
-                    return match;
-                })
-                return doubleFilter.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name));
-            }
-
-            else {
-                var doubleFilter = cmcFilter.filter(cmcObject => {
-                    var match = false;
-                    factionFilter.forEach(factionObject => {
-                        if (cmcObject.name.includes(factionObject.name))
-                            match = true;
-                    });
-                    return match;
-                })
-                return doubleFilter.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name));
-            }
-        }
+            this.factionFilter.some(factionGood => {
+                if (card.region.toLowerCase() === factionGood){
+                    factionMatch = true;
+                    return;
+                }
+            });
+            console.log(cmcMatch + " " + rarityMatch + " " + factionMatch + " " + typeMatch);
+            return cmcMatch && rarityMatch && factionMatch && typeMatch ? true : false;
+        });
+        return filteredSet.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name));
     }
 
     allFalseFactions() {
@@ -466,11 +215,13 @@ class FilterBar extends React.Component {
         if (this.state.cmc0Toggle === false) {
             this.setState({ cmc0Toggle: true });
             this.setState({ cmc0Classname: "btn btn-outline active btn-sm" });
+            this.cmcFilter.push(0);
         }
 
         else {
             this.setState({ cmc0Toggle: false });
-            this.setState({ cmc0Classname: "btn btn-outline btn-sm" })
+            this.setState({ cmc0Classname: "btn btn-outline btn-sm" });
+            this.cmcFilter.splice(this.cmcFilter.indexOf(0), 1);
         }
 
     }
@@ -480,11 +231,13 @@ class FilterBar extends React.Component {
         if (this.state.cmc1Toggle === false) {
             this.setState({ cmc1Toggle: true });
             this.setState({ cmc1Classname: "btn btn-outline active btn-sm" });
+            this.cmcFilter.push(1);
         }
 
         else {
             this.setState({ cmc1Toggle: false });
-            this.setState({ cmc1Classname: "btn btn-outline btn-sm" })
+            this.setState({ cmc1Classname: "btn btn-outline btn-sm" });
+            this.cmcFilter.splice(this.cmcFilter.indexOf(1), 1);
         }
 
     }
@@ -494,11 +247,13 @@ class FilterBar extends React.Component {
         if (this.state.cmc2Toggle === false) {
             this.setState({ cmc2Toggle: true });
             this.setState({ cmc2Classname: "btn btn-outline active btn-sm" });
+            this.cmcFilter.push(2);
         }
 
         else {
             this.setState({ cmc2Toggle: false });
-            this.setState({ cmc2Classname: "btn btn-outline btn-sm" })
+            this.setState({ cmc2Classname: "btn btn-outline btn-sm" });
+            this.cmcFilter.splice(this.cmcFilter.indexOf(2), 1);
         }
 
     }
@@ -508,11 +263,13 @@ class FilterBar extends React.Component {
         if (this.state.cmc3Toggle === false) {
             this.setState({ cmc3Toggle: true });
             this.setState({ cmc3Classname: "btn btn-outline active btn-sm" });
+            this.cmcFilter.push(3);
         }
 
         else {
             this.setState({ cmc3Toggle: false });
-            this.setState({ cmc3Classname: "btn btn-outline btn-sm" })
+            this.setState({ cmc3Classname: "btn btn-outline btn-sm" });
+            this.cmcFilter.splice(this.cmcFilter.indexOf(3), 1);
         }
 
     }
@@ -522,11 +279,13 @@ class FilterBar extends React.Component {
         if (this.state.cmc4Toggle === false) {
             this.setState({ cmc4Toggle: true });
             this.setState({ cmc4Classname: "btn btn-outline active btn-sm" });
+            this.cmcFilter.push(4);
         }
 
         else {
             this.setState({ cmc4Toggle: false });
-            this.setState({ cmc4Classname: "btn btn-outline btn-sm" })
+            this.setState({ cmc4Classname: "btn btn-outline btn-sm" });
+            this.cmcFilter.splice(this.cmcFilter.indexOf(4), 1);
         }
 
     }
@@ -536,11 +295,13 @@ class FilterBar extends React.Component {
         if (this.state.cmc5Toggle === false) {
             this.setState({ cmc5Toggle: true });
             this.setState({ cmc5Classname: "btn btn-outline active btn-sm" });
+            this.cmcFilter.push(5);
         }
 
         else {
             this.setState({ cmc5Toggle: false });
-            this.setState({ cmc5Classname: "btn btn-outline btn-sm" })
+            this.setState({ cmc5Classname: "btn btn-outline btn-sm" });
+            this.cmcFilter.splice(this.cmcFilter.indexOf(5), 1);
         }
 
     }
@@ -550,11 +311,13 @@ class FilterBar extends React.Component {
         if (this.state.cmc6Toggle === false) {
             this.setState({ cmc6Toggle: true });
             this.setState({ cmc6Classname: "btn btn-outline active btn-sm" });
+            this.cmcFilter.push(6);
         }
 
         else {
             this.setState({ cmc6Toggle: false });
-            this.setState({ cmc6Classname: "btn btn-outline btn-sm" })
+            this.setState({ cmc6Classname: "btn btn-outline btn-sm" });
+            this.cmcFilter.splice(this.cmcFilter.indexOf(6), 1);
         }
 
     }
@@ -564,11 +327,13 @@ class FilterBar extends React.Component {
         if (this.state.cmc7Toggle === false) {
             this.setState({ cmc7Toggle: true });
             this.setState({ cmc7Classname: "btn btn-outline active btn-sm" });
+            this.cmcFilter.push(7);
         }
 
         else {
             this.setState({ cmc7Toggle: false });
-            this.setState({ cmc7Classname: "btn btn-outline btn-sm" })
+            this.setState({ cmc7Classname: "btn btn-outline btn-sm" });
+            this.cmcFilter.splice(this.cmcFilter.indexOf(7), 1);
         }
 
     }
@@ -580,11 +345,13 @@ class FilterBar extends React.Component {
         if (this.state.demToggle === false) {
             this.setState({ demToggle: true });
             this.setState({ demClassname: "btn btn-outline active" });
+            this.factionFilter.push("demacia");
         }
 
         else {
             this.setState({ demToggle: false });
-            this.setState({ demClassname: "btn btn-outline" })
+            this.setState({ demClassname: "btn btn-outline" });
+            this.factionFilter.splice(this.factionFilter.indexOf("demacia"), 1);
         }
 
     }
@@ -594,11 +361,13 @@ class FilterBar extends React.Component {
         if (this.state.freToggle === false) {
             this.setState({ freToggle: true });
             this.setState({ freClassname: "btn btn-outline active" });
+            this.factionFilter.push("freljord");
         }
 
         else {
             this.setState({ freToggle: false });
-            this.setState({ freClassname: "btn btn-outline" })
+            this.setState({ freClassname: "btn btn-outline" });
+            this.factionFilter.splice(this.factionFilter.indexOf("freljord"), 1);
         }
 
     }
@@ -608,11 +377,13 @@ class FilterBar extends React.Component {
         if (this.state.ionToggle === false) {
             this.setState({ ionToggle: true });
             this.setState({ ionClassname: "btn btn-outline active" });
+            this.factionFilter.push("ionia");
         }
 
         else {
             this.setState({ ionToggle: false });
-            this.setState({ ionClassname: "btn btn-outline" })
+            this.setState({ ionClassname: "btn btn-outline" });
+            this.factionFilter.splice(this.factionFilter.indexOf("ionia"), 1);
         }
 
     }
@@ -622,11 +393,13 @@ class FilterBar extends React.Component {
         if (this.state.noxToggle === false) {
             this.setState({ noxToggle: true });
             this.setState({ noxClassname: "btn btn-outline active" });
+            this.factionFilter.push("noxus");
         }
 
         else {
             this.setState({ noxToggle: false });
-            this.setState({ noxClassname: "btn btn-outline" })
+            this.setState({ noxClassname: "btn btn-outline" });
+            this.factionFilter.splice(this.factionFilter.indexOf("noxus"), 1);
         }
 
     }
@@ -636,11 +409,13 @@ class FilterBar extends React.Component {
         if (this.state.pilToggle === false) {
             this.setState({ pilToggle: true });
             this.setState({ pilClassname: "btn btn-outline active" });
+            this.factionFilter.push("piltoverzaun");
         }
 
         else {
             this.setState({ pilToggle: false });
-            this.setState({ pilClassname: "btn btn-outline" })
+            this.setState({ pilClassname: "btn btn-outline" });
+            this.factionFilter.splice(this.factionFilter.indexOf("piltoverzaun"), 1);
         }
 
     }
@@ -650,11 +425,13 @@ class FilterBar extends React.Component {
         if (this.state.shaToggle === false) {
             this.setState({ shaToggle: true });
             this.setState({ shaClassname: "btn btn-outline active" });
+            this.factionFilter.push("shadowisles");
         }
 
         else {
             this.setState({ shaToggle: false });
-            this.setState({ shaClassname: "btn btn-outline" })
+            this.setState({ shaClassname: "btn btn-outline" });
+            this.factionFilter.splice(this.factionFilter.indexOf("shadowisles"), 1);
         }
 
     }
@@ -668,11 +445,13 @@ class FilterBar extends React.Component {
         if (this.state.chamToggle === false) {
             this.setState({ chamToggle: true });
             this.setState({ chamClassname: "btn btn-outline active" });
+            this.typeFilter.push("champion");
         }
 
         else {
             this.setState({ chamToggle: false });
-            this.setState({ chamClassname: "btn btn-outline" })
+            this.setState({ chamClassname: "btn btn-outline" });
+            this.typeFilter.splice(this.typeFilter.indexOf("champion"), 1);
         }
 
     }
@@ -682,11 +461,14 @@ class FilterBar extends React.Component {
         if (this.state.spelToggle === false) {
             this.setState({ spelToggle: true });
             this.setState({ spelClassname: "btn btn-outline active" });
+            this.typeFilter.push("spell");
         }
 
         else {
             this.setState({ spelToggle: false });
-            this.setState({ spelClassname: "btn btn-outline" })
+            this.setState({ spelClassname: "btn btn-outline" });
+            this.typeFilter.splice(this.typeFilter.indexOf("spell"), 1);
+
         }
 
     }
@@ -696,11 +478,13 @@ class FilterBar extends React.Component {
         if (this.state.follToggle === false) {
             this.setState({ follToggle: true });
             this.setState({ follClassname: "btn btn-outline active" });
+            this.typeFilter.push("unit");
         }
 
         else {
             this.setState({ follToggle: false });
-            this.setState({ follClassname: "btn btn-outline" })
+            this.setState({ follClassname: "btn btn-outline" });
+            this.typeFilter.splice(this.typeFilter.indexOf("unit"), 1);
         }
 
     }
@@ -711,11 +495,13 @@ class FilterBar extends React.Component {
         if (this.state.commToggle === false) {
             this.setState({ commToggle: true });
             this.setState({ commClassname: "btn btn-outline active" });
+            this.rarityFilter.push("common");
         }
 
         else {
             this.setState({ commToggle: false });
-            this.setState({ commClassname: "btn btn-outline" })
+            this.setState({ commClassname: "btn btn-outline" });
+            this.rarityFilter.splice(this.rarityFilter.indexOf("common"), 1);
         }
 
     }
@@ -725,11 +511,13 @@ class FilterBar extends React.Component {
         if (this.state.rareToggle === false) {
             this.setState({ rareToggle: true });
             this.setState({ rareClassname: "btn btn-outline active" });
+            this.rarityFilter.push("rare");
         }
 
         else {
             this.setState({ rareToggle: false });
-            this.setState({ rareClassname: "btn btn-outline" })
+            this.setState({ rareClassname: "btn btn-outline" });
+            this.rarityFilter.splice(this.rarityFilter.indexOf("rare"), 1);
         }
 
     }
@@ -739,11 +527,13 @@ class FilterBar extends React.Component {
         if (this.state.epicToggle === false) {
             this.setState({ epicToggle: true });
             this.setState({ epicClassname: "btn btn-outline active" });
+            this.rarityFilter.push("epic");
         }
 
         else {
             this.setState({ epicToggle: false });
-            this.setState({ epicClassname: "btn btn-outline" })
+            this.setState({ epicClassname: "btn btn-outline" });
+            this.rarityFilter.splice(this.rarityFilter.indexOf("epic"), 1);
         }
 
     }
@@ -753,11 +543,13 @@ class FilterBar extends React.Component {
         if (this.state.legnToggle === false) {
             this.setState({ legnToggle: true });
             this.setState({ legnClassname: "btn btn-outline active" });
+            this.rarityFilter.push("champion");
         }
 
         else {
             this.setState({ legnToggle: false });
-            this.setState({ legnClassname: "btn btn-outline" })
+            this.setState({ legnClassname: "btn btn-outline" });
+            this.rarityFilter.splice(this.rarityFilter.indexOf("champion"), 1);
         }
 
     }
@@ -767,7 +559,7 @@ class FilterBar extends React.Component {
     createRows() {
         var filteredCards = this.filterCards();
       const list = filteredCards.map((card, index) => {
-        if(card.rarity != "None" && card.keywords.indexOf("Skill") == -1 && card.name != "Accelerated Purrsuit")
+        if(card.rarity !== "None" && card.keywords.indexOf("Skill") === -1 && card.name !== "Accelerated Purrsuit")
           return <div className="col-6 col-sm-6 col-md-4 col-lg-3 p-3" key={index}>
             <a href={"/card/"+card.name.replace(/ /g, "_").replace(/:/g,"")}><img className="image-container img-fluid" src={"/img/cards/"+card.cardCode+".png"} alt={"Legends of Runeterra Cards " + card.name} /></a>
           </div>
@@ -777,8 +569,7 @@ class FilterBar extends React.Component {
       return list;
     }
 
-    render() {
-
+    render() { 
         return(
         <div>
             <div className="row">

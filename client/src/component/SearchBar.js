@@ -19,7 +19,7 @@ class SearchBar extends React.Component {
 
     setSearch(e) {
         this.setState({ searchText: e.target.value });
-        console.log(this.state.searchText);
+        //console.log(this.state.searchText);
     }
 
     render() {

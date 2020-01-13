@@ -1,6 +1,7 @@
 import React from "react";
 //import "./FilterBar.css"
 import baseSet from "../card_info/set1.json";
+import { Multiselect } from 'multiselect-react-dropdown';
 
 class FilterBar extends React.Component {
 
@@ -42,6 +43,8 @@ class FilterBar extends React.Component {
             typeFilter : [],
             rarityFilter : [],
             factionFilter : [],
+
+            options : [{name: 'ass', id: 1}, {name: 'butt', id: 2}],
 
             cmc0Classname: "btn btn-outline btn-sm",
             cmc1Classname: "btn btn-outline btn-sm",
@@ -109,7 +112,6 @@ class FilterBar extends React.Component {
     }
 
 
-
     filterCards() {
 
         //var subset = this.workingSet;
@@ -163,7 +165,6 @@ class FilterBar extends React.Component {
                     return;
                 }
             });
-            console.log(cmcMatch + " " + rarityMatch + " " + factionMatch + " " + typeMatch);
             return cmcMatch && rarityMatch && factionMatch && typeMatch ? true : false;
         });
         return filteredSet.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name));
@@ -605,6 +606,7 @@ class FilterBar extends React.Component {
                         <button type="button" className={this.state.legnClassname +""} onClick={this.legnState}>Champion</button>
                 </div>
             </div>
+            <div><Multiselect options={this.state.options} selectedvalues={this.state.selectedValue} onSelect={this.onSelect} onRemove={this.onRemove} displayValue="name" /></div>
             <div className="row">{this.createRows()}</div>
         </div>
         )

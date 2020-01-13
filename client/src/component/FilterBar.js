@@ -26,6 +26,15 @@ class FilterBar extends React.Component {
             pilToggle: false,
             shaToggle: false,
 
+            chamToggle: false,
+            spelToggle: false,
+            follToggle: false,
+
+            commToggle: false,
+            rareToggle: false,
+            epicToggle: false,
+            legnToggle: false,
+
             cmc0Classname: "btn btn-outline btn-sm",
             cmc1Classname: "btn btn-outline btn-sm",
             cmc2Classname: "btn btn-outline btn-sm",
@@ -41,6 +50,15 @@ class FilterBar extends React.Component {
             noxClassname: "btn btn-outline btn-sm",
             pilClassname: "btn btn-outline btn-sm",
             shaClassname: "btn btn-outline btn-sm",
+
+            chamClassname: "btn btn-outline btn-sm",
+            spelClassname: "btn btn-outline btn-sm",
+            follClassname: "btn btn-outline btn-sm",
+
+            commClassname: "btn btn-outline btn-sm",
+            rareClassname: "btn btn-outline btn-sm",
+            epicClassname: "btn btn-outline btn-sm",
+            legnClassname: "btn btn-outline btn-sm",
         };
 
         this.cmc0State = this.cmc0State.bind(this);
@@ -58,6 +76,15 @@ class FilterBar extends React.Component {
         this.noxState = this.noxState.bind(this);
         this.pilState = this.pilState.bind(this);
         this.shaState = this.shaState.bind(this);
+
+        this.chamState = this.chamState.bind(this);
+        this.spelState = this.spelState.bind(this);
+        this.follState = this.follState.bind(this);
+
+        this.commState = this.commState.bind(this);
+        this.rareState = this.rareState.bind(this);
+        this.epicState = this.epicState.bind(this);
+        this.legnState = this.legnState.bind(this);
 
         this.filterCards = this.filterCards.bind(this);
     }
@@ -84,6 +111,8 @@ class FilterBar extends React.Component {
         // }
         var cmcFilter = [];
         var factionFilter = [];
+        var typeFilter = [];
+        var rarityFilter = [];
 
         if (this.state.cmc0Toggle === true) {
             var cmc0Filter = [];
@@ -254,16 +283,114 @@ class FilterBar extends React.Component {
             })
         }
 
-        if (this.allFalseCMC() && this.allFalseFactions()) { // full card list
+
+
+        if (this.state.chamToggle === true) {
+            var chamToggle = [];
+            chamToggle = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
+                var reducedType = card.type.toLowerCase();
+                var filterString = "unit";
+                return reducedType === filterString && card.supertype === "Champion";
+            })
+            chamToggle.forEach(object => {
+                typeFilter.push(object);
+            })
+        }
+
+        if (this.state.spelToggle === true) {
+            var spelToggle = [];
+            spelToggle = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
+                var reducedType = card.type.toLowerCase();
+                var filterString = "spell";
+                return reducedType === filterString;
+            })
+            spelToggle.forEach(object => {
+                typeFilter.push(object);
+            })
+        }
+
+        if (this.state.follToggle === true) {
+            var follToggle = [];
+            follToggle = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
+                var reducedType = card.type.toLowerCase();
+                var filterString = "unit" && card.supertype != "Champion";
+                return reducedType === filterString;
+            })
+            follToggle.forEach(object => {
+                typeFilter.push(object);
+            })
+        }
+
+
+
+        if (this.state.commToggle === true) {
+            var commToggle = [];
+            commToggle = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
+                var reducedType = card.rarity.toLowerCase();
+                var filterString = "common";
+                return reducedType === filterString;
+            })
+            commToggle.forEach(object => {
+                rarityFilter.push(object);
+            })
+        }
+
+        if (this.state.rareToggle === true) {
+            var rareToggle = [];
+            rareToggle = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
+                var reducedType = card.rarity.toLowerCase();
+                var filterString = "rare";
+                return reducedType === filterString;
+            })
+            rareToggle.forEach(object => {
+                rarityFilter.push(object);
+            })
+        }
+
+        if (this.state.epicToggle === true) {
+            var epicToggle = [];
+            epicToggle = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
+                var reducedType = card.rarity.toLowerCase();
+                var filterString = "epic";
+                return reducedType === filterString;
+            })
+            epicToggle.forEach(object => {
+                rarityFilter.push(object);
+            })
+        }
+
+        if (this.state.legnToggle === true) {
+            var legnToggle = [];
+            legnToggle = subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter(card => {
+                var reducedType = card.rarity.toLowerCase();
+                var filterString = "champion";
+                return reducedType === filterString;
+            })
+            legnToggle.forEach(object => {
+                rarityFilter.push(object);
+            })
+        }
+
+
+
+
+        if (this.allFalseCMC() && this.allFalseFactions() && this.allFalseRarity() && this.allFalseType()) { // full card list
+            console.log("hereree");
             return subset.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name));           
         }
 
-        else if (this.allFalseFactions()) {
+        else if (this.allFalseFactions() && this.allFalseRarity() && this.allFalseType()) { //only cmc
             return cmcFilter.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name));
         }
 
-        else if (this.allFalseCMC()) {
+        else if (this.allFalseCMC() && this.allFalseRarity() && this.allFalseType()) {//only faction
             return factionFilter.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name));
+        }
+        else if (this.allFalseCMC() && this.allFalseFactions() && this.allFalseType()) {//only rarity
+            return rarityFilter.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name));
+        }
+        else if (this.allFalseCMC() && this.allFalseFactions() && this.allFalseRarity()) {//only type
+            return typeFilter.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name));
         }
         else {
 
@@ -313,6 +440,26 @@ class FilterBar extends React.Component {
             return false;
         }
     }
+
+    allFalseType() {
+        if (this.state.chamToggle  === false && this.state.spelToggle  === false && this.state.follToggle  === false ){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    allFalseRarity() {
+        if (this.state.commToggle  === false && this.state.rareToggle  === false && this.state.epicToggle  === false &&
+            this.state.legnToggle === false){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
 
     cmc0State(e) {
         e.preventDefault();
@@ -514,6 +661,109 @@ class FilterBar extends React.Component {
 
 
 
+
+
+    chamState(e) {
+        e.preventDefault();
+        if (this.state.chamToggle === false) {
+            this.setState({ chamToggle: true });
+            this.setState({ chamClassname: "btn btn-outline active" });
+        }
+
+        else {
+            this.setState({ chamToggle: false });
+            this.setState({ chamClassname: "btn btn-outline" })
+        }
+
+    }
+
+    spelState(e) {
+        e.preventDefault();
+        if (this.state.spelToggle === false) {
+            this.setState({ spelToggle: true });
+            this.setState({ spelClassname: "btn btn-outline active" });
+        }
+
+        else {
+            this.setState({ spelToggle: false });
+            this.setState({ spelClassname: "btn btn-outline" })
+        }
+
+    }
+
+    follState(e) {
+        e.preventDefault();
+        if (this.state.follToggle === false) {
+            this.setState({ follToggle: true });
+            this.setState({ follClassname: "btn btn-outline active" });
+        }
+
+        else {
+            this.setState({ follToggle: false });
+            this.setState({ follClassname: "btn btn-outline" })
+        }
+
+    }
+
+
+    commState(e) {
+        e.preventDefault();
+        if (this.state.commToggle === false) {
+            this.setState({ commToggle: true });
+            this.setState({ commClassname: "btn btn-outline active" });
+        }
+
+        else {
+            this.setState({ commToggle: false });
+            this.setState({ commClassname: "btn btn-outline" })
+        }
+
+    }
+
+    rareState(e) {
+        e.preventDefault();
+        if (this.state.rareToggle === false) {
+            this.setState({ rareToggle: true });
+            this.setState({ rareClassname: "btn btn-outline active" });
+        }
+
+        else {
+            this.setState({ rareToggle: false });
+            this.setState({ rareClassname: "btn btn-outline" })
+        }
+
+    }
+
+    epicState(e) {
+        e.preventDefault();
+        if (this.state.epicToggle === false) {
+            this.setState({ epicToggle: true });
+            this.setState({ epicClassname: "btn btn-outline active" });
+        }
+
+        else {
+            this.setState({ epicToggle: false });
+            this.setState({ epicClassname: "btn btn-outline" })
+        }
+
+    }
+
+    legnState(e) {
+        e.preventDefault();
+        if (this.state.legnToggle === false) {
+            this.setState({ legnToggle: true });
+            this.setState({ legnClassname: "btn btn-outline active" });
+        }
+
+        else {
+            this.setState({ legnToggle: false });
+            this.setState({ legnClassname: "btn btn-outline" })
+        }
+
+    }
+
+
+
     createRows() {
         var filteredCards = this.filterCards();
       const list = filteredCards.map((card, index) => {
@@ -549,6 +799,19 @@ class FilterBar extends React.Component {
                         <button type="button" className={this.state.noxClassname +""} onClick={this.noxState}>Noxus</button>
                         <button type="button" className={this.state.pilClassname +""} onClick={this.pilState}>Piltover & Zaum</button>
                         <button type="button" className={this.state.shaClassname +""} onClick={this.shaState}>Shadow Isles</button>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <button type="button" className={this.state.chamClassname +""} onClick={this.chamState}>Champion</button>
+                    <button type="button" className={this.state.spelClassname +""} onClick={this.spelState}>Spell</button>
+                    <button type="button" className={this.state.follClassname +""} onClick={this.follState}>Follower</button>          
+                </div>
+                <div className= "col">
+                        <button type="button" className={this.state.commClassname +""} onClick={this.commState}>Common</button>
+                        <button type="button" className={this.state.rareClassname +""} onClick={this.rareState}>Rare</button>
+                        <button type="button" className={this.state.epicClassname +""} onClick={this.epicState}>Epic</button>
+                        <button type="button" className={this.state.legnClassname +""} onClick={this.legnState}>Champion</button>
                 </div>
             </div>
             <div className="row">{this.createRows()}</div>

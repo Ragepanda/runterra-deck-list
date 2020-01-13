@@ -1,12 +1,12 @@
 import React from "react";
 import { NavLink } from 'react-router-dom';
 
-import './navbar.css';
+import './Navbar.css';
 class Navbar extends React.Component {
     constructor(props) {
         super(props); // ✅ We passed props
       }
-
+//navbar
     render() {
         return (
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">

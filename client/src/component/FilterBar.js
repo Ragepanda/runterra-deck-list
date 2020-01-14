@@ -695,7 +695,7 @@ class FilterBar extends React.Component {
                         <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                         <div className="row">
                           <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
-                            <hr/>
+                            
                             <div>Mana Cost</div>
                             <button type="button" className={this.state.cmc0Classname +""} onClick={this.cmc0State}>0</button>
                             <button type="button" className={this.state.cmc1Classname +""} onClick={this.cmc1State}>1</button>
@@ -707,7 +707,7 @@ class FilterBar extends React.Component {
                             <button type="button" className={this.state.cmc7Classname +""} onClick={this.cmc7State}>7+</button>
                           </div>
                            <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
-                            <hr/>
+                            
                             <div>Region</div>
                              <button type="button" className={this.state.demClassname +""} onClick={this.demState}>Demacia</button>
                              <button type="button" className={this.state.freClassname +""} onClick={this.freState}>Freljord</button>
@@ -717,14 +717,14 @@ class FilterBar extends React.Component {
                              <button type="button" className={this.state.shaClassname +""} onClick={this.shaState}>Shadow Isles</button>
                           </div>
                           <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
-                            <hr/>
+                            
                             <div>Card Type</div>
                             <button type="button" className={this.state.chamClassname +""} onClick={this.chamState}>Champion</button>
                             <button type="button" className={this.state.spelClassname +""} onClick={this.spelState}>Spell</button>
                             <button type="button" className={this.state.follClassname +""} onClick={this.follState}>Follower</button>          
                           </div>
                           <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
-                            <hr/>
+                            
                             <div>Rarity</div>
                             <button type="button" className={this.state.commClassname +""} onClick={this.commState}>Common</button>
                             <button type="button" className={this.state.rareClassname +""} onClick={this.rareState}>Rare</button>
@@ -732,11 +732,11 @@ class FilterBar extends React.Component {
                             <button type="button" className={this.state.legnClassname +""} onClick={this.legnState}>Champion</button>
                           </div>
                             <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
-                            <hr/>
+                            
                               <Multiselect options={this.state.kwObject} onSelect={this.onSelect} placeholder="Keywords" onRemove={this.onRemove} displayValue="name" />
                             </div>
                           <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
-                            <hr/>
+                            
                             <div>Card Use</div>
                             <div>Coming Soon</div>
                           </div>
@@ -744,7 +744,7 @@ class FilterBar extends React.Component {
                           </div>
                         </div>
                     </div>
-                    <div className = "col-12"><ReactSearchBox placeholder="Search Card Names..." data={this.workingSet} onChange={this.setSearch}/></div>
+                    <div className = "searchStyle col-12"><ReactSearchBox placeholder="Search Card Names..." data={this.workingSet} onChange={this.setSearch}/></div>
                 </div>
             </div>
             <div className="row">{this.createRows()}</div>

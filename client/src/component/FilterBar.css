@@ -19,6 +19,14 @@
 
 .card-body {
 	background-color: #011627;
+	padding:7px;
+	border-top:solid 1px #FFF8F0;
+	border-right:solid 1px #FFF8F0;
+}
+
+.card-header {
+	background-color: #011627;
+	padding:7px;
 }
 
 .colorBtn {
@@ -50,3 +58,10 @@
 	background-color: #D68FD6;
 	color:#011627;
 }
+
+
+.searchStyle {
+	background-color: #011627;
+	padding: 3px;
+}
+

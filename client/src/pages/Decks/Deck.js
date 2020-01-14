@@ -1,6 +1,7 @@
 import React from 'react';
 import baseSet from "../../card_info/set1.json";
 import { Helmet } from "react-helmet";
+import { Bar } from 'react-chartjs-2';
 const {DeckEncoder} = require('runeterra');
 
 
@@ -13,6 +14,7 @@ class Deck extends React.Component{
       		spells: [],
       		followers: [],
       		champions: [],
+      		manaCurve: [0,0,0,0,0,0,0,0],
       		isLoaded: false
     	};
     	//console.log(this.state.deck);
@@ -26,6 +28,10 @@ class Deck extends React.Component{
   			for (var j = 0; j < baseSet.length; j++){
   				if(this.state.deck[i].code == baseSet[j].cardCode){
   					//console.log(baseSet[j].name)
+  					if(baseSet[j].cost >= 7)
+  						this.state.manaCurve[7] += this.state.deck[i].count;
+  					else
+  						this.state.manaCurve[baseSet[j].cost] += this.state.deck[i].count;
   					if(baseSet[j].type == "Spell"){
   						baseSet[j].count = this.state.deck[i].count;
   						this.state.spells.push(baseSet[j]);
@@ -43,9 +49,10 @@ class Deck extends React.Component{
   			}
   		}
   		this.setState({isLoaded: true })
-  		console.log(this.state.spells)
-  		console.log(this.state.followers)
-  		console.log(this.state.champions)
+  		//console.log(this.state.spells)
+  		//console.log(this.state.followers)
+  		//console.log(this.state.champions)
+  		console.log(this.state.manaCurve)
 	}
 
 	makeSpellList(){
@@ -67,6 +74,28 @@ class Deck extends React.Component{
 			//console.log(this.state.championss[0].name);
 			const championsList = this.state.champions.map((champions) => <li><a href={"/card/"+champions.name}>{champions.name} x {champions.count}</a></li>);
 			return(championsList);
+		}
+	}
+	makeManaCurveChart(){
+		if(this.state.isLoaded){
+			var data ={
+			labels: ["0", "1", "2", "3", "4", "5", "6", "7+"], 
+			datasets: [
+			{
+				data: this.state.manaCurve
+			}
+			]};
+
+			
+
+			return(
+				<Bar
+					data={data}
+					//width={}
+					//height={}
+					//options={}
+				/>
+			);
 		}
 	}
 
@@ -95,6 +124,9 @@ class Deck extends React.Component{
 				<ui>
 					{this.makeSpellList()}
 				</ui>
+			<div className="manaCurve">
+				{this.makeManaCurveChart()}
+			</div>
 			</div>
 		);
 	}

@@ -28,8 +28,12 @@ class App extends React.Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/home" exact component={Home} />
             <Route exact path="/card/:name" component={Card} />
+<<<<<<< HEAD
+            <Route exact path="/set" component={Set} />
+=======
             <Route exact path="/set/" component={Set} />
             <Route exact path="/deck_lists/:deck" component={Deck} />
+>>>>>>> master
           </Switch>
         </div>
       </Router>

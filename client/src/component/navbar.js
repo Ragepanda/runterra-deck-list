@@ -20,7 +20,7 @@ class Navbar extends React.Component {
                     <a className="nav-link disabled" href="#">Meta</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link disabled" href="#">Decks</a>
+                    <a className="nav-link disabled" href="/deck_lists/deck">Decks</a>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link disabled" href="#">Deckbuilder</a>

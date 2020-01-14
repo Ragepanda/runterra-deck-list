@@ -2,7 +2,6 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import baseSet from "../../card_info/set1.json";
 import FilterBar from "../../component/FilterBar";
-import SearchBar from "../../component/SearchBar";
 class Set extends React.Component {
     
 
@@ -43,7 +42,6 @@ class Set extends React.Component {
             {this.createHelmet()}
             <div className="setName text-center pt-4"><h2>Legends of Runeterra Base Set</h2></div>
             <div className="setName text-center pb-5 pt-1"><p>This is the list of Legends of Runeterra cards in the Legends of Runeterra base set. Runeterra Hub is the spot to view new Legends of Runeterra sets.</p></div>
-            <SearchBar/>
             <FilterBar/>
           </div>
       );

@@ -1,7 +1,9 @@
 import React from "react";
 //import "./FilterBar.css"
 import baseSet from "../card_info/set1.json";
+import kwSet from "../card_info/globals-en_us.json";
 import { Multiselect } from 'multiselect-react-dropdown';
+import ReactSearchBox from 'react-search-box';
 
 class FilterBar extends React.Component {
 
@@ -43,8 +45,39 @@ class FilterBar extends React.Component {
             typeFilter : [],
             rarityFilter : [],
             factionFilter : [],
+            keywordFilter : [],
 
-            options : [{name: 'ass', id: 1}, {name: 'butt', id: 2}],
+            kwObject : [{name: "Obliterate"},
+                        {name: "Double Attack"},
+                        {name: "Weakest"},
+                        {name: "Elusive"},
+                        {name: "Drain"},
+                        {name: "Stun"},
+                        {name: "Trap"},
+                        {name: "Overwhelm"},
+                        {name: "Barrier"},
+                        {name: "Capture"},
+                        {name: "Frostbite"},
+                        {name: "Burst"},
+                        {name: "Fleeting"},
+                        {name: "Fast"},
+                        {name: "Overwhelm"},
+                        {name: "Quick Attack"},
+                        {name: "Tough"},
+                        {name: "Recall"},
+                        {name: "Regeneration"},
+                        {name: "Lifesteal"},
+                        {name: "Enlightened"},
+                        {name: "Slow"},
+                        {name: "Ephemeral"},
+                        {name: "Last Breath"},
+                        {name: "Challenger"},
+                        {name: "Imbue"},
+                        {name: "Fearsome"},
+                        {name: "Can't Block"}],
+
+            cardRows : "",
+            searchText : "",
 
             cmc0Classname: "btn btn-outline btn-sm",
             cmc1Classname: "btn btn-outline btn-sm",
@@ -99,6 +132,11 @@ class FilterBar extends React.Component {
 
         this.filterCards = this.filterCards.bind(this);
 
+        this.onSelect = this.onSelect.bind(this);
+        this.onRemove = this.onRemove.bind(this);
+
+        this.setSearch = this.setSearch.bind(this);
+
         this.cardSet = baseSet;
         this.workingSet = baseSet;
 
@@ -106,30 +144,36 @@ class FilterBar extends React.Component {
         this.typeFilter = [];
         this.factionFilter = [];
         this.rarityFilter = [];
+
+       
     }
 
     componentDidMount() {
+        this.setState({cardRows: this.createRows()});
+        this.state.kwObject = this.state.kwObject.sort((a, b) => a.name.localeCompare(b.name));
+        this.state.searchText = "";
     }
 
 
     filterCards() {
 
-        //var subset = this.workingSet;
-        // if (this.state.searchText === "")
-        //     subset = cardSet.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name));
-        // else {
-        //     var subset = cardSet.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter((card) => {
-        //         var reducedName = card.name.toLowerCase();
-        //         return reducedName.includes(this.state.searchText.toLowerCase(), 0);
-        //     })
-        // }
+        var filteredSet = this.workingSet;
+        if (this.state.searchText === "")
+            filteredSet = filteredSet.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name));
+        else {
+            filteredSet = filteredSet.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name)).filter((card) => {
+                var reducedName = card.name.toLowerCase();
+                return reducedName.includes(this.state.searchText.toLowerCase(), 0);
+            })
+        }
 
 
-        var filteredSet = this.workingSet.filter(card => {
+            filteredSet = filteredSet.filter(card => {
             var cmcMatch     = this.allFalseCMC()      ? true : false;
             var rarityMatch  = this.allFalseRarity()   ? true : false;
             var typeMatch    = this.allFalseType()     ? true : false;
             var factionMatch = this.allFalseFactions() ? true : false;
+            var keywordMatch = this.noKeywordSelected()? true : false;
             this.cmcFilter.some(cmcGood => {
                 if (cmcGood !== 7){
                     if (card.cost === cmcGood){
@@ -165,7 +209,16 @@ class FilterBar extends React.Component {
                     return;
                 }
             });
-            return cmcMatch && rarityMatch && factionMatch && typeMatch ? true : false;
+
+            this.state.keywordFilter.some(kwGood => {
+                if (card.keywords.includes(kwGood)){
+                    keywordMatch = true;
+                    return;
+                }
+            });
+
+
+            return cmcMatch && rarityMatch && factionMatch && typeMatch && keywordMatch ? true : false;
         });
         return filteredSet.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name));
     }
@@ -209,6 +262,25 @@ class FilterBar extends React.Component {
             return false;
         }
     }
+
+    noKeywordSelected() {
+        if (this.state.keywordFilter.length === 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    noSearchText() {
+        if (this.state.searchText === ""){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
 
 
     cmc0State(e) {
@@ -555,6 +627,20 @@ class FilterBar extends React.Component {
 
     }
 
+    onSelect(optionsList, selectedItem){
+            this.state.keywordFilter.push(selectedItem.name);
+            this.setState({cardRows:this.createRows()});
+    }
+
+    onRemove(optionsList, selectedItem){
+            this.state.keywordFilter.splice(this.state.keywordFilter.indexOf(selectedItem.name), 1);
+            this.setState({cardRows:this.createRows()});
+    }
+
+    setSearch(e){
+        this.state.searchText = e;
+        this.setState({cardRows : this.createRows()});
+    }
 
 
     createRows() {
@@ -574,6 +660,7 @@ class FilterBar extends React.Component {
         return(
         <div>
             <div className="row">
+                <ReactSearchBox placeholder="Search Card Names..." data={this.state.cardRows} onChange={this.setSearch} />
                 <div className="col">
                     <button type="button" className={this.state.cmc0Classname +""} onClick={this.cmc0State}>0</button>
                     <button type="button" className={this.state.cmc1Classname +""} onClick={this.cmc1State}>1</button>
@@ -606,8 +693,8 @@ class FilterBar extends React.Component {
                         <button type="button" className={this.state.legnClassname +""} onClick={this.legnState}>Champion</button>
                 </div>
             </div>
-            <div><Multiselect options={this.state.options} selectedvalues={this.state.selectedValue} onSelect={this.onSelect} onRemove={this.onRemove} displayValue="name" /></div>
-            <div className="row">{this.createRows()}</div>
+            <div><Multiselect options={this.state.kwObject} onSelect={this.onSelect} onRemove={this.onRemove} displayValue="name" /></div>
+            <div className="row">{this.state.cardRows}</div>
         </div>
         )
     }

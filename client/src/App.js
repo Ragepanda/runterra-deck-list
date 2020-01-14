@@ -30,7 +30,6 @@ class App extends React.Component {
             <Route exact path="/card/:name" component={Card} />
             <Route exact path="/set/" component={Set} />
             <Route exact path="/deck_lists/:deck" component={Deck} />
-
           </Switch>
         </div>
       </Router>

@@ -58,21 +58,21 @@ class Deck extends React.Component{
 	makeSpellList(){
 		if(this.state.isLoaded){
 			//console.log(this.state.spells[0].name);
-			const spellList = this.state.spells.map((spell) => <li><a href={"/card/"+spell.name}>{spell.name} x {spell.count}</a></li>);
+			const spellList = this.state.spells.map((spell) => <li><a href={"/card/"+spell.name.replace(/ /g, "_").replace(/:/g,"")}>{spell.name} x {spell.count}</a></li>);
 			return(spellList);
 		}
 	}
 	makeFollowerList(){
 		if(this.state.isLoaded){
 			//console.log(this.state.followerss[0].name);
-			const followersList = this.state.followers.map((followers) => <li><a href={"/card/"+followers.name}>{followers.name} x {followers.count}</a></li>);
+			const followersList = this.state.followers.map((followers) => <li><a href={"/card/"+followers.name.replace(/ /g, "_").replace(/:/g,"")}>{followers.name} x {followers.count}</a></li>);
 			return(followersList);
 		}
 	}
 	makeChampionList(){
 		if(this.state.isLoaded){
 			//console.log(this.state.championss[0].name);
-			const championsList = this.state.champions.map((champions) => <li><a href={"/card/"+champions.name}>{champions.name} x {champions.count}</a></li>);
+			const championsList = this.state.champions.map((champions) => <li><a href={"/card/"+champions.name.replace(/ /g, "_").replace(/:/g,"")}>{champions.name} x {champions.count}</a></li>);
 			return(championsList);
 		}
 	}

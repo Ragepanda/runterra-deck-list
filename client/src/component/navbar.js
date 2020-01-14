@@ -1,11 +1,11 @@
 import React from "react";
 
-import './navbar.css';
+import './Navbar.css';
 class Navbar extends React.Component {
     constructor(props) {
         super(props); // ✅ We passed props
       }
-
+//navbar
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">

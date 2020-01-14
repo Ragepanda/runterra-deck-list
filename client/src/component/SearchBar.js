@@ -28,7 +28,6 @@ class SearchBar extends React.Component {
         return(
         <div className="row">
                     <input className="text col" type="text" name="cardSearch" placeholder="Search Cards..." value={this.state.searchText} onChange={this.setSearch} />                    
-
         </div>
         )
     }

@@ -4,6 +4,7 @@ import baseSet from "../../card_info/set1.json";
 import FilterBar from "../../component/FilterBar";
 
 
+
 class Set extends React.Component {
     
 
@@ -40,6 +41,7 @@ class Set extends React.Component {
 
   render() {
       return (
+
           <div className="container-fluid">
             {this.createHelmet()}
             <div className="setName text-center pt-4"><h2>Legends of Runeterra Base Set</h2></div>

@@ -1,8 +1,9 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import baseSet from "../../card_info/set1.json";
-
+import FilterBar from "../../component/FilterBar";
 import SearchBar from "../../component/SearchBar";
+
 class Set extends React.Component {
     
 
@@ -26,24 +27,29 @@ class Set extends React.Component {
   }
 
   createRows() {
-    const list = baseSet.map((card, index) =>
-        <div className="col-6 col-sm-6 col-md-4 col-lg-3 p-3" key={index}>
-          <a href={"/card/"+card.name.replace(/ /g, "_").replace(/:/g,"")}><img className="image-container img-fluid" src={"/img/cards/"+card.cardCode+".png"} alt={card.name} /></a>
-          <div className="text-center pb-3"><a href={"/card/"+card.name.replace(/ /g, "_").replace(/:/g,"")}>{card.name}</a></div>
+    const list = baseSet.map((card, index) => {
+      if(card.rarity != "None")
+        return <div className="col-6 col-sm-6 col-md-4 col-lg-3 p-3" key={index}>
+          <a href={"/card/"+card.name.replace(/ /g, "_").replace(/:/g,"")}><img className="image-container img-fluid" src={"/img/cards/"+card.cardCode+".png"} alt={"Legends of Runeterra Cards " + card.name} /></a>
         </div>
-      );
+      else
+        return " "
+    });
+
     return list;
   }
-
+// removed src: src={"../img/cards/"+card.cardCode+".png"}
   render() {
       return (
           <div className="container">
-            <SearchBar/>
+
             {this.createHelmet()}
             <div className="setName text-center pt-4"><h2>Legends of Runeterra Base Set</h2></div>
             <div className="setName text-center pb-5 pt-1"><p>This is the list of Legends of Runeterra cards in the Legends of Runeterra base set. Runeterra Hub is the spot to view new Legends of Runeterra sets.</p></div>
+            <FilterBar/>
             <div className="filterTools"></div>
             <div className="row">{this.createRows()}</div>
+
           </div>
       );
   }

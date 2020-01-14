@@ -38,7 +38,7 @@ class Set extends React.Component {
 
   render() {
       return (
-          <div className="container">
+          <div className="container-fluid">
             {this.createHelmet()}
             <div className="setName text-center pt-4"><h2>Legends of Runeterra Base Set</h2></div>
             <div className="setName text-center pb-5 pt-1"><p>This is the list of Legends of Runeterra cards in the Legends of Runeterra base set. Runeterra Hub is the spot to view new Legends of Runeterra sets.</p></div>

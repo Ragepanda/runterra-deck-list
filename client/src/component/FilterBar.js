@@ -1,5 +1,5 @@
 import React from "react";
-//import "./FilterBar.css"
+import "./FilterBar.css";
 import baseSet from "../card_info/set1.json";
 import kwSet from "../card_info/globals-en_us.json";
 import { Multiselect } from 'multiselect-react-dropdown';
@@ -667,7 +667,7 @@ class FilterBar extends React.Component {
         
       const list = filteredCards.map((card, index) => {
         if(card.rarity !== "None" && card.keywords.indexOf("Skill") === -1 && card.name !== "Accelerated Purrsuit")
-          return <div className="col-6 col-sm-6 col-md-4 col-lg-3 p-3" key={index}>
+          return <div className="col-6 col-sm-6 col-md-4 col-lg-2 p-3" key={index}>
             <a href={"/card/"+card.name.replace(/ /g, "_").replace(/:/g,"")}><img className="image-container img-fluid" src={"/img/cards/"+card.cardCode+".png"} alt={"Legends of Runeterra Cards " + card.name} /></a>
           </div>
         else
@@ -679,41 +679,62 @@ class FilterBar extends React.Component {
     render() { 
         return(
         <div>
-            <div className="row">
-                <ReactSearchBox placeholder="Search Card Names..." data={this.workingSet} onChange={this.setSearch} />
-                <div className="col">
-                    <button type="button" className={this.state.cmc0Classname +""} onClick={this.cmc0State}>0</button>
-                    <button type="button" className={this.state.cmc1Classname +""} onClick={this.cmc1State}>1</button>
-                    <button type="button" className={this.state.cmc2Classname +""} onClick={this.cmc2State}>2</button>
-                    <button type="button" className={this.state.cmc3Classname +""} onClick={this.cmc3State}>3</button>
-                    <button type="button" className={this.state.cmc4Classname +""} onClick={this.cmc4State}>4</button>
-                    <button type="button" className={this.state.cmc5Classname +""} onClick={this.cmc5State}>5</button>
-                    <button type="button" className={this.state.cmc6Classname +""} onClick={this.cmc6State}>6</button>
-                    <button type="button" className={this.state.cmc7Classname +""} onClick={this.cmc7State}>7+</button>           
-                </div>
-                <div className= "col">
-                        <button type="button" className={this.state.demClassname +""} onClick={this.demState}>Demacia</button>
-                        <button type="button" className={this.state.freClassname +""} onClick={this.freState}>Freljord</button>
-                        <button type="button" className={this.state.ionClassname +""} onClick={this.ionState}>Ionia</button>
-                        <button type="button" className={this.state.noxClassname +""} onClick={this.noxState}>Noxus</button>
-                        <button type="button" className={this.state.pilClassname +""} onClick={this.pilState}>Piltover & Zaun</button>
-                        <button type="button" className={this.state.shaClassname +""} onClick={this.shaState}>Shadow Isles</button>
+            <div className="stickyMenu">
+                <div className="row">
+                    
+                    <div className="accordion col-12">
+                        <div className="card">
+                          <div className="card-header" id="headingOne">
+                            <h2 className="">
+                              <button className="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Filters
+                              </button>
+                            </h2>
+                          </div>
+
+
+                        <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                          <div className="card-body">
+                            <button type="button" className={this.state.cmc0Classname +""} onClick={this.cmc0State}>0</button>
+                            <button type="button" className={this.state.cmc1Classname +""} onClick={this.cmc1State}>1</button>
+                            <button type="button" className={this.state.cmc2Classname +""} onClick={this.cmc2State}>2</button>
+                            <button type="button" className={this.state.cmc3Classname +""} onClick={this.cmc3State}>3</button>
+                            <button type="button" className={this.state.cmc4Classname +""} onClick={this.cmc4State}>4</button>
+                            <button type="button" className={this.state.cmc5Classname +""} onClick={this.cmc5State}>5</button>
+                            <button type="button" className={this.state.cmc6Classname +""} onClick={this.cmc6State}>6</button>
+                            <button type="button" className={this.state.cmc7Classname +""} onClick={this.cmc7State}>7+</button>
+                          </div>
+                           <div className="card-body">
+                             <button type="button" className={this.state.demClassname +""} onClick={this.demState}>Demacia</button>
+                             <button type="button" className={this.state.freClassname +""} onClick={this.freState}>Freljord</button>
+                             <button type="button" className={this.state.ionClassname +""} onClick={this.ionState}>Ionia</button>
+                             <button type="button" className={this.state.noxClassname +""} onClick={this.noxState}>Noxus</button>
+                             <button type="button" className={this.state.pilClassname +""} onClick={this.pilState}>Piltover & Zaun</button>
+                             <button type="button" className={this.state.shaClassname +""} onClick={this.shaState}>Shadow Isles</button>
+                          </div>
+                          <div className="card-body">
+                            <button type="button" className={this.state.chamClassname +""} onClick={this.chamState}>Champion</button>
+                            <button type="button" className={this.state.spelClassname +""} onClick={this.spelState}>Spell</button>
+                            <button type="button" className={this.state.follClassname +""} onClick={this.follState}>Follower</button>          
+                          </div>
+                          <div className="card-body">
+                            <button type="button" className={this.state.commClassname +""} onClick={this.commState}>Common</button>
+                            <button type="button" className={this.state.rareClassname +""} onClick={this.rareState}>Rare</button>
+                            <button type="button" className={this.state.epicClassname +""} onClick={this.epicState}>Epic</button>
+                            <button type="button" className={this.state.legnClassname +""} onClick={this.legnState}>Champion</button>
+                          </div>
+                            <div className="card-body">
+                              <Multiselect options={this.state.kwObject} onSelect={this.onSelect} placeholder="Keywords" onRemove={this.onRemove} displayValue="name" />
+                            </div>
+                          <div className="card-body">
+                            Coming Soon
+                          </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div className = "col-12"><ReactSearchBox placeholder="Search Card Names..." data={this.workingSet} onChange={this.setSearch}/></div>
                 </div>
             </div>
-            <div className="row">
-                <div className="col">
-                    <button type="button" className={this.state.chamClassname +""} onClick={this.chamState}>Champion</button>
-                    <button type="button" className={this.state.spelClassname +""} onClick={this.spelState}>Spell</button>
-                    <button type="button" className={this.state.follClassname +""} onClick={this.follState}>Follower</button>          
-                </div>
-                <div className= "col">
-                        <button type="button" className={this.state.commClassname +""} onClick={this.commState}>Common</button>
-                        <button type="button" className={this.state.rareClassname +""} onClick={this.rareState}>Rare</button>
-                        <button type="button" className={this.state.epicClassname +""} onClick={this.epicState}>Epic</button>
-                        <button type="button" className={this.state.legnClassname +""} onClick={this.legnState}>Champion</button>
-                </div>
-            </div>
-            <div><Multiselect options={this.state.kwObject} onSelect={this.onSelect} placeholder="Keywords" onRemove={this.onRemove} displayValue="name" /></div>
             <div className="row">{this.createRows()}</div>
         </div>
         )

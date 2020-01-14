@@ -2,3 +2,16 @@ li.dropdown:hover > .dropdown-menu {
     display: block;
     margin-top: 0;
 }
+
+.dropdown-item {
+	background-color: #011627;
+}
+
+
+.dropdown-menu {
+	background-color: #011627;
+}
+
+.dropdown-item:hover {
+	background-color: #011627;
+}

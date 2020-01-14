@@ -1,46 +1,48 @@
 html {
   text-align: center;
-  background-color: #294137
+  background-color: #342936;
 }
 
 a{
-  color: #BCC2B0;
+  color: #FFF8F0;
   word-break: break-word;
 }
 
 a:visited{
-  color: #BCC2B0;
+  color: #FFF8F0;
 }
 
 a:hover{
-	color:#A3926d !important;
+	color:#D68FD6 !important;
 	text-decoration:none !important;
 }
 
 
 p {
-	color:#BCC2B0;
+	color:#FFF8F0;
 }
 
 body{
 	padding-top:70px;
-	background-color:#294137;
-	color: #BCC2B0;
+	background-color:#342936;
+	color: #FFF8F0;
 }
 
 .navbar-brand {
-	color: #BCC2B0 !important;
+	color: #FFF8F0 !important;
 }
 
 .bg-dark {
-	background-color: #566C52 !important;
-	color:#BCC2B0 !important;
+	background-color: #011627 !important;
+	color:#FFF8F0 !important;
 }
 
 .navbar-dark {
-	background-color: #566C52 !important;
-	color:#BCC2B0 !important;
+	background-color: #011627 !important;
+	color:#FFF8F0 !important;
 }
+
+
 
 /* Ideas on color complementing
 - Darkest green as background

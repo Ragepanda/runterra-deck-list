@@ -282,14 +282,14 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.cmc0Toggle === false) {
             this.setState({ cmc0Toggle: true });
-            this.setState({ cmc0Classname: "btn btn-outline active btn-sm" });
+            this.setState({ cmc0Classname: "btn btn-sm btn-outline active btn-sm" });
             this.state.cmcFilter.push(0);
             
         }
 
         else {
             this.setState({ cmc0Toggle: false });
-            this.setState({ cmc0Classname: "btn btn-outline btn-sm" });
+            this.setState({ cmc0Classname: "btn btn-sm btn-outline btn-sm" });
             this.state.cmcFilter.splice(this.state.cmcFilter.indexOf(0), 1);
         }
         this.setState({cardRows:this.createRows()});
@@ -299,14 +299,14 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.cmc1Toggle === false) {
             this.setState({ cmc1Toggle: true });
-            this.setState({ cmc1Classname: "btn btn-outline active btn-sm" });
+            this.setState({ cmc1Classname: "btn btn-sm btn-outline active btn-sm" });
             this.state.cmcFilter.push(1);
 
         }
 
         else {
             this.setState({ cmc1Toggle: false });
-            this.setState({ cmc1Classname: "btn btn-outline btn-sm" });
+            this.setState({ cmc1Classname: "btn btn-sm btn-outline btn-sm" });
             this.state.cmcFilter.splice(this.state.cmcFilter.indexOf(1), 1);
 
         }
@@ -317,14 +317,14 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.cmc2Toggle === false) {
             this.setState({ cmc2Toggle: true });
-            this.setState({ cmc2Classname: "btn btn-outline active btn-sm" });
+            this.setState({ cmc2Classname: "btn btn-sm btn-outline active btn-sm" });
             this.state.cmcFilter.push(2);
             
         }
 
         else {
             this.setState({ cmc2Toggle: false });
-            this.setState({ cmc2Classname: "btn btn-outline btn-sm" });
+            this.setState({ cmc2Classname: "btn btn-sm btn-outline btn-sm" });
             this.state.cmcFilter.splice(this.state.cmcFilter.indexOf(2), 1);
         }
         this.setState({cardRows:this.createRows()});
@@ -334,14 +334,14 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.cmc3Toggle === false) {
             this.setState({ cmc3Toggle: true });
-            this.setState({ cmc3Classname: "btn btn-outline active btn-sm" });
+            this.setState({ cmc3Classname: "btn btn-sm btn-outline active btn-sm" });
             this.state.cmcFilter.push(3);
 
         }
 
         else {
             this.setState({ cmc3Toggle: false });
-            this.setState({ cmc3Classname: "btn btn-outline btn-sm" });
+            this.setState({ cmc3Classname: "btn btn-sm btn-outline btn-sm" });
             this.state.cmcFilter.splice(this.state.cmcFilter.indexOf(3), 1);
         }
         this.setState({cardRows:this.createRows()});
@@ -351,13 +351,13 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.cmc4Toggle === false) {
             this.setState({ cmc4Toggle: true });
-            this.setState({ cmc4Classname: "btn btn-outline active btn-sm" });
+            this.setState({ cmc4Classname: "btn btn-sm btn-outline active btn-sm" });
             this.state.cmcFilter.push(4);
         }
 
         else {
             this.setState({ cmc4Toggle: false });
-            this.setState({ cmc4Classname: "btn btn-outline btn-sm" });
+            this.setState({ cmc4Classname: "btn btn-sm btn-outline btn-sm" });
             this.state.cmcFilter.splice(this.state.cmcFilter.indexOf(4), 1);
         }
         this.setState({cardRows:this.createRows()});
@@ -367,13 +367,13 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.cmc5Toggle === false) {
             this.setState({ cmc5Toggle: true });
-            this.setState({ cmc5Classname: "btn btn-outline active btn-sm" });
+            this.setState({ cmc5Classname: "btn btn-sm btn-outline active btn-sm" });
             this.state.cmcFilter.push(5);
         }
 
         else {
             this.setState({ cmc5Toggle: false });
-            this.setState({ cmc5Classname: "btn btn-outline btn-sm" });
+            this.setState({ cmc5Classname: "btn btn-sm btn-outline btn-sm" });
             this.state.cmcFilter.splice(this.state.cmcFilter.indexOf(5), 1);
 
         }
@@ -384,14 +384,14 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.cmc6Toggle === false) {
             this.setState({ cmc6Toggle: true });
-            this.setState({ cmc6Classname: "btn btn-outline active btn-sm" });
+            this.setState({ cmc6Classname: "btn btn-sm btn-outline active btn-sm" });
             this.state.cmcFilter.push(6);
 
         }
 
         else {
             this.setState({ cmc6Toggle: false });
-            this.setState({ cmc6Classname: "btn btn-outline btn-sm" });
+            this.setState({ cmc6Classname: "btn btn-sm btn-outline btn-sm" });
             this.state.cmcFilter.splice(this.state.cmcFilter.indexOf(6), 1);
 
         }
@@ -402,14 +402,14 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.cmc7Toggle === false) {
             this.setState({ cmc7Toggle: true });
-            this.setState({ cmc7Classname: "btn btn-outline active btn-sm" });
+            this.setState({ cmc7Classname: "btn btn-sm btn-outline active btn-sm" });
             this.state.cmcFilter.push(7);
 
         }
 
         else {
             this.setState({ cmc7Toggle: false });
-            this.setState({ cmc7Classname: "btn btn-outline btn-sm" });
+            this.setState({ cmc7Classname: "btn btn-sm btn-outline btn-sm" });
             this.state.cmcFilter.splice(this.state.cmcFilter.indexOf(7), 1);
 
         }
@@ -422,13 +422,13 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.demToggle === false) {
             this.setState({ demToggle: true });
-            this.setState({ demClassname: "btn btn-outline active" });
+            this.setState({ demClassname: "btn btn-sm btn-outline active" });
             this.state.factionFilter.push("demacia");
         }
 
         else {
             this.setState({ demToggle: false });
-            this.setState({ demClassname: "btn btn-outline" });
+            this.setState({ demClassname: "btn btn-sm btn-outline" });
             this.state.factionFilter.splice(this.state.factionFilter.indexOf("demacia"), 1);
         }
                     this.setState({cardRows:this.createRows()});
@@ -438,13 +438,13 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.freToggle === false) {
             this.setState({ freToggle: true });
-            this.setState({ freClassname: "btn btn-outline active" });
+            this.setState({ freClassname: "btn btn-sm btn-outline active" });
             this.state.factionFilter.push("freljord");
         }
 
         else {
             this.setState({ freToggle: false });
-            this.setState({ freClassname: "btn btn-outline" });
+            this.setState({ freClassname: "btn btn-sm btn-outline" });
             this.state.factionFilter.splice(this.state.factionFilter.indexOf("freljord"), 1);
 
         }
@@ -455,13 +455,13 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.ionToggle === false) {
             this.setState({ ionToggle: true });
-            this.setState({ ionClassname: "btn btn-outline active" });
+            this.setState({ ionClassname: "btn btn-sm btn-outline active" });
             this.state.factionFilter.push("ionia");
         }
 
         else {
             this.setState({ ionToggle: false });
-            this.setState({ ionClassname: "btn btn-outline" });
+            this.setState({ ionClassname: "btn btn-sm btn-outline" });
             this.state.factionFilter.splice(this.state.factionFilter.indexOf("ionia"), 1);
 
         }
@@ -472,13 +472,13 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.noxToggle === false) {
             this.setState({ noxToggle: true });
-            this.setState({ noxClassname: "btn btn-outline active" });
+            this.setState({ noxClassname: "btn btn-sm btn-outline active" });
             this.state.factionFilter.push("noxus");
         }
 
         else {
             this.setState({ noxToggle: false });
-            this.setState({ noxClassname: "btn btn-outline" });
+            this.setState({ noxClassname: "btn btn-sm btn-outline" });
             this.state.factionFilter.splice(this.state.factionFilter.indexOf("noxus"), 1);
 
         }
@@ -489,14 +489,14 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.pilToggle === false) {
             this.setState({ pilToggle: true });
-            this.setState({ pilClassname: "btn btn-outline active" });
+            this.setState({ pilClassname: "btn btn-sm btn-outline active" });
             this.state.factionFilter.push("piltoverzaun");
 
         }
 
         else {
             this.setState({ pilToggle: false });
-            this.setState({ pilClassname: "btn btn-outline" });
+            this.setState({ pilClassname: "btn btn-sm btn-outline" });
             this.state.factionFilter.splice(this.state.factionFilter.indexOf("piltoverzaun"), 1);
 
         }
@@ -507,13 +507,13 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.shaToggle === false) {
             this.setState({ shaToggle: true });
-            this.setState({ shaClassname: "btn btn-outline active" });
+            this.setState({ shaClassname: "btn btn-sm btn-outline active" });
             this.state.factionFilter.push("shadowisles");
         }
 
         else {
             this.setState({ shaToggle: false });
-            this.setState({ shaClassname: "btn btn-outline" });
+            this.setState({ shaClassname: "btn btn-sm btn-outline" });
             this.state.factionFilter.splice(this.state.factionFilter.indexOf("shadowisles"), 1);
 
         }
@@ -528,13 +528,13 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.chamToggle === false) {
             this.setState({ chamToggle: true });
-            this.setState({ chamClassname: "btn btn-outline active" });
+            this.setState({ chamClassname: "btn btn-sm btn-outline active" });
             this.state.typeFilter.push("champion");
         }
 
         else {
             this.setState({ chamToggle: false });
-            this.setState({ chamClassname: "btn btn-outline" });
+            this.setState({ chamClassname: "btn btn-sm btn-outline" });
             this.state.typeFilter.splice(this.state.typeFilter.indexOf("champion"), 1);
 
         }
@@ -545,13 +545,13 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.spelToggle === false) {
             this.setState({ spelToggle: true });
-            this.setState({ spelClassname: "btn btn-outline active" });
+            this.setState({ spelClassname: "btn btn-sm btn-outline active" });
             this.state.typeFilter.push("spell");
         }
 
         else {
             this.setState({ spelToggle: false });
-            this.setState({ spelClassname: "btn btn-outline" });
+            this.setState({ spelClassname: "btn btn-sm btn-outline" });
             this.state.typeFilter.splice(this.state.typeFilter.indexOf("spell"), 1);
         }
                     this.setState({cardRows:this.createRows()});
@@ -561,13 +561,13 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.follToggle === false) {
             this.setState({ follToggle: true });
-            this.setState({ follClassname: "btn btn-outline active" });
+            this.setState({ follClassname: "btn btn-sm btn-outline active" });
             this.state.typeFilter.push("unit");
         }
 
         else {
             this.setState({ follToggle: false });
-            this.setState({ follClassname: "btn btn-outline" });
+            this.setState({ follClassname: "btn btn-sm btn-outline" });
             this.state.typeFilter.splice(this.state.typeFilter.indexOf("unit"), 1);
 
         }
@@ -579,13 +579,13 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.commToggle === false) {
             this.setState({ commToggle: true });
-            this.setState({ commClassname: "btn btn-outline active" });
+            this.setState({ commClassname: "btn btn-sm btn-outline active" });
             this.state.rarityFilter.push("common");
         }
 
         else {
             this.setState({ commToggle: false });
-            this.setState({ commClassname: "btn btn-outline" });
+            this.setState({ commClassname: "btn btn-sm btn-outline" });
             this.state.rarityFilter.splice(this.state.rarityFilter.indexOf("common"), 1);
 
         }
@@ -596,13 +596,13 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.rareToggle === false) {
             this.setState({ rareToggle: true });
-            this.setState({ rareClassname: "btn btn-outline active" });
+            this.setState({ rareClassname: "btn btn-sm btn-outline active" });
             this.state.rarityFilter.push("rare");
         }
 
         else {
             this.setState({ rareToggle: false });
-            this.setState({ rareClassname: "btn btn-outline" });
+            this.setState({ rareClassname: "btn btn-sm btn-outline" });
             this.state.rarityFilter.splice(this.state.rarityFilter.indexOf("rare"), 1);
 
         }
@@ -613,13 +613,13 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.epicToggle === false) {
             this.setState({ epicToggle: true });
-            this.setState({ epicClassname: "btn btn-outline active" });
+            this.setState({ epicClassname: "btn btn-sm btn-outline active" });
             this.state.rarityFilter.push("epic");
         }
 
         else {
             this.setState({ epicToggle: false });
-            this.setState({ epicClassname: "btn btn-outline" });
+            this.setState({ epicClassname: "btn btn-sm btn-outline" });
             this.state.rarityFilter.splice(this.state.rarityFilter.indexOf("epic"), 1);
 
         }
@@ -630,13 +630,13 @@ class FilterBar extends React.Component {
         e.preventDefault();
         if (this.state.legnToggle === false) {
             this.setState({ legnToggle: true });
-            this.setState({ legnClassname: "btn btn-outline active" });
+            this.setState({ legnClassname: "btn btn-sm btn-outline active" });
             this.state.rarityFilter.push("champion");
         }
 
         else {
             this.setState({ legnToggle: false });
-            this.setState({ legnClassname: "btn btn-outline" });
+            this.setState({ legnClassname: "btn btn-sm btn-outline" });
             this.state.rarityFilter.splice(this.state.rarityFilter.indexOf("champion"), 1);
 
         }
@@ -684,17 +684,19 @@ class FilterBar extends React.Component {
                     
                     <div className="accordion col-12">
                         <div className="card">
-                          <div className="card-header" id="headingOne">
+                          <div className="card-header" id="headingOne" data-target="#collapseOne">
                             <h2 className="">
-                              <button className="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                              <a className="colorBtn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 Filters
-                              </button>
+                              </a>
                             </h2>
                           </div>
 
-
                         <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                          <div className="card-body">
+                        <div className="row">
+                          <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
+                            <hr/>
+                            <div>Mana Cost</div>
                             <button type="button" className={this.state.cmc0Classname +""} onClick={this.cmc0State}>0</button>
                             <button type="button" className={this.state.cmc1Classname +""} onClick={this.cmc1State}>1</button>
                             <button type="button" className={this.state.cmc2Classname +""} onClick={this.cmc2State}>2</button>
@@ -704,7 +706,9 @@ class FilterBar extends React.Component {
                             <button type="button" className={this.state.cmc6Classname +""} onClick={this.cmc6State}>6</button>
                             <button type="button" className={this.state.cmc7Classname +""} onClick={this.cmc7State}>7+</button>
                           </div>
-                           <div className="card-body">
+                           <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
+                            <hr/>
+                            <div>Region</div>
                              <button type="button" className={this.state.demClassname +""} onClick={this.demState}>Demacia</button>
                              <button type="button" className={this.state.freClassname +""} onClick={this.freState}>Freljord</button>
                              <button type="button" className={this.state.ionClassname +""} onClick={this.ionState}>Ionia</button>
@@ -712,22 +716,30 @@ class FilterBar extends React.Component {
                              <button type="button" className={this.state.pilClassname +""} onClick={this.pilState}>Piltover & Zaun</button>
                              <button type="button" className={this.state.shaClassname +""} onClick={this.shaState}>Shadow Isles</button>
                           </div>
-                          <div className="card-body">
+                          <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
+                            <hr/>
+                            <div>Card Type</div>
                             <button type="button" className={this.state.chamClassname +""} onClick={this.chamState}>Champion</button>
                             <button type="button" className={this.state.spelClassname +""} onClick={this.spelState}>Spell</button>
                             <button type="button" className={this.state.follClassname +""} onClick={this.follState}>Follower</button>          
                           </div>
-                          <div className="card-body">
+                          <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
+                            <hr/>
+                            <div>Rarity</div>
                             <button type="button" className={this.state.commClassname +""} onClick={this.commState}>Common</button>
                             <button type="button" className={this.state.rareClassname +""} onClick={this.rareState}>Rare</button>
                             <button type="button" className={this.state.epicClassname +""} onClick={this.epicState}>Epic</button>
                             <button type="button" className={this.state.legnClassname +""} onClick={this.legnState}>Champion</button>
                           </div>
-                            <div className="card-body">
+                            <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
+                            <hr/>
                               <Multiselect options={this.state.kwObject} onSelect={this.onSelect} placeholder="Keywords" onRemove={this.onRemove} displayValue="name" />
                             </div>
-                          <div className="card-body">
-                            Coming Soon
+                          <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
+                            <hr/>
+                            <div>Card Use</div>
+                            <div>Coming Soon</div>
+                          </div>
                           </div>
                           </div>
                         </div>

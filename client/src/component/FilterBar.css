@@ -1,0 +1,52 @@
+.stickyMenu{
+	position: sticky;
+	top:55px;
+	z-index:100;
+	background: #011627;
+}
+
+.card-header {
+  background-color: #011627;
+  color : #FFF8F0;
+  	border-color: #011627;
+	border: 5px;
+}
+
+.card {
+	border-color: #011627;
+	border: 5px;
+}
+
+.card-body {
+	background-color: #011627;
+}
+
+.colorBtn {
+  color : #FFF8F0;
+  width:100%;
+}
+
+.colorBtn:hover {
+	color : #D68FD6;
+	text-decoration:none !important;
+}
+
+
+.accordion {
+	background-color: #011627;
+}
+
+.btn {
+	background-color: #011627;
+	color:#FFF8F0;
+}
+
+.btn:hover {
+	background-color:#D68FD6;
+	color:#011627;
+}
+
+.btn.active {
+	background-color: #D68FD6;
+	color:#011627;
+}

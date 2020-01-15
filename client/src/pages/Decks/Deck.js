@@ -118,14 +118,19 @@ class Deck extends React.Component {
 		return (
 			<div class="container">
 				<Helmet>
-					<title>{" | Legends of Runeterra Cards on Runeterra Hub"}</title>
-					<meta name="description" content={''} />
-					<meta name="keywords" content={''} />
-					<meta name="author" content="runeterrahub.com" />
+					<title>{"Best Legends of Runeterra Decks | Legends of Runeterra Decks on Runeterra Nexus"}</title>
+					<meta name="description" content={'This Runeterra deck is one of the many best Legends of Runeterra decks we have here at Runeterra Nexus.'} />
+					<meta name="keywords" content={'decks,decklists,deck,decklist,best,legends,runeterra,lor,nexus'} />
+					<meta name="author" content="runeterranexus.com" />
 					<meta http-equiv="Content-Language" content="en-US" />
 					<meta name="rating" content="kids" />
 					<meta http-equiv="content-type" content="text/html" charSet="utf-8" />
 				</Helmet>
+
+				<h2>Best Legends of Runeterra Decks</h2>
+
+				<p>This Runeterra deck is one of the many best Legends of Runeterra decks we have here at Runeterra Nexus.</p>
+
 				<h2>Deck Name</h2>
 				<h3>Champions</h3>
 				<ui>

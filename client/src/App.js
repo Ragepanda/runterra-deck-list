@@ -12,7 +12,7 @@ import Card from "./pages/Card/Card";
 import Set from "./pages/Set/Set";
 import Deck from "./pages/Decks/Deck";
 
-import Navbar from "./component/navbar";
+import Navbar from "./component/Navbar";
 
 class App extends React.Component {
   constructor(props) {

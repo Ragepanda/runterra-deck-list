@@ -38,7 +38,7 @@ class Set extends React.Component {
     });
     return list;
   }
-
+// removed src: src={"../img/cards/"+card.cardCode+".png"}
   render() {
       return (
 

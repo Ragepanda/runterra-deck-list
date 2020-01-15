@@ -43,6 +43,17 @@ class Set extends React.Component {
     this.setState({filteredSet: set});
   }
 
+  keywordTooltipText(keywords){
+    if(keywords.length > 0){
+      var html = <h5>Keywords</h5>;
+      for(var x=0; x<keywords.length; x++){
+        var text =(<p>{keywords[x]}: Definition of this keyword</p>);
+        html = [html, text];
+      }
+      return html;
+    }
+  }
+
   createRows() {
     const list = this.state.filteredSet.map((card, index) => {
       if (card.rarity !== "None")
@@ -51,9 +62,11 @@ class Set extends React.Component {
             <a data-tip data-for={card.cardCode} href={"/card/" + card.name.replace(/ /g, "_").replace(/:/g, "")}>
               <img className="image-container img-fluid" src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Cards " + card.name} />
             </a>
-            {/* <ReactToooltip place="bottom" type="none" id={card.cardCode}>
-              <img className="hover-images" src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Cards " + card.name} />
-            </ReactToooltip> */}
+            <ReactToooltip className="set-tooltips" place="bottom" id={card.cardCode}>
+              {this.keywordTooltipText(card.keywords)}
+              <h5>Flavor Text:</h5>
+              <p>{card.flavorText}</p>
+            </ReactToooltip> 
           </div>);
       else
         return " "

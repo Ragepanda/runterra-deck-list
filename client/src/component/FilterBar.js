@@ -79,30 +79,30 @@ class FilterBar extends React.Component {
             cardRows : "",
             searchText : "",
 
-            cmc0Classname: "btn btn-outline btn-sm",
-            cmc1Classname: "btn btn-outline btn-sm",
-            cmc2Classname: "btn btn-outline btn-sm",
-            cmc3Classname: "btn btn-outline btn-sm",
-            cmc4Classname: "btn btn-outline btn-sm",
-            cmc5Classname: "btn btn-outline btn-sm",
-            cmc6Classname: "btn btn-outline btn-sm",
-            cmc7Classname: "btn btn-outline btn-sm",
+            cmc0Classname: "btn btn-outline btn-sm rounded-square",
+            cmc1Classname: "btn btn-outline btn-sm rounded-square",
+            cmc2Classname: "btn btn-outline btn-sm rounded-square",
+            cmc3Classname: "btn btn-outline btn-sm rounded-square",
+            cmc4Classname: "btn btn-outline btn-sm rounded-square",
+            cmc5Classname: "btn btn-outline btn-sm rounded-square",
+            cmc6Classname: "btn btn-outline btn-sm rounded-square",
+            cmc7Classname: "btn btn-outline btn-sm rounded-square",
 
-            demClassname: "btn btn-outline btn-sm",
-            freClassname: "btn btn-outline btn-sm",
-            ionClassname: "btn btn-outline btn-sm",
-            noxClassname: "btn btn-outline btn-sm",
-            pilClassname: "btn btn-outline btn-sm",
-            shaClassname: "btn btn-outline btn-sm",
+            demClassname: "btn btn-outline btn-sm rounded-square",
+            freClassname: "btn btn-outline btn-sm rounded-square",
+            ionClassname: "btn btn-outline btn-sm rounded-square",
+            noxClassname: "btn btn-outline btn-sm rounded-square",
+            pilClassname: "btn btn-outline btn-sm rounded-square",
+            shaClassname: "btn btn-outline btn-sm rounded-square",
 
-            chamClassname: "btn btn-outline btn-sm",
-            spelClassname: "btn btn-outline btn-sm",
-            follClassname: "btn btn-outline btn-sm",
+            chamClassname: "btn btn-outline btn-sm rounded-square",
+            spelClassname: "btn btn-outline btn-sm rounded-square",
+            follClassname: "btn btn-outline btn-sm rounded-square",
 
-            commClassname: "btn btn-outline btn-sm",
-            rareClassname: "btn btn-outline btn-sm",
-            epicClassname: "btn btn-outline btn-sm",
-            legnClassname: "btn btn-outline btn-sm",
+            commClassname: "btn btn-outline btn-sm rounded-square",
+            rareClassname: "btn btn-outline btn-sm rounded-square",
+            epicClassname: "btn btn-outline btn-sm rounded-square",
+            legnClassname: "btn btn-outline btn-sm rounded-square",
         };
 
         this.cmc0State = this.cmc0State.bind(this);
@@ -816,61 +816,67 @@ class FilterBar extends React.Component {
                     <div className="accordion col-12">
                         <div className="card">
                           <div className="card-header" id="headingOne" data-target="#collapseOne">
-                            <h2 className="">
                               <a className="colorBtn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Filters
-                              </a>
-                            </h2>
-                          </div>
+                                Advanced Filter Options +
+                              </a>                          </div>
 
                         <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                         <div className="row">
+                              <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
+                              
+                                <Multiselect options={this.state.kwObject} onSelect={this.onSelect} placeholder="Keywords" onRemove={this.onRemove} displayValue="name" style={ {chips: {background: "#D68FD6"}, searchBox: { border: "1px solid #FFF8F0", color: "#FFF8F0"}, optionContainer: {background: "#011627"}, option: {color: "#FFF8F0"}} } />
+                              </div>
+                            <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
+                              
+                              <div>Card Use</div>
+                              <div>Coming Soon</div>
+                            </div>
                           <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
                             
-                            <div>Mana Cost</div>
-                            <button type="button" className={this.state.cmc0Classname +""} onClick={this.cmc0State}>0</button>
-                            <button type="button" className={this.state.cmc1Classname +""} onClick={this.cmc1State}>1</button>
-                            <button type="button" className={this.state.cmc2Classname +""} onClick={this.cmc2State}>2</button>
-                            <button type="button" className={this.state.cmc3Classname +""} onClick={this.cmc3State}>3</button>
-                            <button type="button" className={this.state.cmc4Classname +""} onClick={this.cmc4State}>4</button>
-                            <button type="button" className={this.state.cmc5Classname +""} onClick={this.cmc5State}>5</button>
-                            <button type="button" className={this.state.cmc6Classname +""} onClick={this.cmc6State}>6</button>
-                            <button type="button" className={this.state.cmc7Classname +""} onClick={this.cmc7State}>7+</button>
+                            <div className="row justify-content-center">
+                            <div className="col-12">Mana Cost</div>
+                            <button type="button" className={this.state.cmc0Classname +" col-5 col-xs-5 col-md-4 col-lg m-lg-2 mb-1 mt-1 mr-1"} onClick={this.cmc0State}>0</button>
+                            <button type="button" className={this.state.cmc1Classname +" col-5 col-xs-5 col-md-4 col-lg m-lg-2 mb-1 mt-1 mr-1"} onClick={this.cmc1State}>1</button>
+                            <button type="button" className={this.state.cmc2Classname +" col-5 col-xs-5 col-md-4 col-lg m-lg-2 mb-1 mt-1 mr-1"} onClick={this.cmc2State}>2</button>
+                            <button type="button" className={this.state.cmc3Classname +" col-5 col-xs-5 col-md-4 col-lg m-lg-2 mb-1 mt-1 mr-1"} onClick={this.cmc3State}>3</button>
+                            <button type="button" className={this.state.cmc4Classname +" col-5 col-xs-5 col-md-4 col-lg m-lg-2 mb-1 mt-1 mr-1"} onClick={this.cmc4State}>4</button>
+                            <button type="button" className={this.state.cmc5Classname +" col-5 col-xs-5 col-md-4 col-lg m-lg-2 mb-1 mt-1 mr-1"} onClick={this.cmc5State}>5</button>
+                            <button type="button" className={this.state.cmc6Classname +" col-5 col-xs-5 col-md-4 col-lg m-lg-2 mb-1 mt-1 mr-1"} onClick={this.cmc6State}>6</button>
+                            <button type="button" className={this.state.cmc7Classname +" col-5 col-xs-5 col-md-4 col-lg m-lg-2 mb-1 mt-1 mr-1"} onClick={this.cmc7State}>7+</button>
+                            </div>
                           </div>
                            <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
                             
                             <div>Region</div>
-                             <button type="button" className={this.state.demClassname +""} onClick={this.demState}>Demacia</button>
-                             <button type="button" className={this.state.freClassname +""} onClick={this.freState}>Freljord</button>
-                             <button type="button" className={this.state.ionClassname +""} onClick={this.ionState}>Ionia</button>
-                             <button type="button" className={this.state.noxClassname +""} onClick={this.noxState}>Noxus</button>
-                             <button type="button" className={this.state.pilClassname +""} onClick={this.pilState}>Piltover & Zaun</button>
-                             <button type="button" className={this.state.shaClassname +""} onClick={this.shaState}>Shadow Isles</button>
+                            <div className="row justify-content-center">
+                             <button type="button" className={this.state.demClassname +" col-11 col-sm-5 col-md-2 col-lg m-lg-2 mb-1 mr-1"} onClick={this.demState}>Demacia</button>
+                             <button type="button" className={this.state.freClassname +" col-11 col-sm-5 col-md-2 col-lg m-lg-2 mb-1 mr-1"} onClick={this.freState}>Freljord</button>
+                             <button type="button" className={this.state.ionClassname +" col-5 col-xs-5 col-md-4 col-lg  m-lg-2 mb-1 mr-1"} onClick={this.ionState}>Ionia</button>
+                             <button type="button" className={this.state.noxClassname +" col-5 col-xs-5 col-md-4 col-lg  m-lg-2 mb-1 mr-1"} onClick={this.noxState}>Noxus</button>
+                             <button type="button" className={this.state.pilClassname +" col-11 col-sm-5 col-md-2 col-lg m-lg-2 mb-1 mr-1"} onClick={this.pilState}>Piltover & Zaun</button>
+                             <button type="button" className={this.state.shaClassname +" col-11 col-sm-5 col-md-2 col-lg m-lg-2 mb-1 mr-1"} onClick={this.shaState}>Shadow Isles</button>
+                             </div>
                           </div>
                           <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
                             
                             <div>Card Type</div>
-                            <button type="button" className={this.state.chamClassname +""} onClick={this.chamState}>Champion</button>
-                            <button type="button" className={this.state.spelClassname +""} onClick={this.spelState}>Spell</button>
-                            <button type="button" className={this.state.follClassname +""} onClick={this.follState}>Follower</button>          
+                            <div className="row justify-content-center">
+                            <button type="button" className={this.state.chamClassname +" col-10 col-sm-4 col-md-2 col-lg m-lg-2 mb-1 mr-1"} onClick={this.chamState}>Champion</button>
+                            <button type="button" className={this.state.spelClassname +" col-10 col-sm-4 col-md-2 col-lg m-lg-2 mb-1 mr-1"} onClick={this.spelState}>Spell</button>
+                            <button type="button" className={this.state.follClassname +" col-10 col-sm-4 col-md-2 col-lg m-lg-2 mb-1 mr-1"} onClick={this.follState}>Follower</button>
+                            </div>          
                           </div>
                           <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
                             
                             <div>Rarity</div>
-                            <button type="button" className={this.state.commClassname +""} onClick={this.commState}>Common</button>
-                            <button type="button" className={this.state.rareClassname +""} onClick={this.rareState}>Rare</button>
-                            <button type="button" className={this.state.epicClassname +""} onClick={this.epicState}>Epic</button>
-                            <button type="button" className={this.state.legnClassname +""} onClick={this.legnState}>Champion</button>
-                          </div>
-                            <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
-                            
-                              <Multiselect options={this.state.kwObject} onSelect={this.onSelect} placeholder="Keywords" onRemove={this.onRemove} displayValue="name" />
+                            <div className="row justify-content-center">
+                            <button type="button" className={this.state.commClassname +" col-5 mb-1 mr-1 col-lg m-lg-2"} onClick={this.commState}>Comm.</button>
+                            <button type="button" className={this.state.rareClassname +" col-5 mb-1 mr-1 col-lg m-lg-2"} onClick={this.rareState}>Rare</button>
+                            <button type="button" className={this.state.epicClassname +" col-5 mb-1 mr-1 col-lg m-lg-2"} onClick={this.epicState}>Epic</button>
+                            <button type="button" className={this.state.legnClassname +" col-5 mb-1 mr-1 col-lg m-lg-2"} onClick={this.legnState}>Champ.</button>
                             </div>
-                          <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
-                            
-                            <div>Card Use</div>
-                            <div>Coming Soon</div>
                           </div>
+
                           </div>
                           </div>
                         </div>

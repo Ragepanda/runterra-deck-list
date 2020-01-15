@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import baseSet from "../../card_info/set1.json";
 import FilterBar from "../../component/FilterBar";
 import ReactToooltip from "react-tooltip";
+import "./Set.css"
 
 
 
@@ -44,7 +45,7 @@ class Set extends React.Component {
 
   createRows() {
     const list = this.state.filteredSet.map((card, index) => {
-      if (card.rarity != "None")
+      if (card.rarity !== "None")
         return (
           <div className="col-4 col-sm-6 col-md-4 col-lg-3 p-3" key={index}>
             <a data-tip data-for={card.cardCode} href={"/card/" + card.name.replace(/ /g, "_").replace(/:/g, "")}>
@@ -72,11 +73,12 @@ class Set extends React.Component {
     }
     return (
 
-      <div className="container">
+      <div className="container-fluid" id="neg-margin">
         {this.createHelmet()}
+        <FilterBar setFilteredSet={this.setFilteredSet} />
         <div className="setName text-center pt-4"><h2>Legends of Runeterra Base Set</h2></div>
         <div className="setName text-center pb-5 pt-1"><p>This is the list of Legends of Runeterra cards in the Legends of Runeterra base set. Runeterra Hub is the spot to view new Legends of Runeterra sets.</p></div>
-        <FilterBar setFilteredSet={this.setFilteredSet} />
+       
         <div className="row">{this.createRows()}</div>
       </div>
     );

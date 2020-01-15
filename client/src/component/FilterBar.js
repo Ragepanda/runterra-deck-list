@@ -783,9 +783,9 @@ class FilterBar extends React.Component {
     }
 
     setSearch(e){
-        this.setState({searchText: e});
-
-        this.createRows();
+        this.setState({searchText: e}, ()=>{
+            this.createRows();
+        });
     }
 
 

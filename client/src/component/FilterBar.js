@@ -808,21 +808,24 @@ class FilterBar extends React.Component {
     render() { 
         return(
             
-        <div>
+        <div className="stickyMenu">
             
-            <div className="stickyMenu">
+            <div className="">
                 <div className="row">
                     
                     <div className="accordion col-12">
                         <div className="card">
+                        <h2>
                           <div className="card-header" id="headingOne" data-target="#collapseOne">
                               <a className="colorBtn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 Advanced Filter Options +
-                              </a>                          </div>
+                              </a>                          
+                          </div>
+                        </h2>
 
                         <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                         <div className="row">
-                              <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
+                              <div className="card-body card-body-left col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
                               
                                 <Multiselect options={this.state.kwObject} onSelect={this.onSelect} placeholder="Keywords" onRemove={this.onRemove} displayValue="name" style={ {chips: {background: "#D68FD6"}, searchBox: { border: "1px solid #FFF8F0", color: "#FFF8F0"}, optionContainer: {background: "#011627"}, option: {color: "#FFF8F0"}} } />
                               </div>
@@ -831,7 +834,7 @@ class FilterBar extends React.Component {
                               <div>Card Use</div>
                               <div>Coming Soon</div>
                             </div>
-                          <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
+                          <div className="card-body card-body-left col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
                             
                             <div className="row justify-content-center">
                             <div className="col-12">Mana Cost</div>
@@ -857,7 +860,7 @@ class FilterBar extends React.Component {
                              <button type="button" className={this.state.shaClassname +" col-11 col-sm-5 col-md-2 col-lg m-lg-2 mb-1 mr-1"} onClick={this.shaState}>Shadow Isles</button>
                              </div>
                           </div>
-                          <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
+                          <div className="card-body card-body-left col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
                             
                             <div>Card Type</div>
                             <div className="row justify-content-center">

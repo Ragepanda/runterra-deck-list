@@ -79,30 +79,30 @@ class FilterBar extends React.Component {
             cardRows : "",
             searchText : "",
 
-            cmc0Classname: "btn btn-outline btn-sm",
-            cmc1Classname: "btn btn-outline btn-sm",
-            cmc2Classname: "btn btn-outline btn-sm",
-            cmc3Classname: "btn btn-outline btn-sm",
-            cmc4Classname: "btn btn-outline btn-sm",
-            cmc5Classname: "btn btn-outline btn-sm",
-            cmc6Classname: "btn btn-outline btn-sm",
-            cmc7Classname: "btn btn-outline btn-sm",
+            cmc0Classname: "btn btn-outline btn-sm rounded-square",
+            cmc1Classname: "btn btn-outline btn-sm rounded-square",
+            cmc2Classname: "btn btn-outline btn-sm rounded-square",
+            cmc3Classname: "btn btn-outline btn-sm rounded-square",
+            cmc4Classname: "btn btn-outline btn-sm rounded-square",
+            cmc5Classname: "btn btn-outline btn-sm rounded-square",
+            cmc6Classname: "btn btn-outline btn-sm rounded-square",
+            cmc7Classname: "btn btn-outline btn-sm rounded-square",
 
-            demClassname: "btn btn-outline btn-sm",
-            freClassname: "btn btn-outline btn-sm",
-            ionClassname: "btn btn-outline btn-sm",
-            noxClassname: "btn btn-outline btn-sm",
-            pilClassname: "btn btn-outline btn-sm",
-            shaClassname: "btn btn-outline btn-sm",
+            demClassname: "btn btn-outline btn-sm rounded-square",
+            freClassname: "btn btn-outline btn-sm rounded-square",
+            ionClassname: "btn btn-outline btn-sm rounded-square",
+            noxClassname: "btn btn-outline btn-sm rounded-square",
+            pilClassname: "btn btn-outline btn-sm rounded-square",
+            shaClassname: "btn btn-outline btn-sm rounded-square",
 
-            chamClassname: "btn btn-outline btn-sm",
-            spelClassname: "btn btn-outline btn-sm",
-            follClassname: "btn btn-outline btn-sm",
+            chamClassname: "btn btn-outline btn-sm rounded-square",
+            spelClassname: "btn btn-outline btn-sm rounded-square",
+            follClassname: "btn btn-outline btn-sm rounded-square",
 
-            commClassname: "btn btn-outline btn-sm",
-            rareClassname: "btn btn-outline btn-sm",
-            epicClassname: "btn btn-outline btn-sm",
-            legnClassname: "btn btn-outline btn-sm",
+            commClassname: "btn btn-outline btn-sm rounded-square",
+            rareClassname: "btn btn-outline btn-sm rounded-square",
+            epicClassname: "btn btn-outline btn-sm rounded-square",
+            legnClassname: "btn btn-outline btn-sm rounded-square",
         };
 
         this.cmc0State = this.cmc0State.bind(this);
@@ -146,8 +146,8 @@ class FilterBar extends React.Component {
 
     componentDidMount() {
         this.setState({cardRows: this.createRows()});
-        this.state.kwObject = this.state.kwObject.sort((a, b) => a.name.localeCompare(b.name));
-        this.state.searchText = "";
+        this.setState({kwObject: this.state.kwObject.sort((a, b) => a.name.localeCompare(b.name))});
+        this.setState({searchText: ""});
     }
 
 
@@ -173,43 +173,54 @@ class FilterBar extends React.Component {
                 if (cmcGood !== 7){
                     if (card.cost === cmcGood){
                         cmcMatch = true;
-                        return;
+                        return true;
                     }
                 }
                 else{
                     if (card.cost >= cmcGood){
                         cmcMatch = true;
-                        return;
+                        return true;
                     }
                 }
+                return false;
             });
 
-            this.state.rarityFilter.some(rarityGood => {
-                if (card.rarity.toLowerCase() === rarityGood){
+            // this.state.rarityFilter.some(rarityGood => {
+            //     if (card.rarity.toLowerCase() === rarityGood){
+            //         rarityMatch = true;
+            //         return;
+            //     }
+            // });
+
+            for(var x=0; x<this.state.rarityFilter.length; x++){
+                if (card.rarity.toLowerCase() === this.state.rarityFilter[x]){
                     rarityMatch = true;
-                    return;
+                    break;
                 }
-            });
+            }
 
             this.state.typeFilter.some(typeGood => {
                 if (card.type.toLowerCase() === typeGood || card.supertype.toLowerCase() === typeGood){
                     typeMatch = true;
-                    return;
+                    return true;
                 }
+                return false;
             });
 
             this.state.factionFilter.some(factionGood => {
                 if (card.regionRef.toLowerCase() === factionGood){
                     factionMatch = true;
-                    return;
+                    return true;
                 }
+                return false;
             });
 
             this.state.keywordFilter.some(kwGood => {
                 if (card.keywords.includes(kwGood)){
                     keywordMatch = true;
-                    return;
+                    return true;
                 }
+                return false;
             });
 
 
@@ -283,16 +294,21 @@ class FilterBar extends React.Component {
         if (this.state.cmc0Toggle === false) {
             this.setState({ cmc0Toggle: true });
             this.setState({ cmc0Classname: "btn btn-sm btn-outline active btn-sm" });
-            this.state.cmcFilter.push(0);
+            this.setState({cmcFilter: [...this.state.cmcFilter, 0]}, ()=>{
+                this.createRows();
+            });
             
         }
 
         else {
             this.setState({ cmc0Toggle: false });
             this.setState({ cmc0Classname: "btn btn-sm btn-outline btn-sm" });
-            this.state.cmcFilter.splice(this.state.cmcFilter.indexOf(0), 1);
+            var arrayHolder = [...this.state.cmcFilter];
+            arrayHolder.splice(this.state.cmcFilter.indexOf(0), 1);
+            this.setState({cmcFilter: arrayHolder}, ()=>{
+                this.createRows();
+            })
         }
-        this.setState({cardRows:this.createRows()});
     }
 
     cmc1State(e) {
@@ -300,17 +316,22 @@ class FilterBar extends React.Component {
         if (this.state.cmc1Toggle === false) {
             this.setState({ cmc1Toggle: true });
             this.setState({ cmc1Classname: "btn btn-sm btn-outline active btn-sm" });
-            this.state.cmcFilter.push(1);
+            this.setState({cmcFilter: [...this.state.cmcFilter, 1]}, ()=>{
+                this.createRows();
+            });
 
         }
 
         else {
             this.setState({ cmc1Toggle: false });
             this.setState({ cmc1Classname: "btn btn-sm btn-outline btn-sm" });
-            this.state.cmcFilter.splice(this.state.cmcFilter.indexOf(1), 1);
+            var arrayHolder = [...this.state.cmcFilter];
+            arrayHolder.splice(this.state.cmcFilter.indexOf(1), 1);
+            this.setState({cmcFilter: arrayHolder}, ()=>{
+                this.createRows();
+            })
 
         }
-        this.setState({cardRows:this.createRows()});
     }
 
     cmc2State(e) {
@@ -318,16 +339,21 @@ class FilterBar extends React.Component {
         if (this.state.cmc2Toggle === false) {
             this.setState({ cmc2Toggle: true });
             this.setState({ cmc2Classname: "btn btn-sm btn-outline active btn-sm" });
-            this.state.cmcFilter.push(2);
+            this.setState({cmcFilter: [...this.state.cmcFilter, 2]}, ()=>{
+                this.createRows();
+            });
             
         }
 
         else {
             this.setState({ cmc2Toggle: false });
             this.setState({ cmc2Classname: "btn btn-sm btn-outline btn-sm" });
-            this.state.cmcFilter.splice(this.state.cmcFilter.indexOf(2), 1);
+            var arrayHolder = [...this.state.cmcFilter];
+            arrayHolder.splice(this.state.cmcFilter.indexOf(2), 1);
+            this.setState({cmcFilter: arrayHolder}, ()=>{
+                this.createRows();
+            })
         }
-        this.setState({cardRows:this.createRows()});
     }
 
     cmc3State(e) {
@@ -335,16 +361,21 @@ class FilterBar extends React.Component {
         if (this.state.cmc3Toggle === false) {
             this.setState({ cmc3Toggle: true });
             this.setState({ cmc3Classname: "btn btn-sm btn-outline active btn-sm" });
-            this.state.cmcFilter.push(3);
+            this.setState({cmcFilter: [...this.state.cmcFilter, 3]}, ()=>{
+                this.createRows();
+            });
 
         }
 
         else {
             this.setState({ cmc3Toggle: false });
             this.setState({ cmc3Classname: "btn btn-sm btn-outline btn-sm" });
-            this.state.cmcFilter.splice(this.state.cmcFilter.indexOf(3), 1);
+            var arrayHolder = [...this.state.cmcFilter];
+            arrayHolder.splice(this.state.cmcFilter.indexOf(3), 1);
+            this.setState({cmcFilter: arrayHolder}, ()=>{
+                this.createRows();
+            })
         }
-        this.setState({cardRows:this.createRows()});
     }
 
     cmc4State(e) {
@@ -352,15 +383,20 @@ class FilterBar extends React.Component {
         if (this.state.cmc4Toggle === false) {
             this.setState({ cmc4Toggle: true });
             this.setState({ cmc4Classname: "btn btn-sm btn-outline active btn-sm" });
-            this.state.cmcFilter.push(4);
+            this.setState({cmcFilter: [...this.state.cmcFilter, 4]}, ()=>{
+                this.createRows();
+            });
         }
 
         else {
             this.setState({ cmc4Toggle: false });
             this.setState({ cmc4Classname: "btn btn-sm btn-outline btn-sm" });
-            this.state.cmcFilter.splice(this.state.cmcFilter.indexOf(4), 1);
+            var arrayHolder = [...this.state.cmcFilter];
+            arrayHolder.splice(this.state.cmcFilter.indexOf(4), 1);
+            this.setState({cmcFilter: arrayHolder}, ()=>{
+                this.createRows();
+            });
         }
-        this.setState({cardRows:this.createRows()});
     }
 
     cmc5State(e) {
@@ -368,16 +404,22 @@ class FilterBar extends React.Component {
         if (this.state.cmc5Toggle === false) {
             this.setState({ cmc5Toggle: true });
             this.setState({ cmc5Classname: "btn btn-sm btn-outline active btn-sm" });
-            this.state.cmcFilter.push(5);
+            this.setState({cmcFilter: [...this.state.cmcFilter, 5]}, ()=>{
+                this.createRows();
+            });
         }
 
         else {
             this.setState({ cmc5Toggle: false });
             this.setState({ cmc5Classname: "btn btn-sm btn-outline btn-sm" });
-            this.state.cmcFilter.splice(this.state.cmcFilter.indexOf(5), 1);
+            var arrayHolder = [...this.state.cmcFilter];
+            arrayHolder.splice(this.state.cmcFilter.indexOf(5), 1);
+            this.setState({cmcFilter: arrayHolder}, ()=>{
+                this.createRows();
+            });
 
         }
-            this.setState({cardRows:this.createRows()});
+
     }
 
     cmc6State(e) {
@@ -385,17 +427,23 @@ class FilterBar extends React.Component {
         if (this.state.cmc6Toggle === false) {
             this.setState({ cmc6Toggle: true });
             this.setState({ cmc6Classname: "btn btn-sm btn-outline active btn-sm" });
-            this.state.cmcFilter.push(6);
+            this.setState({cmcFilter: [...this.state.cmcFilter, 6]}, ()=>{
+                this.createRows();
+            });
 
         }
 
         else {
             this.setState({ cmc6Toggle: false });
             this.setState({ cmc6Classname: "btn btn-sm btn-outline btn-sm" });
-            this.state.cmcFilter.splice(this.state.cmcFilter.indexOf(6), 1);
+            var arrayHolder = [...this.state.cmcFilter];
+            arrayHolder.splice(this.state.cmcFilter.indexOf(6), 1);
+            this.setState({cmcFilter: arrayHolder}, ()=>{
+                this.createRows();
+            });
 
         }
-                    this.setState({cardRows:this.createRows()});
+        
     }
 
     cmc7State(e) {
@@ -403,17 +451,22 @@ class FilterBar extends React.Component {
         if (this.state.cmc7Toggle === false) {
             this.setState({ cmc7Toggle: true });
             this.setState({ cmc7Classname: "btn btn-sm btn-outline active btn-sm" });
-            this.state.cmcFilter.push(7);
+            this.setState({cmcFilter: [...this.state.cmcFilter, 7]}, ()=>{
+                this.createRows();
+            });
 
         }
 
         else {
             this.setState({ cmc7Toggle: false });
             this.setState({ cmc7Classname: "btn btn-sm btn-outline btn-sm" });
-            this.state.cmcFilter.splice(this.state.cmcFilter.indexOf(7), 1);
-
+            var arrayHolder = [...this.state.cmcFilter];
+            arrayHolder.splice(this.state.cmcFilter.indexOf(7), 1);
+            this.setState({cmcFilter: arrayHolder}, ()=>{
+                this.createRows();
+            });
         }
-                    this.setState({cardRows:this.createRows()});
+        
     }
 
 
@@ -423,15 +476,21 @@ class FilterBar extends React.Component {
         if (this.state.demToggle === false) {
             this.setState({ demToggle: true });
             this.setState({ demClassname: "btn btn-sm btn-outline active" });
-            this.state.factionFilter.push("demacia");
+            this.setState({factionFilter: [...this.state.factionFilter, "demacia"]}, ()=>{
+                this.createRows();
+            });
         }
 
         else {
             this.setState({ demToggle: false });
             this.setState({ demClassname: "btn btn-sm btn-outline" });
-            this.state.factionFilter.splice(this.state.factionFilter.indexOf("demacia"), 1);
+            var arrayHolder = [...this.state.factionFilter];
+            arrayHolder.splice(this.state.factionFilter.indexOf("demacia"), 1);
+            this.setState({factionFilter: arrayHolder}, ()=>{
+                this.createRows();
+            });
         }
-                    this.setState({cardRows:this.createRows()});
+        
     }
 
     freState(e) {
@@ -439,16 +498,22 @@ class FilterBar extends React.Component {
         if (this.state.freToggle === false) {
             this.setState({ freToggle: true });
             this.setState({ freClassname: "btn btn-sm btn-outline active" });
-            this.state.factionFilter.push("freljord");
+            this.setState({factionFilter: [...this.state.factionFilter, "freljord"]}, ()=>{
+                this.createRows();
+            });
         }
 
         else {
             this.setState({ freToggle: false });
             this.setState({ freClassname: "btn btn-sm btn-outline" });
-            this.state.factionFilter.splice(this.state.factionFilter.indexOf("freljord"), 1);
+            var arrayHolder = [...this.state.factionFilter];
+            arrayHolder.splice(this.state.factionFilter.indexOf("freljord"), 1);
+            this.setState({factionFilter: arrayHolder}, ()=>{
+                this.createRows();
+            });
 
         }
-                    this.setState({cardRows:this.createRows()});
+        
     }
 
     ionState(e) {
@@ -456,16 +521,22 @@ class FilterBar extends React.Component {
         if (this.state.ionToggle === false) {
             this.setState({ ionToggle: true });
             this.setState({ ionClassname: "btn btn-sm btn-outline active" });
-            this.state.factionFilter.push("ionia");
+            this.setState({factionFilter: [...this.state.factionFilter, "ionia"]}, ()=>{
+                this.createRows();
+            });
         }
 
         else {
             this.setState({ ionToggle: false });
             this.setState({ ionClassname: "btn btn-sm btn-outline" });
-            this.state.factionFilter.splice(this.state.factionFilter.indexOf("ionia"), 1);
+            var arrayHolder = [...this.state.factionFilter];
+            arrayHolder.splice(this.state.factionFilter.indexOf("ionia"), 1);
+            this.setState({factionFilter: arrayHolder}, ()=>{
+                this.createRows();
+            });
 
         }
-                    this.setState({cardRows:this.createRows()});
+        
     }
 
     noxState(e) {
@@ -473,16 +544,22 @@ class FilterBar extends React.Component {
         if (this.state.noxToggle === false) {
             this.setState({ noxToggle: true });
             this.setState({ noxClassname: "btn btn-sm btn-outline active" });
-            this.state.factionFilter.push("noxus");
+            this.setState({factionFilter: [...this.state.factionFilter, "noxus"]}, ()=>{
+                this.createRows();
+            });
         }
 
         else {
             this.setState({ noxToggle: false });
             this.setState({ noxClassname: "btn btn-sm btn-outline" });
-            this.state.factionFilter.splice(this.state.factionFilter.indexOf("noxus"), 1);
+            var arrayHolder = [...this.state.factionFilter];
+            arrayHolder.splice(this.state.factionFilter.indexOf("noxus"), 1);
+            this.setState({factionFilter: arrayHolder}, ()=>{
+                this.createRows();
+            });
 
         }
-                    this.setState({cardRows:this.createRows()});
+        
     }
 
     pilState(e) {
@@ -490,17 +567,23 @@ class FilterBar extends React.Component {
         if (this.state.pilToggle === false) {
             this.setState({ pilToggle: true });
             this.setState({ pilClassname: "btn btn-sm btn-outline active" });
-            this.state.factionFilter.push("piltoverzaun");
+            this.setState({factionFilter: [...this.state.factionFilter, "piltoverzaun"]}, ()=>{
+                this.createRows();
+            });
 
         }
 
         else {
             this.setState({ pilToggle: false });
             this.setState({ pilClassname: "btn btn-sm btn-outline" });
-            this.state.factionFilter.splice(this.state.factionFilter.indexOf("piltoverzaun"), 1);
+            var arrayHolder = [...this.state.factionFilter];
+            arrayHolder.splice(this.state.factionFilter.indexOf("piltoverzaun"), 1);
+            this.setState({factionFilter: arrayHolder}, ()=>{
+                this.createRows();
+            });
 
         }
-                    this.setState({cardRows:this.createRows()});
+        
     }
 
     shaState(e) {
@@ -508,16 +591,22 @@ class FilterBar extends React.Component {
         if (this.state.shaToggle === false) {
             this.setState({ shaToggle: true });
             this.setState({ shaClassname: "btn btn-sm btn-outline active" });
-            this.state.factionFilter.push("shadowisles");
+            this.setState({factionFilter: [...this.state.factionFilter, "shadowisles"]}, ()=>{
+                this.createRows();
+            });
         }
 
         else {
             this.setState({ shaToggle: false });
             this.setState({ shaClassname: "btn btn-sm btn-outline" });
-            this.state.factionFilter.splice(this.state.factionFilter.indexOf("shadowisles"), 1);
+            var arrayHolder = [...this.state.factionFilter];
+            arrayHolder.splice(this.state.factionFilter.indexOf("shadowisles"), 1);
+            this.setState({factionFilter: arrayHolder}, ()=>{
+                this.createRows();
+            });
 
         }
-                    this.setState({cardRows:this.createRows()});
+        
     }
 
 
@@ -529,16 +618,22 @@ class FilterBar extends React.Component {
         if (this.state.chamToggle === false) {
             this.setState({ chamToggle: true });
             this.setState({ chamClassname: "btn btn-sm btn-outline active" });
-            this.state.typeFilter.push("champion");
+            this.setState({typeFilter: [...this.state.typeFilter, "champion"]}, ()=>{
+                this.createRows();
+            });
         }
 
         else {
             this.setState({ chamToggle: false });
             this.setState({ chamClassname: "btn btn-sm btn-outline" });
-            this.state.typeFilter.splice(this.state.typeFilter.indexOf("champion"), 1);
+            var arrayHolder = [...this.state.typeFilter];
+            arrayHolder.splice(this.state.typeFilter.indexOf("champion"), 1);
+            this.setState({typeFilter: arrayHolder}, ()=>{
+                this.createRows();
+            });
 
         }
-                    this.setState({cardRows:this.createRows()});
+        
     }
 
     spelState(e) {
@@ -546,15 +641,21 @@ class FilterBar extends React.Component {
         if (this.state.spelToggle === false) {
             this.setState({ spelToggle: true });
             this.setState({ spelClassname: "btn btn-sm btn-outline active" });
-            this.state.typeFilter.push("spell");
+            this.setState({typeFilter: [...this.state.typeFilter, "spell"]}, ()=>{
+                this.createRows();
+            });
         }
 
         else {
             this.setState({ spelToggle: false });
             this.setState({ spelClassname: "btn btn-sm btn-outline" });
-            this.state.typeFilter.splice(this.state.typeFilter.indexOf("spell"), 1);
+            var arrayHolder = [...this.state.typeFilter];
+            arrayHolder.splice(this.state.typeFilter.indexOf("spell"), 1);
+            this.setState({typeFilter: arrayHolder}, ()=>{
+                this.createRows();
+            });
         }
-                    this.setState({cardRows:this.createRows()});
+        
     }
 
     follState(e) {
@@ -562,16 +663,22 @@ class FilterBar extends React.Component {
         if (this.state.follToggle === false) {
             this.setState({ follToggle: true });
             this.setState({ follClassname: "btn btn-sm btn-outline active" });
-            this.state.typeFilter.push("unit");
+            this.setState({typeFilter: [...this.state.typeFilter, "unit"]}, ()=>{
+                this.createRows();
+            });
         }
 
         else {
             this.setState({ follToggle: false });
             this.setState({ follClassname: "btn btn-sm btn-outline" });
-            this.state.typeFilter.splice(this.state.typeFilter.indexOf("unit"), 1);
+            var arrayHolder = [...this.state.typeFilter];
+            arrayHolder.splice(this.state.typeFilter.indexOf("unit"), 1);
+            this.setState({typeFilter: arrayHolder}, ()=>{
+                this.createRows();
+            });
 
         }
-                    this.setState({cardRows:this.createRows()});
+        
     }
 
 
@@ -580,33 +687,44 @@ class FilterBar extends React.Component {
         if (this.state.commToggle === false) {
             this.setState({ commToggle: true });
             this.setState({ commClassname: "btn btn-sm btn-outline active" });
-            this.state.rarityFilter.push("common");
+            this.setState({rarityFilter: [...this.state.rarityFilter, "common"]}, ()=>{
+                this.createRows();
+            });
         }
 
         else {
             this.setState({ commToggle: false });
             this.setState({ commClassname: "btn btn-sm btn-outline" });
-            this.state.rarityFilter.splice(this.state.rarityFilter.indexOf("common"), 1);
-
+            var arrayHolder = [...this.state.rarityFilter];
+            arrayHolder.splice(this.state.rarityFilter.indexOf("common"), 1);
+            this.setState({rarityFilter: arrayHolder}, ()=>{
+                this.createRows();
+            });
         }
-                    this.setState({cardRows:this.createRows()});
+        
     }
 
     rareState(e) {
         e.preventDefault();
         if (this.state.rareToggle === false) {
             this.setState({ rareToggle: true });
-            this.setState({ rareClassname: "btn btn-sm btn-outline active" });
-            this.state.rarityFilter.push("rare");
+            this.setState({ rareClassname: "btn btn-sm btn-outline active" });    
+            this.setState({rarityFilter: [...this.state.rarityFilter, "rare"]}, ()=>{
+                this.createRows();
+            });
         }
 
         else {
             this.setState({ rareToggle: false });
-            this.setState({ rareClassname: "btn btn-sm btn-outline" });
-            this.state.rarityFilter.splice(this.state.rarityFilter.indexOf("rare"), 1);
+            this.setState({ rareClassname: "btn btn-sm btn-outline" });            
+            var arrayHolder = [...this.state.rarityFilter];
+            arrayHolder.splice(this.state.rarityFilter.indexOf("rare"), 1);
+            this.setState({rarityFilter: arrayHolder}, ()=>{
+                this.createRows();
+            });
 
         }
-                    this.setState({cardRows:this.createRows()});
+        
     }
 
     epicState(e) {
@@ -614,132 +732,154 @@ class FilterBar extends React.Component {
         if (this.state.epicToggle === false) {
             this.setState({ epicToggle: true });
             this.setState({ epicClassname: "btn btn-sm btn-outline active" });
-            this.state.rarityFilter.push("epic");
+            this.setState({rarityFilter: [...this.state.rarityFilter, "epic"]}, ()=>{
+                this.createRows();
+            });
         }
 
         else {
             this.setState({ epicToggle: false });
             this.setState({ epicClassname: "btn btn-sm btn-outline" });
-            this.state.rarityFilter.splice(this.state.rarityFilter.indexOf("epic"), 1);
-
+            var arrayHolder = [...this.state.rarityFilter];
+            arrayHolder.splice(this.state.rarityFilter.indexOf("epic"), 1);
+            this.setState({rarityFilter: arrayHolder}, ()=>{
+                this.createRows();
+            });
         }
-        this.setState({cardRows:this.createRows()});
-    }
+        }
+    
 
     legnState(e) {
         e.preventDefault();
         if (this.state.legnToggle === false) {
             this.setState({ legnToggle: true });
             this.setState({ legnClassname: "btn btn-sm btn-outline active" });
-            this.state.rarityFilter.push("champion");
+            this.setState({rarityFilter:  [...this.state.rarityFilter, "champion"]}, ()=>{
+                this.createRows();
+            });
         }
 
         else {
             this.setState({ legnToggle: false });
             this.setState({ legnClassname: "btn btn-sm btn-outline" });
-            this.state.rarityFilter.splice(this.state.rarityFilter.indexOf("champion"), 1);
-
+            var arrayHolder = [...this.state.rarityFilter];
+            arrayHolder.splice(this.state.rarityFilter.indexOf("champion"), 1);
+            this.setState({rarityFilter: arrayHolder}, ()=>{
+                this.createRows();
+            });
         }
-        this.setState({cardRows:this.createRows()});
     }
 
     onSelect(optionsList, selectedItem){
-            this.state.keywordFilter.push(selectedItem.name);
+        this.state.keywordFilter.push(selectedItem.name);
             this.setState({cardRows:this.createRows()});
             this.createRows();
     }
 
     onRemove(optionsList, selectedItem){
-            this.state.keywordFilter.splice(this.state.keywordFilter.indexOf(selectedItem.name), 1);
+        this.state.keywordFilter.splice(this.state.keywordFilter.indexOf(selectedItem.name), 1);
             this.setState({cardRows:this.createRows()});
             this.createRows();
     }
 
     setSearch(e){
-        this.state.searchText = e;
-        this.setState({cardRows : this.createRows()});
-        this.createRows();
+        this.setState({searchText: e}, ()=>{
+            this.createRows();
+        });
     }
 
 
     createRows() {
         var filteredCards = this.filterCards();
+        console.log(filteredCards);
+        this.props.setFilteredSet(filteredCards);
         
-      const list = filteredCards.map((card, index) => {
-        if(card.rarity !== "None" && card.keywords.indexOf("Skill") === -1 && card.name !== "Accelerated Purrsuit")
-          return <div className="col-6 col-sm-6 col-md-4 col-lg-2 p-3" key={index}>
-            <a href={"/card/"+card.name.replace(/ /g, "_").replace(/:/g,"")}><img className="image-container img-fluid" src={"/img/cards/"+card.cardCode+".png"} alt={"Legends of Runeterra Cards " + card.name} /></a>
-          </div>
-        else
-          return " "
-      });
-      return list;
+    //   const list = filteredCards.map((card, index) => {
+    //     if(card.rarity !== "None" && card.keywords.indexOf("Skill") === -1 && card.name !== "Accelerated Purrsuit")
+    //       return <div className="col-6 col-sm-6 col-md-4 col-lg-2 p-3" key={index}>
+    //         <a href={"/card/"+card.name.replace(/ /g, "_").replace(/:/g,"")}><img className="image-container img-fluid" src={"/img/cards/"+card.cardCode+".png"} alt={"Legends of Runeterra Cards " + card.name} /></a>
+    //       </div>
+    //     else
+    //       return " "
+    //   });
+    //   return list;
     }
 
     render() { 
         return(
-        <div>
-            <div className="stickyMenu">
+            
+        <div className="stickyMenu">
+            
+            <div className="">
                 <div className="row">
                     
                     <div className="accordion col-12">
                         <div className="card">
+                        <h2>
                           <div className="card-header" id="headingOne" data-target="#collapseOne">
-                            <h2 className="">
                               <a className="colorBtn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Filters
-                              </a>
-                            </h2>
+                                Advanced Filter Options +
+                              </a>                          
                           </div>
+                        </h2>
 
                         <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                         <div className="row">
-                          <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
+                              <div className="card-body card-body-left col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
+                              
+                                <Multiselect options={this.state.kwObject} onSelect={this.onSelect} placeholder="Keywords" onRemove={this.onRemove} displayValue="name" style={ {chips: {background: "#D68FD6"}, searchBox: { border: "1px solid #FFF8F0", color: "#FFF8F0"}, optionContainer: {background: "#011627"}, option: {color: "#FFF8F0"}} } />
+                              </div>
+                            <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
+                              
+                              <div>Card Use</div>
+                              <div>Coming Soon</div>
+                            </div>
+                          <div className="card-body card-body-left col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
                             
-                            <div>Mana Cost</div>
-                            <button type="button" className={this.state.cmc0Classname +""} onClick={this.cmc0State}>0</button>
-                            <button type="button" className={this.state.cmc1Classname +""} onClick={this.cmc1State}>1</button>
-                            <button type="button" className={this.state.cmc2Classname +""} onClick={this.cmc2State}>2</button>
-                            <button type="button" className={this.state.cmc3Classname +""} onClick={this.cmc3State}>3</button>
-                            <button type="button" className={this.state.cmc4Classname +""} onClick={this.cmc4State}>4</button>
-                            <button type="button" className={this.state.cmc5Classname +""} onClick={this.cmc5State}>5</button>
-                            <button type="button" className={this.state.cmc6Classname +""} onClick={this.cmc6State}>6</button>
-                            <button type="button" className={this.state.cmc7Classname +""} onClick={this.cmc7State}>7+</button>
+                            <div className="row justify-content-center">
+                            <div className="col-12">Mana Cost</div>
+                            <button type="button" className={this.state.cmc0Classname +" col-5 col-xs-5 col-md-4 col-lg m-lg-2 mb-1 mt-1 mr-1"} onClick={this.cmc0State}>0</button>
+                            <button type="button" className={this.state.cmc1Classname +" col-5 col-xs-5 col-md-4 col-lg m-lg-2 mb-1 mt-1 mr-1"} onClick={this.cmc1State}>1</button>
+                            <button type="button" className={this.state.cmc2Classname +" col-5 col-xs-5 col-md-4 col-lg m-lg-2 mb-1 mt-1 mr-1"} onClick={this.cmc2State}>2</button>
+                            <button type="button" className={this.state.cmc3Classname +" col-5 col-xs-5 col-md-4 col-lg m-lg-2 mb-1 mt-1 mr-1"} onClick={this.cmc3State}>3</button>
+                            <button type="button" className={this.state.cmc4Classname +" col-5 col-xs-5 col-md-4 col-lg m-lg-2 mb-1 mt-1 mr-1"} onClick={this.cmc4State}>4</button>
+                            <button type="button" className={this.state.cmc5Classname +" col-5 col-xs-5 col-md-4 col-lg m-lg-2 mb-1 mt-1 mr-1"} onClick={this.cmc5State}>5</button>
+                            <button type="button" className={this.state.cmc6Classname +" col-5 col-xs-5 col-md-4 col-lg m-lg-2 mb-1 mt-1 mr-1"} onClick={this.cmc6State}>6</button>
+                            <button type="button" className={this.state.cmc7Classname +" col-5 col-xs-5 col-md-4 col-lg m-lg-2 mb-1 mt-1 mr-1"} onClick={this.cmc7State}>7+</button>
+                            </div>
                           </div>
                            <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
                             
                             <div>Region</div>
-                             <button type="button" className={this.state.demClassname +""} onClick={this.demState}>Demacia</button>
-                             <button type="button" className={this.state.freClassname +""} onClick={this.freState}>Freljord</button>
-                             <button type="button" className={this.state.ionClassname +""} onClick={this.ionState}>Ionia</button>
-                             <button type="button" className={this.state.noxClassname +""} onClick={this.noxState}>Noxus</button>
-                             <button type="button" className={this.state.pilClassname +""} onClick={this.pilState}>Piltover & Zaun</button>
-                             <button type="button" className={this.state.shaClassname +""} onClick={this.shaState}>Shadow Isles</button>
+                            <div className="row justify-content-center">
+                             <button type="button" className={this.state.demClassname +" col-11 col-sm-5 col-md-2 col-lg m-lg-2 mb-1 mr-1"} onClick={this.demState}>Demacia</button>
+                             <button type="button" className={this.state.freClassname +" col-11 col-sm-5 col-md-2 col-lg m-lg-2 mb-1 mr-1"} onClick={this.freState}>Freljord</button>
+                             <button type="button" className={this.state.ionClassname +" col-5 col-xs-5 col-md-4 col-lg  m-lg-2 mb-1 mr-1"} onClick={this.ionState}>Ionia</button>
+                             <button type="button" className={this.state.noxClassname +" col-5 col-xs-5 col-md-4 col-lg  m-lg-2 mb-1 mr-1"} onClick={this.noxState}>Noxus</button>
+                             <button type="button" className={this.state.pilClassname +" col-11 col-sm-5 col-md-2 col-lg m-lg-2 mb-1 mr-1"} onClick={this.pilState}>Piltover & Zaun</button>
+                             <button type="button" className={this.state.shaClassname +" col-11 col-sm-5 col-md-2 col-lg m-lg-2 mb-1 mr-1"} onClick={this.shaState}>Shadow Isles</button>
+                             </div>
                           </div>
-                          <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
+                          <div className="card-body card-body-left col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
                             
                             <div>Card Type</div>
-                            <button type="button" className={this.state.chamClassname +""} onClick={this.chamState}>Champion</button>
-                            <button type="button" className={this.state.spelClassname +""} onClick={this.spelState}>Spell</button>
-                            <button type="button" className={this.state.follClassname +""} onClick={this.follState}>Follower</button>          
+                            <div className="row justify-content-center">
+                            <button type="button" className={this.state.chamClassname +" col-10 col-sm-4 col-md-2 col-lg m-lg-2 mb-1 mr-1"} onClick={this.chamState}>Champion</button>
+                            <button type="button" className={this.state.spelClassname +" col-10 col-sm-4 col-md-2 col-lg m-lg-2 mb-1 mr-1"} onClick={this.spelState}>Spell</button>
+                            <button type="button" className={this.state.follClassname +" col-10 col-sm-4 col-md-2 col-lg m-lg-2 mb-1 mr-1"} onClick={this.follState}>Follower</button>
+                            </div>          
                           </div>
                           <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
                             
                             <div>Rarity</div>
-                            <button type="button" className={this.state.commClassname +""} onClick={this.commState}>Common</button>
-                            <button type="button" className={this.state.rareClassname +""} onClick={this.rareState}>Rare</button>
-                            <button type="button" className={this.state.epicClassname +""} onClick={this.epicState}>Epic</button>
-                            <button type="button" className={this.state.legnClassname +""} onClick={this.legnState}>Champion</button>
-                          </div>
-                            <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
-                            
-                              <Multiselect options={this.state.kwObject} onSelect={this.onSelect} placeholder="Keywords" onRemove={this.onRemove} displayValue="name" />
+                            <div className="row justify-content-center">
+                            <button type="button" className={this.state.commClassname +" col-5 mb-1 mr-1 col-lg m-lg-2"} onClick={this.commState}>Comm.</button>
+                            <button type="button" className={this.state.rareClassname +" col-5 mb-1 mr-1 col-lg m-lg-2"} onClick={this.rareState}>Rare</button>
+                            <button type="button" className={this.state.epicClassname +" col-5 mb-1 mr-1 col-lg m-lg-2"} onClick={this.epicState}>Epic</button>
+                            <button type="button" className={this.state.legnClassname +" col-5 mb-1 mr-1 col-lg m-lg-2"} onClick={this.legnState}>Champ.</button>
                             </div>
-                          <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
-                            
-                            <div>Card Use</div>
-                            <div>Coming Soon</div>
                           </div>
+
                           </div>
                           </div>
                         </div>
@@ -747,7 +887,6 @@ class FilterBar extends React.Component {
                     <div className = "searchStyle col-12"><ReactSearchBox placeholder="Search Card Names..." data={this.workingSet} onChange={this.setSearch}/></div>
                 </div>
             </div>
-            <div className="row">{this.createRows()}</div>
         </div>
         )
     }

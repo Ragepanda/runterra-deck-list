@@ -9,24 +9,41 @@
   background-color: #011627;
   color : #FFF8F0;
   	border-color: #011627;
-	border: 5px;
 }
 
 .card {
 	border-color: #011627;
 	border: 5px;
+	background-color: #011627;
 }
 
 .card-body {
 	background-color: #011627;
-	padding:7px;
+	padding-top: 5px;
+	padding-bottom:5px;
+	padding-left:20px;
+	padding-right:20px;
 	border-top:solid 1px #FFF8F0;
+	
+}
+
+.card-body-left {
 	border-right:solid 1px #FFF8F0;
+}
+
+.card:last-of-type{
+	border-top-left-radius: 1px;
+	border-top-right-radius: 1px;
+}
+
+.card-header:first-child {
+    border-radius: 0px;
 }
 
 .card-header {
 	background-color: #011627;
-	padding:7px;
+	padding:15px;
+	border-radius: 0px;
 }
 
 .colorBtn {
@@ -47,11 +64,16 @@
 .btn {
 	background-color: #011627;
 	color:#FFF8F0;
+	border: 2px solid #D68FD6;
 }
 
 .btn:hover {
 	background-color:#D68FD6;
 	color:#011627;
+}
+
+.btn:focus {
+	box-shadow: none;
 }
 
 .btn.active {
@@ -62,6 +84,26 @@
 
 .searchStyle {
 	background-color: #011627;
-	padding: 3px;
+	padding: 10px;
+	background : #011627;
 }
 
+input {
+	background-color: #011627;
+	border-color: #FFF8F0 !important;
+	color: #FFF8F0 !important;
+}
+
+input::placeholder{
+	color: #FFF8F0;
+}
+
+.highlight.false.option {
+	background-color: #011627;
+	color: #FFF8F0 !important;
+}
+
+.false.option:hover {
+	background-color: #D68FD6;
+	color: #011627 !important;
+}

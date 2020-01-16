@@ -46,28 +46,28 @@ body{
 
 @media screen and (max-width: 767px){   
     #element-with-background-image{      
-        background-image: linear-gradient(rgba(52, 41,54, 0.8), rgba(52, 41, 54, 0.8)),
-        url("/img/cards/01PZ040-full-xs.png");
+        background-image: linear-gradient(rgba(52, 41,54, 0.8), rgba(52, 41, 54, 0.8));
+        /*url("/img/cards/01PZ040-full-xs.png");*/
         
     } 
 }
 
 @media screen and (min-width: 768px) {      
     #element-with-background-image{      
-       background-image: linear-gradient(rgba(52, 41,54, 0.8), rgba(52, 41, 54, 0.8)),
-        url("/img/cards/01PZ040-full-sm.png");
+       background-image: linear-gradient(rgba(52, 41,54, 0.8), rgba(52, 41, 54, 0.8));
+        /*url("/img/cards/01PZ040-full-sm.png");*/
      } 
 } 
 @media (min-width: 992px){      
       #element-with-background-image{        
-          background-image: linear-gradient(rgba(52, 41,54, 0.8), rgba(52, 41, 54, 0.8)),
-        url("/img/cards/01PZ040-full-lg.png");
+          background-image: linear-gradient(rgba(52, 41,54, 0.8), rgba(52, 41, 54, 0.8));
+        /*url("/img/cards/01PZ040-full-lg.png");*/
       } 
 }
 @media (min-width: 1200px) {    
      #element-with-background-image{         
-         background-image: linear-gradient(rgba(52, 41,54, 0.8), rgba(52, 41, 54, 0.8)),
-        url("/img/cards/01PZ040-full-xl.png");
+         background-image: linear-gradient(rgba(52, 41,54, 0.8), rgba(52, 41, 54, 0.8));
+        /*url("/img/cards/01PZ040-full-xl.png");*/
      } 
 }
 

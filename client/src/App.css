@@ -47,7 +47,7 @@ body{
 @media screen and (max-width: 767px){   
     #element-with-background-image{      
         background-image: linear-gradient(rgba(52, 41,54, 0.8), rgba(52, 41, 54, 0.8)),
-        url("/img/cards/01PZ040-full-xs.png");
+        url("/img/cards/bg-xs.png");
         
     } 
 }
@@ -55,19 +55,19 @@ body{
 @media screen and (min-width: 768px) {      
     #element-with-background-image{      
        background-image: linear-gradient(rgba(52, 41,54, 0.8), rgba(52, 41, 54, 0.8)),
-        url("/img/cards/01PZ040-full-sm.png");
+        url("/img/cards/bg-sm.png");
      } 
 } 
 @media (min-width: 992px){      
       #element-with-background-image{        
           background-image: linear-gradient(rgba(52, 41,54, 0.8), rgba(52, 41, 54, 0.8)),
-        url("/img/cards/01PZ040-full-lg.png");
+        url("/img/cards/bg-lg.png");
       } 
 }
 @media (min-width: 1200px) {    
      #element-with-background-image{         
          background-image: linear-gradient(rgba(52, 41,54, 0.8), rgba(52, 41, 54, 0.8)),
-        url("/img/cards/01PZ040-full-xl.png");
+        url("/img/cards/bg-xl.png");
      } 
 }
 
@@ -75,5 +75,6 @@ body{
 #element-with-background-image {
     background-attachment: fixed;
     background-repeat: no-repeat;
+    background-size : auto;
 
 }

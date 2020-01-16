@@ -118,7 +118,8 @@ class Set extends React.Component {
       this.setState({ isLoaded: true });
     }
   }
-  // removed src: src={"../img/cards/"+card.cardCode+".png"}
+
+  
   render() {
     if (this.state.isLoaded === false) {
       return <div><p>Loading...</p></div>

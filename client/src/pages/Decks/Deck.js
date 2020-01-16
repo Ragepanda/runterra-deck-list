@@ -63,7 +63,7 @@ class Deck extends React.Component {
 			const spellList = this.state.spells.map((spell) =>
 				<li>
 					<a data-tip data-for={spell.cardCode} href={"/card/" + spell.name.replace(/ /g, "_").replace(/:/g, "")}>{spell.name} x {spell.count}</a>
-					<ReactToooltip place="bottom" type="none" id={spell.cardCode}><img className="hover-images" src={"/img/cards/" + spell.cardCode + ".png"} alt={"Legends of Runeterra Cards " + spell.name} /></ReactToooltip>
+					<ReactToooltip className="opaque" place="right" type="none" id={spell.cardCode}><img className="hover-images" src={"/img/cards/" + spell.cardCode + ".png"} alt={"Legends of Runeterra Cards " + spell.name} /></ReactToooltip>
 				</li>);
 			return (spellList);
 		}
@@ -74,7 +74,7 @@ class Deck extends React.Component {
 			const followersList = this.state.followers.map((followers) =>
 				<li>
 					<a data-tip data-for={followers.cardCode} href={"/card/" + followers.name.replace(/ /g, "_").replace(/:/g, "")}>{followers.name} x {followers.count}</a>
-					<ReactToooltip place="bottom" type="none" id={followers.cardCode}><img className="hover-images" src={"/img/cards/" + followers.cardCode + ".png"} alt={"Legends of Runeterra Cards " + followers.name} /></ReactToooltip>
+					<ReactToooltip className="opaque" place="right" type="none" id={followers.cardCode}><img className="hover-images" src={"/img/cards/" + followers.cardCode + ".png"} alt={"Legends of Runeterra Cards " + followers.name} /></ReactToooltip>
 				</li>);
 			return (followersList);
 		}
@@ -85,7 +85,7 @@ class Deck extends React.Component {
 			const championsList = this.state.champions.map((champions) =>
 				<li>
 					<a data-tip data-for={champions.cardCode} href={"/card/" + champions.name.replace(/ /g, "_").replace(/:/g, "")}>{champions.name} x {champions.count}</a>
-					<ReactToooltip place="bottom" type="none" id={champions.cardCode}><img className="hover-images" src={"/img/cards/" + champions.cardCode + ".png"} alt={"Legends of Runeterra Cards " + champions.name} /></ReactToooltip>
+					<ReactToooltip className="opaque" place="right" type="none" id={champions.cardCode}><img className="hover-images" src={"/img/cards/" + champions.cardCode + ".png"} alt={"Legends of Runeterra Cards " + champions.name} /></ReactToooltip>
 				</li>);
 			return (championsList);
 		}

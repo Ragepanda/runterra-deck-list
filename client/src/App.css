@@ -23,7 +23,7 @@ p {
 }
 
 body{
-	padding-top:70px;
+	padding-top:57px;
 	background-color:#342936;
 	color: #FFF8F0;
 }
@@ -44,10 +44,38 @@ body{
 
 
 
-/* Ideas on color complementing
-- Darkest green as background
-- Slightly lighter green as a box color for framing elements
-- The light grey for text
-- THe dark grey for line separators for text
-- The blues for something else that is yet undecided. Probably accenting. 
-Ideas sourced largely off of MTGArena.pro designs*/
+@media screen and (max-width: 767px){   
+    #element-with-background-image{      
+        background-image: linear-gradient(rgba(52, 41,54, 0.8), rgba(52, 41, 54, 0.8)),
+        url("/img/cards/bg-xs.png");
+        
+    } 
+}
+
+@media screen and (min-width: 768px) {      
+    #element-with-background-image{      
+       background-image: linear-gradient(rgba(52, 41,54, 0.8), rgba(52, 41, 54, 0.8)),
+        url("/img/cards/bg-sm.png");
+     } 
+} 
+@media (min-width: 992px){      
+      #element-with-background-image{        
+          background-image: linear-gradient(rgba(52, 41,54, 0.8), rgba(52, 41, 54, 0.8)),
+        url("/img/cards/bg-lg.png");
+      } 
+}
+@media (min-width: 1200px) {    
+     #element-with-background-image{         
+         background-image: linear-gradient(rgba(52, 41,54, 0.8), rgba(52, 41, 54, 0.8)),
+        url("/img/cards/bg-xl.png");
+
+     } 
+}
+
+
+#element-with-background-image {
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+ 	background-size: cover;
+
+}

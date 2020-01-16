@@ -10,7 +10,9 @@
 }
 
 .set-tooltips{
+	background-color: #011627 !important;
     width:200px;
+    opacity: 1 !important;
 }
 
 .hover-icon{

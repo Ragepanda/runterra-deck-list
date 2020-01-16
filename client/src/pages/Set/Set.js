@@ -24,15 +24,15 @@ class Set extends React.Component {
 
   createHelmet() {
 
-    let metatitle = "Legends of Runeterra Card Library | Legends of Runeterra Cards on Runeterra Hub"; //will need to add a property for which set it is
-    let descrip = "This is the list of Legends of Runeterra cards in the Legends of Runeterra base set. Runeterra Hub is the spot to view new Legends of Runeterra sets."; //will need to add a property for which set it is
-    let metacontent = "cards,card library,lor,legend, hub, legends,runeterra,deck,decklist,decklists,decks,set,sets,expansion,expansions"; //will need to add in property for which set it is
+    let metatitle = "Legends of Runeterra Card Library | Legends of Runeterra Cards on Runeterra Nexus"; //will need to add a property for which set it is
+    let descrip = "This is the list of Legends of Runeterra cards in the Legends of Runeterra base set. Runeterra Nexus is the spot to view new Legends of Runeterra sets."; //will need to add a property for which set it is
+    let metacontent = "cards,card library,lor,legend, nexus, legends,runeterra,deck,decklist,decklists,decks,set,sets,expansion,expansions"; //will need to add in property for which set it is
 
     let helmet = <Helmet>
       <title>{metatitle}</title>
       <meta name="description" content={descrip} />
       <meta name="keywords" content={metacontent} />
-      <meta name="author" content="runeterrahub.com" />
+      <meta name="author" content="runeterranexus.com" />
       <meta http-equiv="Content-Language" content="en-US" />
       <meta name="rating" content="kids" />
       <meta http-equiv="content-type" content="text/html" charSet="utf-8" />

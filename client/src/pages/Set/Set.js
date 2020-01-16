@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import baseSet from "../../card_info/set1.json";
+import keywordSet from "../../card_info/globals-en_us.json"
 import FilterBar from "../../component/FilterBar";
 import ReactToooltip from "react-tooltip";
 import "./Set.css"
@@ -45,9 +46,15 @@ class Set extends React.Component {
 
   keywordTooltipText(keywords){
     if(keywords.length > 0){
-      var html = <h5>Keywords</h5>;
+      var html;
       for(var x=0; x<keywords.length; x++){
-        var text =(<p>{keywords[x]}: Definition of this keyword</p>);
+        var definition;
+        for(var keywordIndex =0; keywordIndex <keywordSet.keywords.length; keywordIndex++){
+          if(keywordSet.keywords[keywordIndex].name === keywords[x]){
+            definition = keywordSet.keywords[keywordIndex].description;
+          }
+        }
+        var text =(<div><h6>{keywords[x]}</h6><p>{definition}</p></div>);
         html = [html, text];
       }
       return html;
@@ -64,7 +71,7 @@ class Set extends React.Component {
             </a>
             <ReactToooltip className="set-tooltips" place="bottom" id={card.cardCode}>
               {this.keywordTooltipText(card.keywords)}
-              <h5>Flavor Text:</h5>
+              <h6>Flavor Text:</h6>
               <p>{card.flavorText}</p>
             </ReactToooltip> 
           </div>);

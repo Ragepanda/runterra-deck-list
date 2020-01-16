@@ -56,9 +56,9 @@ class Set extends React.Component {
 
   createRows() {
     const list = this.state.filteredSet.map((card, index) => {
-      if (card.rarity !== "None")
+      if (card.rarity !== "None" && card.keywords.indexOf("Skill") === -1 && card.name !== "Accelerated Purrsuit")
         return (
-          <div className="col-4 col-sm-6 col-md-4 col-lg-3 p-3" key={index}>
+          <div className="col-6 col-sm-6 col-md-4 col-lg-2 p-3" key={index}>
             <a data-tip data-for={card.cardCode} href={"/card/" + card.name.replace(/ /g, "_").replace(/:/g, "")}>
               <img className="image-container img-fluid" src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Cards " + card.name} />
             </a>

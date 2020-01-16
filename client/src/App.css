@@ -68,6 +68,7 @@ body{
      #element-with-background-image{         
          background-image: linear-gradient(rgba(52, 41,54, 0.8), rgba(52, 41, 54, 0.8)),
         url("/img/cards/bg-xl.png");
+
      } 
 }
 
@@ -75,6 +76,6 @@ body{
 #element-with-background-image {
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size : auto;
+ 	background-size: cover;
 
 }

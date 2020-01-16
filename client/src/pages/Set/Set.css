@@ -12,3 +12,10 @@
 .set-tooltips{
     width:200px;
 }
+
+.hover-icon{
+    /* height: 35px;
+    width: 35px; */
+    display: inline;
+    margin-bottom: -6px;
+}

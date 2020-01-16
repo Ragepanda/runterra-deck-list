@@ -19,6 +19,7 @@ class Set extends React.Component {
     this.createHelmet = this.createHelmet.bind(this);
     this.setFilteredSet = this.setFilteredSet.bind(this);
     this.createRows = this.createRows.bind(this);
+    this.generatePathData = this.generatePathData.bind(this);
   }
 
   createHelmet() {
@@ -40,24 +41,55 @@ class Set extends React.Component {
     return helmet;
   }
 
-  setFilteredSet(set){
-    this.setState({filteredSet: set});
+  setFilteredSet(set) {
+    this.setState({ filteredSet: set });
   }
 
-  keywordTooltipText(keywords){
-    if(keywords.length > 0){
+  keywordTooltipText(keywords) {
+    if (keywords.length > 0) {
       var html;
-      for(var x=0; x<keywords.length; x++){
-        var definition;
-        for(var keywordIndex =0; keywordIndex <keywordSet.keywords.length; keywordIndex++){
-          if(keywordSet.keywords[keywordIndex].name === keywords[x]){
+      for (var x = 0; x < keywords.length; x++) {
+        var definition = "";
+        var isSvgFill = "";
+        var fill = "";
+        var path = [];
+
+        for (var keywordIndex = 0; keywordIndex < keywordSet.keywords.length; keywordIndex++) {
+          if (keywordSet.keywords[keywordIndex].name === keywords[x]) {
             definition = keywordSet.keywords[keywordIndex].description;
+            isSvgFill = keywordSet.keywords[keywordIndex].svgFill;
+            fill = keywordSet.keywords[keywordIndex].fill;
+            
+            if (typeof keywordSet.keywords[keywordIndex].path === "undefined") 
+              path = [];   
+            else
+              path = keywordSet.keywords[keywordIndex].path;
           }
         }
-        var text =(<div><h6>{keywords[x]}</h6><p>{definition}</p></div>);
+        var text = (<div>
+          <h6>{keywords[x] + " "}
+            <svg height="35" wdith="35" viewBox="0 0 35 35" className="hover-icon" fill={fill}>
+              {this.generatePathData(path)}
+            </svg>
+          </h6>
+          <p>{definition}</p>
+        </div>);
         html = [html, text];
       }
       return html;
+    }
+  }
+
+  generatePathData(path) {
+    if (path.length > 0) {
+      var pathHTML = [];
+      for (var x = 0; x < path.length; x++) {
+        pathHTML.push(<path d={path[x]}></path>);
+      }
+      return pathHTML;
+    }
+    else {
+      return;
     }
   }
 
@@ -69,8 +101,8 @@ class Set extends React.Component {
             <a data-tip data-for={card.cardCode} href={"/card/" + card.name.replace(/ /g, "_").replace(/:/g, "")}>
               <img className="image-container img-fluid" src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Cards " + card.name} />
             </a>
-            <ReactToooltip className="set-tooltips" place="bottom" id={card.cardCode}>
-              {this.keywordTooltipText(card.keywords)}
+             <ReactToooltip className="set-tooltips" place="bottom" id={card.cardCode}>
+               {this.keywordTooltipText(card.keywords)} 
               <h6>Flavor Text:</h6>
               <p>{card.flavorText}</p>
             </ReactToooltip> 
@@ -81,14 +113,14 @@ class Set extends React.Component {
     return list;
   }
 
-  componentDidMount(){
-    if(typeof this.state.filteredSet !== "undefined"){
-      this.setState({isLoaded: true});
+  componentDidMount() {
+    if (typeof this.state.filteredSet !== "undefined") {
+      this.setState({ isLoaded: true });
     }
   }
   // removed src: src={"../img/cards/"+card.cardCode+".png"}
   render() {
-    if(this.state.isLoaded === false){
+    if (this.state.isLoaded === false) {
       return <div><p>Loading...</p></div>
     }
     return (
@@ -98,7 +130,7 @@ class Set extends React.Component {
         <FilterBar setFilteredSet={this.setFilteredSet} />
         <div className="setName text-center pt-4"><h2>Legends of Runeterra Base Set</h2></div>
         <div className="setName text-center pb-5 pt-1"><p>This is the list of Legends of Runeterra cards in the Legends of Runeterra base set. Runeterra Hub is the spot to view new Legends of Runeterra sets.</p></div>
-       
+
         <div className="row">{this.createRows()}</div>
       </div>
     );

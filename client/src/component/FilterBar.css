@@ -1,6 +1,6 @@
 .stickyMenu{
 	position: sticky;
-	top:55px;
+	top:50px;
 	z-index:100;
 	background: #011627;
 }
@@ -8,7 +8,12 @@
 .card-header {
   background-color: #011627;
   color : #FFF8F0;
-  	border-color: #011627;
+  border-color: #011627;
+  margin:-5px;
+}
+
+.margTop {
+	margin-top: 3px;
 }
 
 .card {
@@ -84,7 +89,7 @@
 
 .searchStyle {
 	background-color: #011627;
-	padding: 10px;
+	padding: 5px;
 	background : #011627;
 }
 

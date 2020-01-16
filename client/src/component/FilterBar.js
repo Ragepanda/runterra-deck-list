@@ -791,7 +791,7 @@ class FilterBar extends React.Component {
 
     createRows() {
         var filteredCards = this.filterCards();
-        console.log(filteredCards);
+        //console.log(filteredCards);
         this.props.setFilteredSet(filteredCards);
         
     //   const list = filteredCards.map((card, index) => {
@@ -815,19 +815,17 @@ class FilterBar extends React.Component {
                     
                     <div className="accordion col-12">
                         <div className="card">
-                        <h2>
                           <div className="card-header" id="headingOne" data-target="#collapseOne">
-                              <a className="colorBtn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Advanced Filter Options +
+                              <a className="colorBtn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >
+                                Filter Options +
                               </a>                          
                           </div>
-                        </h2>
 
                         <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                         <div className="row">
                               <div className="card-body card-body-left col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
                               
-                                <Multiselect options={this.state.kwObject} onSelect={this.onSelect} placeholder="Keywords" onRemove={this.onRemove} displayValue="name" style={ {chips: {background: "#D68FD6"}, searchBox: { border: "1px solid #FFF8F0", color: "#FFF8F0"}, optionContainer: {background: "#011627"}, option: {color: "#FFF8F0"}} } />
+                                <div className="margTop"><Multiselect options={this.state.kwObject} onSelect={this.onSelect} placeholder="Keywords..." onRemove={this.onRemove} displayValue="name" style={ {chips: {background: "#D68FD6"}, searchBox: { border: "1px solid #FFF8F0", color: "#FFF8F0"}, optionContainer: {background: "#011627"}, option: {color: "#FFF8F0"}} } /></div>
                               </div>
                             <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
                               
@@ -837,46 +835,46 @@ class FilterBar extends React.Component {
                           <div className="card-body card-body-left col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
                             
                             <div className="row justify-content-center">
-                            <div className="col-12">Mana Cost</div>
-                            <button type="button" className={this.state.cmc0Classname +" col-5 col-xs-5 col-md-4 col-lg m-lg-2 mb-1 mt-1 mr-1"} onClick={this.cmc0State}>0</button>
-                            <button type="button" className={this.state.cmc1Classname +" col-5 col-xs-5 col-md-4 col-lg m-lg-2 mb-1 mt-1 mr-1"} onClick={this.cmc1State}>1</button>
-                            <button type="button" className={this.state.cmc2Classname +" col-5 col-xs-5 col-md-4 col-lg m-lg-2 mb-1 mt-1 mr-1"} onClick={this.cmc2State}>2</button>
-                            <button type="button" className={this.state.cmc3Classname +" col-5 col-xs-5 col-md-4 col-lg m-lg-2 mb-1 mt-1 mr-1"} onClick={this.cmc3State}>3</button>
-                            <button type="button" className={this.state.cmc4Classname +" col-5 col-xs-5 col-md-4 col-lg m-lg-2 mb-1 mt-1 mr-1"} onClick={this.cmc4State}>4</button>
-                            <button type="button" className={this.state.cmc5Classname +" col-5 col-xs-5 col-md-4 col-lg m-lg-2 mb-1 mt-1 mr-1"} onClick={this.cmc5State}>5</button>
-                            <button type="button" className={this.state.cmc6Classname +" col-5 col-xs-5 col-md-4 col-lg m-lg-2 mb-1 mt-1 mr-1"} onClick={this.cmc6State}>6</button>
-                            <button type="button" className={this.state.cmc7Classname +" col-5 col-xs-5 col-md-4 col-lg m-lg-2 mb-1 mt-1 mr-1"} onClick={this.cmc7State}>7+</button>
+                            <div className="col-12 text-center">Mana Cost</div>
+                            <button type="button" className={this.state.cmc0Classname +" col-5 col-xs-5 col-sm-5 col-md-3 col-lg-auto ml-lg-1 mb-1 mt-1 mr-1"} onClick={this.cmc0State}>0</button>
+                            <button type="button" className={this.state.cmc1Classname +" col-5 col-xs-5 col-sm-5 col-md-3 col-lg-auto ml-lg-1 mb-1 mt-1 mr-1"} onClick={this.cmc1State}>1</button>
+                            <button type="button" className={this.state.cmc2Classname +" col-5 col-xs-5 col-sm-5 col-md-3 col-lg-auto ml-lg-1 mb-1 mt-1 mr-1"} onClick={this.cmc2State}>2</button>
+                            <button type="button" className={this.state.cmc3Classname +" col-5 col-xs-5 col-sm-5 col-md-3 col-lg-auto ml-lg-1 mb-1 mt-1 mr-1"} onClick={this.cmc3State}>3</button>
+                            <button type="button" className={this.state.cmc4Classname +" col-5 col-xs-5 col-sm-5 col-md-3 col-lg-auto ml-lg-1 mb-1 mt-1 mr-1"} onClick={this.cmc4State}>4</button>
+                            <button type="button" className={this.state.cmc5Classname +" col-5 col-xs-5 col-sm-5 col-md-3 col-lg-auto ml-lg-1 mb-1 mt-1 mr-1"} onClick={this.cmc5State}>5</button>
+                            <button type="button" className={this.state.cmc6Classname +" col-5 col-xs-5 col-sm-5 col-md-3 col-lg-auto ml-lg-1 mb-1 mt-1 mr-1"} onClick={this.cmc6State}>6</button>
+                            <button type="button" className={this.state.cmc7Classname +" col-5 col-xs-5 col-sm-5 col-md-3 col-lg-auto ml-lg-1 mb-1 mt-1 mr-1"} onClick={this.cmc7State}>7+</button>
                             </div>
                           </div>
                            <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
                             
-                            <div>Region</div>
+                            <div className="text-center">Region</div>
                             <div className="row justify-content-center">
-                             <button type="button" className={this.state.demClassname +" col-11 col-sm-5 col-md-2 col-lg m-lg-2 mb-1 mr-1"} onClick={this.demState}>Demacia</button>
-                             <button type="button" className={this.state.freClassname +" col-11 col-sm-5 col-md-2 col-lg m-lg-2 mb-1 mr-1"} onClick={this.freState}>Freljord</button>
-                             <button type="button" className={this.state.ionClassname +" col-5 col-xs-5 col-md-4 col-lg  m-lg-2 mb-1 mr-1"} onClick={this.ionState}>Ionia</button>
-                             <button type="button" className={this.state.noxClassname +" col-5 col-xs-5 col-md-4 col-lg  m-lg-2 mb-1 mr-1"} onClick={this.noxState}>Noxus</button>
-                             <button type="button" className={this.state.pilClassname +" col-11 col-sm-5 col-md-2 col-lg m-lg-2 mb-1 mr-1"} onClick={this.pilState}>Piltover & Zaun</button>
-                             <button type="button" className={this.state.shaClassname +" col-11 col-sm-5 col-md-2 col-lg m-lg-2 mb-1 mr-1"} onClick={this.shaState}>Shadow Isles</button>
+                             <button type="button" className={this.state.demClassname +" col-11 col-xs-11 col-sm-11 col-md-5 col-lg-auto m-lg-1 mt-1    mt-md-1 mt-lg-1 mb-1 mr-1"} onClick={this.demState}>Demacia</button>
+                             <button type="button" className={this.state.freClassname +" col-11 col-xs-11 col-sm-11 col-md-5 col-lg-auto        mt-0    mt-md-1 mt-lg-1 mb-1 mr-1"} onClick={this.freState}>Freljord</button>
+                             <button type="button" className={this.state.ionClassname +" col-5 col-xs-5  col-sm-5   col-md-5 col-lg-auto        mt-0    mt-md-1 mt-lg-1 mb-1 mr-1"} onClick={this.ionState}>Ionia</button>
+                             <button type="button" className={this.state.noxClassname +" col-5 col-xs-5  col-sm-5   col-md-5 col-lg-auto        mt-0    mt-md-1 mt-lg-1 mb-1 mr-1"} onClick={this.noxState}>Noxus</button>
+                             <button type="button" className={this.state.pilClassname +" col-11 col-xs-11 col-sm-11 col-md-5 col-lg-auto        mt-0    mt-md-1 mt-lg-1 mb-1 mr-1"} onClick={this.pilState}>Piltover&Zaun</button>
+                             <button type="button" className={this.state.shaClassname +" col-11 col-xs-11 col-sm-11 col-md-5 col-lg-auto        mt-0    mt-md-1 mt-lg-1 mb-md-1 mr-1"} onClick={this.shaState}>Shadow Isles</button>
                              </div>
                           </div>
                           <div className="card-body card-body-left col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
                             
-                            <div>Card Type</div>
+                            <div className="text-center">Card Type</div>
                             <div className="row justify-content-center">
-                            <button type="button" className={this.state.chamClassname +" col-10 col-sm-4 col-md-2 col-lg m-lg-2 mb-1 mr-1"} onClick={this.chamState}>Champion</button>
-                            <button type="button" className={this.state.spelClassname +" col-10 col-sm-4 col-md-2 col-lg m-lg-2 mb-1 mr-1"} onClick={this.spelState}>Spell</button>
-                            <button type="button" className={this.state.follClassname +" col-10 col-sm-4 col-md-2 col-lg m-lg-2 mb-1 mr-1"} onClick={this.follState}>Follower</button>
+                            <button type="button" className={this.state.chamClassname +" col-10 col-xs-10 col-sm-4 col-md-3 col-lg-auto m-lg-1 mt-1 mb-1 mr-1"} onClick={this.chamState}>Champion</button>
+                            <button type="button" className={this.state.spelClassname +" col-10 col-xs-10 col-sm-4 col-md-3 col-lg-auto m-lg-1 mt-0 mt-sm-1 mb-1 mr-1"} onClick={this.spelState}>Spell</button>
+                            <button type="button" className={this.state.follClassname +" col-10 col-xs-10 col-sm-4 col-md-3 col-lg-auto m-lg-1 mt-0 mt-md-1 mb-md-1 mr-1"} onClick={this.follState}>Follower</button>
                             </div>          
                           </div>
                           <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
                             
-                            <div>Rarity</div>
+                            <div className="text-center">Rarity</div>
                             <div className="row justify-content-center">
-                            <button type="button" className={this.state.commClassname +" col-5 mb-1 mr-1 col-lg m-lg-2"} onClick={this.commState}>Comm.</button>
-                            <button type="button" className={this.state.rareClassname +" col-5 mb-1 mr-1 col-lg m-lg-2"} onClick={this.rareState}>Rare</button>
-                            <button type="button" className={this.state.epicClassname +" col-5 mb-1 mr-1 col-lg m-lg-2"} onClick={this.epicState}>Epic</button>
-                            <button type="button" className={this.state.legnClassname +" col-5 mb-1 mr-1 col-lg m-lg-2"} onClick={this.legnState}>Champ.</button>
+                            <button type="button" className={this.state.commClassname +" col-5 col-xs-5 col-md-2 mt-1 mb-1 mr-1    col-lg-auto    m-lg-1"} onClick={this.commState}>Comm.</button>
+                            <button type="button" className={this.state.rareClassname +" col-5 col-xs-5 col-md-2 mt-1 mb-1 mr-1    col-lg-auto    m-lg-1"} onClick={this.rareState}>Rare</button>
+                            <button type="button" className={this.state.epicClassname +" col-5 col-xs-5 col-md-2 mt-1 mb-md-1 mr-1 col-lg-auto m-lg-1"} onClick={this.epicState}>Epic</button>
+                            <button type="button" className={this.state.legnClassname +" col-5 col-xs-5 col-md-2 mt-1 mb-md-1 mr-1 col-lg-auto m-lg-1"} onClick={this.legnState}>Champ.</button>
                             </div>
                           </div>
 

@@ -20,13 +20,13 @@ class Navbar extends React.Component {
                     <a className="nav-link disabled" href="#">Meta</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link disabled" href="/deck_lists/deck">Decks</a>
+                    <a className="nav-link" href="/deck_lists/deck">Decks</a>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link disabled" href="#">Deckbuilder</a>
                   </li>
                   <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a className="nav-link dropdown-toggle" href="/set" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Card Library
                     </a>
                     <div className="dropdown-menu" aria-labelledby="navbarDropdown">

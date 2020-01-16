@@ -1,4 +1,9 @@
 li.dropdown:hover > .dropdown-menu {
     display: block;
     margin-top: 0;
+    background-color: #FFF8F0;
+
+}
+.dropdown-item {
+	color: #011267 !important;
 }

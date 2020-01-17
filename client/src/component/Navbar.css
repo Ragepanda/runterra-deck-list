@@ -16,3 +16,8 @@ li.dropdown:hover > .dropdown-menu {
 .navbar-dark .navbar-nav .nav-link {
     color: rgba(255,248,240,1);
 }
+
+.dropdown-toggle::after{
+
+	right:-2px;
+}

@@ -101,7 +101,7 @@ class Set extends React.Component {
             <a data-tip data-for={card.cardCode} href={"/card/" + card.name.replace(/ /g, "_").replace(/:/g, "")}>
               <img className="image-container img-fluid" src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Cards " + card.name} />
             </a>
-             <ReactToooltip className="set-tooltips" place="bottom" id={card.cardCode}>
+             <ReactToooltip className="set-tooltips" place="top" effect="solid" id={card.cardCode}>
                {this.keywordTooltipText(card.keywords)} 
               <h6>Flavor Text:</h6>
               <p>{card.flavorText}</p>

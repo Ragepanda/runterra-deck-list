@@ -59,9 +59,9 @@ class Set extends React.Component {
             definition = keywordSet.keywords[keywordIndex].description;
             isSvgFill = keywordSet.keywords[keywordIndex].svgFill;
             fill = keywordSet.keywords[keywordIndex].fill;
-            
-            if (typeof keywordSet.keywords[keywordIndex].path === "undefined") 
-              path = [];   
+
+            if (typeof keywordSet.keywords[keywordIndex].path === "undefined")
+              path = [];
             else
               path = keywordSet.keywords[keywordIndex].path;
           }
@@ -101,11 +101,11 @@ class Set extends React.Component {
             <a data-tip data-for={card.cardCode} href={"/card/" + card.name.replace(/ /g, "_").replace(/:/g, "")}>
               <img className="image-container img-fluid" src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Cards " + card.name} />
             </a>
-             <ReactToooltip className="set-tooltips" place="bottom" id={card.cardCode}>
-               {this.keywordTooltipText(card.keywords)} 
+            <ReactToooltip className="set-tooltips" place="bottom" id={card.cardCode}>
+              {this.keywordTooltipText(card.keywords)}
               <h6>Flavor Text:</h6>
               <p>{card.flavorText}</p>
-            </ReactToooltip> 
+            </ReactToooltip>
           </div>);
       else
         return " "
@@ -119,7 +119,7 @@ class Set extends React.Component {
     }
   }
 
-  
+
   render() {
     if (this.state.isLoaded === false) {
       return <div><p>Loading...</p></div>

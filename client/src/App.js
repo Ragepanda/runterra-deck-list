@@ -11,6 +11,7 @@ import Home from "./pages/Home/Home";
 import Card from "./pages/Card/Card";
 import Set from "./pages/Set/Set";
 import Deck from "./pages/Decks/Deck";
+import Deckbuilder from "./pages/Deckbuilder/Deckbuilder";
 
 import Navbar from "./component/Navbar";
 
@@ -30,6 +31,7 @@ class App extends React.Component {
             <Route exact path="/card/:name" component={Card} />
             <Route exact path="/set/" component={Set} />
             <Route exact path="/deck_lists/:deck" component={Deck} />
+            <Route exact path="/deck_builder" component={Deckbuilder} />
           </Switch>
         </div>
       </Router>

@@ -28,12 +28,12 @@
 	padding-bottom:5px;
 	padding-left:20px;
 	padding-right:20px;
-	border-top:solid 1px #FFF8F0;
+	/*border-top:solid 1px #FFF8F0;*/
 	
 }
 
 .card-body-left {
-	border-right:solid 1px #FFF8F0;
+	/*border-right:solid 1px #FFF8F0;*/
 }
 
 .card:last-of-type{
@@ -111,4 +111,10 @@ input::placeholder{
 .false.option:hover {
 	background-color: #D68FD6;
 	color: #011627 !important;
+}
+
+@media screen and (max-width: 390px) {
+	.btn {
+		font-size: 12px;
+	}
 }

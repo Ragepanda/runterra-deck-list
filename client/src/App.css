@@ -1,3 +1,15 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+
 html {
   text-align: center;
   background-color: #342936;
@@ -18,11 +30,17 @@ a:hover{
 }
 
 
+
 p {
 	color:#FFF8F0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1.7em;
 }
 
 body{
+  font-family: 'Poppins', sans-serif;
 	padding-top:57px;
 	background-color:#342936;
 	color: #FFF8F0;

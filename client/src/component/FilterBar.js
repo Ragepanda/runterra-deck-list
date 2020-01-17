@@ -871,10 +871,10 @@ class FilterBar extends React.Component {
                             
                             <div className="text-center">Rarity</div>
                             <div className="row justify-content-center">
-                            <button type="button" className={this.state.commClassname +" col-5 col-xs-5 col-md-2 mt-1 mb-1 mr-1    col-lg-auto    m-lg-1"} onClick={this.commState}>Comm.</button>
-                            <button type="button" className={this.state.rareClassname +" col-5 col-xs-5 col-md-2 mt-1 mb-1 mr-1    col-lg-auto    m-lg-1"} onClick={this.rareState}>Rare</button>
-                            <button type="button" className={this.state.epicClassname +" col-5 col-xs-5 col-md-2 mt-1 mb-md-1 mr-1 col-lg-auto m-lg-1"} onClick={this.epicState}>Epic</button>
-                            <button type="button" className={this.state.legnClassname +" col-5 col-xs-5 col-md-2 mt-1 mb-md-1 mr-1 col-lg-auto m-lg-1"} onClick={this.legnState}>Champ.</button>
+                            <button type="button" className={this.state.commClassname +" text-center col-5 col-xs-5 col-md-2 mt-1 mb-1 mr-1    col-lg-auto    m-lg-1"} onClick={this.commState}>Comm.</button>
+                            <button type="button" className={this.state.rareClassname +" text-center col-5 col-xs-5 col-md-2 mt-1 mb-1 mr-1    col-lg-auto    m-lg-1"} onClick={this.rareState}>Rare</button>
+                            <button type="button" className={this.state.epicClassname +" text-center col-5 col-xs-5 col-md-2 mt-1 mb-md-1 mr-1 col-lg-auto m-lg-1"} onClick={this.epicState}>Epic</button>
+                            <button type="button" className={this.state.legnClassname +" text-center col-5 col-xs-5 col-md-2 mt-1 mb-md-1 mr-1 col-lg-auto m-lg-1"} onClick={this.legnState}>Champ.</button>
                             </div>
                           </div>
 

@@ -14,8 +14,9 @@ class Home extends React.Component{
       }
     
       componentDidMount(){
-        api.getTest()
+        api.getDeckLists()
         .then(res =>{
+          console.log(res.data);
           this.setState({
             isLoaded: true, 
             items: res.data});

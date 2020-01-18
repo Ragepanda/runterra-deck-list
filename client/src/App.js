@@ -22,7 +22,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div className="App">
+        <div className="App" id="element-with-background-image">
           <Navbar/>
           <Switch>
             <Route exact path="/" component={Home} />

@@ -46,7 +46,7 @@ body{
 
 @media screen and (max-width: 767px){   
     #element-with-background-image{      
-        background-image: linear-gradient(rgba(52, 41,54, 0.8), rgba(52, 41, 54, 0.8)),
+        background-image: linear-gradient(rgba(52, 41,54, 0.9), rgba(52, 41, 54, 0.9)),
         url("/img/cards/bg-xs.png");
         
     } 
@@ -54,19 +54,19 @@ body{
 
 @media screen and (min-width: 768px) {      
     #element-with-background-image{      
-       background-image: linear-gradient(rgba(52, 41,54, 0.8), rgba(52, 41, 54, 0.8)),
+       background-image: linear-gradient(rgba(52, 41,54, 0.9), rgba(52, 41, 54, 0.9)),
         url("/img/cards/bg-sm.png");
      } 
 } 
 @media (min-width: 992px){      
       #element-with-background-image{        
-          background-image: linear-gradient(rgba(52, 41,54, 0.8), rgba(52, 41, 54, 0.8)),
+          background-image: linear-gradient(rgba(52, 41,54, 0.9), rgba(52, 41, 54, 0.9)),
         url("/img/cards/bg-lg.png");
       } 
 }
 @media (min-width: 1200px) {    
      #element-with-background-image{         
-         background-image: linear-gradient(rgba(52, 41,54, 0.8), rgba(52, 41, 54, 0.8)),
+         background-image: linear-gradient(rgba(52, 41,54, 0.9), rgba(52, 41, 54, 0.9)),
         url("/img/cards/bg-xl.png");
 
      } 

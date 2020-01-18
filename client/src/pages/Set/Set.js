@@ -67,11 +67,11 @@ class Set extends React.Component {
           }
         }
         var text = (<div>
-          <h6>{keywords[x] + " "}
+          <h4>{keywords[x] + " "}
             <svg height="35" wdith="35" viewBox="0 0 35 35" className="hover-icon" fill={fill}>
               {this.generatePathData(path)}
             </svg>
-          </h6>
+          </h4>
           <p>{definition}</p>
         </div>);
         html = [html, text];
@@ -101,8 +101,8 @@ class Set extends React.Component {
             <a data-tip data-for={card.cardCode} href={"/card/" + card.name.replace(/ /g, "_").replace(/:/g, "")}>
               <img className="image-container img-fluid" src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Cards " + card.name} />
             </a>
-            <ReactToooltip className="set-tooltips" place="bottom" id={card.cardCode}>
-              {this.keywordTooltipText(card.keywords)}
+             <ReactToooltip className="set-tooltips" place="top" effect="solid" id={card.cardCode}>
+               {this.keywordTooltipText(card.keywords)} 
               <h6>Flavor Text:</h6>
               <p>{card.flavorText}</p>
             </ReactToooltip>

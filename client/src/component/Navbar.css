@@ -7,3 +7,12 @@ li.dropdown:hover > .dropdown-menu {
 .dropdown-item {
 	color: #011267 !important;
 }
+
+.disabled:hover {
+	color: rgba(255,255,255,.25) !important;
+}	
+
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,248,240,1);
+}

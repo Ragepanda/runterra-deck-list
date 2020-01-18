@@ -15,7 +15,8 @@ class Set extends React.Component {
       card: {},
       isLoaded: false,
       filteredSet: baseSet,
-      decklist : []
+      decklist : [],
+      deckStyled : []
     };
     this.createHelmet = this.createHelmet.bind(this);
     this.setFilteredSet = this.setFilteredSet.bind(this);
@@ -97,23 +98,36 @@ class Set extends React.Component {
 
   addToDeck(img){
 
-    //check if its in obj
-    //if it is incr value by 1
-    //if not push in and set value to 1
-    //if at 3 dont push
-
-    if (this.state.decklist.hasOwnProperty(img.target.id) === true) {
-      if (this.state.decklist[img.target.id] < 3){
-        this.state.decklist[img.target.id] = this.state.decklist[img.target.id] + 1;
+    var cardProps = img.target.id.split(",");
+    console.log(this.state.decklist);
+    if (this.validEntry(cardProps)){
+      if (this.state.decklist.hasOwnProperty(cardProps[0]) === true) {
+        if (this.state.decklist[cardProps[0]] < 3){
+          this.state.decklist[cardProps[0]] = this.state.decklist[cardProps[0]] + 1;
+          this.state.decklist['size'] +=1;
+          if (cardProps[1] === "Champion"){
+            this.state.decklist['champions'] += 1;
+          }
+        }
+      }
+      else{
+        this.state.decklist[cardProps[0]] = 1;
         this.state.decklist['size'] +=1;
+        if (cardProps[1] === "Champion"){
+          this.state.decklist['champions'] += 1;
+        }
+        if(this.state.decklist['regions'].indexOf(cardProps[2]) === -1 ){
+          this.state.decklist['regions'] = [...this.state.decklist['regions'], cardProps[2]];
+        }
       }
     }
-    else{
-      this.state.decklist[img.target.id] = 1;
-      this.state.decklist['size'] +=1;
-    }
 
-    console.log(this.state.decklist);
+    this.setState({deckStyled : this.showDeck()});
+  }
+
+
+  validEntry(cardProps){
+    return (this.state.decklist['size'] < 40 && ( (this.state.decklist['champions'] < 6  && cardProps[1] === 'Champion') ||  cardProps[1] !== 'Champion') && (this.state.decklist['regions'].indexOf(cardProps[2]) !== -1 || this.state.decklist['regions'].length < 2) ) ? true : false;
   }
 
   createRows() {
@@ -121,9 +135,9 @@ class Set extends React.Component {
       if (card.rarity !== "None" && card.keywords.indexOf("Skill") === -1 && card.name !== "Accelerated Purrsuit")
         return (
           <div className="col-6 col-sm-6 col-md-4 col-lg-2 p-3" key={index}>
-            <a data-tip data-for={card.cardCode} onClick={this.addToDeck} href="#">
-              <img className="image-container img-fluid" id={card.cardCode} src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Cards " + card.name} />
-            </a>
+            <div className="cardHand" data-tip data-for={card.cardCode} onClick={this.addToDeck}>
+              <img className="image-container img-fluid" id={card.cardCode + "," + card.superType + "," + card.regionRef} src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Cards " + card.name} />
+            </div>
              <ReactToooltip className="set-tooltips" place="top" effect="solid" id={card.cardCode}>
                {this.keywordTooltipText(card.keywords)} 
               <h6>Flavor Text:</h6>
@@ -132,6 +146,7 @@ class Set extends React.Component {
           </div>);
       else
         return " ";
+
     });
     return list;
   }
@@ -141,15 +156,20 @@ class Set extends React.Component {
       this.setState({ isLoaded: true });
     }
     this.state.decklist['size'] = 0;
+    this.state.decklist['champions'] = 0;
+    this.state.decklist['regions'] = "";
   }
 
 
   showDeck(){
-    this.state.decklist.map((card,index) => {
-      return (
-          <li>card.code</li>
+    const deck = Object.keys(this.state.decklist).map((prop,index) => {
+      if (prop !== 'size' && prop !== 'champions' && prop !== 'regions'){
+        return (
+          <li key={index}>{prop + " " + this.state.decklist[prop]}</li>
         );
+      }
     });
+    return deck;
   }
 
   
@@ -170,7 +190,7 @@ class Set extends React.Component {
             </div>
 
             <ul class="list-unstyled components">
-                {this.showDeck()}
+                {this.state.deckStyled}
             </ul>
 
             <ul class="list-unstyled CTAs">

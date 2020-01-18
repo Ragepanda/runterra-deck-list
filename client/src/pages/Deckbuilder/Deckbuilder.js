@@ -102,15 +102,15 @@ class Set extends React.Component {
     //if not push in and set value to 1
     //if at 3 dont push
 
-    if (this.state.decklist.indexOf(img.target.id) === -1 ){
-      const obj = {'code': img.target.id, 'quantity': 1};
-      this.state.decklist.push(obj);
+    if (this.state.decklist.hasOwnProperty(img.target.id) === true) {
+      if (this.state.decklist[img.target.id] < 3){
+        this.state.decklist[img.target.id] = this.state.decklist[img.target.id] + 1;
+        this.state.decklist['size'] +=1;
+      }
     }
     else{
-      if (this.state.decklist[this.state.decklist.indexOf(img.target.id)].quantity < 3){
-        this.state.decklist[this.state.decklist.indexOf(img.target.id)].quantity+=1;
-      }
-
+      this.state.decklist[img.target.id] = 1;
+      this.state.decklist['size'] +=1;
     }
 
     console.log(this.state.decklist);
@@ -140,6 +140,7 @@ class Set extends React.Component {
     if (typeof this.state.filteredSet !== "undefined") {
       this.setState({ isLoaded: true });
     }
+    this.state.decklist['size'] = 0;
   }
 
 
@@ -161,15 +162,26 @@ class Set extends React.Component {
       <div className="wrapper" id="neg-margin">
         {this.createHelmet()}
     <nav id="sidebar">
-        <div class="sidebar-header">
-            <h3>Bootstrap Sidebar</h3>
-        </div>
+            <div id="dismiss">
+                <i class="fas fa-arrow-left">o</i>
+            </div>
+            <div class="sidebar-header">
+                <h3>Current Deck</h3>
+            </div>
 
-        <ul class="list-unstyled components">
-        {this.showDeck()}
-        </ul>
+            <ul class="list-unstyled components">
+                {this.showDeck()}
+            </ul>
 
-    </nav>
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+                </li>
+                <li>
+                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+                </li>
+            </ul>
+        </nav>
         <div id="content">
           <FilterBar setFilteredSet={this.setFilteredSet} />
           <div className="setName text-center pt-4"><h2>Legends of Runeterra Deck Builder</h2></div>

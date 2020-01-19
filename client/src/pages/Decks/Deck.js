@@ -91,24 +91,44 @@ class Deck extends React.Component {
 		}
 	}
 	makeManaCurveChart() {
-		if (this.state.isLoaded) {
-			var data = {
-				labels: ["0", "1", "2", "3", "4", "5", "6", "7+"],
-				datasets: [
-					{
-						data: this.state.manaCurve
-					}
-				]
+		if(this.state.isLoaded){
+			var data ={
+			labels: ["0", "1", "2", "3", "4", "5", "6", "7+"], 
+			datasets: [
+			{
+				data: this.state.manaCurve,
+				backgroundColor: 'rgba(51, 204, 51, 1)'//change bar color here
+
+			}
+			]};
+
+			var options = {
+			title: {
+				display: true,
+				text: "Mana Cost",
+				fontColor: 'black', //Change title font color
+        		fontSize: 20  //Change title font size
+			},
+			legend: {
+        		display: false
+        	},
+    		scales: {
+        		yAxes: [{
+        			display: false,
+        			backgroundColor: 'rgba(37, 142, 37,1)'//change grid color here
+        		}],
+        		xAxes: [{
+        			ticks:{
+        				fontColor: 'black', //Change x axes font color
+        				fontSize: 20  //Change x axes font size
+        			}
+        		}]
+    		}
 			};
-
-
-
-			return (
+			return(
 				<Bar
 					data={data}
-				//width={}
-				//height={}
-				//options={}
+					options={options}
 				/>
 			);
 		}

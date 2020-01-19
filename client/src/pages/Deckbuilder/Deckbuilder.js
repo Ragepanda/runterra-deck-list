@@ -23,6 +23,7 @@ class Set extends React.Component {
     this.createRows = this.createRows.bind(this);
     this.generatePathData = this.generatePathData.bind(this);
     this.addToDeck = this.addToDeck.bind(this);
+    this.removeCard = this.removeCard.bind(this);
   }
 
   createHelmet() {
@@ -99,35 +100,47 @@ class Set extends React.Component {
   addToDeck(img){
 
     var cardProps = img.target.id.split(",");
-    console.log(this.state.decklist);
+    console.log(cardProps[1]);
     if (this.validEntry(cardProps)){
-      if (this.state.decklist.hasOwnProperty(cardProps[0]) === true) {
-        if (this.state.decklist[cardProps[0]] < 3){
-          this.state.decklist[cardProps[0]] = this.state.decklist[cardProps[0]] + 1;
+      if (this.state.decklist.hasOwnProperty(img.target.id) === true) {
+        if (this.state.decklist[img.target.id] < 3){
+          this.state.decklist[img.target.id] = this.state.decklist[img.target.id] + 1;
           this.state.decklist['size'] +=1;
+          this.state.decklist[cardProps[2]] += 1;
           if (cardProps[1] === "Champion"){
             this.state.decklist['champions'] += 1;
           }
         }
       }
       else{
-        this.state.decklist[cardProps[0]] = 1;
+        this.state.decklist[img.target.id] = 1;
         this.state.decklist['size'] +=1;
+        this.state.decklist[cardProps[2]] += 1;
         if (cardProps[1] === "Champion"){
           this.state.decklist['champions'] += 1;
         }
-        if(this.state.decklist['regions'].indexOf(cardProps[2]) === -1 ){
-          this.state.decklist['regions'] = [...this.state.decklist['regions'], cardProps[2]];
-        }
       }
     }
-
+    console.log(this.state.decklist['champions']);
     this.setState({deckStyled : this.showDeck()});
   }
 
 
   validEntry(cardProps){
-    return (this.state.decklist['size'] < 40 && ( (this.state.decklist['champions'] < 6  && cardProps[1] === 'Champion') ||  cardProps[1] !== 'Champion') && (this.state.decklist['regions'].indexOf(cardProps[2]) !== -1 || this.state.decklist['regions'].length < 2) ) ? true : false;
+    return (this.state.decklist['size'] < 40 && ( (this.state.decklist['champions'] < 6  && cardProps[1] === 'Champion') ||  cardProps[1] !== 'Champion') && this.validRegions(cardProps) ) ? true : false;
+  }
+
+  validRegions(cardProps){
+    var rCtr = 0;
+    var regions = [];
+    if (this.state.decklist['Demacia'] > 0){ rCtr+=1; regions.push('Demacia')};
+    if (this.state.decklist['PiltoverZaun'] > 0){ rCtr+=1; regions.push('PiltoverZaun')};
+    if (this.state.decklist['Freljord'] > 0){ rCtr+=1; regions.push('Freljord')};
+    if (this.state.decklist['Ionia'] > 0){ rCtr+=1; regions.push('Ionia')};
+    if (this.state.decklist['Noxus'] > 0){ rCtr+=1; regions.push('Noxus')};
+    if (this.state.decklist['ShadowIsles'] > 0){ rCtr+=1; regions.push('ShadowIsles')};
+    return (rCtr < 2 || (rCtr === 2 && regions.includes(cardProps[2]) ) ) ? true : false;
+
   }
 
   createRows() {
@@ -136,7 +149,7 @@ class Set extends React.Component {
         return (
           <div className="col-6 col-sm-6 col-md-4 col-lg-2 p-3" key={index}>
             <div className="cardHand" data-tip data-for={card.cardCode} onClick={this.addToDeck}>
-              <img className="image-container img-fluid" id={card.cardCode + "," + card.superType + "," + card.regionRef} src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Cards " + card.name} />
+              <img className="image-container img-fluid" id={card.cardCode + "," + card.supertype + "," + card.regionRef} src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Cards " + card.name} />
             </div>
              <ReactToooltip className="set-tooltips" place="top" effect="solid" id={card.cardCode}>
                {this.keywordTooltipText(card.keywords)} 
@@ -157,15 +170,37 @@ class Set extends React.Component {
     }
     this.state.decklist['size'] = 0;
     this.state.decklist['champions'] = 0;
-    this.state.decklist['regions'] = "";
+    this.state.decklist['Demacia'] = 0;
+    this.state.decklist['PiltoverZaun'] = 0;
+    this.state.decklist['Freljord'] = 0;
+    this.state.decklist['Ionia'] = 0;
+    this.state.decklist['Noxus'] = 0;
+    this.state.decklist['ShadowIsles'] = 0;
+  }
+
+  removeCard(img){
+    
+    var cardProps = img.target.id.split(",");
+    if (this.state.decklist[img.target.id] > 0){
+      this.state.decklist[img.target.id] -=1;
+      this.state.decklist[cardProps[2]] -= 1;
+      this.state.decklist['size'] -= 1;
+      if (cardProps[1] === "Champion"){
+        this.state.decklist['champions'] -= 1;
+      }
+    }
+    this.setState(this.state);
+    this.setState({deckStyled : this.showDeck()});
+
   }
 
 
   showDeck(){
     const deck = Object.keys(this.state.decklist).map((prop,index) => {
-      if (prop !== 'size' && prop !== 'champions' && prop !== 'regions'){
+      if (prop.includes(",") && this.state.decklist[prop] > 0){
+          var cardProps = prop.split(",");
         return (
-          <li key={index}>{prop + " " + this.state.decklist[prop]}</li>
+          <div key={index} id={prop} onClick={this.removeCard}>{cardProps[0] + " " + this.state.decklist[prop]}</div>
         );
       }
     });
@@ -189,9 +224,9 @@ class Set extends React.Component {
                 <h3>Current Deck</h3>
             </div>
 
-            <ul class="list-unstyled components">
+            <div class="list-unstyled components">
                 {this.state.deckStyled}
-            </ul>
+            </div>
 
             <ul class="list-unstyled CTAs">
                 <li>

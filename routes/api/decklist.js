@@ -10,5 +10,8 @@ router
 .route("/getDecklists")
 .get(decklistController.getDecklists);
 
+router.
+route("/getDeckById")
+.get(decklistController.getDeckById);
 
 module.exports = router;

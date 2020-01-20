@@ -4,11 +4,16 @@ export default {
 
     getTest: function(){
         var url = window.location.hostname;
-        return axios.get("http://"+url+":5000/api/test/hello")
+        return axios.get("http://"+url+":5000/api/test/hello");
     },
 
     getDeckLists: function(){
         var url = window.location.hostname;
-        return axios.get("http://"+url+":5000/api/decklist/getDecklists")
+        return axios.get("http://"+url+":5000/api/decklist/getDecklists");
+    },
+
+    getDeckById: function(id){
+        var url = window.location.hostname;
+        return axios.get("http://"+url+":5000/api/decklist/getDeckById", {params: {id:id}});
     }
 }

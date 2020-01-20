@@ -20,11 +20,16 @@ class Deck extends React.Component {
     componentDidMount() {
         api.getDeckLists()
             .then(res => {
-                console.log(res.data);
-                this.setState({
-                    isLoaded: true,
-                    decks: res.data
-                });
+                api.getDeckById(1)
+                    .then(response => {
+                        console.log(response.data);
+                        console.log(res.data);
+                        this.setState({
+                            isLoaded: true,
+                            decks: res.data
+                        });
+                    })
+
             })
             .catch(err => {
                 this.setState({
@@ -68,7 +73,7 @@ class Deck extends React.Component {
 
                     <div className="setName text-center pt-4"><h2>Legends of Runeterra Decklists</h2></div>
                     <div className="setName text-center pb-5 pt-1"><p>This is the deck list of Legends of Runeterra decks in the Legends of Runeterra base set. Runeterra Hub is the spot to view new Legends of Runeterra decks.</p></div>
-                    
+
                     <div className="row text-center">
                         {this.createRows()}
                     </div>

@@ -15,7 +15,7 @@ module.exports ={
             {
                 id: 2, 
                 code: 'CEBAKAIFBYKSKJZVBAAQEBQIEQVC2NBWG4AACAIBAIOQ', 
-                name: "Some Spiders In This One", 
+                name: "Some Spiders In This One.", 
                 description: "This is a really cool deck meant to test our API, this is the second one.", 
                 cardArtId: "01PZ017" 
             },

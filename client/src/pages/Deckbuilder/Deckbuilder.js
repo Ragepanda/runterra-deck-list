@@ -100,7 +100,6 @@ class Set extends React.Component {
   addToDeck(img){
 
     var cardProps = img.target.id.split(",");
-    console.log(cardProps[1]);
     if (this.validEntry(cardProps)){
       if (this.state.decklist.hasOwnProperty(img.target.id) === true) {
         if (this.state.decklist[img.target.id] < 3){
@@ -121,7 +120,6 @@ class Set extends React.Component {
         }
       }
     }
-    console.log(this.state.decklist['champions']);
     this.setState({deckStyled : this.showDeck()});
   }
 
@@ -149,7 +147,7 @@ class Set extends React.Component {
         return (
           <div className="col-6 col-sm-6 col-md-4 col-lg-2 p-3" key={index}>
             <div className="cardHand" data-tip data-for={card.cardCode} onClick={this.addToDeck}>
-              <img className="image-container img-fluid" id={card.cardCode + "," + card.supertype + "," + card.regionRef} src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Cards " + card.name} />
+              <img className="image-container img-fluid" id={card.cardCode + "," + card.supertype + "," + card.regionRef + "," + card.name + "," + card.cost} src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Deck Builder " + card.name} />
             </div>
              <ReactToooltip className="set-tooltips" place="top" effect="solid" id={card.cardCode}>
                {this.keywordTooltipText(card.keywords)} 
@@ -179,7 +177,7 @@ class Set extends React.Component {
   }
 
   removeCard(img){
-    
+    img.stopPropagation();
     var cardProps = img.target.id.split(",");
     if (this.state.decklist[img.target.id] > 0){
       this.state.decklist[img.target.id] -=1;
@@ -199,8 +197,16 @@ class Set extends React.Component {
     const deck = Object.keys(this.state.decklist).map((prop,index) => {
       if (prop.includes(",") && this.state.decklist[prop] > 0){
           var cardProps = prop.split(",");
+          //var imgUrl = { background: "linear-gradient(90deg, rgb(52,41,54) 30%, rgba(52,41,54,0) 70%), url(" + "/img/cards/" + cardProps[0] + ".png) right center no-repeat" };
         return (
-          <div key={index} id={prop} onClick={this.removeCard}>{cardProps[0] + " " + this.state.decklist[prop]}</div>
+          <div className="cardTile rounded divText" key={index} id={prop} onClick={this.removeCard} >
+          <div className="row justify-content-center">
+            <div className="col-1 rounded-circle cmc marginTop text-center">{cardProps[4]}</div>
+            <div className="col-7 cardName marginTop " id={prop} onClick={this.removeCard}>{cardProps[3]}</div>
+            <div className="col-1 quanBack rounded marginTop text-center">{this.state.decklist[prop]}</div>
+          </div>
+            <img className="image-container img-fluid" src={"/img/cards/" + cardProps[0] + ".png"} alt={"Legends of Runeterra Deck Builder " + cardProps[3]} /> 
+          </div>
         );
       }
     });
@@ -227,15 +233,6 @@ class Set extends React.Component {
             <div class="list-unstyled components">
                 {this.state.deckStyled}
             </div>
-
-            <ul class="list-unstyled CTAs">
-                <li>
-                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
-                </li>
-                <li>
-                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
-                </li>
-            </ul>
         </nav>
         <div id="content">
           <FilterBar setFilteredSet={this.setFilteredSet} />

@@ -26,6 +26,81 @@
     cursor: pointer;
 }
 
+.cardTile {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    width: 90%;
+    height: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;    
+    border: 3px solid #FFF8F0;
+    margin-bottom: 2px;
+}
+
+.cardTile img {
+    position: relative;
+    right: -60px;
+    top: -100px;
+}
+
+.cardTile::before {
+    content: '';
+    position:absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, rgb(52,41,54) 45%, rgba(52,41,54,0) 70%) right no-repeat;
+    z-index: 1;  
+
+}
+
+.marginTop{
+    top: 50%;
+    transform: translate(0%, 20%);
+}
+
+
+.cmc {
+
+    z-index: 3;
+    color: #FFF8F0;
+    background-color: #1f3275;
+    padding: 2px;
+    border: 2px solid #D68FD6;
+}
+
+.quanBack {
+    z-index: 3;
+    color: #FFF8F0;
+    background-color: #2a2a2a;
+        padding: 2px;
+    border: 2px solid #D68FD6;
+}
+
+.cardName {
+    position: relative;
+    z-index: 3;
+    color: #FFF8F0;
+    font-size: 11px;
+        text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;  
+}
+
+.quantity {
+    position: relative;
+
+    z-index: 3;
+    color: #FFF8F0;
+
+}
+
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */

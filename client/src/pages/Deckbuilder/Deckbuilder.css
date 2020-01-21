@@ -280,25 +280,31 @@ a.article:hover {
     MEDIAQUERIES
 ----------------------------------------------------- */
 
-@media (max-width: 991px) {
-    .deckbuilder-row{
+@media(max-width: 991px) {
+    .medium-card-override{
         flex: 0 0 50%;
         max-width: 50%;
     }
-    /* #sidebar.active {
+}
+
+@media (max-width: 767px){
+    .medium-card-override{
+        
+    }
+    #sidebar.active {
         width: 100%;
         text-align: center;
     }
     #sidebar.inactive {
         display: none;
-    } */
-    /* #content.active {
+    } 
+     #content.active {
         width: 100%;
         text-align: center;
     }
     #content.inactive {
         display: none;
-    } */
+    }
 }
 
 @media (max-width: 991px){

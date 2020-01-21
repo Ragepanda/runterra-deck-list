@@ -145,7 +145,7 @@ class Set extends React.Component {
     this.setState({sidebarClass : "active"});
     this.setState({contentClass : "inactive"});
     this.setState({buttonClass : "inactive"});
-    this.setState({mediumSidebarActive: "deckbuilder-row"});
+    this.setState({mediumSidebarActive: "medium-card-override"});
   }
 
   validEntry(cardProps){

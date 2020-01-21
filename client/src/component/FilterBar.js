@@ -862,19 +862,19 @@ class FilterBar extends React.Component {
                             
                             <div className="text-center">Card Type</div>
                             <div className="row justify-content-center">
-                            <button type="button" className={this.state.chamClassname +" col-10 col-xs-10 col-sm-4 col-md-3 col-lg-auto m-lg-1 mt-1 mb-1 mr-1"} onClick={this.chamState}>Champion</button>
-                            <button type="button" className={this.state.spelClassname +" col-10 col-xs-10 col-sm-4 col-md-3 col-lg-auto m-lg-1 mt-0 mt-sm-1 mb-1 mr-1"} onClick={this.spelState}>Spell</button>
-                            <button type="button" className={this.state.follClassname +" col-10 col-xs-10 col-sm-4 col-md-3 col-lg-auto m-lg-1 mt-0 mt-md-1 mb-md-1 mr-1"} onClick={this.follState}>Follower</button>
+                            <button type="button" className={this.state.chamClassname +" col-10 col-xs-10 col-sm-4 col-md-5 col-lg-auto m-lg-1 mt-1 mb-1 mr-1"} onClick={this.chamState}>Champion</button>
+                            <button type="button" className={this.state.spelClassname +" col-10 col-xs-10 col-sm-4 col-md-5 col-lg-auto m-lg-1 mt-0 mt-sm-1 mb-1 mr-1"} onClick={this.spelState}>Spell</button>
+                            <button type="button" className={this.state.follClassname +" col-10 col-xs-10 col-sm-4 col-md-5 col-lg-auto m-lg-1 mt-0 mt-md-1 mb-md-1 mr-1"} onClick={this.follState}>Follower</button>
                             </div>          
                           </div>
                           <div className="card-body col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">
                             
                             <div className="text-center">Rarity</div>
                             <div className="row justify-content-center">
-                            <button type="button" className={this.state.commClassname +" text-center col-5 col-xs-5 col-md-2 mt-1 mb-1 mr-1    col-lg-auto    m-lg-1"} onClick={this.commState}>Comm.</button>
-                            <button type="button" className={this.state.rareClassname +" text-center col-5 col-xs-5 col-md-2 mt-1 mb-1 mr-1    col-lg-auto    m-lg-1"} onClick={this.rareState}>Rare</button>
-                            <button type="button" className={this.state.epicClassname +" text-center col-5 col-xs-5 col-md-2 mt-1 mb-md-1 mr-1 col-lg-auto m-lg-1"} onClick={this.epicState}>Epic</button>
-                            <button type="button" className={this.state.legnClassname +" text-center col-5 col-xs-5 col-md-2 mt-1 mb-md-1 mr-1 col-lg-auto m-lg-1"} onClick={this.legnState}>Champ.</button>
+                            <button type="button" className={this.state.commClassname +" text-center col-5 col-xs-5 col-md-5 mt-1 mb-1 mr-1    col-lg-auto    m-lg-1"} onClick={this.commState}>Comm.</button>
+                            <button type="button" className={this.state.rareClassname +" text-center col-5 col-xs-5 col-md-5 mt-1 mb-1 mr-1    col-lg-auto    m-lg-1"} onClick={this.rareState}>Rare</button>
+                            <button type="button" className={this.state.epicClassname +" text-center col-5 col-xs-5 col-md-5 mt-1 mb-md-1 mr-1 col-lg-auto m-lg-1"} onClick={this.epicState}>Epic</button>
+                            <button type="button" className={this.state.legnClassname +" text-center col-5 col-xs-5 col-md-5 mt-1 mb-md-1 mr-1 col-lg-auto m-lg-1"} onClick={this.legnState}>Champ.</button>
                             </div>
                           </div>
 

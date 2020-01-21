@@ -5,6 +5,7 @@ import keywordSet from "../../card_info/globals-en_us.json"
 import FilterBar from "../../component/FilterBar";
 import ReactToooltip from "react-tooltip";
 import "./Deckbuilder.css";
+const {DeckEncoder, Card} = require('runeterra'); //We need to import this card object to properly pass stuff to the encoder
 
 
 
@@ -30,6 +31,7 @@ class Set extends React.Component {
     this.removeCard = this.removeCard.bind(this);
     this.hideBar = this.hideBar.bind(this);
     this.openSidebar = this.openSidebar.bind(this);
+    this.encodeDeck  = this.encodeDeck.bind(this);
   }
 
   createHelmet() {
@@ -182,6 +184,19 @@ class Set extends React.Component {
     return list;
   }
 
+  encodeDeck(){
+    var newDeck =[];
+    Object.keys(this.state.decklist).map((prop,index) => {
+          if (prop.includes(",") && this.state.decklist[prop] > 0){
+              var cardProps = prop.split(",");
+              newDeck.push(new Card(cardProps[0], this.state.decklist[cardProps[0]]));
+          }
+        });
+    const deckStr = DeckEncoder.encode(newDeck);
+
+    console.log(deckStr);
+  }
+
   componentDidMount() {
     if (typeof this.state.filteredSet !== "undefined") {
       this.setState({ isLoaded: true });
@@ -253,6 +268,9 @@ class Set extends React.Component {
 
             <div class="list-unstyled components">
                 {this.state.deckStyled}
+            </div>
+            <div>
+              <a className="btn btn-outline buttonDiv" onClick = {this.encodeDeck} >Submit</a>
             </div>
         </nav>
         <div id="content" className={this.state.contentClass}>

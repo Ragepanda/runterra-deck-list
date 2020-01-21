@@ -28,21 +28,21 @@ class Deck extends React.Component {
 		for (var i = 0; i < this.state.deck.length; i++) {
 			//console.log(this.state.deck[i].code);
 			for (var j = 0; j < baseSet.length; j++) {
-				if (this.state.deck[i].code == baseSet[j].cardCode) {
+				if (this.state.deck[i].code === baseSet[j].cardCode) {
 					//console.log(baseSet[j].name)
 					if (baseSet[j].cost >= 7)
 						this.state.manaCurve[7] += this.state.deck[i].count;
 					else
 						this.state.manaCurve[baseSet[j].cost] += this.state.deck[i].count;
-					if (baseSet[j].type == "Spell") {
+					if (baseSet[j].type === "Spell") {
 						baseSet[j].count = this.state.deck[i].count;
 						this.state.spells.push(baseSet[j]);
 					}
-					if (baseSet[j].type == "Unit" && baseSet[j].supertype != "Champion") {
+					if (baseSet[j].type === "Unit" && baseSet[j].supertype !== "Champion") {
 						baseSet[j].count = this.state.deck[i].count;
 						this.state.followers.push(baseSet[j]);
 					}
-					if (baseSet[j].type == "Unit" && baseSet[j].supertype == "Champion") {
+					if (baseSet[j].type === "Unit" && baseSet[j].supertype === "Champion") {
 						baseSet[j].count = this.state.deck[i].count;
 						this.state.champions.push(baseSet[j]);
 					}

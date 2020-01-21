@@ -1,0 +1,21 @@
+.deck-box{
+        position: relative;
+        text-align: center;
+        transition: transform .1s;     
+}
+
+.deck-name {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .deck-image{
+      border-radius: 50%;
+  }
+
+
+  .deck-box:hover{
+      transform: scale(1.2);
+  }

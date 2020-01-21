@@ -21,3 +21,11 @@
     display: inline;
     margin-bottom: -6px;
 }
+
+.card-image{
+    transition: transform .1s;
+}
+
+.card-image:hover{
+    transform: scale(1.1);
+}

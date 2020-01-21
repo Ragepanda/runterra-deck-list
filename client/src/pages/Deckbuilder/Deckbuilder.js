@@ -19,7 +19,8 @@ class Set extends React.Component {
       deckStyled : [],
       arrow: "<",
       sidebarClass : "active",
-      contentClass : "inactive"
+      contentClass : "inactive",
+      buttonClass  : "inactive"
     };
     this.createHelmet = this.createHelmet.bind(this);
     this.setFilteredSet = this.setFilteredSet.bind(this);
@@ -28,6 +29,7 @@ class Set extends React.Component {
     this.addToDeck = this.addToDeck.bind(this);
     this.removeCard = this.removeCard.bind(this);
     this.hideBar = this.hideBar.bind(this);
+    this.openSidebar = this.openSidebar.bind(this);
   }
 
   createHelmet() {
@@ -129,16 +131,18 @@ class Set extends React.Component {
 
 
   hideBar(e){
-    if (this.state.sidebarClass === "active"){
-      this.setState({arrow : ">"});
-      this.setState({sidebarClass : "inactive"});
-      this.setState({contentClass : "active"});
-    }
-    else{
-      this.setState({arrow : "<"});
-      this.setState({sidebarClass : "active"});
-      this.setState({contentClass : "inactive"});
-    }
+    this.setState({arrow : ">"});
+    this.setState({sidebarClass : "inactive"});
+    this.setState({contentClass : "active"});
+    this.setState({buttonClass : "active"});
+
+  }
+
+  openSidebar(e){
+    this.setState({arrow : "<"});
+    this.setState({sidebarClass : "active"});
+    this.setState({contentClass : "inactive"});
+    this.setState({buttonClass : "inactive"});
   }
 
   validEntry(cardProps){
@@ -158,18 +162,17 @@ class Set extends React.Component {
 
   }
 
+
   createRows() {
     const list = this.state.filteredSet.map((card, index) => {
-      if (card.rarity !== "None" && card.keywords.indexOf("Skill") === -1 && card.name !== "Accelerated Purrsuit")
+      if (card.rarity !== "None" && card.keywords.indexOf("Skill") === -1 && card.name !== "Accelerated Purrsuit" )
         return (
-          <div className="col-6 col-sm-6 col-md-4 col-lg-2 p-3" key={index}>
+          <div className="col-6 col-sm-6 col-md-3 col-lg-2 p-3" key={index}>
             <div className="cardHand" data-tip data-for={card.cardCode} onClick={this.addToDeck}>
               <img className="image-container img-fluid" id={card.cardCode + "," + card.supertype + "," + card.regionRef + "," + card.name + "," + card.cost} src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Deck Builder " + card.name} />
             </div>
              <ReactToooltip className="set-tooltips" place="top" effect="solid" id={card.cardCode}>
-               {this.keywordTooltipText(card.keywords)} 
-              <h6>Flavor Text:</h6>
-              <p>{card.flavorText}</p>
+               {card.keywords.length > 0 ? this.keywordTooltipText(card.keywords) : card.name}
             </ReactToooltip> 
           </div>);
       else
@@ -253,7 +256,9 @@ class Set extends React.Component {
             </div>
         </nav>
         <div id="content" className={this.state.contentClass}>
-          <FilterBar setFilteredSet={this.setFilteredSet} />
+        <FilterBar className="filter" setFilteredSet={this.setFilteredSet} />
+          <div id="sidebarBtn" className={this.state.buttonClass + " " + "rounded text-center"} onClick={this.openSidebar}>&#62;</div>
+
           <div className="setName text-center pt-4"><h2>Legends of Runeterra Deck Builder</h2></div>
           <div className="setName text-center pb-5 pt-1"><p>This is a Legends of Runeterra Deckbuilder. This deckbuilder will let you filter cards by type, keywords and name. The Legends of Runeterra Deck builder here on Runeterra Nexus is the best way to create new Runeterra decks.</p></div>
           <div className="row">{this.createRows()}</div>

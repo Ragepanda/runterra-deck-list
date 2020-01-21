@@ -44,7 +44,7 @@ class Deck extends React.Component {
         const list = this.state.decks.map((deck, index) => {
             return (
                 <div className="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 p-4 deck-box" key={deck.id}>
-                    <a data-tip data-for={deck.id} href={"/deck_lists/" + deck.id} className="deck-link">
+                    <a data-tip data-for={deck.id} href={"/deck_lists/"+deck.name.replace(/ /g, "_") +"/"+ deck.id} className="deck-link">
                         <img className="image-container img-fluid deck-image" src={"/img/cards/" + deck.cardArtId + "-full.png"} alt={"Legends of Runeterra Decks " + deck.name} />
                         <div className="deck-name">{deck.name}</div>
                     </a>

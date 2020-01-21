@@ -3,8 +3,10 @@ import baseSet from "../../card_info/set1.json";
 import { Helmet } from "react-helmet";
 import { Bar } from 'react-chartjs-2';
 import ReactToooltip from 'react-tooltip';
+import api from '../../utils/api';
 import "./Deck.css"
 const { DeckEncoder } = require('runeterra');
+
 
 
 class Deck extends React.Component {
@@ -25,36 +27,46 @@ class Deck extends React.Component {
 
 
 	componentDidMount() {
-		for (var i = 0; i < this.state.deck.length; i++) {
-			//console.log(this.state.deck[i].code);
-			for (var j = 0; j < baseSet.length; j++) {
-				if (this.state.deck[i].code === baseSet[j].cardCode) {
-					//console.log(baseSet[j].name)
-					if (baseSet[j].cost >= 7)
-						this.state.manaCurve[7] += this.state.deck[i].count;
-					else
-						this.state.manaCurve[baseSet[j].cost] += this.state.deck[i].count;
-					if (baseSet[j].type === "Spell") {
-						baseSet[j].count = this.state.deck[i].count;
-						this.state.spells.push(baseSet[j]);
-					}
-					if (baseSet[j].type === "Unit" && baseSet[j].supertype !== "Champion") {
-						baseSet[j].count = this.state.deck[i].count;
-						this.state.followers.push(baseSet[j]);
-					}
-					if (baseSet[j].type === "Unit" && baseSet[j].supertype === "Champion") {
-						baseSet[j].count = this.state.deck[i].count;
-						this.state.champions.push(baseSet[j]);
-					}
 
-				}
-			}
-		}
-		this.setState({ isLoaded: true })
+		api.getDeckById(this.props.match.params.id)
+			.then((res)=>{
+				this.setState({deck: DeckEncoder.decode(res.data.code)}, ()=>{
+					for (var i = 0; i < this.state.deck.length; i++) {
+						//console.log(this.state.deck[i].code);
+						for (var j = 0; j < baseSet.length; j++) {
+							if (this.state.deck[i].code === baseSet[j].cardCode) {
+								//console.log(baseSet[j].name)
+								if (baseSet[j].cost >= 7)
+									this.state.manaCurve[7] += this.state.deck[i].count;
+								else
+									this.state.manaCurve[baseSet[j].cost] += this.state.deck[i].count;
+								if (baseSet[j].type === "Spell") {
+									baseSet[j].count = this.state.deck[i].count;
+									this.state.spells.push(baseSet[j]);
+								}
+								if (baseSet[j].type === "Unit" && baseSet[j].supertype !== "Champion") {
+									baseSet[j].count = this.state.deck[i].count;
+									this.state.followers.push(baseSet[j]);
+								}
+								if (baseSet[j].type === "Unit" && baseSet[j].supertype === "Champion") {
+									baseSet[j].count = this.state.deck[i].count;
+									this.state.champions.push(baseSet[j]);
+								}
+			
+							}
+						}
+					}
+					this.setState({ isLoaded: true });
+					console.log(this.state.manaCurve)
+				})
+			})
+
+		
+		
 		//console.log(this.state.spells)
 		//console.log(this.state.followers)
 		//console.log(this.state.champions)
-		console.log(this.state.manaCurve)
+		
 	}
 
 	makeSpellList() {
@@ -153,6 +165,8 @@ class Deck extends React.Component {
 		var ulStyle ={
 			listStyleType: "none"
 		};
+		if(this.state.isLoaded ===true){
+		
 		return (
 			<div class="container">
 				<Helmet>
@@ -186,7 +200,14 @@ class Deck extends React.Component {
 					{this.makeManaCurveChart()}
 				</div>
 			</div>
-		);
+			);
+		}
+
+		else{
+			return(
+				<div>Loading...</div>
+			);
+		}
 	}
 
 }

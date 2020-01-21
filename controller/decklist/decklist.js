@@ -59,9 +59,7 @@ module.exports ={
         var card;
 
         for(var x = 0; x <cards.length; x++){
-            console.log(cards[x].id +" vs. "+parseInt(id));
             if(cards[x].id === parseInt(id)){
-                console.log("ID match");
                 card = cards[x];
                 break;
             }

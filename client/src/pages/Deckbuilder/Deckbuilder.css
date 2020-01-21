@@ -138,6 +138,14 @@
   
 }
 
+.deck-stats{
+    width:25%;
+    padding:5px;
+    padding-top:0px;
+    margin: 0px;
+    display: inline-block;
+}
+
 #dismiss {
     width: 35px;
     height: 35px;

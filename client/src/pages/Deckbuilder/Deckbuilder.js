@@ -15,12 +15,12 @@ class Set extends React.Component {
       card: {},
       isLoaded: false,
       filteredSet: baseSet,
-      decklist : [],
-      deckStyled : [],
+      decklist: [],
+      deckStyled: [],
       arrow: "<",
-      sidebarClass : "active",
-      contentClass : "inactive",
-      buttonClass  : "inactive",
+      sidebarClass: "active",
+      contentClass: "inactive",
+      buttonClass: "inactive",
       mediumSidebarActive: ""
     };
     this.createHelmet = this.createHelmet.bind(this);
@@ -70,9 +70,9 @@ class Set extends React.Component {
             definition = keywordSet.keywords[keywordIndex].description;
             isSvgFill = keywordSet.keywords[keywordIndex].svgFill;
             fill = keywordSet.keywords[keywordIndex].fill;
-            
-            if (typeof keywordSet.keywords[keywordIndex].path === "undefined") 
-              path = [];   
+
+            if (typeof keywordSet.keywords[keywordIndex].path === "undefined")
+              path = [];
             else
               path = keywordSet.keywords[keywordIndex].path;
           }
@@ -104,79 +104,79 @@ class Set extends React.Component {
     }
   }
 
-  addToDeck(img){
+  addToDeck(img) {
 
     var cardProps = img.target.id.split(",");
-    if (this.validEntry(cardProps)){
+    if (this.validEntry(cardProps)) {
       if (this.state.decklist.hasOwnProperty(img.target.id) === true) {
-        if (this.state.decklist[img.target.id] < 3){
+        if (this.state.decklist[img.target.id] < 3) {
           this.state.decklist[img.target.id] = this.state.decklist[img.target.id] + 1;
-          this.state.decklist['size'] +=1;
+          this.state.decklist['size'] += 1;
           this.state.decklist[cardProps[2]] += 1;
-          if (cardProps[1] === "Champion"){
+          if (cardProps[1] === "Champion") {
             this.state.decklist['champions'] += 1;
           }
         }
       }
-      else{
+      else {
         this.state.decklist[img.target.id] = 1;
-        this.state.decklist['size'] +=1;
+        this.state.decklist['size'] += 1;
         this.state.decklist[cardProps[2]] += 1;
-        if (cardProps[1] === "Champion"){
+        if (cardProps[1] === "Champion") {
           this.state.decklist['champions'] += 1;
         }
       }
     }
-    this.setState({deckStyled : this.showDeck()});
+    this.setState({ deckStyled: this.showDeck() });
   }
 
 
-  hideBar(e){
-    this.setState({arrow : ">"});
-    this.setState({sidebarClass : "inactive"});
-    this.setState({contentClass : "active"});
-    this.setState({buttonClass : "active"});
-    this.setState({mediumSidebarActive: ""})
+  hideBar(e) {
+    this.setState({ arrow: ">" });
+    this.setState({ sidebarClass: "inactive" });
+    this.setState({ contentClass: "active" });
+    this.setState({ buttonClass: "active" });
+    this.setState({ mediumSidebarActive: "" })
 
   }
 
-  openSidebar(e){
-    this.setState({arrow : "<"});
-    this.setState({sidebarClass : "active"});
-    this.setState({contentClass : "inactive"});
-    this.setState({buttonClass : "inactive"});
-    this.setState({mediumSidebarActive: "medium-card-override"});
+  openSidebar(e) {
+    this.setState({ arrow: "<" });
+    this.setState({ sidebarClass: "active" });
+    this.setState({ contentClass: "inactive" });
+    this.setState({ buttonClass: "inactive" });
+    this.setState({ mediumSidebarActive: "medium-card-override" });
   }
 
-  validEntry(cardProps){
-    return (this.state.decklist['size'] < 40 && ( (this.state.decklist['champions'] < 6  && cardProps[1] === 'Champion') ||  cardProps[1] !== 'Champion') && this.validRegions(cardProps[2]) ) ? true : false;
+  validEntry(cardProps) {
+    return (this.state.decklist['size'] < 40 && ((this.state.decklist['champions'] < 6 && cardProps[1] === 'Champion') || cardProps[1] !== 'Champion') && this.validRegions(cardProps[2])) ? true : false;
   }
 
-  validRegions(cardRegion){
+  validRegions(cardRegion) {
     var rCtr = 0;
     var regions = [];
-    if (this.state.decklist['Demacia'] > 0){ rCtr+=1; regions.push('Demacia')};
-    if (this.state.decklist['PiltoverZaun'] > 0){ rCtr+=1; regions.push('PiltoverZaun')};
-    if (this.state.decklist['Freljord'] > 0){ rCtr+=1; regions.push('Freljord')};
-    if (this.state.decklist['Ionia'] > 0){ rCtr+=1; regions.push('Ionia')};
-    if (this.state.decklist['Noxus'] > 0){ rCtr+=1; regions.push('Noxus')};
-    if (this.state.decklist['ShadowIsles'] > 0){ rCtr+=1; regions.push('ShadowIsles')};
-    return (rCtr < 2 || (rCtr === 2 && regions.includes(cardRegion) ) ) ? true : false;
+    if (this.state.decklist['Demacia'] > 0) { rCtr += 1; regions.push('Demacia') };
+    if (this.state.decklist['PiltoverZaun'] > 0) { rCtr += 1; regions.push('PiltoverZaun') };
+    if (this.state.decklist['Freljord'] > 0) { rCtr += 1; regions.push('Freljord') };
+    if (this.state.decklist['Ionia'] > 0) { rCtr += 1; regions.push('Ionia') };
+    if (this.state.decklist['Noxus'] > 0) { rCtr += 1; regions.push('Noxus') };
+    if (this.state.decklist['ShadowIsles'] > 0) { rCtr += 1; regions.push('ShadowIsles') };
+    return (rCtr < 2 || (rCtr === 2 && regions.includes(cardRegion))) ? true : false;
 
   }
 
 
   createRows() {
     const list = this.state.filteredSet.map((card, index) => {
-      if (card.rarity !== "None" && card.keywords.indexOf("Skill") === -1 && card.name !== "Accelerated Purrsuit" && this.validRegions(card.regionRef) === true  )
+      if (card.rarity !== "None" && card.keywords.indexOf("Skill") === -1 && card.name !== "Accelerated Purrsuit" && this.validRegions(card.regionRef) === true)
         return (
-          <div className={"col-6 col-sm-6 col-md-3 col-lg-2 p-3 "+this.state.mediumSidebarActive} key={index}>
+          <div className={"col-6 col-sm-6 col-md-3 col-lg-2 p-3 " + this.state.mediumSidebarActive} key={index}>
             <div className="cardHand" data-tip data-for={card.cardCode} onClick={this.addToDeck}>
               <img className="image-container img-fluid" id={card.cardCode + "," + card.supertype + "," + card.regionRef + "," + card.name + "," + card.cost} src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Deck Builder " + card.name} />
             </div>
-             <ReactToooltip className="set-tooltips" place="top" effect="solid" id={card.cardCode}>
-               {card.keywords.length > 0 ? this.keywordTooltipText(card.keywords) : card.name}
-            </ReactToooltip> 
+            <ReactToooltip className="set-tooltips" place="top" effect="solid" id={card.cardCode}>
+              {card.keywords.length > 0 ? this.keywordTooltipText(card.keywords) : card.name}
+            </ReactToooltip>
           </div>);
       else
         return " ";
@@ -189,7 +189,7 @@ class Set extends React.Component {
     if (typeof this.state.filteredSet !== "undefined") {
       this.setState({ isLoaded: true });
     }
-    this.setState({sidebarClass: "active"});
+    this.setState({ sidebarClass: "active" });
     this.state.decklist['size'] = 0;
     this.state.decklist['champions'] = 0;
     this.state.decklist['Demacia'] = 0;
@@ -200,36 +200,36 @@ class Set extends React.Component {
     this.state.decklist['ShadowIsles'] = 0;
   }
 
-  removeCard(img){
+  removeCard(img) {
     img.stopPropagation();
     var cardProps = img.target.id.split(",");
-    if (this.state.decklist[img.target.id] > 0){
-      this.state.decklist[img.target.id] -=1;
+    if (this.state.decklist[img.target.id] > 0) {
+      this.state.decklist[img.target.id] -= 1;
       this.state.decklist[cardProps[2]] -= 1;
       this.state.decklist['size'] -= 1;
-      if (cardProps[1] === "Champion"){
+      if (cardProps[1] === "Champion") {
         this.state.decklist['champions'] -= 1;
       }
     }
     this.setState(this.state);
-    this.setState({deckStyled : this.showDeck()});
+    this.setState({ deckStyled: this.showDeck() });
 
   }
 
 
-  showDeck(){
-    const deck = Object.keys(this.state.decklist).map((prop,index) => {
-      if (prop.includes(",") && this.state.decklist[prop] > 0){
-          var cardProps = prop.split(",");
-          //var imgUrl = { background: "linear-gradient(90deg, rgb(52,41,54) 30%, rgba(52,41,54,0) 70%), url(" + "/img/cards/" + cardProps[0] + ".png) right center no-repeat" };
+  showDeck() {
+    const deck = Object.keys(this.state.decklist).map((prop, index) => {
+      if (prop.includes(",") && this.state.decklist[prop] > 0) {
+        var cardProps = prop.split(",");
+        //var imgUrl = { background: "linear-gradient(90deg, rgb(52,41,54) 30%, rgba(52,41,54,0) 70%), url(" + "/img/cards/" + cardProps[0] + ".png) right center no-repeat" };
         return (
           <div className="cardTile rounded divText" key={index} id={prop} onClick={this.removeCard} >
-          <div className="row justify-content-center">
-            <div className="col-1 rounded-circle cmc marginTop text-center">{cardProps[4]}</div>
-            <div className="col-7 cardName marginTop " id={prop} onClick={this.removeCard}>{cardProps[3]}</div>
-            <div className="col-1 quanBack rounded marginTop text-center">{this.state.decklist[prop]}</div>
-          </div>
-            <img className="image-container img-fluid" src={"/img/cards/" + cardProps[0] + ".png"} alt={"Legends of Runeterra Deck Builder " + cardProps[3]} /> 
+            <div className="row justify-content-center">
+              <div className="col-1 rounded-circle cmc marginTop text-center">{cardProps[4]}</div>
+              <div className="col-7 cardName marginTop " id={prop} onClick={this.removeCard}>{cardProps[3]}</div>
+              <div className="col-1 quanBack rounded marginTop text-center">{this.state.decklist[prop]}</div>
+            </div>
+            <img className="image-container img-fluid" src={"/img/cards/" + cardProps[0] + ".png"} alt={"Legends of Runeterra Deck Builder " + cardProps[3]} />
           </div>
         );
       }
@@ -237,7 +237,7 @@ class Set extends React.Component {
     return deck;
   }
 
-  
+
   render() {
     if (this.state.isLoaded === false) {
       return <div><p>Loading...</p></div>
@@ -246,20 +246,35 @@ class Set extends React.Component {
 
       <div className="wrapper" id="neg-margin">
         {this.createHelmet()}
-    <nav id="sidebar" className={this.state.sidebarClass}>
-            <div class="sidebar-header">
-                <h3>Current Deck</h3>
-            </div>
-            <div id="dismiss" onClick={this.hideBar}>
-                {this.state.arrow}
+        <nav id="sidebar" className={this.state.sidebarClass}>
+          <div class="sidebar-header">
+            <h3>Current Deck</h3>
+            <div id="deck-info">
+              <div className="deck-stats">
+                <div>{this.state.decklist['size']}/40</div>
+                <div> Total </div>
+              </div>
+              <div className="deck-stats">
+                <div>{this.state.decklist['champions']}/6</div>
+                <div>
+                  <svg height="24" width="24" viewBox="0 0 24 24">
+                    <path d="M17.59 7.154L20.186 2s.875 1.303 1.24 3.37l.04.242-1.28 1.74H21.6c0 .35-.038.702-.085 1.053l-.05.35-1.954 2.61h1.28a18.205 18.205 0 01-2.425 4.147l.066-.089-.004.265c-.182 4.989-4.726 6.262-4.908 6.31l-.005.002.606-3.946h1.348v-3.345l1.347-1.338V9.358l-3.705 2.675v3.479h-2.022v-3.479L7.384 9.358v4.013L8.73 14.71v3.345h1.415L10.82 22s-4.857-1.222-5.048-6.312l-.004-.196-.001.02c-1.05-1.288-1.817-2.576-2.3-3.812l-.126-.335H4.69l-2.022-2.61C2.6 8.222 2.6 7.82 2.6 7.352h1.482L2.735 5.612C3.072 3.405 4.015 2 4.015 2l2.594 5.154a6.33 6.33 0 015.258-3.143l.233-.004.233.004a6.33 6.33 0 015.258 3.143L20.185 2z" fill="#a5a0bb" fill-rule="nonzero"></path>
+                  </svg>
+                </div>
+              </div>
             </div>
 
-            <div class="list-unstyled components">
-                {this.state.deckStyled}
-            </div>
+          </div>
+          <div id="dismiss" onClick={this.hideBar}>
+            {this.state.arrow}
+          </div>
+
+          <div class="list-unstyled components">
+            {this.state.deckStyled}
+          </div>
         </nav>
         <div id="content" className={this.state.contentClass}>
-        <FilterBar className="filter" setFilteredSet={this.setFilteredSet} />
+          <FilterBar className="filter" setFilteredSet={this.setFilteredSet} />
           <div id="sidebarBtn" className={this.state.buttonClass + " " + "rounded text-center"} onClick={this.openSidebar}>&#62;</div>
 
           <div className="setName text-center pt-4"><h2>Legends of Runeterra Deck Builder</h2></div>

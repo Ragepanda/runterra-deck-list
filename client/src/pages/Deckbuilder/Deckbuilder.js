@@ -16,7 +16,10 @@ class Set extends React.Component {
       isLoaded: false,
       filteredSet: baseSet,
       decklist : [],
-      deckStyled : []
+      deckStyled : [],
+      arrow: "<",
+      sidebarClass : "active",
+      contentClass : "inactive"
     };
     this.createHelmet = this.createHelmet.bind(this);
     this.setFilteredSet = this.setFilteredSet.bind(this);
@@ -24,6 +27,7 @@ class Set extends React.Component {
     this.generatePathData = this.generatePathData.bind(this);
     this.addToDeck = this.addToDeck.bind(this);
     this.removeCard = this.removeCard.bind(this);
+    this.hideBar = this.hideBar.bind(this);
   }
 
   createHelmet() {
@@ -124,6 +128,19 @@ class Set extends React.Component {
   }
 
 
+  hideBar(e){
+    if (this.state.sidebarClass === "active"){
+      this.setState({arrow : ">"});
+      this.setState({sidebarClass : "inactive"});
+      this.setState({contentClass : "active"});
+    }
+    else{
+      this.setState({arrow : "<"});
+      this.setState({sidebarClass : "active"});
+      this.setState({contentClass : "inactive"});
+    }
+  }
+
   validEntry(cardProps){
     return (this.state.decklist['size'] < 40 && ( (this.state.decklist['champions'] < 6  && cardProps[1] === 'Champion') ||  cardProps[1] !== 'Champion') && this.validRegions(cardProps) ) ? true : false;
   }
@@ -166,6 +183,7 @@ class Set extends React.Component {
     if (typeof this.state.filteredSet !== "undefined") {
       this.setState({ isLoaded: true });
     }
+    this.setState({sidebarClass: "active"});
     this.state.decklist['size'] = 0;
     this.state.decklist['champions'] = 0;
     this.state.decklist['Demacia'] = 0;
@@ -222,19 +240,19 @@ class Set extends React.Component {
 
       <div className="wrapper" id="neg-margin">
         {this.createHelmet()}
-    <nav id="sidebar">
-            <div id="dismiss">
-                <i class="fas fa-arrow-left">o</i>
-            </div>
+    <nav id="sidebar" className={this.state.sidebarClass}>
             <div class="sidebar-header">
                 <h3>Current Deck</h3>
+            </div>
+            <div id="dismiss" onClick={this.hideBar}>
+                {this.state.arrow}
             </div>
 
             <div class="list-unstyled components">
                 {this.state.deckStyled}
             </div>
         </nav>
-        <div id="content">
+        <div id="content" className={this.state.contentClass}>
           <FilterBar setFilteredSet={this.setFilteredSet} />
           <div className="setName text-center pt-4"><h2>Legends of Runeterra Deck Builder</h2></div>
           <div className="setName text-center pb-5 pt-1"><p>This is a Legends of Runeterra Deckbuilder. This deckbuilder will let you filter cards by type, keywords and name. The Legends of Runeterra Deck builder here on Runeterra Nexus is the best way to create new Runeterra decks.</p></div>

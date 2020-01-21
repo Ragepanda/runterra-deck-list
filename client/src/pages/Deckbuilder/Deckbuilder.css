@@ -118,7 +118,7 @@
     background: #011627;
     position: absolute;
     color: #FFF8F0;
-    top: 10px;
+    top: 20px;
     right: 10px;
     cursor: pointer;
     -webkit-transition: all 0.3s;
@@ -128,7 +128,7 @@
 
 #dismiss:hover {
     background: #011627;
-    color: #FFF8F0;
+    color: #D68FD6;
 }
 
 #sidebar {
@@ -144,7 +144,11 @@
 }
 
 #sidebar.active {
-    margin-left: -250px;
+
+}
+
+#sidebar.inactive {
+    margin-left: -210px;
 }
 
 #sidebar .sidebar-header {
@@ -167,6 +171,7 @@
     font-size: 1.1em;
     display: block;
 }
+
 
 #sidebar ul li a:hover {
     color: #7386D5;

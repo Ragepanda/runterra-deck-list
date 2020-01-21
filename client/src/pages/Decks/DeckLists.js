@@ -20,7 +20,6 @@ class Deck extends React.Component {
     componentDidMount() {
         api.getDeckLists()
             .then(res => {
-                console.log(response.data);
                 console.log(res.data);
                 this.setState({
                     isLoaded: true,

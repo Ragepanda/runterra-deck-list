@@ -20,7 +20,8 @@ class Set extends React.Component {
       arrow: "<",
       sidebarClass : "active",
       contentClass : "inactive",
-      buttonClass  : "inactive"
+      buttonClass  : "inactive",
+      mediumSidebarActive: ""
     };
     this.createHelmet = this.createHelmet.bind(this);
     this.setFilteredSet = this.setFilteredSet.bind(this);
@@ -135,6 +136,7 @@ class Set extends React.Component {
     this.setState({sidebarClass : "inactive"});
     this.setState({contentClass : "active"});
     this.setState({buttonClass : "active"});
+    this.setState({mediumSidebarActive: ""})
 
   }
 
@@ -143,6 +145,7 @@ class Set extends React.Component {
     this.setState({sidebarClass : "active"});
     this.setState({contentClass : "inactive"});
     this.setState({buttonClass : "inactive"});
+    this.setState({mediumSidebarActive: "deckbuilder-row"});
   }
 
   validEntry(cardProps){
@@ -167,7 +170,7 @@ class Set extends React.Component {
     const list = this.state.filteredSet.map((card, index) => {
       if (card.rarity !== "None" && card.keywords.indexOf("Skill") === -1 && card.name !== "Accelerated Purrsuit" && this.validRegions(card.regionRef) === true  )
         return (
-          <div className="col-6 col-sm-6 col-md-3 col-lg-2 p-3" key={index}>
+          <div className={"col-6 col-sm-6 col-md-3 col-lg-2 p-3 "+this.state.mediumSidebarActive} key={index}>
             <div className="cardHand" data-tip data-for={card.cardCode} onClick={this.addToDeck}>
               <img className="image-container img-fluid" id={card.cardCode + "," + card.supertype + "," + card.regionRef + "," + card.name + "," + card.cost} src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Deck Builder " + card.name} />
             </div>

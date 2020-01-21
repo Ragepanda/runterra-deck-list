@@ -281,20 +281,24 @@ a.article:hover {
 ----------------------------------------------------- */
 
 @media (max-width: 991px) {
-    #sidebar.active {
+    .deckbuilder-row{
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    /* #sidebar.active {
         width: 100%;
         text-align: center;
     }
     #sidebar.inactive {
         display: none;
-    }
-    #content.active {
+    } */
+    /* #content.active {
         width: 100%;
         text-align: center;
     }
     #content.inactive {
         display: none;
-    }
+    } */
 }
 
 @media (max-width: 991px){

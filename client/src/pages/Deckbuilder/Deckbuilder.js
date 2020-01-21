@@ -146,10 +146,10 @@ class Set extends React.Component {
   }
 
   validEntry(cardProps){
-    return (this.state.decklist['size'] < 40 && ( (this.state.decklist['champions'] < 6  && cardProps[1] === 'Champion') ||  cardProps[1] !== 'Champion') && this.validRegions(cardProps) ) ? true : false;
+    return (this.state.decklist['size'] < 40 && ( (this.state.decklist['champions'] < 6  && cardProps[1] === 'Champion') ||  cardProps[1] !== 'Champion') && this.validRegions(cardProps[2]) ) ? true : false;
   }
 
-  validRegions(cardProps){
+  validRegions(cardRegion){
     var rCtr = 0;
     var regions = [];
     if (this.state.decklist['Demacia'] > 0){ rCtr+=1; regions.push('Demacia')};
@@ -158,14 +158,14 @@ class Set extends React.Component {
     if (this.state.decklist['Ionia'] > 0){ rCtr+=1; regions.push('Ionia')};
     if (this.state.decklist['Noxus'] > 0){ rCtr+=1; regions.push('Noxus')};
     if (this.state.decklist['ShadowIsles'] > 0){ rCtr+=1; regions.push('ShadowIsles')};
-    return (rCtr < 2 || (rCtr === 2 && regions.includes(cardProps[2]) ) ) ? true : false;
+    return (rCtr < 2 || (rCtr === 2 && regions.includes(cardRegion) ) ) ? true : false;
 
   }
 
 
   createRows() {
     const list = this.state.filteredSet.map((card, index) => {
-      if (card.rarity !== "None" && card.keywords.indexOf("Skill") === -1 && card.name !== "Accelerated Purrsuit" )
+      if (card.rarity !== "None" && card.keywords.indexOf("Skill") === -1 && card.name !== "Accelerated Purrsuit" && this.validRegions(card.regionRef) === true  )
         return (
           <div className="col-6 col-sm-6 col-md-3 col-lg-2 p-3" key={index}>
             <div className="cardHand" data-tip data-for={card.cardCode} onClick={this.addToDeck}>

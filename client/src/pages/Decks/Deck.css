@@ -14,3 +14,145 @@
 	border-style: solid;
   	border-width: 5px;
 }
+
+/* Rarity Colors*/
+
+.Common{
+	width: 24px;
+	height: 48px;
+	border-color: #B1FE6A;
+	border-style: solid;
+  	border-width: 2px;
+  	margin-right: 10px;
+}
+.Epic{
+	width: 24px;
+	height: 48px;
+	border-color: #F080FE;
+	border-style: solid;
+	border-width: 2px;
+  	margin-right: 10px;
+}
+.Rare{
+	width: 24px;
+	height: 48px;
+	border-color: #4CB4FA;
+	border-style: solid;
+	border-width: 2px;
+  	margin-right: 10px;
+}
+.Champion{
+	width: 24px;
+	height: 48px;
+	border-color: #FAD750;
+	border-style: solid;
+  	border-width: 2px;
+  	margin-right: 10px;
+}
+
+/*Region Borders*/
+.Ionia{
+	width: 500px;
+	height: 52px;
+	border-color: #C0587A;
+	
+}
+.Demacia{
+	width: 500px;
+	height: 52px;
+	
+}
+.Freljord{
+	width: 500px;
+	height: 52px;
+	
+}
+.PiltoverZaun{
+	width: 500px;
+	height: 52px;
+	
+}
+.Noxus{
+	width: 500px;
+	height: 52px;
+	
+}
+.ShadowIsles{
+	width: 500px;
+	height: 52px;
+}
+.manacost{
+	height: 60%;
+	width: 50px;
+	overflow: hidden;
+	padding-right: 10px;
+}
+.count{
+	margin-right: 5px;
+	color: #42e6f5;
+	font-size: 125%;
+
+}
+
+
+.cardart{
+	height: 48px;
+	width: 100px;
+	overflow: hidden;
+	border-radius: 50%;
+	padding-right: 10px;
+}
+
+.cardName{
+	font-size: 125%;
+	font-weight: bold;
+}
+
+ul.a{
+	list-style-type: none;
+}
+
+/*
+Extra Colors
+Common
+#B1FE6A
+#289009
+
+Rare
+#ABFCFF
+#4CB4FA
+
+Epic
+#F080FE
+#612885
+
+Champion
+#FAD750
+#763604
+
+regions
+
+Demacia
+#DDC999
+#F4EEDE
+
+Freljord
+#64D1F7
+#C2EDFC
+
+Ionia
+#E4B6C5
+#C0587A
+
+Noxus
+#ED6662
+#781817
+
+P&Z
+#D0C33E
+#FC9E6C
+
+Shadow Isle
+#15D4C6
+#05754A
+*/

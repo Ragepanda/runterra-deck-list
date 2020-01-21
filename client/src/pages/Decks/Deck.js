@@ -61,9 +61,14 @@ class Deck extends React.Component {
 		if (this.state.isLoaded) {
 			//console.log(this.state.spells[0].name);
 			const spellList = this.state.spells.map((spell) =>
-				<li>
-					<a data-tip data-for={spell.cardCode} href={"/card/" + spell.name.replace(/ /g, "_").replace(/:/g, "")}>{spell.name} x {spell.count}</a>
+				<li className={spell.regionRef}>
+					<span className="count">{spell.count}</span>
+					<span className={spell.rarity}></span>
+					<img className="cardart" src={"/img/cards/" + spell.cardCode + "-full.png"}></img>
+					<img className="manacost" src={"/img/misc/mana" + spell.cost + ".png"}></img>
+					<a className="cardName" data-tip data-for={spell.cardCode} href={"/card/" + spell.name.replace(/ /g, "_").replace(/:/g, "")}>{spell.name}</a>
 					<ReactToooltip className="opaque" place="right" type="none" id={spell.cardCode}><img className="hover-images" src={"/img/cards/" + spell.cardCode + ".png"} alt={"Legends of Runeterra Cards " + spell.name} /></ReactToooltip>
+					
 				</li>);
 			return (spellList);
 		}
@@ -72,9 +77,14 @@ class Deck extends React.Component {
 		if (this.state.isLoaded) {
 			//console.log(this.state.followerss[0].name);
 			const followersList = this.state.followers.map((followers) =>
-				<li>
-					<a data-tip data-for={followers.cardCode} href={"/card/" + followers.name.replace(/ /g, "_").replace(/:/g, "")}>{followers.name} x {followers.count}</a>
+				<li className={followers.regionRef}>
+					<span className="count">{followers.count}</span>
+					<span className={followers.rarity}></span>
+					<img className="manacost" src={"/img/misc/mana" + followers.cost + ".png"}></img>
+					<img className="cardart" src={"/img/cards/" + followers.cardCode + "-full.png"}></img>
+					<a className="cardName" data-tip data-for={followers.cardCode} href={"/card/" + followers.name.replace(/ /g, "_").replace(/:/g, "")}>{followers.name}</a>
 					<ReactToooltip className="opaque" place="right" type="none" id={followers.cardCode}><img className="hover-images" src={"/img/cards/" + followers.cardCode + ".png"} alt={"Legends of Runeterra Cards " + followers.name} /></ReactToooltip>
+					
 				</li>);
 			return (followersList);
 		}
@@ -83,9 +93,14 @@ class Deck extends React.Component {
 		if (this.state.isLoaded) {
 			//console.log(this.state.championss[0].name);
 			const championsList = this.state.champions.map((champions) =>
-				<li>
-					<a data-tip data-for={champions.cardCode} href={"/card/" + champions.name.replace(/ /g, "_").replace(/:/g, "")}>{champions.name} x {champions.count}</a>
+				<li className={champions.regionRef}>
+					<span className="count">{champions.count}</span>
+					<span className={champions.rarity}></span>
+					<img className="manacost" src={"/img/misc/mana" + champions.cost + ".png"}></img>
+					<img className="cardart" src={"/img/cards/" + champions.cardCode + "-full.png"}></img>
+					<a className="cardName" data-tip data-for={champions.cardCode} href={"/card/" + champions.name.replace(/ /g, "_").replace(/:/g, "")}>{champions.name}</a>
 					<ReactToooltip className="opaque" place="right" type="none" id={champions.cardCode}><img className="hover-images" src={"/img/cards/" + champions.cardCode + ".png"} alt={"Legends of Runeterra Cards " + champions.name} /></ReactToooltip>
+					
 				</li>);
 			return (championsList);
 		}
@@ -135,6 +150,9 @@ class Deck extends React.Component {
 	}
 
 	render() {
+		var ulStyle ={
+			listStyleType: "none"
+		};
 		return (
 			<div class="container">
 				<Helmet>
@@ -153,15 +171,15 @@ class Deck extends React.Component {
 
 				<h2>Deck Name</h2>
 				<h3>Champions</h3>
-				<ui>
+				<ui className="a" style={ulStyle}>
 					{this.makeChampionList()}
 				</ui>
 				<h3>Followers</h3>
-				<ui>
+				<ui style={ulStyle}>
 					{this.makeFollowerList()}
 				</ui>
 				<h3>Spells</h3>
-				<ui>
+				<ui style={ulStyle}>
 					{this.makeSpellList()}
 				</ui>
 				<div className="manaCurve">

@@ -11,8 +11,7 @@
 
 .manaCurve{
 	width:500px;
-	border-style: solid;
-  	border-width: 5px;
+	
 }
 
 /* Rarity Colors*/
@@ -52,34 +51,39 @@
 
 /*Region Borders*/
 .Ionia{
-	width: 500px;
-	height: 52px;
-	border-color: #C0587A;
+	font-size: 125%;
+	font-weight: bold;
+	color: #C0587A !important;
 	
 }
 .Demacia{
-	width: 500px;
-	height: 52px;
+	font-size: 125%;
+	font-weight: bold;
+	color: #F4EEDE !important;
 	
 }
 .Freljord{
-	width: 500px;
-	height: 52px;
+	font-size: 125%;
+	font-weight: bold;
+	color: #64D1F7 !important;
 	
 }
-.PiltoverZaun{
-	width: 500px;
-	height: 52px;
+.Piltover{
+	font-size: 125%;
+	font-weight: bold;
+	color: #FC9E6C;
 	
 }
 .Noxus{
-	width: 500px;
-	height: 52px;
+	font-size: 125%;
+	font-weight: bold;
+	color: #781817 !important;
 	
 }
-.ShadowIsles{
-	width: 500px;
-	height: 52px;
+.Shadow{
+	font-size: 125%;
+	font-weight: bold;
+	color: #05754A !important;
 }
 .manacost{
 	height: 60%;
@@ -91,7 +95,12 @@
 	margin-right: 5px;
 	color: #42e6f5;
 	font-size: 125%;
+}
 
+.counter{
+	margin-left: 10px;
+	font-weight: bold;
+	font-size: 300%;
 }
 
 
@@ -102,10 +111,18 @@
 	border-radius: 50%;
 	padding-right: 10px;
 }
+.regionCount{
+	height: 18%;
+	width: 18%;
+}
 
 .cardName{
 	font-size: 125%;
 	font-weight: bold;
+}
+
+.regionBreakdown{
+	width: 100%;
 }
 
 ul.a{

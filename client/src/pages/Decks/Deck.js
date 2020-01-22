@@ -16,8 +16,13 @@ class Deck extends React.Component {
 			spells: [],
 			followers: [],
 			champions: [],
+			regions: [],
+			regionCount: [0,0],
 			manaCurve: [0, 0, 0, 0, 0, 0, 0, 0],
-			isLoaded: false
+			isLoaded: false,
+			numChamp: 0,
+			numFollower: 0,
+			numSpells: 0
 		};
 		//console.log(this.state.deck);
 		//console.log(baseSet[0].name)
@@ -26,29 +31,38 @@ class Deck extends React.Component {
 
 	componentDidMount() {
 		for (var i = 0; i < this.state.deck.length; i++) {
-			//console.log(this.state.deck[i].code);
+			//console.log(this.state.regions.length);
+
 			for (var j = 0; j < baseSet.length; j++) {
 				if (this.state.deck[i].code === baseSet[j].cardCode) {
 					//console.log(baseSet[j].name)
-					if (baseSet[j].cost >= 7)
+					if (baseSet[j].cost >= 7){
 						this.state.manaCurve[7] += this.state.deck[i].count;
+					}
 					else
 						this.state.manaCurve[baseSet[j].cost] += this.state.deck[i].count;
 					if (baseSet[j].type === "Spell") {
 						baseSet[j].count = this.state.deck[i].count;
 						this.state.spells.push(baseSet[j]);
+						this.state.numSpells+=this.state.deck[i].count;
+						this.handleRegions(baseSet[j], this.state.deck[i].count);
 					}
 					if (baseSet[j].type === "Unit" && baseSet[j].supertype !== "Champion") {
 						baseSet[j].count = this.state.deck[i].count;
 						this.state.followers.push(baseSet[j]);
+						this.state.numFollower+=this.state.deck[i].count;
+						this.handleRegions(baseSet[j], this.state.deck[i].count);
 					}
 					if (baseSet[j].type === "Unit" && baseSet[j].supertype === "Champion") {
 						baseSet[j].count = this.state.deck[i].count;
+						this.state.numChamp+= this.state.deck[i].count;
 						this.state.champions.push(baseSet[j]);
+						this.handleRegions(baseSet[j], this.state.deck[i].count);
 					}
 
 				}
 			}
+		
 		}
 		this.setState({ isLoaded: true })
 		//console.log(this.state.spells)
@@ -57,16 +71,33 @@ class Deck extends React.Component {
 		console.log(this.state.manaCurve)
 	}
 
+	handleRegions(obj, count){
+			if(this.state.regions.length < 1){
+				this.state.regions[0] = obj.regionRef;
+				this.state.regionCount[0]+= count;
+				console.log("check 1");
+			}
+			else if(this.state.regions[0] === obj.regionRef){
+				this.state.regionCount[0]+= count;
+				console.log("check 2");
+			}
+			else{
+				this.state.regions[1] = obj.regionRef;
+				this.state.regionCount[1]+= count;
+				console.log("check 3");
+			}
+	}
+
 	makeSpellList() {
 		if (this.state.isLoaded) {
 			//console.log(this.state.spells[0].name);
 			const spellList = this.state.spells.map((spell) =>
-				<li className={spell.regionRef}>
+				<li>
 					<span className="count">{spell.count}</span>
 					<span className={spell.rarity}></span>
-					<img className="cardart" src={"/img/cards/" + spell.cardCode + "-full.png"}></img>
 					<img className="manacost" src={"/img/misc/mana" + spell.cost + ".png"}></img>
-					<a className="cardName" data-tip data-for={spell.cardCode} href={"/card/" + spell.name.replace(/ /g, "_").replace(/:/g, "")}>{spell.name}</a>
+					<img className="cardart" src={"/img/cards/" + spell.cardCode + "-full.png"}></img>
+					<a className={spell.region} data-tip data-for={spell.cardCode} href={"/card/" + spell.name.replace(/ /g, "_").replace(/:/g, "")}>{spell.name}</a>
 					<ReactToooltip className="opaque" place="right" type="none" id={spell.cardCode}><img className="hover-images" src={"/img/cards/" + spell.cardCode + ".png"} alt={"Legends of Runeterra Cards " + spell.name} /></ReactToooltip>
 					
 				</li>);
@@ -75,14 +106,14 @@ class Deck extends React.Component {
 	}
 	makeFollowerList() {
 		if (this.state.isLoaded) {
-			//console.log(this.state.followerss[0].name);
+			//console.log(this.state.followers[3].region);
 			const followersList = this.state.followers.map((followers) =>
-				<li className={followers.regionRef}>
+				<li>
 					<span className="count">{followers.count}</span>
 					<span className={followers.rarity}></span>
 					<img className="manacost" src={"/img/misc/mana" + followers.cost + ".png"}></img>
 					<img className="cardart" src={"/img/cards/" + followers.cardCode + "-full.png"}></img>
-					<a className="cardName" data-tip data-for={followers.cardCode} href={"/card/" + followers.name.replace(/ /g, "_").replace(/:/g, "")}>{followers.name}</a>
+					<a className={followers.region} data-tip data-for={followers.cardCode} href={"/card/" + followers.name.replace(/ /g, "_").replace(/:/g, "")}>{followers.name}</a>
 					<ReactToooltip className="opaque" place="right" type="none" id={followers.cardCode}><img className="hover-images" src={"/img/cards/" + followers.cardCode + ".png"} alt={"Legends of Runeterra Cards " + followers.name} /></ReactToooltip>
 					
 				</li>);
@@ -91,14 +122,15 @@ class Deck extends React.Component {
 	}
 	makeChampionList() {
 		if (this.state.isLoaded) {
-			//console.log(this.state.championss[0].name);
+			//console.log(this.state.champions[0].region);
+
 			const championsList = this.state.champions.map((champions) =>
-				<li className={champions.regionRef}>
+				<li>
 					<span className="count">{champions.count}</span>
 					<span className={champions.rarity}></span>
 					<img className="manacost" src={"/img/misc/mana" + champions.cost + ".png"}></img>
 					<img className="cardart" src={"/img/cards/" + champions.cardCode + "-full.png"}></img>
-					<a className="cardName" data-tip data-for={champions.cardCode} href={"/card/" + champions.name.replace(/ /g, "_").replace(/:/g, "")}>{champions.name}</a>
+					<a className={champions.region} data-tip data-for={champions.cardCode} href={"/card/" + champions.name.replace(/ /g, "_").replace(/:/g, "")}>{champions.name}</a>
 					<ReactToooltip className="opaque" place="right" type="none" id={champions.cardCode}><img className="hover-images" src={"/img/cards/" + champions.cardCode + ".png"} alt={"Legends of Runeterra Cards " + champions.name} /></ReactToooltip>
 					
 				</li>);
@@ -112,7 +144,7 @@ class Deck extends React.Component {
 			datasets: [
 			{
 				data: this.state.manaCurve,
-				backgroundColor: 'rgba(51, 204, 51, 1)'//change bar color here
+				backgroundColor: 'rgba(148, 3, 252)'//change bar color here
 
 			}
 			]};
@@ -120,8 +152,8 @@ class Deck extends React.Component {
 			var options = {
 			title: {
 				display: true,
-				text: "Mana Cost",
-				fontColor: 'black', //Change title font color
+				text: "Mana Curve",
+				fontColor: 'white', //Change title font color
         		fontSize: 20  //Change title font size
 			},
 			legend: {
@@ -130,12 +162,17 @@ class Deck extends React.Component {
     		scales: {
         		yAxes: [{
         			display: false,
-        			backgroundColor: 'rgba(37, 142, 37,1)'//change grid color here
+        			backgroundColor: 'rgba(223, 128, 255)'//change grid color here
         		}],
         		xAxes: [{
+
         			ticks:{
-        				fontColor: 'black', //Change x axes font color
+        				backgroundColor: 'rgba(223, 128, 255)',
+        				fontColor: 'white', //Change x axes font color
         				fontSize: 20  //Change x axes font size
+        			},
+        			gridLines:{
+        				display: false
         			}
         		}]
     		}
@@ -170,20 +207,40 @@ class Deck extends React.Component {
 				<p>This Runeterra deck is one of the many best Legends of Runeterra decks we have here at Runeterra Nexus.</p>
 
 				<h2>Deck Name</h2>
-				<h3>Champions</h3>
-				<ui className="a" style={ulStyle}>
-					{this.makeChampionList()}
-				</ui>
-				<h3>Followers</h3>
-				<ui style={ulStyle}>
-					{this.makeFollowerList()}
-				</ui>
-				<h3>Spells</h3>
-				<ui style={ulStyle}>
-					{this.makeSpellList()}
-				</ui>
-				<div className="manaCurve">
-					{this.makeManaCurveChart()}
+				<div className="row">
+				<div className="col-6">
+					<h3>Champions</h3>
+					<ui className="a" style={ulStyle}>
+						{this.makeChampionList()}
+					</ui>
+					<h3>Followers</h3>
+					<ui style={ulStyle}>
+						{this.makeFollowerList()}
+					</ui>
+					<h3>Spells</h3>
+					<ui style={ulStyle}>
+						{this.makeSpellList()}
+					</ui>
+				</div>
+				<div className="col-6">
+					<div className="regionBreakdown">
+						<img src={"/img/regions/icon-" + this.state.regions[0] +".png"}></img>
+						<span className="counter">{this.state.regionCount[0]}</span>
+						<img src={"/img/regions/icon-" + this.state.regions[1] + ".png"}></img>
+						<span className="counter">{this.state.regionCount[1]}</span>
+					</div>
+					<div className="cardTypeBreakdown">
+						<img className="regionCount" src="/img/misc/champion-icon.png"></img>
+						<span className="counter">{this.state.numChamp}</span>
+						<img className="regionCount" src="/img/misc/follower-icon.png"></img>
+						<span className="counter">{this.state.numFollower}</span>
+						<img className="regionCount" src="/img/misc/spell-icon.png"></img>
+						<span className="counter">{this.state.numSpells}</span>
+					</div>
+					<div className="manaCurve">
+						{this.makeManaCurveChart()}
+					</div>
+				</div>
 				</div>
 			</div>
 		);

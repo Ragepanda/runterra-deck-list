@@ -26,8 +26,17 @@
     margin-bottom: -6px;
 }
 
-.cardHand {
-    cursor: pointer;
+
+.card-zoom{
+    transition: transform .1s;
+    position: relative;
+    z-index:1;
+}
+
+.card-zoom:hover{
+    transform: scale(1.1);
+    position: relative;
+    z-index:2;
 }
 
 .cardTile {
@@ -66,6 +75,12 @@
     z-index: 1;  
 
 }
+.deckbuilder-tooltips{
+    background-color: #011627 !important;
+    width:100% !important;
+    opacity: 1 !important;
+}
+
 .mana-image{
     height:100%;
     width: 32px;
@@ -94,7 +109,10 @@
    
 }
 
-
+.positioning{
+    position: relative;
+    z-index:5;
+}
 
 .quanBack {
     z-index: 3;

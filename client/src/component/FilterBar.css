@@ -90,6 +90,7 @@
 .searchStyle {
 	background-color: #011627;
 	padding: 5px;
+	padding-top:10px;
 	background : #011627;
 }
 
@@ -111,6 +112,10 @@ input::placeholder{
 .false.option:hover {
 	background-color: #D68FD6;
 	color: #011627 !important;
+}
+
+.vertical-center{
+	margin-top:20px;
 }
 
 @media screen and (max-width: 390px) {

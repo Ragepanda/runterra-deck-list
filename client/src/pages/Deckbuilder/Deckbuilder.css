@@ -44,12 +44,17 @@
     margin-bottom: 2px;
 }
 
-.cardTile img {
+.card-art-deckbuilder {
     position: relative;
     right: -60px;
     top: -100px;
 }
 
+.card-name-sidebar{
+    padding-top:5px;
+    position: relative;
+    top:5px;
+}
 .cardTile::before {
     content: '';
     position:absolute;
@@ -61,7 +66,12 @@
     z-index: 1;  
 
 }
-
+.mana-image{
+    height:100%;
+    width: 32px;
+    position: relative;
+    right: 15px;
+}
 .marginTop{
     top: 50%;
     transform: translate(0%, 20%);
@@ -71,10 +81,7 @@
 .cmc {
 
     z-index: 3;
-    color: #FFF8F0;
-    background-color: #1f3275;
-    padding: 2px;
-    border: 2px solid #D68FD6;
+   
 }
 
 

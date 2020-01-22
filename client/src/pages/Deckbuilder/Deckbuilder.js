@@ -186,7 +186,7 @@ class Set extends React.Component {
             <div className="cardHand" data-tip data-for={card.cardCode} onClick={this.addToDeck}>
               <img className="image-container img-fluid" id={card.cardCode + "," + card.supertype + "," + card.regionRef + "," + card.name + "," + card.cost + "," + card.type} src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Deck Builder " + card.name} />
             </div>
-            <ReactToooltip className="set-tooltips" place="top" effect="solid" id={card.cardCode}>
+            <ReactToooltip className="set-tooltips" place="bottom" effect="solid" id={card.cardCode}>
               {card.keywords.length > 0 ? this.keywordTooltipText(card.keywords) : card.name}
             </ReactToooltip>
           </div>);
@@ -239,11 +239,11 @@ class Set extends React.Component {
         return (
           <div className="cardTile rounded divText" key={index} id={prop} onClick={this.removeCard} >
             <div className="row justify-content-center">
-              <div className="col-1 rounded-circle cmc marginTop text-center">{cardProps[4]}</div>
-              <div className="col-7 cardName marginTop " id={prop} onClick={this.removeCard}>{cardProps[3]}</div>
+              <div className="col-1 cmc marginTop"><img className= "mana-image" src={"/img/misc/mana"+ cardProps[4]+".png"} /></div>
+              <div className="col-7 cardName marginTop text-center align-middle" id={prop} onClick={this.removeCard}><span className="card-name-sidebar">{cardProps[3]}</span></div>
               <div className="col-1 quanBack rounded marginTop text-center">{this.state.decklist[prop]}</div>
             </div>
-            <img className="image-container img-fluid" src={"/img/cards/" + cardProps[0] + ".png"} alt={"Legends of Runeterra Deck Builder " + cardProps[3]} />
+            <img className="image-container img-fluid card-art-deckbuilder" src={"/img/cards/" + cardProps[0] + ".png"} alt={"Legends of Runeterra Deck Builder " + cardProps[3]} />
           </div>
         );
       }

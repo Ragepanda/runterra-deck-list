@@ -211,7 +211,7 @@ class Set extends React.Component {
           });
   
       deckStr = DeckEncoder.encode(newDeck);
-      console.log(deckStr);
+      alert( deckStr);
     }
     else {
       alert('Please add 40 cards to your deck.')
@@ -331,8 +331,8 @@ class Set extends React.Component {
           <div class="list-unstyled components">
             {this.state.deckStyled}
           </div>
-          <div>
-            <a className="btn btn-outline buttonDiv" onClick = {this.encodeDeck} >Submit</a>
+          <div className="submitDiv">
+            <a className="btn btn-outline buttonDiv" onClick = {this.encodeDeck} >Deck String</a>
           </div>
         </nav>
         <div id="content" className={this.state.contentClass}>

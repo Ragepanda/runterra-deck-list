@@ -19,7 +19,7 @@ class Card extends React.Component {
     for (var index = 0; index < baseSet.length; index++) {
       var searchCard = baseSet[index];
 
-      if (searchCard.name.replace(/:/g, "") === cardName) {
+      if (searchCard.name.replace(/:/g, "") === cardName && searchCard.collectible === true) {
         this.setState({ card: searchCard, isLoaded: true });
         break;
       }

@@ -22,7 +22,8 @@ class Set extends React.Component {
       sidebarClass: "active",
       contentClass: "inactive",
       buttonClass: "inactive",
-      mediumSidebarActive: ""
+      mediumSidebarActive: "",
+      deckStr : "Please Add 40 Cards to Your Deck"
     };
     this.createHelmet = this.createHelmet.bind(this);
     this.setFilteredSet = this.setFilteredSet.bind(this);
@@ -141,6 +142,13 @@ class Set extends React.Component {
         }
       }
     }
+
+    if (this.state.decklist.size === 40){
+      this.encodeDeck();
+    }
+    else{
+      this.setState({deckStr: "Please Add 40 Cards To Your Deck"});
+    }
     this.setState({ deckStyled: this.showDeck() });
   }
 
@@ -211,7 +219,7 @@ class Set extends React.Component {
       });
 
       deckStr = DeckEncoder.encode(newDeck);
-      console.log(deckStr);
+      this.setState({deckStr: deckStr});
     }
     else {
       alert('Please add 40 cards to your deck.')
@@ -337,8 +345,9 @@ class Set extends React.Component {
           <div class="list-unstyled components">
             {this.state.deckStyled}
           </div>
-          <div>
-            <a className="btn btn-outline buttonDiv" onClick={this.encodeDeck} >Submit</a>
+          <div className="submitDiv">
+            <a data-tip={"Your Deck Code: " + this.state.deckStr} data-event='click' data-event-off='dblclick' className="btn btn-outline buttonDiv">Deck String</a>
+            <ReactToooltip place="right"/>
           </div>
         </nav>
         <div id="content" className={this.state.contentClass}>

@@ -41,7 +41,7 @@ p {
 
 body{
   font-family: 'Poppins', sans-serif;
-	padding-top:57px;
+
 	background-color:#342936;
 	color: #FFF8F0;
 }
@@ -94,6 +94,7 @@ body{
 #element-with-background-image {
     background-attachment: fixed;
     background-repeat: no-repeat;
- 	background-size: cover;
+ 	  background-size: cover;
+    min-height: 94vh;
 
 }

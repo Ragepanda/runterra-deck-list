@@ -96,7 +96,7 @@
     margin:0 auto;
     display: block;
     text-align: center;
-    width: 45%;
+    width: 50%;
 }
 
 .buttonDiv:hover{
@@ -113,6 +113,7 @@
     position: relative;
     z-index:5;
 }
+
 
 .quanBack {
     z-index: 3;
@@ -206,7 +207,7 @@
     width: 250px;
     position: fixed;
     overflow-y: scroll;
-    top: 40px;
+    top: 0px;
     left: 0;
     height: 100vh;
     z-index: 50;
@@ -309,6 +310,7 @@ a.article:hover {
 #content {
     width: calc(100% - 250px);
     padding: 15px;
+    padding-top: 50px;
     min-height: 100vh;
     transition: all 0.3s;
     position: absolute;

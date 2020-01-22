@@ -59,19 +59,19 @@ class Set extends React.Component {
             definition = keywordSet.keywords[keywordIndex].description;
             isSvgFill = keywordSet.keywords[keywordIndex].svgFill;
             fill = keywordSet.keywords[keywordIndex].fill;
-            
-            if (typeof keywordSet.keywords[keywordIndex].path === "undefined") 
-              path = [];   
+
+            if (typeof keywordSet.keywords[keywordIndex].path === "undefined")
+              path = [];
             else
               path = keywordSet.keywords[keywordIndex].path;
           }
         }
         var text = (<div>
-          <h6>{keywords[x] + " "}
+          <h5>{keywords[x] + " "}
             <svg height="35" wdith="35" viewBox="0 0 35 35" className="hover-icon" fill={fill}>
               {this.generatePathData(path)}
             </svg>
-          </h6>
+          </h5>
           <p>{definition}</p>
         </div>);
         html = [html, text];
@@ -99,7 +99,7 @@ class Set extends React.Component {
         return (
           <div className="col-6 col-sm-6 col-md-4 col-lg-2 p-3" key={index}>
             <a data-tip data-for={card.cardCode} href={"/card/" + card.name.replace(/ /g, "_").replace(/:/g, "")}>
-              <img className="image-container img-fluid" src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Cards " + card.name} />
+              <img className="image-container img-fluid card-image" src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Cards " + card.name} />
             </a>
              <ReactToooltip className="set-tooltips" place="top" effect="solid" id={card.cardCode}>
                {card.keywords.length > 0 ? this.keywordTooltipText(card.keywords) : card.name}
@@ -117,7 +117,7 @@ class Set extends React.Component {
     }
   }
 
-  
+
   render() {
     if (this.state.isLoaded === false) {
       return <div><p>Loading...</p></div>

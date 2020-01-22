@@ -11,7 +11,7 @@
 
 .set-tooltips{
 	background-color: #011627 !important;
-    width:200px;
+    width:215px !important;
     opacity: 1 !important;
 }
 
@@ -20,4 +20,12 @@
     width: 35px; */
     display: inline;
     margin-bottom: -6px;
+}
+
+.card-image{
+    transition: transform .1s;
+}
+
+.card-image:hover{
+    transform: scale(1.1);
 }

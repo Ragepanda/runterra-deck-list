@@ -1,5 +1,10 @@
 module.exports = function (sequelize, DataTypes) {
     var decklist = sequelize.define("decklist", {
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
+        },
         code: {
             type: DataTypes.STRING,
             allowNull: false

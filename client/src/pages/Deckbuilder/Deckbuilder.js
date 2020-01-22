@@ -32,6 +32,7 @@ class Set extends React.Component {
     this.removeCard = this.removeCard.bind(this);
     this.hideBar = this.hideBar.bind(this);
     this.openSidebar = this.openSidebar.bind(this);
+    this.encodeDeck  = this.encodeDeck.bind(this);
   }
 
   createHelmet() {
@@ -200,7 +201,7 @@ class Set extends React.Component {
 
   encodeDeck(){
     var deckStr;
-    if (this.state.decklist['size'] == 40){
+    if (this.state.decklist['size'] === 40){
       var newDeck =[];
       Object.keys(this.state.decklist).map((prop,index) => {
             if (prop.includes(",") && this.state.decklist[prop] > 0){
@@ -210,10 +211,12 @@ class Set extends React.Component {
           });
   
       deckStr = DeckEncoder.encode(newDeck);
+      console.log(deckStr);
     }
     else {
       alert('Please add 40 cards to your deck.')
     }
+
   }
 
   componentDidMount() {

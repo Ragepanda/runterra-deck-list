@@ -185,16 +185,21 @@ class Set extends React.Component {
   }
 
   encodeDeck(){
-    var newDeck =[];
-    Object.keys(this.state.decklist).map((prop,index) => {
-          if (prop.includes(",") && this.state.decklist[prop] > 0){
-              var cardProps = prop.split(",");
-              newDeck.push(new Card(cardProps[0], this.state.decklist[cardProps[0]]));
-          }
-        });
-    const deckStr = DeckEncoder.encode(newDeck);
-
-    console.log(deckStr);
+    var deckStr;
+    if (this.state.decklist['size'] == 40){
+      var newDeck =[];
+      Object.keys(this.state.decklist).map((prop,index) => {
+            if (prop.includes(",") && this.state.decklist[prop] > 0){
+                var cardProps = prop.split(",");
+                newDeck.push(new Card(cardProps[0], this.state.decklist[prop]));
+            }
+          });
+  
+      deckStr = DeckEncoder.encode(newDeck);
+    }
+    else {
+      alert('Please add 40 cards to your deck.')
+    }
   }
 
   componentDidMount() {

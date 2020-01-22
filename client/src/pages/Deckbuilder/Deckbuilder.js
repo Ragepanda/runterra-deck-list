@@ -116,6 +116,12 @@ class Set extends React.Component {
           if (cardProps[1] === "Champion") {
             this.state.decklist['champions'] += 1;
           }
+          if (cardProps[5] === "Unit" && cardProps[1] !== "Champion"){
+            this.state.decklist['followers'] += 1;
+          }
+          if (cardProps[5] === "Spell"){
+            this.state.decklist['spells'] += 1;
+          }
         }
       }
       else {
@@ -124,6 +130,12 @@ class Set extends React.Component {
         this.state.decklist[cardProps[2]] += 1;
         if (cardProps[1] === "Champion") {
           this.state.decklist['champions'] += 1;
+        }
+        if (cardProps[5] === "Unit" && cardProps[1] !== "Champion"){
+          this.state.decklist['followers'] += 1;
+        }
+        if (cardProps[5] === "Spell"){
+          this.state.decklist['spells'] += 1;
         }
       }
     }
@@ -172,7 +184,7 @@ class Set extends React.Component {
         return (
           <div className={"col-6 col-sm-6 col-md-3 col-lg-2 p-3 " + this.state.mediumSidebarActive} key={index}>
             <div className="cardHand" data-tip data-for={card.cardCode} onClick={this.addToDeck}>
-              <img className="image-container img-fluid" id={card.cardCode + "," + card.supertype + "," + card.regionRef + "," + card.name + "," + card.cost} src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Deck Builder " + card.name} />
+              <img className="image-container img-fluid" id={card.cardCode + "," + card.supertype + "," + card.regionRef + "," + card.name + "," + card.cost + "," + card.type} src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Deck Builder " + card.name} />
             </div>
             <ReactToooltip className="set-tooltips" place="top" effect="solid" id={card.cardCode}>
               {card.keywords.length > 0 ? this.keywordTooltipText(card.keywords) : card.name}
@@ -192,6 +204,8 @@ class Set extends React.Component {
     this.setState({ sidebarClass: "active" });
     this.state.decklist['size'] = 0;
     this.state.decklist['champions'] = 0;
+    this.state.decklist['followers'] = 0;
+    this.state.decklist['spells'] = 0;
     this.state.decklist['Demacia'] = 0;
     this.state.decklist['PiltoverZaun'] = 0;
     this.state.decklist['Freljord'] = 0;
@@ -257,9 +271,20 @@ class Set extends React.Component {
               <div className="deck-stats">
                 <div>{this.state.decklist['champions']}/6</div>
                 <div>
-                  <svg height="24" width="24" viewBox="0 0 24 24">
-                    <path d="M17.59 7.154L20.186 2s.875 1.303 1.24 3.37l.04.242-1.28 1.74H21.6c0 .35-.038.702-.085 1.053l-.05.35-1.954 2.61h1.28a18.205 18.205 0 01-2.425 4.147l.066-.089-.004.265c-.182 4.989-4.726 6.262-4.908 6.31l-.005.002.606-3.946h1.348v-3.345l1.347-1.338V9.358l-3.705 2.675v3.479h-2.022v-3.479L7.384 9.358v4.013L8.73 14.71v3.345h1.415L10.82 22s-4.857-1.222-5.048-6.312l-.004-.196-.001.02c-1.05-1.288-1.817-2.576-2.3-3.812l-.126-.335H4.69l-2.022-2.61C2.6 8.222 2.6 7.82 2.6 7.352h1.482L2.735 5.612C3.072 3.405 4.015 2 4.015 2l2.594 5.154a6.33 6.33 0 015.258-3.143l.233-.004.233.004a6.33 6.33 0 015.258 3.143L20.185 2z" fill="#a5a0bb" fill-rule="nonzero"></path>
+                  <svg height="20" width="20" viewBox="0 0 20 20">
+                    <path d="M17.59 7.154L20.186 2s.875 1.303 1.24 3.37l.04.242-1.28 1.74H21.6c0 .35-.038.702-.085 1.053l-.05.35-1.954 2.61h1.28a18.205 18.205 0 01-2.425 4.147l.066-.089-.004.265c-.182 4.989-4.726 6.262-4.908 6.31l-.005.002.606-3.946h1.348v-3.345l1.347-1.338V9.358l-3.705 2.675v3.479h-2.022v-3.479L7.384 9.358v4.013L8.73 14.71v3.345h1.415L10.82 22s-4.857-1.222-5.048-6.312l-.004-.196-.001.02c-1.05-1.288-1.817-2.576-2.3-3.812l-.126-.335H4.69l-2.022-2.61C2.6 8.222 2.6 7.82 2.6 7.352h1.482L2.735 5.612C3.072 3.405 4.015 2 4.015 2l2.594 5.154a6.33 6.33 0 015.258-3.143l.233-.004.233.004a6.33 6.33 0 015.258 3.143L20.185 2z" fill="#FFF8F0" fill-rule="nonzero"></path>
                   </svg>
+                </div>
+                <div>{this.state.decklist['followers']}</div>
+                <div>
+                  <svg height="20" width="20" viewBox="0 0 20 20">
+                  <path d="M19.218 3.429L12.167 2 5.115 3.429S6.878 10.07 3 17.07L10.051 22l.635-10s-4.02 2.286-3.455-4.286l4.936-1.428 4.936 1.428c.564 6.5-3.456 4.286-3.456 4.286l.635 10 7.051-4.929c-3.807-7-2.115-13.642-2.115-13.642z" fill="#FFF8F0" fill-rule="nonzero"></path>
+                  </svg>
+                </div>
+                <div>{this.state.decklist['spells']}</div>
+                <div>
+                  <svg height="20" width="20" viewBox="0 0 20 20">
+                  <path d="M4.52 15.714s-.637-4.072 5.171-9.071c.284.357.638.714.992.928.991-.571 1.629-1.643 1.629-2.785 0-1.215-.638-2.215-1.63-2.786 2.126 0 5.596 3.143 5.596 8.142v.643c-.495-.357-1.204-.571-1.841-.571-1.558 0-2.975.857-3.683 2.143.779 1.285 2.125 2.142 3.683 2.142 1.558 0 3.116-1.071 3.754-2.5a5.85 5.85 0 011.204 2.5s.992 4.429-3.117 6.5c-4.108 2.071-8.074.286-8.074.286s3.895.071 4.958-3c0-.072-4.746.643-8.641-2.571z" fill="#FFF8F0" fill-rule="nonzero"></path></svg>
                 </div>
               </div>
             </div>

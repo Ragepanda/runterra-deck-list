@@ -5,6 +5,7 @@ import keywordSet from "../../card_info/globals-en_us.json"
 import FilterBar from "../../component/FilterBar";
 import ReactToooltip from "react-tooltip";
 import "./Deckbuilder.css";
+const {DeckEncoder, Card} = require('runeterra'); //We need to import this card object to properly pass stuff to the encoder
 
 
 
@@ -116,10 +117,10 @@ class Set extends React.Component {
           if (cardProps[1] === "Champion") {
             this.state.decklist['champions'] += 1;
           }
-          if (cardProps[5] === "Unit" && cardProps[1] !== "Champion"){
+          if (cardProps[5] === "Unit" && cardProps[1] !== "Champion") {
             this.state.decklist['followers'] += 1;
           }
-          if (cardProps[5] === "Spell"){
+          if (cardProps[5] === "Spell") {
             this.state.decklist['spells'] += 1;
           }
         }
@@ -131,10 +132,10 @@ class Set extends React.Component {
         if (cardProps[1] === "Champion") {
           this.state.decklist['champions'] += 1;
         }
-        if (cardProps[5] === "Unit" && cardProps[1] !== "Champion"){
+        if (cardProps[5] === "Unit" && cardProps[1] !== "Champion") {
           this.state.decklist['followers'] += 1;
         }
-        if (cardProps[5] === "Spell"){
+        if (cardProps[5] === "Spell") {
           this.state.decklist['spells'] += 1;
         }
       }
@@ -182,7 +183,7 @@ class Set extends React.Component {
     const list = this.state.filteredSet.map((card, index) => {
       if (card.rarity !== "None" && card.keywords.indexOf("Skill") === -1 && card.name !== "Accelerated Purrsuit" && this.validRegions(card.regionRef) === true)
         return (
-          <div className={"col-6 col-sm-6 col-md-3 col-lg-2 p-3 " + this.state.mediumSidebarActive} key={index}>
+          <div className={"col-6 col-sm-6 col-md-3 col-lg-2 p-3 card-image " + this.state.mediumSidebarActive} key={index}>
             <div className="cardHand" data-tip data-for={card.cardCode} onClick={this.addToDeck}>
               <img className="image-container img-fluid" id={card.cardCode + "," + card.supertype + "," + card.regionRef + "," + card.name + "," + card.cost + "," + card.type} src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Deck Builder " + card.name} />
             </div>
@@ -195,6 +196,24 @@ class Set extends React.Component {
 
     });
     return list;
+  }
+
+  encodeDeck(){
+    var deckStr;
+    if (this.state.decklist['size'] == 40){
+      var newDeck =[];
+      Object.keys(this.state.decklist).map((prop,index) => {
+            if (prop.includes(",") && this.state.decklist[prop] > 0){
+                var cardProps = prop.split(",");
+                newDeck.push(new Card(cardProps[0], this.state.decklist[prop]));
+            }
+          });
+  
+      deckStr = DeckEncoder.encode(newDeck);
+    }
+    else {
+      alert('Please add 40 cards to your deck.')
+    }
   }
 
   componentDidMount() {
@@ -267,8 +286,8 @@ class Set extends React.Component {
       <div className="wrapper" id="neg-margin">
         {this.createHelmet()}
         <nav id="sidebar" className={this.state.sidebarClass}>
-          <div class="sidebar-header">
-            <h3>Current Deck</h3>
+          <div class="sidebar-header text-center">
+            <h4>Current Deck</h4>
             <div id="deck-info">
               <div className="deck-stats">
                 <div>{this.state.decklist['size']}/40</div>
@@ -283,18 +302,20 @@ class Set extends React.Component {
                 </div>
               </div>
               <div className="deck-stats">
-                <div>&nbsp;&nbsp;{this.state.decklist['followers']}&nbsp;&nbsp;</div>
+                <div>{this.state.decklist['followers']}</div>
+
                 <div>
                   <svg height="20" width="20" viewBox="0 0 20 20">
-                  <path d="M19.218 3.429L12.167 2 5.115 3.429S6.878 10.07 3 17.07L10.051 22l.635-10s-4.02 2.286-3.455-4.286l4.936-1.428 4.936 1.428c.564 6.5-3.456 4.286-3.456 4.286l.635 10 7.051-4.929c-3.807-7-2.115-13.642-2.115-13.642z" fill="#FFF8F0" fill-rule="nonzero"></path>
+                    <path d="M19.218 3.429L12.167 2 5.115 3.429S6.878 10.07 3 17.07L10.051 22l.635-10s-4.02 2.286-3.455-4.286l4.936-1.428 4.936 1.428c.564 6.5-3.456 4.286-3.456 4.286l.635 10 7.051-4.929c-3.807-7-2.115-13.642-2.115-13.642z" fill="#FFF8F0" fill-rule="nonzero"></path>
                   </svg>
                 </div>
               </div>
               <div className="deck-stats">
-                <div>&nbsp;&nbsp;{this.state.decklist['spells']}&nbsp;&nbsp;</div>
+
+                <div>{this.state.decklist['spells']}</div>
                 <div>
                   <svg height="20" width="20" viewBox="0 0 20 20">
-                  <path d="M4.52 15.714s-.637-4.072 5.171-9.071c.284.357.638.714.992.928.991-.571 1.629-1.643 1.629-2.785 0-1.215-.638-2.215-1.63-2.786 2.126 0 5.596 3.143 5.596 8.142v.643c-.495-.357-1.204-.571-1.841-.571-1.558 0-2.975.857-3.683 2.143.779 1.285 2.125 2.142 3.683 2.142 1.558 0 3.116-1.071 3.754-2.5a5.85 5.85 0 011.204 2.5s.992 4.429-3.117 6.5c-4.108 2.071-8.074.286-8.074.286s3.895.071 4.958-3c0-.072-4.746.643-8.641-2.571z" fill="#FFF8F0" fill-rule="nonzero"></path></svg>
+                    <path d="M4.52 15.714s-.637-4.072 5.171-9.071c.284.357.638.714.992.928.991-.571 1.629-1.643 1.629-2.785 0-1.215-.638-2.215-1.63-2.786 2.126 0 5.596 3.143 5.596 8.142v.643c-.495-.357-1.204-.571-1.841-.571-1.558 0-2.975.857-3.683 2.143.779 1.285 2.125 2.142 3.683 2.142 1.558 0 3.116-1.071 3.754-2.5a5.85 5.85 0 011.204 2.5s.992 4.429-3.117 6.5c-4.108 2.071-8.074.286-8.074.286s3.895.071 4.958-3c0-.072-4.746.643-8.641-2.571z" fill="#FFF8F0" fill-rule="nonzero"></path></svg>
                 </div>
               </div>
             </div>
@@ -306,6 +327,9 @@ class Set extends React.Component {
 
           <div class="list-unstyled components">
             {this.state.deckStyled}
+          </div>
+          <div>
+            <a className="btn btn-outline buttonDiv" onClick = {this.encodeDeck} >Submit</a>
           </div>
         </nav>
         <div id="content" className={this.state.contentClass}>

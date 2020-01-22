@@ -10,8 +10,10 @@
 }
 
 .manaCurve{
-	width:500px;
 	
+	margin-top: -40px;
+	margin-left: -50px;
+	width:100%;
 }
 
 /* Rarity Colors*/
@@ -100,7 +102,7 @@
 .counter{
 	margin-left: 10px;
 	font-weight: bold;
-	font-size: 300%;
+	font-size: 250%;
 }
 
 
@@ -111,22 +113,33 @@
 	border-radius: 50%;
 	padding-right: 10px;
 }
-.regionCount{
-	height: 18%;
-	width: 18%;
-}
+
 
 .cardName{
 	font-size: 125%;
 	font-weight: bold;
 }
 
-.regionBreakdown{
-	width: 100%;
-}
 
 ul.a{
 	list-style-type: none;
+}
+
+.regionImg{
+	width: 22%;
+}
+.typeImg{
+	width: 16.66%;
+}
+
+.regionBreakdown{
+	margin-bottom: 30px;
+}
+.cardTypeBreakdown{
+	height: 200px;
+}
+.deckList{
+	margin-bottom: 50px;
 }
 
 /*

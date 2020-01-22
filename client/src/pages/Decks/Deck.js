@@ -46,14 +46,20 @@ class Deck extends React.Component {
 								if (baseSet[j].type === "Spell") {
 									baseSet[j].count = this.state.deck[i].count;
 									this.state.spells.push(baseSet[j]);
+									this.state.numSpells+=this.state.deck[i].count;
+									this.handleRegions(baseSet[j], this.state.deck[i].count);
 								}
 								if (baseSet[j].type === "Unit" && baseSet[j].supertype !== "Champion") {
 									baseSet[j].count = this.state.deck[i].count;
 									this.state.followers.push(baseSet[j]);
+									this.state.numFollower+=this.state.deck[i].count;
+									this.handleRegions(baseSet[j], this.state.deck[i].count);
 								}
 								if (baseSet[j].type === "Unit" && baseSet[j].supertype === "Champion") {
 									baseSet[j].count = this.state.deck[i].count;
 									this.state.champions.push(baseSet[j]);
+									this.state.numChamp+=this.state.deck[i].count;
+									this.handleRegions(baseSet[j], this.state.deck[i].count);
 								}
 			
 							}
@@ -202,39 +208,47 @@ class Deck extends React.Component {
 
 				<h2>Deck Name</h2>
 				<div className="row">
-				<div className="col-6">
-					<h3>Champions</h3>
-					<ui className="a" style={ulStyle}>
-						{this.makeChampionList()}
-					</ui>
-					<h3>Followers</h3>
-					<ui style={ulStyle}>
-						{this.makeFollowerList()}
-					</ui>
-					<h3>Spells</h3>
-					<ui style={ulStyle}>
-						{this.makeSpellList()}
-					</ui>
-				</div>
-				<div className="col-6">
-					<div className="regionBreakdown">
-						<img src={"/img/regions/icon-" + this.state.regions[0] +".png"}></img>
-						<span className="counter">{this.state.regionCount[0]}</span>
-						<img src={"/img/regions/icon-" + this.state.regions[1] + ".png"}></img>
-						<span className="counter">{this.state.regionCount[1]}</span>
+					<div className="col-lg-6 col-sm-12 deckList">
+						<h3>Champions</h3>
+						<ui className="a" style={ulStyle}>
+							{this.makeChampionList()}
+						</ui>
+						<h3>Followers</h3>
+						<ui style={ulStyle}>
+							{this.makeFollowerList()}
+						</ui>
+						<h3>Spells</h3>
+						<ui style={ulStyle}>
+							{this.makeSpellList()}
+						</ui>
+					</div>	
+					<div className="col-lg-6 col-sm-12">
+						<div className="row">
+							<div className="regionBreakdown">
+								
+									<img className="regionImg" src={"/img/regions/icon-" + this.state.regions[0] +".png"}></img>
+									<span className="counter">{this.state.regionCount[0]}</span>
+								
+								
+									<img className="regionImg" src={"/img/regions/icon-" + this.state.regions[1] + ".png"}></img>
+									<span className="counter">{this.state.regionCount[1]}</span>
+								
+							</div>
+						</div>
+						<div className="row">
+							<div className="cardTypeBreakdown">
+								<img className="typeImg" src="/img/misc/champion-icon.png"></img>
+								<span className="counter">{this.state.numChamp}</span>
+								<img className="typeImg" src="/img/misc/follower-icon.png"></img>
+								<span className="counter">{this.state.numFollower}</span>
+								<img className="typeImg" src="/img/misc/spell-icon.png"></img>
+								<span className="counter">{this.state.numSpells}</span>
+							</div>
+						</div>
+						<div className="manaCurve">
+							{this.makeManaCurveChart()}
+						</div>
 					</div>
-					<div className="cardTypeBreakdown">
-						<img className="regionCount" src="/img/misc/champion-icon.png"></img>
-						<span className="counter">{this.state.numChamp}</span>
-						<img className="regionCount" src="/img/misc/follower-icon.png"></img>
-						<span className="counter">{this.state.numFollower}</span>
-						<img className="regionCount" src="/img/misc/spell-icon.png"></img>
-						<span className="counter">{this.state.numSpells}</span>
-					</div>
-					<div className="manaCurve">
-						{this.makeManaCurveChart()}
-					</div>
-				</div>
 				</div>
 			</div>
 		);

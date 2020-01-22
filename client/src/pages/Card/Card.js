@@ -30,7 +30,7 @@ class Card extends React.Component {
     if (this.state.isLoaded) {
       var card = this.state.card;
       return (
-        <div className="container">
+        <div className="container" >
            <Helmet>
            <title>{card.name + " | Legends of Runeterra Cards on Runeterra Nexus"}</title>
            <meta name="description" content={card.name + " is one of the many cards in Legends of Runeterra. Runeterra Nexus is the place to help you evaluate " +card.name+" as well as other Legends of Runeterra cards." } />
@@ -68,7 +68,7 @@ class Card extends React.Component {
               <hr/>
               <div className="row">
                 <div className="col">Card Type</div>
-                <div className="col">{card.type} - {card.subtype}</div>
+                <div className="col">{card.supertype === "" ? card.type : card.type +" - "+card.supertype}</div>
               </div>
               <hr/>
               <div className="row">
@@ -98,12 +98,12 @@ class Card extends React.Component {
               <hr/>
               <div className="row">
                 <div className="col">Decks with this Card</div>
-                <div className="col"><a className="" href="#">Click Here</a></div>
+                <div className="col"><a className="" href="#">Coming Soon!</a></div>
               </div>
               <hr/>
               <div className="row">
                 <div className="col">Card Evaluation</div>
-                <div className="col">Data App</div>
+                <div className="col">Coming Soon!</div>
               </div>
               <hr/>
             </div>

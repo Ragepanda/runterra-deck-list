@@ -94,9 +94,11 @@
 
 .buttonDiv {
     margin:0 auto;
-    display: block;
     text-align: center;
     width: 50%;
+    display: inline-block;
+    position: absolute;
+    left: 50px;
 }
 
 .buttonDiv:hover{
@@ -157,9 +159,11 @@
     cursor: pointer;
     font-size: 20px;
     margin-left: -15px;
-    top: 50vh;
+    top: 25vh;
     z-index: 10;
-    background-color: #011627;
+    background: #011627;
+    border: 2px solid #D68FD6;
+    border-radius:.25rem;
 }
 
 #sidebarBtn.inactive{
@@ -188,10 +192,13 @@
     line-height: 35px;
     text-align: center;
     background: #011627;
+    border: solid 2px #D68FD6;
+    display: inline-block;
     position: absolute;
+    border-radius:.25rem;
+    z-index: 10;
+    right: 5px; 
     color: #FFF8F0;
-    top: 20px;
-    right: 10px;
     cursor: pointer;
     -webkit-transition: all 0.3s;
     -o-transition: all 0.3s;
@@ -199,8 +206,8 @@
 }
 
 #dismiss:hover {
-    background: #011627;
-    color: #D68FD6;
+    color: #FFF8F0;
+    background: #D68FD6;
 }
 
 #sidebar {

@@ -23,7 +23,7 @@ class Set extends React.Component {
       contentClass: "inactive",
       buttonClass: "inactive",
       mediumSidebarActive: "",
-      deckStr : "Please Add 40 Cards to Your Deck"
+      deckStr: "Please Add 40 Cards to Your Deck"
     };
     this.createHelmet = this.createHelmet.bind(this);
     this.setFilteredSet = this.setFilteredSet.bind(this);
@@ -143,11 +143,11 @@ class Set extends React.Component {
       }
     }
 
-    if (this.state.decklist.size === 40){
+    if (this.state.decklist.size === 40) {
       this.encodeDeck();
     }
-    else{
-      this.setState({deckStr: "Please Add 40 Cards To Your Deck"});
+    else {
+      this.setState({ deckStr: "Please Add 40 Cards To Your Deck" });
     }
     this.setState({ deckStyled: this.showDeck() });
   }
@@ -193,10 +193,10 @@ class Set extends React.Component {
       if (card.rarity !== "None" && card.keywords.indexOf("Skill") === -1 && card.name !== "Accelerated Purrsuit" && this.validRegions(card.regionRef) === true)
         return (
           <div className={"col-6 col-sm-6 col-md-3 col-lg-2 p-3 card-zoom " + this.state.mediumSidebarActive} key={index}>
-            <div data-tip data-for={"tooltip"+index} onClick={this.addToDeck}>
+            <div data-tip data-for={"tooltip" + index} onClick={this.addToDeck}>
               <img className="image-container img-fluid" id={card.cardCode + "," + card.supertype + "," + card.regionRef + "," + card.name + "," + card.cost + "," + card.type} src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Deck Builder " + card.name} />
             </div>
-            <ReactToooltip className="deckbuilder-tooltips" place="bottom" effect="solid" id={"tooltip"+index}>
+            <ReactToooltip className="deckbuilder-tooltips" place="bottom" effect="solid" id={"tooltip" + index}>
               {card.keywords.length > 0 ? this.keywordTooltipText(card.keywords) : card.name}
             </ReactToooltip>
           </div>);
@@ -219,7 +219,7 @@ class Set extends React.Component {
       });
 
       deckStr = DeckEncoder.encode(newDeck);
-      this.setState({deckStr: deckStr});
+      this.setState({ deckStr: deckStr });
     }
     else {
       alert('Please add 40 cards to your deck.')
@@ -338,16 +338,18 @@ class Set extends React.Component {
             </div>
 
           </div>
-          <div id="dismiss" onClick={this.hideBar}>
-            {this.state.arrow}
-          </div>
+
 
           <div class="list-unstyled components">
             {this.state.deckStyled}
           </div>
           <div className="submitDiv">
             <a data-tip={"Your Deck Code: " + this.state.deckStr} data-event='click' data-event-off='dblclick' className="btn btn-outline buttonDiv">Deck String</a>
-            <ReactToooltip place="right"/>
+            <ReactToooltip place="right" />
+            
+            <div id="dismiss" onClick={this.hideBar}>
+              {this.state.arrow}
+            </div>
           </div>
         </nav>
         <div id="content" className={this.state.contentClass}>

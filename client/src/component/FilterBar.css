@@ -114,8 +114,9 @@ input::placeholder{
 	color: #011627 !important;
 }
 
-.vertical-center{
-	margin-top:20px;
+.advanced-positioning{
+	position: relative;
+	top: 12px;
 }
 
 @media screen and (max-width: 390px) {

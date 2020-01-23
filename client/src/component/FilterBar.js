@@ -821,7 +821,7 @@ class FilterBar extends React.Component {
                                     </div>
 
                                     <div className="col-lg-4 col-m-12 col-s-12 col-xs-12">
-                                        <a className="colorBtn vertical-center" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >
+                                        <a className="colorBtn advanced-positioning" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >
                                             Advanced Options +
                                         </a>
                                     </div>

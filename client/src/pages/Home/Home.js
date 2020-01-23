@@ -70,6 +70,15 @@ class Home extends React.Component{
                 <p>
                   If you love Legends of Runeterra and love staying up to date on the best Legends of Runeterra decks, make sure to stay tuned for content from Runeterra Nexus. We are your source for all new Legends of Runeterra Cards as well as the always evolving Legends of Runeterra meta. Stay tuned for our take on the best Legends of Runeterra beta decks. 
                 </p>
+                <div>
+                	Get Started with some of these decks (link to decks page)
+                </div>
+                <div>
+                	A powerful aggro deck for grinding the ladder (link to heckrim shark)
+                </div>
+                <div>
+                	A powerful midrange full of spiders (link to spiders and elise)
+                </div>
                 
   
             </div>

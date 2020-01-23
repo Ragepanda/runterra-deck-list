@@ -66,7 +66,6 @@ class Deck extends React.Component {
 						}
 					}
 					this.setState({ isLoaded: true });
-					console.log(this.state.manaCurve)
 				})
 			})
 	}
@@ -75,16 +74,13 @@ class Deck extends React.Component {
 			if(this.state.regions.length < 1){
 				this.state.regions[0] = obj.regionRef;
 				this.state.regionCount[0]+= count;
-				console.log("check 1");
 			}
 			else if(this.state.regions[0] === obj.regionRef){
 				this.state.regionCount[0]+= count;
-				console.log("check 2");
 			}
 			else{
 				this.state.regions[1] = obj.regionRef;
 				this.state.regionCount[1]+= count;
-				console.log("check 3");
 			}
 	}
 

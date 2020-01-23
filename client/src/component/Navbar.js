@@ -17,9 +17,9 @@ class Navbar extends React.Component {
 
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
-                  <li className="nav-item">
+                  {/* <li className="nav-item">
                     <a className="nav-link disabled" href="#">Meta</a>
-                  </li>
+                  </li> */}
                   <li className="nav-item">
                     <a className="nav-link" href="/deck_lists">Decks</a>
                   </li>
@@ -34,7 +34,7 @@ class Navbar extends React.Component {
                       <a className="dropdown-item" href="/set">Base Set</a>
                     </div>
                   </li>
-                  <li className="nav-item">
+                  {/* <li className="nav-item">
                     <a className="nav-link disabled" href="#">Login</a>
                   </li>
                   <li className="nav-item">
@@ -42,7 +42,7 @@ class Navbar extends React.Component {
                   </li>
                   <li className="nav-item">
                     <a className="nav-link disabled" href="#">Runeterra Tracker</a>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </nav>

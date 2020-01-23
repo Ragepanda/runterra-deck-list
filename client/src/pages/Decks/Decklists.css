@@ -9,6 +9,11 @@
     top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
+            text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
   }
 
   .deck-image{

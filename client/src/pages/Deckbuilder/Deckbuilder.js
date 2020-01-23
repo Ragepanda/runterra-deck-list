@@ -39,8 +39,8 @@ class Set extends React.Component {
   createHelmet() {
 
     let metatitle = "Legends of Runeterra Deck Builder | Legends of Runeterra Cards on Runeterra Nexus"; //will need to add a property for which set it is
-    let descrip = "This is a Legends of Runeterra Deckbuilder. This deckbuilder will let you filter cards by type, keywords and name. The Legends of Runeterra Deck builder here on Runeterra Nexus is the best way to create new Runeterra decks."; //will need to add a property for which set it is
-    let metacontent = "cards,card library,lor,legend, nexus, legends,runeterra,deck,decklist,builder, decklists,decks,set,sets,expansion,expansions"; //will need to add in property for which set it is
+    let descrip = "This is a Legends of Runeterra Deck builder. This deck builder will let you filter cards by type, keywords and name. The Legends of Runeterra Deck builder here on Runeterra Nexus is the best way to create new Runeterra decks."; //will need to add a property for which set it is
+    let metacontent = "cards,card library,lor,legend, nexus, legends,runeterra,deck,decklist,builder, deckbuilder, decklists,decks,set,sets,expansion,expansions"; //will need to add in property for which set it is
 
     let helmet = <Helmet>
       <title>{metatitle}</title>
@@ -273,7 +273,7 @@ class Set extends React.Component {
         var cardProps = prop.split(",");
         //var imgUrl = { background: "linear-gradient(90deg, rgb(52,41,54) 30%, rgba(52,41,54,0) 70%), url(" + "/img/cards/" + cardProps[0] + ".png) right center no-repeat" };
         return (
-          <div className="cardTile rounded divText" key={index} id={prop} onClick={this.removeCard} >
+          <div className={"cardTile " + cardProps[2] + " rounded divText"} key={index} id={prop} onClick={this.removeCard} >
             <div className="row justify-content-center" id={prop} onClick={this.removeCard} >
               <div className="col-1 cmc marginTop" id={prop} onClick={this.removeCard}>
                 <img className="mana-image" src={"/img/misc/mana" + cardProps[4] + ".png"} id={prop} onClick={this.removeCard} />
@@ -357,7 +357,7 @@ class Set extends React.Component {
           <div id="sidebarBtn" className={this.state.buttonClass + " " + "rounded text-center"} onClick={this.openSidebar}>&#62;</div>
 
           <div className="setName text-center pt-4"><h2>Legends of Runeterra Deck Builder</h2></div>
-          <div className="setName text-center pb-5 pt-1"><p>This is a Legends of Runeterra Deckbuilder. This deckbuilder will let you filter cards by type, keywords and name. The Legends of Runeterra Deck builder here on Runeterra Nexus is the best way to create new Runeterra decks.</p></div>
+          <div className="setName text-center pb-5 pt-1"><p>This is a Legends of Runeterra Deck builder. This deck builder will let you filter cards by type, keywords and name. The Legends of Runeterra Deck builder here on Runeterra Nexus is the best way to create new Runeterra decks.</p></div>
           <div className="row positioning">{this.createRows()}</div>
         </div>
       </div>

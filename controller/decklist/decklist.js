@@ -23,15 +23,15 @@ module.exports ={
             {
                 id: 3, 
                 code: 'CEBAIAIEBAFDKOQIAEBAECYYFEVTCMRZAEBACARHFUAA', 
-                name: "Teemo Memeo", 
+                name: "Teemo Meme-o", 
                 description: "They put Teemo in a card a game! Now use him to fill your opponents deck with poison mushrooms!", 
                 cardArtId: "01PZ008" 
             },
             {
                 id: 4, 
                 code: 'CEBAIAIFAEHSQNQHAEAQGDAUEETSSNACAEAQKFACAEAROGABAEAQCCI', 
-                name: "Frelijord Control", 
-                description: "This deck is all about killing you opponets units and developing big threats.", 
+                name: "Freljord Control", 
+                description: "This deck is all about killing you opponents units and developing big threats.", 
                 cardArtId: "01FR039" 
             },
              {
@@ -59,7 +59,7 @@ module.exports ={
                 id: 8, 
                 code: 'CEBAEAIAFIYAQAIEAMDBAGA3EQ2DSAQBAEACGAYBAQCAKMYCAEAQAMQBAECCO', 
                 name: "Ionia P&Z Spellslingers", 
-                description: "Cast spells to burn your oppoent out and make your late game units cheaper.", 
+                description: "Cast spells to burn your opponent out and make your late game units cheaper.", 
                 cardArtId: "01DE042" 
             },
             {
@@ -101,14 +101,14 @@ module.exports ={
                 id: 14, 
                 code: 'CEBAEAIACYTAQAIFBMNB4IRJFMYDCAQBAEAB6BABAUDQUERZAA', 
                 name: "Lucian Aggro", 
-                description: "This deck aims to evolve Lucian and finish the oppoent off quick.", 
+                description: "This deck aims to evolve Lucian and finish the opponent off quick.", 
                 cardArtId: "01DE022" 
             },
              {
                 id: 15, 
                 code: 'CEBAIAIBBEGS2LQGAEBQKBQODYVS6AQBAEASGBABAMLB2MBSAA', 
                 name: "Vladimir Self Damage", 
-                description: "This deck aims to evolve Lucian and finish the oppoent off quick.", 
+                description: "This deck aims to evolve Lucian and finish the opponent off quick.", 
                 cardArtId: "01NX006" 
             },
         ]

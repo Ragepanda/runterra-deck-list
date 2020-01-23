@@ -49,8 +49,39 @@
     left: 50%;
     transform: translate(-50%, -50%);
     cursor: pointer;    
-    border: 3px solid #FFF8F0;
+
     margin-bottom: 2px;
+}
+
+/*Region Borders*/
+.cardTile.Ionia{
+
+    border: 3px solid #C0587A !important ;
+    
+}
+.cardTile.Demacia{
+
+    border: 3px solid #F4EEDE !important ;
+    
+}
+.cardTile.Freljord{
+
+    border: 3px solid #64D1F7 !important ;
+    
+}
+.cardTile.PiltoverZaun{
+
+    border: 3px solid #FC9E6C !important;
+    
+}
+.cardTile.Noxus{
+
+    border: 3px solid #781817 !important ;
+    
+}
+.cardTile.ShadowIsles{
+
+    border: 3px solid #05754A !important ;
 }
 
 .card-art-deckbuilder {
@@ -71,7 +102,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(90deg, rgb(52,41,54) 45%, rgba(52,41,54,0) 70%) right no-repeat;
+    background: linear-gradient(90deg, rgb(52,41,54) 52%, rgba(52,41,54,0) 80%) right no-repeat;
     z-index: 1;  
 
 }

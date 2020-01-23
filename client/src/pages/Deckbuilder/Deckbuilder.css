@@ -26,8 +26,17 @@
     margin-bottom: -6px;
 }
 
-.cardHand {
-    cursor: pointer;
+
+.card-zoom{
+    transition: transform .1s;
+    position: relative;
+    z-index:1;
+}
+
+.card-zoom:hover{
+    transform: scale(1.1);
+    position: relative;
+    z-index:2;
 }
 
 .cardTile {
@@ -66,6 +75,12 @@
     z-index: 1;  
 
 }
+.deckbuilder-tooltips{
+    background-color: #011627 !important;
+    width:100% !important;
+    opacity: 1 !important;
+}
+
 .mana-image{
     height:100%;
     width: 32px;
@@ -81,7 +96,7 @@
     margin:0 auto;
     display: block;
     text-align: center;
-    width: 45%;
+    width: 50%;
 }
 
 .buttonDiv:hover{
@@ -94,6 +109,10 @@
    
 }
 
+.positioning{
+    position: relative;
+    z-index:5;
+}
 
 
 .quanBack {
@@ -188,7 +207,7 @@
     width: 250px;
     position: fixed;
     overflow-y: scroll;
-    top: 40px;
+    top: 0px;
     left: 0;
     height: 100vh;
     z-index: 50;
@@ -291,6 +310,7 @@ a.article:hover {
 #content {
     width: calc(100% - 250px);
     padding: 15px;
+    padding-top: 50px;
     min-height: 100vh;
     transition: all 0.3s;
     position: absolute;

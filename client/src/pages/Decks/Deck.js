@@ -191,7 +191,7 @@ class Deck extends React.Component {
 			listStyleType: "none"
 		};
 		return (
-			<div class="container">
+			<div class="container" id="pageList">
 				<Helmet>
 					<title>{"Best Legends of Runeterra Decks | Legends of Runeterra Decks on Runeterra Nexus"}</title>
 					<meta name="description" content={'This Runeterra deck is one of the many best Legends of Runeterra decks we have here at Runeterra Nexus.'} />

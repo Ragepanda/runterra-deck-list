@@ -5,7 +5,7 @@ import keywordSet from "../../card_info/globals-en_us.json"
 import FilterBar from "../../component/FilterBar";
 import ReactToooltip from "react-tooltip";
 import "./Deckbuilder.css";
-const {DeckEncoder, Card} = require('runeterra'); //We need to import this card object to properly pass stuff to the encoder
+const { DeckEncoder, Card } = require('runeterra'); //We need to import this card object to properly pass stuff to the encoder
 
 
 
@@ -22,7 +22,8 @@ class Set extends React.Component {
       sidebarClass: "active",
       contentClass: "inactive",
       buttonClass: "inactive",
-      mediumSidebarActive: ""
+      mediumSidebarActive: "",
+      deckStr : "Please Add 40 Cards to Your Deck"
     };
     this.createHelmet = this.createHelmet.bind(this);
     this.setFilteredSet = this.setFilteredSet.bind(this);
@@ -32,7 +33,7 @@ class Set extends React.Component {
     this.removeCard = this.removeCard.bind(this);
     this.hideBar = this.hideBar.bind(this);
     this.openSidebar = this.openSidebar.bind(this);
-    this.encodeDeck  = this.encodeDeck.bind(this);
+    this.encodeDeck = this.encodeDeck.bind(this);
   }
 
   createHelmet() {
@@ -141,6 +142,13 @@ class Set extends React.Component {
         }
       }
     }
+
+    if (this.state.decklist.size === 40){
+      this.encodeDeck();
+    }
+    else{
+      this.setState({deckStr: "Please Add 40 Cards To Your Deck"});
+    }
     this.setState({ deckStyled: this.showDeck() });
   }
 
@@ -184,11 +192,11 @@ class Set extends React.Component {
     const list = this.state.filteredSet.map((card, index) => {
       if (card.rarity !== "None" && card.keywords.indexOf("Skill") === -1 && card.name !== "Accelerated Purrsuit" && this.validRegions(card.regionRef) === true)
         return (
-          <div className={"col-6 col-sm-6 col-md-3 col-lg-2 p-3 card-image " + this.state.mediumSidebarActive} key={index}>
-            <div className="cardHand" data-tip data-for={card.cardCode} onClick={this.addToDeck}>
+          <div className={"col-6 col-sm-6 col-md-3 col-lg-2 p-3 card-zoom " + this.state.mediumSidebarActive} key={index}>
+            <div data-tip data-for={"tooltip"+index} onClick={this.addToDeck}>
               <img className="image-container img-fluid" id={card.cardCode + "," + card.supertype + "," + card.regionRef + "," + card.name + "," + card.cost + "," + card.type} src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Deck Builder " + card.name} />
             </div>
-            <ReactToooltip className="set-tooltips" place="bottom" effect="solid" id={card.cardCode}>
+            <ReactToooltip className="deckbuilder-tooltips" place="bottom" effect="solid" id={"tooltip"+index}>
               {card.keywords.length > 0 ? this.keywordTooltipText(card.keywords) : card.name}
             </ReactToooltip>
           </div>);
@@ -199,19 +207,19 @@ class Set extends React.Component {
     return list;
   }
 
-  encodeDeck(){
+  encodeDeck() {
     var deckStr;
-    if (this.state.decklist['size'] === 40){
-      var newDeck =[];
-      Object.keys(this.state.decklist).map((prop,index) => {
-            if (prop.includes(",") && this.state.decklist[prop] > 0){
-                var cardProps = prop.split(",");
-                newDeck.push(new Card(cardProps[0], this.state.decklist[prop]));
-            }
-          });
-  
+    if (this.state.decklist['size'] === 40) {
+      var newDeck = [];
+      Object.keys(this.state.decklist).map((prop, index) => {
+        if (prop.includes(",") && this.state.decklist[prop] > 0) {
+          var cardProps = prop.split(",");
+          newDeck.push(new Card(cardProps[0], this.state.decklist[prop]));
+        }
+      });
+
       deckStr = DeckEncoder.encode(newDeck);
-      console.log(deckStr);
+      this.setState({deckStr: deckStr});
     }
     else {
       alert('Please add 40 cards to your deck.')
@@ -246,10 +254,10 @@ class Set extends React.Component {
       if (cardProps[1] === "Champion") {
         this.state.decklist['champions'] -= 1;
       }
-      if (cardProps[5] === "Unit" && cardProps[1] !== "Champion"){
+      if (cardProps[5] === "Unit" && cardProps[1] !== "Champion") {
         this.state.decklist['followers'] -= 1;
       }
-      if (cardProps[5] === "Spell"){
+      if (cardProps[5] === "Spell") {
         this.state.decklist['spells'] -= 1;
       }
     }
@@ -266,12 +274,18 @@ class Set extends React.Component {
         //var imgUrl = { background: "linear-gradient(90deg, rgb(52,41,54) 30%, rgba(52,41,54,0) 70%), url(" + "/img/cards/" + cardProps[0] + ".png) right center no-repeat" };
         return (
           <div className="cardTile rounded divText" key={index} id={prop} onClick={this.removeCard} >
-            <div className="row justify-content-center">
-              <div className="col-1 cmc marginTop"><img className= "mana-image" src={"/img/misc/mana"+ cardProps[4]+".png"} /></div>
-              <div className="col-7 cardName marginTop text-center align-middle" id={prop} onClick={this.removeCard}><span className="card-name-sidebar">{cardProps[3]}</span></div>
-              <div className="col-1 quanBack rounded marginTop text-center">{this.state.decklist[prop]}</div>
+            <div className="row justify-content-center" id={prop} onClick={this.removeCard} >
+              <div className="col-1 cmc marginTop" id={prop} onClick={this.removeCard}>
+                <img className="mana-image" src={"/img/misc/mana" + cardProps[4] + ".png"} id={prop} onClick={this.removeCard} />
+              </div>
+
+              <div className="col-7 cardName marginTop text-center align-middle" id={prop} onClick={this.removeCard}>
+                <span className="card-name-sidebar" id={prop} onClick={this.removeCard}>{cardProps[3]}</span>
+              </div>
+
+              <div className="col-1 quanBack rounded marginTop text-center" id={prop} onClick={this.removeCard}>{this.state.decklist[prop]}</div>
             </div>
-            <img className="image-container img-fluid card-art-deckbuilder" src={"/img/cards/" + cardProps[0] + ".png"} alt={"Legends of Runeterra Deck Builder " + cardProps[3]} />
+            <img className="image-container img-fluid card-art-deckbuilder" id={prop} onClick={this.removeCard} src={"/img/cards/" + cardProps[0] + ".png"} alt={"Legends of Runeterra Deck Builder " + cardProps[3]} />
           </div>
         );
       }
@@ -290,7 +304,7 @@ class Set extends React.Component {
         {this.createHelmet()}
         <nav id="sidebar" className={this.state.sidebarClass}>
           <div class="sidebar-header text-center">
-            <h4>Current Deck</h4>
+            <h5>Current Deck</h5>
             <div id="deck-info">
               <div className="deck-stats">
                 <div>{this.state.decklist['size']}/40</div>
@@ -331,8 +345,9 @@ class Set extends React.Component {
           <div class="list-unstyled components">
             {this.state.deckStyled}
           </div>
-          <div>
-            <a className="btn btn-outline buttonDiv" onClick = {this.encodeDeck} >Submit</a>
+          <div className="submitDiv">
+            <a data-tip={"Your Deck Code: " + this.state.deckStr} data-event='click' data-event-off='dblclick' className="btn btn-outline buttonDiv">Deck String</a>
+            <ReactToooltip place="right"/>
           </div>
         </nav>
         <div id="content" className={this.state.contentClass}>
@@ -341,7 +356,7 @@ class Set extends React.Component {
 
           <div className="setName text-center pt-4"><h2>Legends of Runeterra Deck Builder</h2></div>
           <div className="setName text-center pb-5 pt-1"><p>This is a Legends of Runeterra Deckbuilder. This deckbuilder will let you filter cards by type, keywords and name. The Legends of Runeterra Deck builder here on Runeterra Nexus is the best way to create new Runeterra decks.</p></div>
-          <div className="row">{this.createRows()}</div>
+          <div className="row positioning">{this.createRows()}</div>
         </div>
       </div>
     );

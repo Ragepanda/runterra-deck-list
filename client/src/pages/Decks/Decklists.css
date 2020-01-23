@@ -19,3 +19,7 @@
   .deck-box:hover{
       transform: scale(1.2);
   }
+
+#dList {
+  padding-top: 15px;
+}

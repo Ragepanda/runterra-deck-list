@@ -98,12 +98,14 @@ class Set extends React.Component {
       if (card.rarity !== "None" && card.keywords.indexOf("Skill") === -1 && card.name !== "Accelerated Purrsuit")
         return (
           <div className="col-6 col-sm-6 col-md-4 col-lg-2 p-3" key={index}>
-            <a data-tip data-for={card.cardCode} href={"/card/" + card.name.replace(/ /g, "_").replace(/:/g, "")}>
-              <img className="image-container img-fluid card-image" src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Cards " + card.name} />
-            </a>
-             <ReactToooltip className="set-tooltips" place="top" effect="solid" id={card.cardCode}>
-               {card.keywords.length > 0 ? this.keywordTooltipText(card.keywords) : card.name}
-            </ReactToooltip> 
+            <div>
+              <a data-tip data-for={card.cardCode} href={"/card/" + card.name.replace(/ /g, "_").replace(/:/g, "")}>
+                <img className="image-container img-fluid card-image" src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Cards " + card.name} />
+              </a>
+            </div>
+            <ReactToooltip className="set-tooltips" place="bottom" effect="solid" id={card.cardCode}>
+              {card.keywords.length > 0 ? this.keywordTooltipText(card.keywords) : card.name}
+            </ReactToooltip>
           </div>);
       else
         return " "

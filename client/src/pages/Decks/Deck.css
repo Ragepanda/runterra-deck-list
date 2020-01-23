@@ -107,8 +107,8 @@
 
 
 .cardart{
-	height: 48px;
-	width: 100px;
+	height: 50px;
+	width: 60px;
 	overflow: hidden;
 	border-radius: 50%;
 	padding-right: 10px;
@@ -127,6 +127,7 @@ ul.a{
 
 .regionImg{
 	width: 22%;
+	padding-right: 10px;
 }
 .typeImg{
 	width: 16.66%;
@@ -142,9 +143,72 @@ ul.a{
 	margin-bottom: 50px;
 }
 
+.headers {
+	margin-bottom: 20px;
+}
+
 
 #pageList{
 	padding-top: 75px;
+}
+
+.cardTiles::before {
+    content: '';
+    position:absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, rgb(52,41,54) 52%, rgba(52,41,54,0) 80%) right no-repeat;
+    z-index: 1;  
+
+}
+
+.cardTiles {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    width: 250px;
+    height: 50px;
+    transform: translate(10%, -77%);
+    cursor: pointer;    
+
+    
+}
+
+.cardContainer{
+	margin-bottom: -25px;
+}
+
+/*Region Borders*/
+.cardTiles.Ionia{
+
+    border: 3px solid #C0587A !important ;
+    
+}
+.cardTiles.Demacia{
+
+    border: 3px solid #F4EEDE !important ;
+    
+}
+.cardTiles.Freljord{
+
+    border: 3px solid #64D1F7 !important ;
+    
+}
+.cardTiles.PiltoverZaun{
+
+    border: 3px solid #FC9E6C !important;
+    
+}
+.cardTiles.Noxus{
+
+    border: 3px solid #781817 !important ;
+    
+}
+.cardTiles.ShadowIsles{
+
+    border: 3px solid #05754A !important ;
 }
 /*
 Extra Colors

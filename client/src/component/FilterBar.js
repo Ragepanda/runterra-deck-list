@@ -1,7 +1,6 @@
 import React from "react";
 import "./FilterBar.css";
 import baseSet from "../card_info/set1.json";
-import kwSet from "../card_info/globals-en_us.json";
 import { Multiselect } from 'multiselect-react-dropdown';
 import ReactSearchBox from 'react-search-box';
 
@@ -821,9 +820,9 @@ class FilterBar extends React.Component {
                                     </div>
 
                                     <div className="col-lg-4 col-m-12 col-s-12 col-xs-12">
-                                        <a className="colorBtn advanced-positioning" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >
+                                        <button className="colorBtn advanced-positioning" data-toggle="collapse" data-target="#collapseOne" href="#" aria-expanded="true" aria-controls="collapseOne" >
                                             Advanced Options +
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
 

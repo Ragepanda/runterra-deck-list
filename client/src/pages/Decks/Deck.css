@@ -1,5 +1,5 @@
 .hover-images{
-    height:300px;
+    height:250px;
     width: auto;
     z-index: 10;
     
@@ -9,12 +9,12 @@
 	opacity: 1 !important;
 }
 
-.manaCurve{
+/*.manaCurve{
 	
 	margin-top: -40px;
 	margin-left: -50px;
 	width:100%;
-}
+}*/
 
 /* Rarity Colors*/
 
@@ -52,41 +52,7 @@
 }
 
 /*Region Borders*/
-.Ionia{
-	font-size: 125%;
-	font-weight: bold;
-	color: #C0587A !important;
-	
-}
-.Demacia{
-	font-size: 125%;
-	font-weight: bold;
-	color: #F4EEDE !important;
-	
-}
-.Freljord{
-	font-size: 125%;
-	font-weight: bold;
-	color: #64D1F7 !important;
-	
-}
-.Piltover{
-	font-size: 125%;
-	font-weight: bold;
-	color: #FC9E6C;
-	
-}
-.Noxus{
-	font-size: 125%;
-	font-weight: bold;
-	color: #781817 !important;
-	
-}
-.Shadow{
-	font-size: 125%;
-	font-weight: bold;
-	color: #05754A !important;
-}
+
 .manacost{
 	height: 60%;
 	width: 50px;
@@ -126,25 +92,33 @@ ul.a{
 }
 
 .regionImg{
-	width: 22%;
+	width: 20%;
 	padding-right: 10px;
+	padding-bottom: 20px;
 }
 .typeImg{
 	width: 16.66%;
+	padding-bottom: 20px;
 }
 
 .regionBreakdown{
-	margin-bottom: 30px;
+	width: 100%;
+	text-align: center;
 }
 .cardTypeBreakdown{
-	height: 200px;
+	height: 100px;
+	text-align: center;
 }
 .deckList{
 	margin-bottom: 50px;
 }
 
+
+
+
 .headers {
 	margin-bottom: 20px;
+	margin-top: 30px;
 }
 
 

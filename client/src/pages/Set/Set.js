@@ -66,7 +66,7 @@ class Set extends React.Component {
               path = keywordSet.keywords[keywordIndex].path;
           }
         }
-        var text = (<div>
+        var text = (<div key={x}>
           <h5>{keywords[x] + " "}
             <svg height="35" wdith="35" viewBox="0 0 35 35" className="hover-icon" fill={fill}>
               {this.generatePathData(path)}
@@ -84,7 +84,7 @@ class Set extends React.Component {
     if (path.length > 0) {
       var pathHTML = [];
       for (var x = 0; x < path.length; x++) {
-        pathHTML.push(<path d={path[x]}></path>);
+        pathHTML.push(<path d={path[x]} key={x}></path>);
       }
       return pathHTML;
     }

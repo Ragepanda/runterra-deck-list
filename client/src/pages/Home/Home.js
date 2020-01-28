@@ -1,8 +1,7 @@
 import React from "react";
 import api from "../../utils/api";
-import set1 from "../../card_info/set1.json";
-import logo from '../../logo.svg';
 import { Helmet } from "react-helmet";
+import "./Home.css";
 class Home extends React.Component{
     constructor(props) {
         super(props);
@@ -16,7 +15,7 @@ class Home extends React.Component{
       componentDidMount(){
         api.getDeckLists()
         .then(res =>{
-          console.log(res.data);
+          //console.log(res.data);
           this.setState({
             isLoaded: true, 
             items: res.data});
@@ -51,7 +50,6 @@ class Home extends React.Component{
       render() {
         const error = this.state.error;
         const isLoaded = this.state.isLoaded;
-        const items = this.state.items;
     
         if (error) {
           return <div>{this.createHelmet()}Error: {error.message}</div>
@@ -62,23 +60,18 @@ class Home extends React.Component{
         else {
     
           return (
-            <div className="Home">
+            <div className="container Home">
                 {this.createHelmet()}
                 <div className="setName text-center pt-4"><h2>Runeterra Nexus</h2></div>
-                <div className="setName text-center pb-5 pt-1"><p>Runeterra Nexus is your spot for Legends of Runeterra decks, Legends of Runeterra cards, and Legends of Runeterra guides.</p></div>
+                <div className="setName pb-5 pt-1"><p>Runeterra Nexus is your spot for Legends of Runeterra decks, Legends of Runeterra cards, and Legends of Runeterra guides.</p></div>
 
-                <p>
-                  If you love Legends of Runeterra and love staying up to date on the best Legends of Runeterra decks, make sure to stay tuned for content from Runeterra Nexus. We are your source for all new Legends of Runeterra Cards as well as the always evolving Legends of Runeterra meta. Stay tuned for our take on the best Legends of Runeterra beta decks. 
-                </p>
                 <div>
-                	Get Started with some of these decks (link to decks page)
+                  If you love Legends of Runeterra and want to stay up to date on the best Legends of Runeterra decks, make sure to stay tuned for content from Runeterra Nexus. We are your source for all new Legends of Runeterra Cards as well as the always evolving Legends of Runeterra meta. Stay tuned for our take on the best Legends of Runeterra beta decks. 
+                	For now, get started in the Legends of Runeterra Beta with some of the best Legends of Runeterra decks.
+                <div>&nbsp;</div>
+                  <div className="text-center"><a className="pinkLink" href="/deck_lists">Best Legends of Runeterra Decks</a></div>
                 </div>
-                <div>
-                	A powerful aggro deck for grinding the ladder (link to heckrim shark)
-                </div>
-                <div>
-                	A powerful midrange full of spiders (link to spiders and elise)
-                </div>
+
                 
   
             </div>

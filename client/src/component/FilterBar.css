@@ -117,6 +117,8 @@ input::placeholder{
 .advanced-positioning{
 	position: relative;
 	top: 12px;
+	background-color: #011627;
+	border : 2px solid #011627;
 }
 
 @media screen and (max-width: 390px) {

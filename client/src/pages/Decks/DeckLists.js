@@ -20,7 +20,7 @@ class Deck extends React.Component {
     componentDidMount() {
         api.getDeckLists()
             .then(res => {
-                console.log(res.data);
+                //console.log(res.data);
                 this.setState({
                     isLoaded: true,
                     decks: res.data
@@ -34,7 +34,7 @@ class Deck extends React.Component {
                     error: err
                 })
             });
-        console.log("Mounted");
+        //console.log("Mounted");
     }
 
     createRows() {

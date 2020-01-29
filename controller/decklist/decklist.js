@@ -10,7 +10,7 @@ module.exports ={
                 id: 1, 
                 code: 'CEBAGAIDBIVC4BIBAIBAQDZRHABAGAICBMLCCBIBAMCBMJBRGYAA', 
                 name: "Yasuo Control", 
-                description: "This decks aims to use Recall and Stun effects to hold your opponet back until you can win with a big attack.", 
+                description: "This decks aims to use Recall and Stun effects to hold your opponent back until you can win with a big attack.", 
                 cardArtId: "01IO015" 
             },
              {
@@ -117,13 +117,13 @@ module.exports ={
 
     getDeckById: function(req,res){
         var id = req.query.id;
-        console.log(id);
+        //console.log(id);
         var cards = [
             {
                 id: 1, 
                 code: 'CEBAGAIDBIVC4BIBAIBAQDZRHABAGAICBMLCCBIBAMCBMJBRGYAA', 
                 name: "Yasuo Control", 
-                description: "This decks aims to use Recall and Stun effects to hold your opponet back until you can win with a big attack.", 
+                description: "This decks aims to use Recall and Stun effects to hold your opponent back until you can win with a big attack.", 
                 cardArtId: "01IO015" 
             },
              {
@@ -144,7 +144,7 @@ module.exports ={
                 id: 4, 
                 code: 'CEBAIAIFAEHSQNQHAEAQGDAUEETSSNACAEAQKFACAEAROGABAEAQCCI', 
                 name: "Frelijord Control", 
-                description: "This deck is all about killing you opponets units and developing big threats.", 
+                description: "This deck is all about killing you opponents units and developing big threats.", 
                 cardArtId: "01FR039" 
             },
              {
@@ -234,7 +234,7 @@ module.exports ={
                 break;
             }
         }
-        console.log(card);
+        //console.log(card);
         res.send(card);
     }
 }

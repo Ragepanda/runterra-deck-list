@@ -1,0 +1,11 @@
+#!/bin/sh
+
+echo "Switching to branch master"
+git checkout master
+
+echo "Building app"
+yarn build
+
+echo "Deploying files to server"
+rsync -avP build/ root@45.33.102.4:/var/www/runterra-dick-list/client
+echo "Deployment complete"

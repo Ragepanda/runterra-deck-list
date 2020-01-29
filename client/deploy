@@ -7,5 +7,5 @@ echo "Building app"
 yarn build
 
 echo "Deploying files to server"
-rsync build/ root@45.33.102.4:/var/www/runterra-dick-list/client/build
+rsync -avp build/ root@45.33.102.4:/var/www/runterra-dick-list/client/build
 echo "Deployment complete"

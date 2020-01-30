@@ -13,7 +13,10 @@ import Set from "./pages/Set/Set";
 import Deck from "./pages/Decks/Deck";
 import Decklists from "./pages/Decks/DeckLists";
 import Deckbuilder from "./pages/Deckbuilder/Deckbuilder";
-import Article from "./pages/Articles/Article"
+import Article from "./pages/Articles/Article";
+import Privacy from "./pages/Privacy/Privacy";
+import Terms from "./pages/Terms/Terms";
+import About from "./pages/About/About";
 
 import Navbar from "./component/Navbar";
 
@@ -32,6 +35,9 @@ class App extends React.Component {
             <Route exact path="/deck_lists/:deckName/:id" component={Deck} />
             <Route exact path="/deck_builder" component={Deckbuilder} />
             <Route exact path="/article" component={Article} />
+            <Route exact path="/privacy" component={Privacy} />
+            <Route exact path="/terms" component={Terms} />
+            <Route exact path="/about" component={About} />
           </Switch>
         </div>
       </Router>

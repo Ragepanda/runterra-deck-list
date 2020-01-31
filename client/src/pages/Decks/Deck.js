@@ -3,6 +3,7 @@ import baseSet from "../../card_info/set1.json";
 import { Helmet } from "react-helmet";
 import { Bar } from 'react-chartjs-2';
 import ReactToooltip from 'react-tooltip';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 import "./Deck.css"
 import api from '../../utils/api';
 const { DeckEncoder } = require('runeterra');
@@ -25,7 +26,9 @@ class Deck extends React.Component {
 			numFollower: 0,
 			numSpells: 0,
 			deckName : "",
-			description: ""
+			description: "",
+			deckStr: "",
+			copied: false
 		};
 		//console.log(this.state.deck);
 		//console.log(baseSet[0].name)
@@ -71,6 +74,7 @@ class Deck extends React.Component {
 					this.setState({ isLoaded: true });
 					this.setState({deckName: this.props.match.params.deckName.replace(/_/g, ' ')});
 					this.setState({description: res.data.description});
+					this.setState({deckStr: res.data.code});
 				})
 			})
 	}
@@ -223,6 +227,10 @@ class Deck extends React.Component {
 		}
 	}
 
+	onCopy = () => {
+	  this.setState({copied: true});
+	};
+
 	render() {
 		var ulStyle ={
 			listStyleType: "none"
@@ -289,6 +297,7 @@ class Deck extends React.Component {
 							</div>
 						</div>
 					</div>
+
 				</div>
 			</div>
 		);

@@ -9,6 +9,7 @@
     "mysql2": "^2.1.0",
     "path": "^0.12.7",
     "react-bootstrap": "^1.0.0-beta.16",
+    "react-copy-to-clipboard": "^5.0.2",
     "react-helmet": "^5.2.1",
     "react-router-dom": "^5.1.2",
     "react-search-box": "^2.0.2",

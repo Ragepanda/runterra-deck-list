@@ -11,7 +11,7 @@ class Privacy extends React.Component {
   render() {
     return(
     <div className="regBody container">
-      <h1>Privacy Policy for runeterranexus.com</h1>
+      <h3>Privacy Policy for runeterranexus.com</h3>
   
       <p>At runeterranexus.com, accessible from http://runeterranexus.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by runeterranexus.com and how we use it.</p>
   

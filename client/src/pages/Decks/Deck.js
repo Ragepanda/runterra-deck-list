@@ -231,6 +231,11 @@ class Deck extends React.Component {
 	  this.setState({copied: true});
 	};
 
+	deckStrBtn = () => {
+	    alert('Deck String Copied to Clipboard!');
+
+	}
+
 	render() {
 		var ulStyle ={
 			listStyleType: "none"
@@ -251,8 +256,14 @@ class Deck extends React.Component {
 
 				<p>This Runeterra deck is one of the many best Legends of Runeterra decks we have here at Runeterra Nexus.</p>
 
+
 				<h2 className="headers">{this.state.deckName}</h2>
 				<p>{this.state.description}</p>
+					<CopyToClipboard onCopy={this.onCopy} text={this.state.deckStr}>
+				<div className="text-center">
+				  		<button className="col btn-lg btn btn-outline " onClick={this.deckStrBtn}>Copy Deck Code To Clipboard </button>
+				</div>
+					</CopyToClipboard>
 				<div className="row">
 					<div className="col-lg-6 col-sm-12 col-xs-12 col-xl-6 col-md-6 deckList">
 						<h4 className="headers">Champions</h4>
@@ -269,6 +280,7 @@ class Deck extends React.Component {
 						</li>
 					</div>	
 					<div className="col-lg-6 col-sm-12 col-xs-12 col-xl-6 col-md-6 rhs">
+
 						<div className="row justify-content-center">
 							<div className="regionBreakdown col col-xl col-lg col-md col-sm col-xs">
 								
@@ -296,6 +308,8 @@ class Deck extends React.Component {
 								{this.makeManaCurveChart()}
 							</div>
 						</div>
+						<div className="noDisplay"><textarea rows={1} cols={1} value={this.state.deckStr}/></div>
+
 					</div>
 
 				</div>

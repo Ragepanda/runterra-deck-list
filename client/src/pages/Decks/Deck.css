@@ -18,6 +18,8 @@
 
 /* Rarity Colors*/
 
+
+
 .Common{
 	width: 24px;
 	height: 48px;
@@ -113,7 +115,7 @@ ul.a{
 	text-align: center;
 }
 .deckList{
-	margin-bottom: 50px;
+	margin-bottom: 30px;
 }
 
 

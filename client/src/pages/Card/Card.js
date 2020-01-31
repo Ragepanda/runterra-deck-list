@@ -40,9 +40,9 @@ class Card extends React.Component {
            <meta name="rating" content="kids" />
            <meta http-equiv="content-type" content="text/html" charSet="utf-8" />
          </Helmet>                            
-          <div className="text-center cardName">
-            <h2 className="pt-4">{card.name}</h2>
-            <p className="pb-5 pt-1">{card.name + " is one of the many cards in Legends of Runeterra. Runeterra Nexus is the place to help you evaluate " +card.name+" as well as other Legends of Runeterra cards."}</p>
+          <div className="text-center cardName"  id="cardList">
+            <h2 className="pt-3">{card.name}</h2>
+            <p className="pb-4 pt-1">{card.name + " is one of the many cards in Legends of Runeterra. Runeterra Nexus is the place to help you evaluate " +card.name+" as well as other Legends of Runeterra cards."}</p>
           </div>
 
           <div className="row">
@@ -50,7 +50,7 @@ class Card extends React.Component {
               <img className="cardImg img-fluid" src={"/img/cards/"+card.cardCode+".png"} alt={card.name} />
             </div>
   
-            <div className=" pt-5 cardSpecs col-sm-6">
+            <div className=" pt-4 cardSpecs col-sm-6">
               <div className="row">
                 <div className="col">Name</div>
                 <div className="col">{card.name}</div>

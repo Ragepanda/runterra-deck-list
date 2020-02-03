@@ -2,6 +2,7 @@ import React from "react";
 
 import DeckListInsert from "../../component/DeckListInsert";
 import baseSet from "../../card_info/set1.json";
+import api from '../../utils/api';
 import { Helmet } from "react-helmet";
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 import "./Article.css";
@@ -12,16 +13,32 @@ class Article extends React.Component {
 
 		this.state = {
 			isLoaded: false,
-			layout: {}
+			layout: {},
+			error: null
 		};
 		//console.log(this.state.deck);
 		//console.log(baseSet[0].name)
 	}
 	componentDidMount(){
-		const testHTML = this.testHTMLstring();
-		
-		this.state.layout =  ReactHtmlParser(testHTML);
-		this.setState({ isLoaded: true });
+		  api.getArticleById(this.props.match.params.id)
+            .then(res => {
+                //console.log(res.data);
+                var html = ReactHtmlParser(res.data.layout);
+                console.log(html);
+                this.setState({
+                    isLoaded: true,
+                    layout: html
+                });
+
+
+            })
+            .catch(err => {
+                this.setState({
+                    //isLoaded: true,
+                    //error: err
+                })
+            });
+		console.log(this.state.layout);
 	}
 
 	testLayout(){

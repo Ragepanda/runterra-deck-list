@@ -34,7 +34,7 @@ class App extends React.Component {
             <Route exact path="/deck_lists/" component={Decklists} />
             <Route exact path="/deck_lists/:deckName/:id" component={Deck} />
             <Route exact path="/deck_builder" component={Deckbuilder} />
-            <Route exact path="/article" component={Article} />
+            <Route exact path="/article/:article/:id" component={Article} />
             <Route exact path="/privacy" component={Privacy} />
             <Route exact path="/terms" component={Terms} />
             <Route exact path="/about" component={About} />

@@ -198,6 +198,9 @@ class Set extends React.Component {
           <div className={"col-6 col-sm-6 col-md-3 col-lg-2 p-3 card-zoom " + this.state.mediumSidebarActive} key={index}>
             <div data-tip data-for={"tooltip" + index} onClick={this.addToDeck}>
               <img className="image-container img-fluid" id={card.cardCode + "," + card.supertype + "," + card.regionRef + "," + card.name + "," + card.cost + "," + card.type} src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Deck Builder " + card.name} />
+              {this.state.decklist.hasOwnProperty(card.cardCode + "," + card.supertype + "," + card.regionRef + "," + card.name + "," + card.cost + "," + card.type) === true && this.state.decklist[card.cardCode + "," + card.supertype + "," + card.regionRef + "," + card.name + "," + card.cost + "," + card.type] > 0 && 
+                <div className="cardQuantity quanBack rounded text-center">{this.state.decklist[card.cardCode + "," + card.supertype + "," + card.regionRef + "," + card.name + "," + card.cost + "," + card.type] + "/3"}</div>
+              }
             </div>
             <ReactToooltip className="deckbuilder-tooltips" place="bottom" effect="solid" id={"tooltip" + index}>
               {card.keywords.length > 0 ? this.keywordTooltipText(card.keywords) : card.name}

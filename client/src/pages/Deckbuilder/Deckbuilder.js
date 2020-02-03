@@ -203,7 +203,7 @@ class Set extends React.Component {
               }
             </div>
             <ReactToooltip className="deckbuilder-tooltips" place="bottom" effect="solid" id={"tooltip" + index}>
-              {card.keywords.length > 0 ? this.keywordTooltipText(card.keywords) : card.name}
+              {card.keywords.length > 0 ? this.keywordTooltipText(card.keywords) : card.descriptionRaw}
             </ReactToooltip>
           </div>);
       else
@@ -370,7 +370,7 @@ class Set extends React.Component {
               {this.state.arrow}
             </div>
           </div>
-          <div className="noDisplay"><textarea rows={1} cols={1} value={this.state.deckStr}/></div>
+          <div className="noDisplay"><textarea rows={1} cols={1} readOnly value={this.state.deckStr}/></div>
         </nav>
         <div id="content" className={this.state.contentClass}>
           <FilterBar className="filter" setFilteredSet={this.setFilteredSet} />

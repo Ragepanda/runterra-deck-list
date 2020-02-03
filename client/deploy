@@ -1,0 +1,11 @@
+#!/bin/sh
+
+echo "Switching to branch master"
+git checkout master
+
+echo "Building app, remember HAVE YARN START RUNNING IN ROOT"
+yarn build
+
+echo "Deploying files to server"
+sshpass -p 'bitc0ind@ddies' rsync -avp build/ root@45.33.102.4:/var/www/runterra-dick-list/client/build
+echo "Deployment complete"

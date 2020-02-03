@@ -2,3 +2,16 @@ hr {
 	background-color: #FFF8F0
 }
 
+#cardList {
+	padding-top: 50px;
+}
+
+.cardImg {
+	height: 70%;
+	width: auto;
+}
+
+
+.cardSpecs{
+	font-size: 90%;
+}

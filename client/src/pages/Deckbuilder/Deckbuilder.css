@@ -26,6 +26,9 @@
     margin-bottom: -6px;
 }
 
+.noDisplay{
+    display: none;
+}
 
 .card-zoom{
     transition: transform .1s;
@@ -190,7 +193,7 @@
     cursor: pointer;
     font-size: 20px;
     margin-left: -15px;
-    top: 25vh;
+    top: 30vh;
     z-index: 10;
     background: #011627;
     border: 2px solid #D68FD6;

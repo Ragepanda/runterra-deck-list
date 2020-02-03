@@ -94,8 +94,8 @@ body{
 #element-with-background-image {
     background-attachment: fixed;
     background-repeat: no-repeat;
- 	  background-size: cover;
-    min-height: 94vh;
-
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
 
 }

@@ -25,6 +25,11 @@ class Deck extends React.Component {
 			numChamp: 0,
 			numFollower: 0,
 			numSpells: 0,
+			numComm : 0,
+			numRare : 0,
+			numEpic : 0,
+			numLegn : 0,
+			numShards: 0,
 			deckName : "",
 			description: "",
 			deckStr: "",
@@ -67,6 +72,18 @@ class Deck extends React.Component {
 									this.state.numChamp+=this.state.deck[i].count;
 									this.handleRegions(baseSet[j], this.state.deck[i].count);
 								}
+								if (baseSet[j].rarity === "Common") {
+									this.state.numComm +=this.state.deck[i].count;
+								}
+								if (baseSet[j].rarity === "Rare") {
+									this.state.numRare +=this.state.deck[i].count;
+								}
+								if (baseSet[j].rarity === "Epic") {
+									this.state.numEpic +=this.state.deck[i].count;
+								}
+								if (baseSet[j].rarity === "Champion") {
+									this.state.numLegn +=this.state.deck[i].count;
+								}
 			
 							}
 						}
@@ -76,7 +93,13 @@ class Deck extends React.Component {
 					this.setState({description: res.data.description});
 					this.setState({deckStr: res.data.code});
 				})
+			this.setState({numShards: this.shardCount()});
 			})
+
+	}
+
+	shardCount(){
+		return this.state.numComm * 100 + this.state.numRare * 300 + this.state.numEpic * 1200 + this.state.numLegn * 3000;
 	}
 
 	handleRegions(obj, count){
@@ -261,7 +284,7 @@ class Deck extends React.Component {
 				<p>{this.state.description}</p>
 					<CopyToClipboard onCopy={this.onCopy} text={this.state.deckStr}>
 				<div className="text-center">
-				  		<button className="col btn-lg btn btn-outline " onClick={this.deckStrBtn}>Copy Deck Code To Clipboard </button>
+				  		<div className="col">&nbsp;</div><button className="col btn-lg btn btn-outline " onClick={this.deckStrBtn}>Copy Deck Code To Clipboard </button><div className="col">&nbsp;</div>
 				</div>
 					</CopyToClipboard>
 				<div className="row">
@@ -301,6 +324,24 @@ class Deck extends React.Component {
 								<img className="typeImg" src="/img/misc/follower-icon.png" alt={"Legends of Runeterra Decks " + this.state.deckName + " follower count" }></img>
 								<span className="counter">{this.state.numSpells}</span>
 								<img className="typeImg" src="/img/misc/spell-icon.png" alt={"Legends of Runeterra Decks " + this.state.deckName + " spell count" }></img>
+							</div>
+						</div>
+						<div className="row cardTypeBreakdown justify-content-center">
+							<div className="col col-xl col-lg col-sm col-xs col-md">
+								<span className="counter">{this.state.numComm}</span>
+								<img className="rareImg" src="/img/misc/common.png" alt={"Legends of Runeterra Decks " + this.state.deckName + " common rarity count" }></img>
+								<span className="counter">{this.state.numRare}</span>
+								<img className="rareImg" src="/img/misc/rare.png" alt={"Legends of Runeterra Decks " + this.state.deckName + " rare rarity count" }></img>
+								<span className="counter">{this.state.numEpic}</span>
+								<img className="rareImg" src="/img/misc/epic.png" alt={"Legends of Runeterra Decks " + this.state.deckName + " epic rarity count" }></img>
+								<span className="counter">{this.state.numLegn}</span>
+								<img className="rareImg" src="/img/misc/champion.png" alt={"Legends of Runeterra Decks " + this.state.deckName + " champion rarity count" }></img>
+							</div>
+						</div>
+						<div className="row cardTypeBreakdown justify-content-center">
+							<div className="col col-xl col-lg col-sm col-xs col-md">
+								<span className="counter">{this.state.numShards}</span>
+								<img className="rareImg" src="/img/misc/shards.png" alt={"Legends of Runeterra Decks " + this.state.deckName + " shards cost to craft" }></img>
 							</div>
 						</div>
 						<div className="row manaCurve justify-content-center">

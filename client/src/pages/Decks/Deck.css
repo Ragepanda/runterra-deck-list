@@ -85,6 +85,9 @@
 	padding-right: 10px;
 }
 
+.rhs{
+	margin-top: 50px;
+}
 
 .cardName{
 	font-size: 125%;
@@ -104,6 +107,12 @@ ul.a{
 .typeImg{
 	width: 16.66%;
 	padding-bottom: 20px;
+}
+
+.rareImg{
+	width: 10%;
+	padding-bottom: 20px;
+	padding-right: 2px;
 }
 
 .regionBreakdown{

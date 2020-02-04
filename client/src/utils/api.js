@@ -26,6 +26,10 @@ export default {
         var url = window.location.hostname;
         return axios.get("http://"+url+":5000/profile/")
     },
+    getArticles: function(){
+        var url = window.location.hostname;
+        return axios.get("http://"+url+":5000/api/article/getArticles");
+    },
     getArticleById: function(id){
         var url = window.location.hostname;
         return axios.get("http://"+url+":5000/api/article/getArticleById", {params: {id:id}});

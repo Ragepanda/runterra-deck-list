@@ -7,6 +7,9 @@ const articleController = require("../../controller/article/article");
 //   });
 
 
+router.
+route("/getArticles")
+.get(articleController.getArticles);
 
 router.
 route("/getArticleById")

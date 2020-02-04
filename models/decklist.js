@@ -1,9 +1,9 @@
 module.exports = function (sequelize, DataTypes) {
     var decklist = sequelize.define("decklist", {
-        id: {
+
+        likes: {
             type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
+            allowNull: false
         },
         code: {
             type: DataTypes.STRING,
@@ -16,16 +16,23 @@ module.exports = function (sequelize, DataTypes) {
         description: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        cardArtId: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-
-        
+        }
     },
         { timestamps: true });
-
+    decklist.associate = function (models) {
+        decklist.belongsTo(models.user,
+            {
+                as: 'createdDecks',
+                foreignKey: 'creatorId'
+            });
+        decklist.belongsToMany(models.user,
+            {
+                as: 'upvotes',
+                through: 'deckLikes',
+                foreignKey: 'likeUserId',
+                otherKey: 'likedDeckId'
+            });
+    }
     return decklist;
 };
 

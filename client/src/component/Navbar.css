@@ -23,3 +23,7 @@ li.dropdown:hover > .dropdown-menu {
 
 	right:-2px;
 }
+
+#modal-link{
+    cursor:pointer;
+}

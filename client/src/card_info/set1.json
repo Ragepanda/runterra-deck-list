@@ -337,9 +337,7 @@
     "name": "Yasuo",
     "cardCode": "01IO015T1",
     "keywords": [
-      "Quick Attack",
-      "Stun",
-      "Recall"
+      "Quick Attack", "Stun", "Recall"
     ],
     "keywordRefs": [
       "QuickStrike"
@@ -595,9 +593,9 @@
     ],
     "region": "Piltover & Zaun",
     "regionRef": "PiltoverZaun",
-    "attack": 3,
+    "attack": 2,
     "cost": 3,
-    "health": 3,
+    "health": 4,
     "description": "<link=vocab.Support><style=Vocab>Support</style></link>: Shuffle 4 copies of the supported ally into your deck.",
     "descriptionRaw": "Support: Shuffle 4 copies of the supported ally into your deck.",
     "levelupDescription": "",
@@ -652,11 +650,11 @@
     "name": "Heimerdinger",
     "cardCode": "01PZ056T10",
     "keywords": [
-      "Imbue",
-      "Fleeting"
+      "Imbue"
     ],
     "keywordRefs": [
-      "Imbue"
+      "Imbue",
+      "Fleeting"
     ],
     "spellSpeed": "",
     "spellSpeedRef": "",
@@ -726,8 +724,7 @@
     "name": "Lux's Prismatic Barrier",
     "cardCode": "01DE042T1",
     "keywords": [
-      "Burst",
-      "Barrier"
+      "Burst", "Barrier"
     ],
     "keywordRefs": [
       "Burst"
@@ -800,9 +797,7 @@
     "artistName": "SIXMOREVODKA",
     "name": "Herald of Spring",
     "cardCode": "01IO045",
-    "keywords": [
-      "Lifesteal"
-    ],
+    "keywords": [],
     "keywordRefs": [],
     "spellSpeed": "",
     "spellSpeedRef": "",
@@ -836,9 +831,7 @@
     "name": "Fae Bladetwirler",
     "cardCode": "01IO008",
     "keywords": [
-      "Quick Attack",
-      "Stun",
-      "Recall"
+      "Quick Attack", "Stun", "Recall"
     ],
     "keywordRefs": [
       "QuickStrike"
@@ -945,8 +938,7 @@
     "name": "Ghost",
     "cardCode": "01IO022",
     "keywords": [
-      "Burst",
-      "Elusive"
+      "Burst", "Elusive"
     ],
     "keywordRefs": [
       "Burst"
@@ -1016,8 +1008,7 @@
     "name": "Harsh Winds",
     "cardCode": "01FR042",
     "keywords": [
-      "Burst",
-      "Frostbite"
+      "Burst", "Frostbite"
     ],
     "keywordRefs": [
       "Burst"
@@ -1246,9 +1237,7 @@
     "artistName": "SIXMOREVODKA",
     "name": "Soul Shepherd",
     "cardCode": "01SI023",
-    "keywords": [
-      "Ephemeral"
-    ],
+    "keywords": ["Ephemeral"],
     "keywordRefs": [],
     "spellSpeed": "",
     "spellSpeedRef": "",
@@ -1471,8 +1460,8 @@
     "keywordRefs": [],
     "spellSpeed": "",
     "spellSpeedRef": "",
-    "rarity": "Common",
-    "rarityRef": "Common",
+    "rarity": "Rare",
+    "rarityRef": "Rare",
     "subtype": "",
     "supertype": "",
     "type": "Unit",
@@ -1492,8 +1481,8 @@
     "attack": 7,
     "cost": 8,
     "health": 7,
-    "description": "When I'm summoned, ready your attack.",
-    "descriptionRaw": "When I'm summoned, ready your attack.",
+    "description": "When I'm summoned, <link=vocab.Rally><style=Vocab>Rally</style></link>.",
+    "descriptionRaw": "When I'm summoned, Rally.",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "“Our House has bled for this realm. You’ll not throw away this family’s honor for a few tricks of light.”",
@@ -1591,8 +1580,8 @@
   {
     "associatedCards": [],
     "associatedCardRefs": [
-      "01DE012T2",
-      "01DE012"
+      "01DE012",
+      "01DE012T2"
     ],
     "assets": [
       {
@@ -1605,8 +1594,8 @@
     "attack": 6,
     "cost": 5,
     "health": 6,
-    "description": "Start of Round: Ready your attack.",
-    "descriptionRaw": "Start of Round: Ready your attack.",
+    "description": "Start of Round: <link=vocab.Rally><style=Vocab>Rally</style></link>.",
+    "descriptionRaw": "Start of Round: Rally.",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "\"You think me rigid. Single-minded. Predictable. I am rigid, for nothing can sway me. I am single-minded, for I believe in Demacia. And I am predictable, for I will surely defeat you.”",
@@ -1729,8 +1718,7 @@
     "name": "Decisive Maneuver",
     "cardCode": "01NX013",
     "keywords": [
-      "Fast",
-      "Stun"
+      "Fast", "Stun"
     ],
     "keywordRefs": [
       "Fast"
@@ -1956,8 +1944,8 @@
     "attack": 0,
     "cost": 3,
     "health": 0,
-    "description": "Ready your attack.",
-    "descriptionRaw": "Ready your attack.",
+    "description": "<link=vocab.Rally><style=Vocab>Rally</style></link>.",
+    "descriptionRaw": "Rally.",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": " \"Everyone's gotta face their fears. Lucky you, here I am.\" - Lucian\n",
@@ -2039,8 +2027,7 @@
     "name": "Paralyzing Bite",
     "cardCode": "01NX046T1",
     "keywords": [
-      "Skill",
-      "Stun"
+      "Skill", "Stun"
     ],
     "keywordRefs": [
       "Skill"
@@ -2192,8 +2179,7 @@
     "name": "Hecarim",
     "cardCode": "01SI042T1",
     "keywords": [
-      "Overwhelm",
-      "Ephemeral"
+      "Overwhelm", "Ephemeral"
     ],
     "keywordRefs": [
       "Overwhelm"
@@ -2332,8 +2318,8 @@
     "attack": 1,
     "cost": 3,
     "health": 1,
-    "description": "<link=vocab.Play><style=Vocab>Play</style></link>: Grant allies in hand +1|+1.",
-    "descriptionRaw": "Play: Grant allies in hand +1|+1.",
+    "description": "When I'm summoned, grant allies in hand +1|+1.",
+    "descriptionRaw": "When I'm summoned, grant allies in hand +1|+1.",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "Ionian knowledge is outlined in the written word, but it is the tales and teachings of Ionia's venerated elders that give ancient text new life.",
@@ -2408,8 +2394,8 @@
     "attack": 0,
     "cost": 3,
     "health": 0,
-    "description": "Ready your attack.\r\nShuffle a <link=card.level1><style=AssociatedCard>Lucian</style></link> into your deck.",
-    "descriptionRaw": "Ready your attack.\r\nShuffle a Lucian into your deck.",
+    "description": "<link=vocab.Rally><style=Vocab>Rally</style></link>.\r\nShuffle a <link=card.level1><style=AssociatedCard>Lucian</style></link> into your deck.",
+    "descriptionRaw": "Rally.\r\nShuffle a Lucian into your deck.",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "\"You cannot outrun my vengeance.\" - Lucian",
@@ -2493,8 +2479,7 @@
     "name": "Detain",
     "cardCode": "01DE025",
     "keywords": [
-      "Capture",
-      "Fast"
+      "Fast", "Capture"
     ],
     "keywordRefs": [
       "Fast"
@@ -2636,7 +2621,6 @@
     "name": "Navori Conspirator",
     "cardCode": "01IO044",
     "keywords": [
-      "Recall",
       "Elusive"
     ],
     "keywordRefs": [
@@ -2709,8 +2693,7 @@
     "name": "Shatter",
     "cardCode": "01FR055",
     "keywords": [
-      "Frostbite",
-      "Slow"
+      "Slow", "Frostbite"
     ],
     "keywordRefs": [
       "Slow"
@@ -2747,8 +2730,7 @@
     "name": "Crystal Arrow",
     "cardCode": "01FR038T3",
     "keywords": [
-      "Frostbite",
-      "Slow"
+      "Slow", "Frostbite"
     ],
     "keywordRefs": [
       "Slow"
@@ -2786,9 +2768,7 @@
     "artistName": "SIXMOREVODKA",
     "name": "Arachnoid Sentry",
     "cardCode": "01NX046",
-    "keywords": [
-      "Stun"
-    ],
+    "keywords": ["Stun"],
     "keywordRefs": [],
     "spellSpeed": "",
     "spellSpeedRef": "",
@@ -2822,8 +2802,7 @@
     "name": "Rising Spell Force",
     "cardCode": "01PZ050",
     "keywords": [
-      "Burst",
-      "Quick Attack"
+      "Burst", "Quick Attack"
     ],
     "keywordRefs": [
       "Burst"
@@ -2851,8 +2830,8 @@
     "attack": 3,
     "cost": 3,
     "health": 1,
-    "description": "<link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Fleeting</style></link>.",
-    "descriptionRaw": "Fleeting.",
+    "description": "",
+    "descriptionRaw": "",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "\"I seem to have misplaced my latest work. And my mezzanine. I'm concerned about my bot, but the shrieking from the ceramics research laboratory gives me hope!\" - Heimerdinger's Lab Notes, Vol. 3",
@@ -2860,8 +2839,7 @@
     "name": "Mk3: Floor-B-Gone",
     "cardCode": "01PZ056T6",
     "keywords": [
-      "Elusive",
-      "Fleeting"
+      "Elusive", "Fleeting"
     ],
     "keywordRefs": [
       "Elusive"
@@ -3145,7 +3123,7 @@
     ],
     "region": "Piltover & Zaun",
     "regionRef": "PiltoverZaun",
-    "attack": 2,
+    "attack": 3,
     "cost": 3,
     "health": 2,
     "description": "When I'm summoned, summon 2 <link=card.create><style=AssociatedCard>Caustic Cask</style></link>.",
@@ -3214,8 +3192,8 @@
     "attack": 2,
     "cost": 2,
     "health": 1,
-    "description": "<link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Fleeting</style></link>.",
-    "descriptionRaw": "Fleeting.",
+    "description": "",
+    "descriptionRaw": "",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "\"Safety precautions for the laboratory! Recent postings have mentioned young Jayce's workshop was raided by thieves. Ha--local intruders, beware!\" - Heimerdinger's Lab Notes, Vol. 2",
@@ -3223,8 +3201,7 @@
     "name": "Mk2: Evolution Turret",
     "cardCode": "01PZ056T7",
     "keywords": [
-      "Tough",
-      "Fleeting"
+      "Tough", "Fleeting"
     ],
     "keywordRefs": [
       "Tough"
@@ -3403,8 +3380,8 @@
     "attack": 0,
     "cost": 0,
     "health": 0,
-    "description": "Kill the 2 lowest Power enemies if an ally died this round.",
-    "descriptionRaw": "Kill the 2 lowest Power enemies if an ally died this round.",
+    "description": "Kill the 2 <link=keyword.Weakest><style=Keyword>Weakest</style></link> enemies if an ally died this round.",
+    "descriptionRaw": "Kill the 2 Weakest enemies if an ally died this round.",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "Thin the herd.",
@@ -3521,8 +3498,8 @@
     "attack": 2,
     "cost": 3,
     "health": 4,
-    "description": "<link=vocab.Nexus Strike><style=Vocab>Nexus Strike</style></link>: Create a <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Fleeting</style></link> 0 cost <link=card.create><style=AssociatedCard>Mystic Shot</style></link>.\r\nWhen you cast a spell, deal 2 to the enemy Nexus.",
-    "descriptionRaw": "Nexus Strike: Create a Fleeting 0 cost Mystic Shot.\r\nWhen you cast a spell, deal 2 to the enemy Nexus.",
+    "description": "<link=vocab.Nexus Strike><style=Vocab>Nexus Strike</style></link>: Create a <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Fleeting</style></link> <link=card.create><style=AssociatedCard>Mystic Shot</style></link> in hand.\r\nWhen you cast a spell, deal 2 to the enemy Nexus.",
+    "descriptionRaw": "Nexus Strike: Create a Fleeting Mystic Shot in hand.\r\nWhen you cast a spell, deal 2 to the enemy Nexus.",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "\"Impossible is my favorite kind of possible!\"",
@@ -3602,8 +3579,7 @@
     "name": "Death Mark",
     "cardCode": "01IO003",
     "keywords": [
-      "Fast",
-      "Ephemeral"
+      "Fast", "Ephemeral"
     ],
     "keywordRefs": [
       "Fast"
@@ -3712,8 +3688,7 @@
     "name": "Shadow Flare",
     "cardCode": "01IO047",
     "keywords": [
-      "Fast",
-      "Ephemeral"
+      "Fast", "Ephemeral"
     ],
     "keywordRefs": [
       "Fast"
@@ -3774,7 +3749,7 @@
     "region": "Freljord",
     "regionRef": "Freljord",
     "attack": 0,
-    "cost": 4,
+    "cost": 5,
     "health": 0,
     "description": "Get an empty mana gem and heal your Nexus 3.",
     "descriptionRaw": "Get an empty mana gem and heal your Nexus 3.",
@@ -4097,7 +4072,7 @@
     ],
     "region": "Piltover & Zaun",
     "regionRef": "PiltoverZaun",
-    "attack": 2,
+    "attack": 3,
     "cost": 4,
     "health": 2,
     "description": "When I'm summoned, create a random card in hand for each <link=card.me><style=AssociatedCard>Back Alley Barkeep</style></link> you've summoned this game.",
@@ -4211,9 +4186,7 @@
     "artistName": "SIXMOREVODKA",
     "name": "Ashe",
     "cardCode": "01FR038",
-    "keywords": [
-      "Frostbite"
-    ],
+    "keywords": ["Frostbite"],
     "keywordRefs": [],
     "spellSpeed": "",
     "spellSpeedRef": "",
@@ -4246,9 +4219,7 @@
     "artistName": "JiHun Lee",
     "name": "Laurent Duelist",
     "cardCode": "01DE055",
-    "keywords": [
-      "Challenger"
-    ],
+    "keywords": ["Challenger"],
     "keywordRefs": [],
     "spellSpeed": "",
     "spellSpeedRef": "",
@@ -4352,8 +4323,7 @@
     "name": "Dawn and Dusk",
     "cardCode": "01IO024",
     "keywords": [
-      "Slow",
-      "Ephemeral"
+      "Slow", "Ephemeral"
     ],
     "keywordRefs": [
       "Slow"
@@ -4815,7 +4785,7 @@
     ],
     "region": "Piltover & Zaun",
     "regionRef": "PiltoverZaun",
-    "attack": 0,
+    "attack": 1,
     "cost": 2,
     "health": 4,
     "description": "<style=VocabNoTooltip>Attack</style>: Deal 2 to the enemy Nexus.",
@@ -4857,7 +4827,7 @@
     "health": 3,
     "description": "<link=vocab.Play><style=Vocab>Play</style></link> or <link=vocab.Strike><style=Vocab>Strike</style></link>: Create a <link=card.create><style=AssociatedCard>Spinning Axe</style></link> in hand.",
     "descriptionRaw": "Play or Strike: Create a Spinning Axe in hand.",
-    "levelupDescription": "I've struck twice with a <link=card.create><style=AssociatedCard>Spinning Axe</style></link><style=Variable></style>.",
+    "levelupDescription": "I've <link=vocab.Strike><style=Vocab>struck</style></link> twice with a <link=card.create><style=AssociatedCard>Spinning Axe</style></link><style=Variable></style>.",
     "levelupDescriptionRaw": "I've struck twice with a Spinning Axe.",
     "flavorText": "\"You want an autograph? Get in line, pal.\"",
     "artistName": "SIXMOREVODKA",
@@ -4942,8 +4912,7 @@
     "name": "Anivia's Harsh Winds",
     "cardCode": "01FR024T1",
     "keywords": [
-      "Burst",
-      "Frostbite"
+      "Burst", "Frostbite"
     ],
     "keywordRefs": [
       "Burst"
@@ -5017,8 +4986,7 @@
     "name": "Ezreal",
     "cardCode": "01PZ036",
     "keywords": [
-      "Fleeting",
-      "Elusive"
+      "Elusive", "Fleeting"
     ],
     "keywordRefs": [
       "Elusive"
@@ -5288,8 +5256,8 @@
   {
     "associatedCards": [],
     "associatedCardRefs": [
-      "01DE022T2",
-      "01DE022"
+      "01DE022",
+      "01DE022T2"
     ],
     "assets": [
       {
@@ -5302,8 +5270,8 @@
     "attack": 4,
     "cost": 2,
     "health": 3,
-    "description": "The first time an ally dies each round, ready your attack.",
-    "descriptionRaw": "The first time an ally dies each round, ready your attack.",
+    "description": "The first time an ally dies each round, <link=vocab.Rally><style=Vocab>Rally</style></link>.",
+    "descriptionRaw": "The first time an ally dies each round, Rally.",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "\"World's full of monsters. If you're lucky, they're the ones you can see. The worst are the ones that stay under your skin.\"",
@@ -5490,8 +5458,8 @@
     "attack": 0,
     "cost": 10,
     "health": 0,
-    "description": "Revive the 6 highest Power units that died this game and grant them <link=keyword.Ephemeral><sprite name=Ephemeral><style=Keyword>Ephemeral</style></link>.",
-    "descriptionRaw": "Revive the 6 highest Power units that died this game and grant them Ephemeral.",
+    "description": "Revive the 6 <link=vocab.Strongest><style=Vocab>Strongest</style></link> units that died this game and grant them <link=keyword.Ephemeral><sprite name=Ephemeral><style=Keyword>Ephemeral</style></link>.",
+    "descriptionRaw": "Revive the 6 Strongest units that died this game and grant them Ephemeral.",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "On certain nights, a tide of hungry spirits swells the Black Mist. It carries them across the seas to prey on the living, and feed the growing darkness with foul new unlife.",
@@ -5499,8 +5467,7 @@
     "name": "The Harrowing",
     "cardCode": "01SI003",
     "keywords": [
-      "Slow",
-      "Ephemeral"
+      "Slow", "Ephemeral"
     ],
     "keywordRefs": [
       "Slow"
@@ -5654,9 +5621,7 @@
     "artistName": "SIXMOREVODKA",
     "name": "Shen",
     "cardCode": "01IO032T1",
-    "keywords": [
-      "Barrier"
-    ],
+    "keywords": ["Barrier"],
     "keywordRefs": [],
     "spellSpeed": "",
     "spellSpeedRef": "",
@@ -5727,8 +5692,7 @@
     "name": "Absorb Soul",
     "cardCode": "01SI045",
     "keywords": [
-      "Fast",
-      "Drain"
+      "Fast", "Drain"
     ],
     "keywordRefs": [
       "Fast"
@@ -6065,8 +6029,7 @@
     "name": "Intimidating Roar",
     "cardCode": "01NX054",
     "keywords": [
-      "Stun",
-      "Slow"
+      "Slow", "Stun"
     ],
     "keywordRefs": [
       "Slow"
@@ -6208,8 +6171,7 @@
     "name": "Brittle Steel",
     "cardCode": "01FR030",
     "keywords": [
-      "Burst",
-      "Frostbite"
+      "Burst", "Frostbite"
     ],
     "keywordRefs": [
       "Burst"
@@ -6278,9 +6240,7 @@
     "artistName": "SIXMOREVODKA",
     "name": "Oblivious Islander",
     "cardCode": "01SI012",
-    "keywords": [
-      "Ephemeral"
-    ],
+    "keywords": ["Ephemeral"],
     "keywordRefs": [],
     "spellSpeed": "",
     "spellSpeedRef": "",
@@ -6385,8 +6345,8 @@
     "attack": 4,
     "cost": 4,
     "health": 3,
-    "description": "<link=vocab.Play><style=Vocab>Play</style></link>: Ready our attack.\r\n<link=vocab.Strike><style=Vocab>Strike</style></link>: <link=keyword.Recall><style=Keyword>Recall</style></link> me.",
-    "descriptionRaw": "Play: Ready our attack.\r\nStrike: Recall me.",
+    "description": "<link=vocab.Play><style=Vocab>Play</style></link>: <link=vocab.Rally><style=Vocab>Rally</style></link>.\r\n<link=vocab.Strike><style=Vocab>Strike</style></link>: <link=keyword.Recall><style=Keyword>Recall</style></link> me.",
+    "descriptionRaw": "Play: Rally.\r\nStrike: Recall me.",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "\"No sir! Just a flash of red. Next thing I know, I look up and it... it was like a slaughterhouse in there.\" - Demacian Border Guard",
@@ -6394,8 +6354,7 @@
     "name": "Katarina",
     "cardCode": "01NX042T2",
     "keywords": [
-      "Quick Attack",
-      "Recall"
+      "Quick Attack", "Recall"
     ],
     "keywordRefs": [
       "QuickStrike"
@@ -6508,8 +6467,7 @@
     "name": "Iron Harbinger",
     "cardCode": "01SI031",
     "keywords": [
-      "Fearsome",
-      "Ephemeral"
+      "Fearsome", "Ephemeral"
     ],
     "keywordRefs": [
       "Fearsome"
@@ -6622,8 +6580,7 @@
     "name": "Rush",
     "cardCode": "01IO018",
     "keywords": [
-      "Burst",
-      "Quick Attack"
+      "Burst", "Quick Attack"
     ],
     "keywordRefs": [
       "Burst"
@@ -6700,8 +6657,7 @@
     "name": "Winter's Breath",
     "cardCode": "01FR019",
     "keywords": [
-      "Slow",
-      "Frostbite"
+      "Slow", "Frostbite"
     ],
     "keywordRefs": [
       "Slow"
@@ -6774,9 +6730,7 @@
     "artistName": "SIXMOREVODKA",
     "name": "Stirred Spirits",
     "cardCode": "01SI009",
-    "keywords": [
-      "Ephemeral"
-    ],
+    "keywords": ["Ephemeral"],
     "keywordRefs": [],
     "spellSpeed": "",
     "spellSpeedRef": "",
@@ -6877,7 +6831,7 @@
     "regionRef": "Freljord",
     "attack": 5,
     "cost": 5,
-    "health": 6,
+    "health": 5,
     "description": "When I'm summoned, grant allies in your deck +1|+1.",
     "descriptionRaw": "When I'm summoned, grant allies in your deck +1|+1.",
     "levelupDescription": "",
@@ -6972,9 +6926,9 @@
   {
     "associatedCards": [],
     "associatedCardRefs": [
-      "01DE042T3",
+      "01DE042",
       "01DE042T1",
-      "01DE042"
+      "01DE042T3"
     ],
     "assets": [
       {
@@ -6987,8 +6941,8 @@
     "attack": 4,
     "cost": 6,
     "health": 5,
-    "description": "When I've seen you spend 6+ mana on spells, create a <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Fleeting</style></link> <link=card.warcry><style=AssociatedCard>Final Spark</style></link> in hand.",
-    "descriptionRaw": "When I've seen you spend 6+ mana on spells, create a Fleeting Final Spark in hand.",
+    "description": "When I see you spend 6+ mana on spells, create a <link=card.warcry><style=AssociatedCard>Final Spark</style></link> in hand. <style=Variable></style>",
+    "descriptionRaw": "When I see you spend 6+ mana on spells, create a Final Spark in hand. ",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "\"I've always known there's something different about me... a light from within. I'm not sure what it is, but I have to find out!\" ",
@@ -6996,8 +6950,7 @@
     "name": "Lux",
     "cardCode": "01DE042T2",
     "keywords": [
-      "Barrier",
-      "Fleeting"
+      "Barrier", "Fleeting"
     ],
     "keywordRefs": [
       "Barrier"
@@ -7287,8 +7240,7 @@
     "name": "Staggering Strikes",
     "cardCode": "01IO056T1",
     "keywords": [
-      "Skill",
-      "Stun"
+      "Skill", "Stun"
     ],
     "keywordRefs": [
       "Skill"
@@ -7500,8 +7452,8 @@
     "attack": 4,
     "cost": 5,
     "health": 4,
-    "description": "<link=vocab.Play><style=Vocab>Play</style></link>: Grant me +1|+1 for each unit you've <link=keyword.Stun><sprite name=Stunned><style=Keyword>Stunned</style></link> or <link=keyword.Recall><style=Keyword>Recalled</style></link> this game. <style=Variable></style>",
-    "descriptionRaw": "Play: Grant me +1|+1 for each unit you've Stunned or Recalled this game. ",
+    "description": "When I'm summoned, grant me +1|+1 for each unit you've <link=keyword.Stun><sprite name=Stunned><style=Keyword>Stunned</style></link> or <link=keyword.Recall><style=Keyword>Recalled</style></link> this game. <style=Variable></style>",
+    "descriptionRaw": "When I'm summoned, grant me +1|+1 for each unit you've Stunned or Recalled this game. ",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "All Noxians know the three Principles of Strength, but if a soldier is to rise through the ranks, they must learn to master them.",
@@ -7509,9 +7461,7 @@
     "name": "Legion General",
     "cardCode": "01NX010",
     "keywords": [
-      "Fearsome",
-      "Stun",
-      "Recall"
+      "Fearsome", "Stun", "Recall"
     ],
     "keywordRefs": [
       "Fearsome"
@@ -7547,9 +7497,7 @@
     "artistName": "SIXMOREVODKA",
     "name": "Legion Drummer",
     "cardCode": "01NX017",
-    "keywords": [
-      "Quick Attack"
-    ],
+    "keywords": ["Quick Attack"],
     "keywordRefs": [],
     "spellSpeed": "",
     "spellSpeedRef": "",
@@ -7592,8 +7540,8 @@
     ],
     "spellSpeed": "",
     "spellSpeedRef": "",
-    "rarity": "Rare",
-    "rarityRef": "Rare",
+    "rarity": "Common",
+    "rarityRef": "Common",
     "subtype": "Elite",
     "supertype": "",
     "type": "Unit",
@@ -7794,8 +7742,8 @@
     "attack": 5,
     "cost": 5,
     "health": 1,
-    "description": "<link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Fleeting</style></link>.",
-    "descriptionRaw": "Fleeting.",
+    "description": "",
+    "descriptionRaw": "",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "\"After a few production issues--propulsion and guidance, predominantly--I am ready to unveil my PROPELLED COMBUSTIBLES! ...must work on a better name.\" - Heimerdinger's Lab Notes, Vol. 5",
@@ -7803,8 +7751,7 @@
     "name": "Mk5: Rocket Blaster",
     "cardCode": "01PZ056T2",
     "keywords": [
-      "Quick Attack",
-      "Fleeting"
+      "Quick Attack", "Fleeting"
     ],
     "keywordRefs": [
       "QuickStrike"
@@ -8160,7 +8107,7 @@
     "regionRef": "Freljord",
     "attack": 0,
     "cost": 3,
-    "health": 4,
+    "health": 3,
     "description": "Start of Round: Get an extra mana gem this round.",
     "descriptionRaw": "Start of Round: Get an extra mana gem this round.",
     "levelupDescription": "",
@@ -8282,9 +8229,7 @@
     "artistName": "SIXMOREVODKA",
     "name": "Minah Swiftfoot",
     "cardCode": "01IO033",
-    "keywords": [
-      "Recall"
-    ],
+    "keywords": ["Recall"],
     "keywordRefs": [],
     "spellSpeed": "",
     "spellSpeedRef": "",
@@ -8354,9 +8299,7 @@
     "artistName": "SIXMOREVODKA",
     "name": "Icevale Archer",
     "cardCode": "01FR011",
-    "keywords": [
-      "Frostbite"
-    ],
+    "keywords": ["Frostbite"],
     "keywordRefs": [],
     "spellSpeed": "",
     "spellSpeedRef": "",
@@ -8382,7 +8325,7 @@
     "regionRef": "PiltoverZaun",
     "attack": 4,
     "cost": 4,
-    "health": 2,
+    "health": 3,
     "description": "<link=vocab.Allegiance><style=Vocab>Allegiance</style></link>: Create a <link=card.create><style=AssociatedCard>Sumpworks Map</style></link> in hand. It costs 0 this round.",
     "descriptionRaw": "Allegiance: Create a Sumpworks Map in hand. It costs 0 this round.",
     "levelupDescription": "",
@@ -8453,8 +8396,8 @@
     "attack": 2,
     "cost": 3,
     "health": 3,
-    "description": "<link=vocab.Play><style=Vocab>Play</style></link>: Heal anything 3.",
-    "descriptionRaw": "Play: Heal anything 3.",
+    "description": "<link=vocab.Play><style=Vocab>Play</style></link>: Heal an ally 3.",
+    "descriptionRaw": "Play: Heal an ally 3.",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "\"This fine old establishment's the Tipsy Owl! We've got stews and brews a'plenty to chase away the chill. Hurry on inside!\"",
@@ -8545,8 +8488,8 @@
   {
     "associatedCards": [],
     "associatedCardRefs": [
-      "01FR039T1",
-      "01FR039"
+      "01FR039",
+      "01FR039T1"
     ],
     "assets": [
       {
@@ -8569,13 +8512,11 @@
     "cardCode": "01FR039T2",
     "keywords": [
       "Overwhelm",
-      "Fearsome",
-      "Tough"
+      "Fearsome"
     ],
     "keywordRefs": [
       "Overwhelm",
-      "Fearsome",
-      "Tough"
+      "Fearsome"
     ],
     "spellSpeed": "",
     "spellSpeedRef": "",
@@ -8612,9 +8553,7 @@
     "artistName": "SIXMOREVODKA",
     "name": "Ashe",
     "cardCode": "01FR038T2",
-    "keywords": [
-      "Frostbite"
-    ],
+    "keywords": ["Frostbite"],
     "keywordRefs": [],
     "spellSpeed": "",
     "spellSpeedRef": "",
@@ -8641,11 +8580,11 @@
     "attack": 0,
     "cost": 5,
     "health": 0,
-    "description": "This game, if you've resolved <style=Variable>15</style> cards with different names, create <link=card.cat><style=AssociatedCard>Cataclysm</style></link>. <style=Variable></style>",
-    "descriptionRaw": "This game, if you've resolved 15 cards with different names, create Cataclysm. ",
+    "description": "If you've played <style=Variable>15</style> cards with different names this game, summon <link=card.summon><style=AssociatedCard>Catastrophe</style></link>. <style=Variable></style>",
+    "descriptionRaw": "If you've played 15 cards with different names this game, summon Catastrophe. ",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
-    "flavorText": "",
+    "flavorText": "\"In the end, all of us who worked toward von Yipp's vision were deceived. We knew not what we wrought--what terrible power we would unleash.\" - Piltovan Project Engineer",
     "artistName": "Kudos Productions",
     "name": "Accelerated Purrsuit",
     "cardCode": "01PZ060",
@@ -8690,9 +8629,7 @@
     "name": "Yasuo",
     "cardCode": "01IO015",
     "keywords": [
-      "Quick Attack",
-      "Stun",
-      "Recall"
+      "Quick Attack", "Stun", "Recall"
     ],
     "keywordRefs": [
       "QuickStrike"
@@ -8720,8 +8657,8 @@
     "attack": 0,
     "cost": 7,
     "health": 0,
-    "description": "Heal anything 7. Draw 1.",
-    "descriptionRaw": "Heal anything 7. Draw 1.",
+    "description": "Heal an ally 7. Draw 1.",
+    "descriptionRaw": "Heal an ally 7. Draw 1.",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "\"Only when the mind is elevated can the body be made whole.\" - Karma",
@@ -8799,8 +8736,7 @@
     "name": "Stand United",
     "cardCode": "01IO010",
     "keywords": [
-      "Burst",
-      "Barrier"
+      "Burst", "Barrier"
     ],
     "keywordRefs": [
       "Burst"
@@ -8874,8 +8810,7 @@
     "name": "Balesight",
     "cardCode": "01FR052T1",
     "keywords": [
-      "Skill",
-      "Obliterate"
+      "Skill", "Obliterate"
     ],
     "keywordRefs": [
       "Skill"
@@ -8948,10 +8883,7 @@
     "artistName": "SIXMOREVODKA",
     "name": "Minotaur Reckoner",
     "cardCode": "01NX036",
-    "keywords": [
-      "Stun",
-      "Weakest"
-    ],
+    "keywords": ["Stun", "Weakest"],
     "keywordRefs": [],
     "spellSpeed": "",
     "spellSpeedRef": "",
@@ -9092,8 +9024,7 @@
     "name": "Zed's Shadowshift",
     "cardCode": "01IO009T3",
     "keywords": [
-      "Fast",
-      "Recall"
+      "Fast", "Recall"
     ],
     "keywordRefs": [
       "Fast"
@@ -9199,8 +9130,8 @@
     "attack": 7,
     "cost": 7,
     "health": 1,
-    "description": "<link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Fleeting</style></link>.",
-    "descriptionRaw": "Fleeting.",
+    "description": "",
+    "descriptionRaw": "",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "\"I dreamed of a great mechanical beast, obeying my every command! I MUST realize this vision. First, stability tests, then ordinance and armor evaluation...\" - Heimerdinger's Lab Notes, Vol. 7",
@@ -9208,8 +9139,7 @@
     "name": "Mk7: Armored Stomper",
     "cardCode": "01PZ056T5",
     "keywords": [
-      "Barrier",
-      "Fleeting"
+      "Barrier", "Fleeting"
     ],
     "keywordRefs": [
       "Barrier"
@@ -9546,8 +9476,7 @@
     "name": "Chain Vest",
     "cardCode": "01DE013",
     "keywords": [
-      "Burst",
-      "Tough"
+      "Burst", "Tough"
     ],
     "keywordRefs": [
       "Burst"
@@ -9564,9 +9493,9 @@
   {
     "associatedCards": [],
     "associatedCardRefs": [
-      "01IO009T1",
       "01IO009T2",
-      "01IO009T3"
+      "01IO009T3",
+      "01IO009T1"
     ],
     "assets": [
       {
@@ -9581,7 +9510,7 @@
     "health": 2,
     "description": "<style=VocabNoTooltip>Attack</style>: Create an attacking <link=card.summon><style=AssociatedCard>Living Shadow</style></link> with my stats.",
     "descriptionRaw": "Attack: Create an attacking Living Shadow with my stats.",
-    "levelupDescription": "My shadows and I have struck the enemy Nexus twice<style=Variable></style>.",
+    "levelupDescription": "My shadows and I have <link=vocab.Strike><style=Vocab>struck</style></link> the enemy Nexus twice<style=Variable></style>.",
     "levelupDescriptionRaw": "My shadows and I have struck the enemy Nexus twice.",
     "flavorText": "\"Balance is a fool's master. The shadows have shown me true power.\"",
     "artistName": "SIXMOREVODKA",
@@ -9890,8 +9819,7 @@
     "name": "Mark of the Isles",
     "cardCode": "01SI022",
     "keywords": [
-      "Burst",
-      "Ephemeral"
+      "Burst", "Ephemeral"
     ],
     "keywordRefs": [
       "Burst"
@@ -9930,9 +9858,7 @@
     "artistName": "SIXMOREVODKA",
     "name": "Shen",
     "cardCode": "01IO032",
-    "keywords": [
-      "Barrier"
-    ],
+    "keywords": ["Barrier"],
     "keywordRefs": [],
     "spellSpeed": "",
     "spellSpeedRef": "",
@@ -10003,8 +9929,7 @@
     "name": "Grasp of the Undying",
     "cardCode": "01SI054",
     "keywords": [
-      "Fast",
-      "Drain"
+      "Fast", "Drain"
     ],
     "keywordRefs": [
       "Fast"
@@ -10031,7 +9956,7 @@
     ],
     "region": "Piltover & Zaun",
     "regionRef": "PiltoverZaun",
-    "attack": 4,
+    "attack": 5,
     "cost": 5,
     "health": 2,
     "description": "<link=vocab.Play><style=Vocab>Play</style></link>: Deal 1 to all enemy units.",
@@ -10113,9 +10038,7 @@
     "artistName": "SIXMOREVODKA",
     "name": "Karma",
     "cardCode": "01IO041",
-    "keywords": [
-      "Enlightened"
-    ],
+    "keywords": ["Enlightened"],
     "keywordRefs": [],
     "spellSpeed": "",
     "spellSpeedRef": "",
@@ -10140,8 +10063,8 @@
     "attack": 0,
     "cost": 5,
     "health": 0,
-    "description": "Steal an enemy follower this round.",
-    "descriptionRaw": "Steal an enemy follower this round.",
+    "description": "Steal an enemy follower this round. <style=Parentheses>(Can't play if you have 6 allies already.)</style>",
+    "descriptionRaw": "Steal an enemy follower this round. (Can't play if you have 6 allies already.)",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "He woke to find his hands glistening red and the camp unusually quiet. ",
@@ -10185,10 +10108,7 @@
     "artistName": "SIXMOREVODKA",
     "name": "Radiant Guardian",
     "cardCode": "01DE015",
-    "keywords": [
-      "Lifesteal",
-      "Tough"
-    ],
+    "keywords": ["Lifesteal", "Tough"],
     "keywordRefs": [],
     "spellSpeed": "",
     "spellSpeedRef": "",
@@ -10287,8 +10207,8 @@
     "attack": 0,
     "cost": 0,
     "health": 1,
-    "description": "<link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Fleeting</style></link>.",
-    "descriptionRaw": "Fleeting.",
+    "description": "",
+    "descriptionRaw": "",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "\"TODAY I EMBARK UPON A NEW SCIENTIFIC ADVENTURE: AUTOMATONS! As the saying goes, it takes a great mind to create great things! Who said that, you ask? Why, ME!\" - Heimerdinger's Lab Notes, Preface",
@@ -10296,8 +10216,7 @@
     "name": "Mk0: Windup Shredder",
     "cardCode": "01PZ056T1",
     "keywords": [
-      "Challenger",
-      "Fleeting"
+      "Challenger", "Fleeting"
     ],
     "keywordRefs": [
       "Challenger"
@@ -10324,19 +10243,16 @@
     "regionRef": "Ionia",
     "attack": 3,
     "cost": 6,
-    "health": 7,
-    "description": "Your <link=keyword.Burst><sprite name=Burst><style=Keyword>Burst</style></link> spells cost 1 less.\r\n<link=keyword.Enlightened><style=Keyword>Enlightened</style></link>: They cost 2 less instead.",
-    "descriptionRaw": "Your Burst spells cost 1 less.\r\nEnlightened: They cost 2 less instead.",
+    "health": 5,
+    "description": "Your <link=keyword.Burst><sprite name=Burst><style=Keyword>Burst</style></link> spells cost 1 less.",
+    "descriptionRaw": "Your Burst spells cost 1 less.",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "Its songs could be heard from the villages--long, low waves of sound rippling from sky to hillside, each as formless and strange as the afternoon clouds.",
     "artistName": "SIXMOREVODKA",
     "name": "Cloud Drinker",
     "cardCode": "01IO031",
-    "keywords": [
-      "Enlightened",
-      "Burst"
-    ],
+    "keywords": ["Enlightened", "Burst"],
     "keywordRefs": [],
     "spellSpeed": "",
     "spellSpeedRef": "",
@@ -10433,8 +10349,8 @@
     "attack": 0,
     "cost": 5,
     "health": 0,
-    "description": "If you've played <style=Variable>20</style> cards with different names this game, summon <link=card.summon><style=AssociatedCard>Cataclysm</style></link>. <style=Variable></style>",
-    "descriptionRaw": "If you've played 20 cards with different names this game, summon Cataclysm. ",
+    "description": "If you've played <style=Variable>20</style> cards with different names this game, summon <link=card.summon><style=AssociatedCard>Catastrophe</style></link>. <style=Variable></style>",
+    "descriptionRaw": "If you've played 20 cards with different names this game, summon Catastrophe. ",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "\"In the end, all of us who worked toward von Yipp's vision were deceived. We knew not what we wrought--what terrible power we would unleash.\" - Piltovan Project Engineer",
@@ -10551,8 +10467,7 @@
     "name": "Splinter Soul",
     "cardCode": "01SI028",
     "keywords": [
-      "Slow",
-      "Ephemeral"
+      "Slow", "Ephemeral"
     ],
     "keywordRefs": [
       "Slow"
@@ -10629,8 +10544,7 @@
     "name": "Yasuo's Steel Tempest",
     "cardCode": "01IO015T2",
     "keywords": [
-      "Fast",
-      "Stun"
+      "Fast", "Stun"
     ],
     "keywordRefs": [
       "Fast"
@@ -10667,8 +10581,7 @@
     "name": "Recall",
     "cardCode": "01IO011",
     "keywords": [
-      "Fast",
-      "Recall"
+      "Fast", "Recall"
     ],
     "keywordRefs": [
       "Fast"
@@ -10744,8 +10657,7 @@
     "name": "Will of Ionia",
     "cardCode": "01IO002",
     "keywords": [
-      "Fast",
-      "Recall"
+      "Fast", "Recall"
     ],
     "keywordRefs": [
       "Fast"
@@ -10784,8 +10696,7 @@
     "name": "Fatal Strike",
     "cardCode": "01IO007T1",
     "keywords": [
-      "Skill",
-      "Ephemeral"
+      "Skill", "Ephemeral"
     ],
     "keywordRefs": [
       "Skill"
@@ -10822,8 +10733,7 @@
     "name": "Feral Mystic",
     "cardCode": "01FR047",
     "keywords": [
-      "Overwhelm",
-      "Enlightened"
+      "Overwhelm", "Enlightened"
     ],
     "keywordRefs": [
       "Overwhelm"
@@ -10860,8 +10770,7 @@
     "name": "Skyward Strikes",
     "cardCode": "01IO033T1",
     "keywords": [
-      "Skill",
-      "Recall"
+      "Skill", "Recall"
     ],
     "keywordRefs": [
       "Skill"
@@ -10897,9 +10806,7 @@
     "artistName": "SIXMOREVODKA",
     "name": "Navori Bladescout",
     "cardCode": "01IO017",
-    "keywords": [
-      "Elusive"
-    ],
+    "keywords": ["Elusive"],
     "keywordRefs": [],
     "spellSpeed": "",
     "spellSpeedRef": "",
@@ -10957,8 +10864,8 @@
     "attack": 0,
     "cost": 5,
     "health": 0,
-    "description": "Deal 2 to an enemy unit, then ready your attack.",
-    "descriptionRaw": "Deal 2 to an enemy unit, then ready your attack.",
+    "description": "Deal 2 to an enemy unit, then <link=vocab.Rally><style=Vocab>Rally</style></link>.",
+    "descriptionRaw": "Deal 2 to an enemy unit, then Rally.",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "By the time you've seen the blade, it's far too late.",
@@ -11113,7 +11020,7 @@
     "levelupDescriptionRaw": "",
     "flavorText": "Your end is MEOW.",
     "artistName": "SIXMOREVODKA",
-    "name": "Cataclysm",
+    "name": "Catastrophe",
     "cardCode": "01PZ033T1",
     "keywords": [
       "Overwhelm"
@@ -11186,8 +11093,7 @@
     "name": "Prismatic Barrier",
     "cardCode": "01DE032",
     "keywords": [
-      "Burst",
-      "Barrier"
+      "Burst", "Barrier"
     ],
     "keywordRefs": [
       "Burst"
@@ -11289,8 +11195,8 @@
     "attack": 1,
     "cost": 1,
     "health": 1,
-    "description": "<link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Fleeting</style></link>.",
-    "descriptionRaw": "Fleeting.",
+    "description": "",
+    "descriptionRaw": "",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "\"It occurred to me earlier that--with only two hands--I can only maximally operate two wrenches! My solution: MORE HANDS. Oho! I jest. A WRENCHBOT!\" - Heimerdinger's Lab Notes, Vol. 1",
@@ -11443,8 +11349,7 @@
     "name": "Pack Mentality",
     "cardCode": "01FR057",
     "keywords": [
-      "Slow",
-      "Overwhelm"
+      "Slow", "Overwhelm"
     ],
     "keywordRefs": [
       "Slow"
@@ -11506,7 +11411,7 @@
     "regionRef": "ShadowIsles",
     "attack": 4,
     "cost": 4,
-    "health": 2,
+    "health": 3,
     "description": "<link=vocab.Allegiance><style=Vocab>Allegiance</style></link>: Summon a <link=card.create><style=AssociatedCard>Mistwraith</style></link>.",
     "descriptionRaw": "Allegiance: Summon a Mistwraith.",
     "levelupDescription": "",
@@ -11515,8 +11420,12 @@
     "artistName": "SIXMOREVODKA",
     "name": "Wraithcaller",
     "cardCode": "01SI016",
-    "keywords": [],
-    "keywordRefs": [],
+    "keywords": [
+      "Fearsome"
+    ],
+    "keywordRefs": [
+      "Fearsome"
+    ],
     "spellSpeed": "",
     "spellSpeedRef": "",
     "rarity": "Rare",
@@ -11585,8 +11494,7 @@
     "name": "Ashe's Flash Freeze",
     "cardCode": "01FR038T1",
     "keywords": [
-      "Burst",
-      "Frostbite"
+      "Burst", "Frostbite"
     ],
     "keywordRefs": [
       "Burst"
@@ -11798,15 +11706,14 @@
     "health": 2,
     "description": "",
     "descriptionRaw": "",
-    "levelupDescription": "When I've struck, then <link=keyword.Recall><style=Keyword>Recall</style></link> me.",
+    "levelupDescription": "When I've <link=vocab.Strike><style=Vocab>struck</style></link>, then <link=keyword.Recall><style=Keyword>Recall</style></link> me.",
     "levelupDescriptionRaw": "When I've struck, then Recall me.",
     "flavorText": "\"No sir! Just a flash of red. Next thing I know, I look up and it... it was like a slaughterhouse in there.\" - Demacian Border Guard",
     "artistName": "SIXMOREVODKA",
     "name": "Katarina",
     "cardCode": "01NX042",
     "keywords": [
-      "Quick Attack",
-      "Recall"
+      "Quick Attack", "Recall"
     ],
     "keywordRefs": [
       "QuickStrike"
@@ -11834,8 +11741,8 @@
     "attack": 3,
     "cost": 2,
     "health": 1,
-    "description": "When an <link=keyword.Ephemeral><sprite name=Ephemeral><style=Keyword>Ephemeral</style></link> ally attacks, revive me attacking.",
-    "descriptionRaw": "When an Ephemeral ally attacks, revive me attacking.",
+    "description": "When an <link=keyword.Ephemeral><sprite name=Ephemeral><style=Keyword>Ephemeral</style></link> ally attacks and I'm dead, return me to play attacking.",
+    "descriptionRaw": "When an Ephemeral ally attacks and I'm dead, return me to play attacking.",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "\"She saw what? I see. Madness is a cruel mistress, apothecary. At least the others make some degree of sense.\" - Demacian surgeon",
@@ -12017,8 +11924,8 @@
     "attack": 0,
     "cost": 1,
     "health": 0,
-    "description": "Heal anything 3.",
-    "descriptionRaw": "Heal anything 3.",
+    "description": "Heal an ally 3.",
+    "descriptionRaw": "Heal an ally 3.",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "Every generation, region, and family has its own home remedy--though some are undeniably more effective than others.",
@@ -12084,9 +11991,9 @@
     ],
     "region": "Piltover & Zaun",
     "regionRef": "PiltoverZaun",
-    "attack": 5,
+    "attack": 6,
     "cost": 10,
-    "health": 5,
+    "health": 6,
     "description": "Reduce my cost by 1 for each spell you've cast this game.",
     "descriptionRaw": "Reduce my cost by 1 for each spell you've cast this game.",
     "levelupDescription": "",
@@ -12146,10 +12053,10 @@
   {
     "associatedCards": [],
     "associatedCardRefs": [
-      "01FR024T4",
-      "01FR024T1",
+      "01FR024T5",
       "01FR024",
-      "01FR024T5"
+      "01FR024T1",
+      "01FR024T4"
     ],
     "assets": [
       {
@@ -12159,9 +12066,9 @@
     ],
     "region": "Freljord",
     "regionRef": "Freljord",
-    "attack": 5,
-    "cost": 6,
-    "health": 4,
+    "attack": 3,
+    "cost": 7,
+    "health": 5,
     "description": "<style=VocabNoTooltip>Attack</style>: Deal 2 to all enemies.\r\n<link=keyword.Last Breath><sprite name=LastBreath><style=Keyword>Last Breath</style></link>: Revive me transformed into <link=card.transform><style=AssociatedCard>Eggnivia</style></link>.",
     "descriptionRaw": "Attack: Deal 2 to all enemies.\r\nLast Breath: Revive me transformed into Eggnivia.",
     "levelupDescription": "",
@@ -12171,11 +12078,9 @@
     "name": "Anivia",
     "cardCode": "01FR024T3",
     "keywords": [
-      "Can't Block",
       "Last Breath"
     ],
     "keywordRefs": [
-      "CantBlock",
       "LastBreath"
     ],
     "spellSpeed": "",
@@ -12223,7 +12128,8 @@
   {
     "associatedCards": [],
     "associatedCardRefs": [
-      "01PZ010"
+      "01PZ010",
+      "01PZ022"
     ],
     "assets": [
       {
@@ -12278,8 +12184,7 @@
     "name": "Emerald Awakener",
     "cardCode": "01IO053",
     "keywords": [
-      "Lifesteal",
-      "Enlightened"
+      "Lifesteal", "Enlightened"
     ],
     "keywordRefs": [
       "Lifesteal"
@@ -12392,8 +12297,7 @@
     "name": "En Garde",
     "cardCode": "01DE027",
     "keywords": [
-      "Burst",
-      "Challenger"
+      "Burst", "Challenger"
     ],
     "keywordRefs": [
       "Burst"
@@ -12430,8 +12334,7 @@
     "name": "Spectral Matron",
     "cardCode": "01SI044",
     "keywords": [
-      "Fearsome",
-      "Ephemeral"
+      "Fearsome", "Ephemeral"
     ],
     "keywordRefs": [
       "Fearsome"
@@ -12567,7 +12470,7 @@
     "regionRef": "PiltoverZaun",
     "attack": 0,
     "cost": 2,
-    "health": 1,
+    "health": 2,
     "description": "When I'm discarded, summon me.",
     "descriptionRaw": "When I'm discarded, summon me.",
     "levelupDescription": "",
@@ -12858,8 +12761,8 @@
     "attack": 6,
     "cost": 6,
     "health": 1,
-    "description": "<link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Fleeting</style></link>.",
-    "descriptionRaw": "Fleeting.",
+    "description": "",
+    "descriptionRaw": "",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "\"PROGRESS CONTINUES! I have finally found a way to combine the raw power of hexenergy with my ball tosser! I present, the STORMLOBBER! Now to sleep.\" - Heimerdinger's Lab Notes, Vol. 6",
@@ -12867,8 +12770,7 @@
     "name": "Mk6: Stormlobber",
     "cardCode": "01PZ056T9",
     "keywords": [
-      "Overwhelm",
-      "Fleeting"
+      "Overwhelm", "Fleeting"
     ],
     "keywordRefs": [
       "Overwhelm"
@@ -12899,8 +12801,8 @@
     "attack": 4,
     "cost": 3,
     "health": 2,
-    "description": "The first time an allied <link=card.luc1><style=AssociatedCard>Lucian</style></link> dies this game, grant me +1|+1 and <link=keyword.Double Strike><sprite name=DoubleStrike><style=Keyword>Double Attack</style></link>.",
-    "descriptionRaw": "The first time an allied Lucian dies this game, grant me +1|+1 and Double Attack.",
+    "description": "The first time I see an allied <link=card.luc1><style=AssociatedCard>Lucian</style></link> die, grant me +1|+1 and <link=keyword.Double Strike><sprite name=DoubleStrike><style=Keyword>Double Attack</style></link>.",
+    "descriptionRaw": "The first time I see an allied Lucian die, grant me +1|+1 and Double Attack.",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "\"Our Sentinels are the first line of defense between the tide of restless undead and the realms of man. We hit first, hit hard, and NEVER back down when the lives of our companions are on the line.\"",
@@ -12908,8 +12810,7 @@
     "name": "Senna, Sentinel of Light",
     "cardCode": "01DE038",
     "keywords": [
-      "Quick Attack",
-      "Double Attack"
+      "Quick Attack", "Double Attack"
     ],
     "keywordRefs": [
       "QuickStrike"
@@ -13072,8 +12973,8 @@
   {
     "associatedCards": [],
     "associatedCardRefs": [
-      "01NX006T1",
       "01NX006T2",
+      "01NX006T1",
       "01NX006T3"
     ],
     "assets": [
@@ -13089,8 +12990,8 @@
     "health": 5,
     "description": "<style=VocabNoTooltip>Attack</style>: For each other attacking ally, deal 1 to it and 1 to the enemy Nexus.",
     "descriptionRaw": "Attack: For each other attacking ally, deal 1 to it and 1 to the enemy Nexus.",
-    "levelupDescription": "You've had 6+ other allies survive damage<style=Variable></style>.",
-    "levelupDescriptionRaw": "You've had 6+ other allies survive damage.",
+    "levelupDescription": "You've had 6+ allies survive damage<style=Variable></style>.",
+    "levelupDescriptionRaw": "You've had 6+ allies survive damage.",
     "flavorText": "Vicious. Cold. Cruel. Intriguing. Perceptive. Charming.\nIrresistible...",
     "artistName": "SIXMOREVODKA",
     "name": "Vladimir",
@@ -13348,8 +13249,7 @@
     "name": "Insight of Ages",
     "cardCode": "01IO054",
     "keywords": [
-      "Burst",
-      "Enlightened"
+      "Burst", "Enlightened"
     ],
     "keywordRefs": [
       "Burst"
@@ -13374,11 +13274,11 @@
     ],
     "region": "Shadow Isles",
     "regionRef": "ShadowIsles",
-    "attack": 5,
+    "attack": 4,
     "cost": 6,
-    "health": 5,
-    "description": "When I'm summoned, revive a random allied champion with the highest Power.",
-    "descriptionRaw": "When I'm summoned, revive a random allied champion with the highest Power.",
+    "health": 4,
+    "description": "When I'm summoned, revive the <link=vocab.Strongest><style=Vocab>Strongest</style></link> allied champion.",
+    "descriptionRaw": "When I'm summoned, revive the Strongest allied champion.",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "What use does a dying candle have, other than to light its successor?",
@@ -13419,8 +13319,7 @@
     "name": "Flash Freeze",
     "cardCode": "01FR001",
     "keywords": [
-      "Burst",
-      "Frostbite"
+      "Burst", "Frostbite"
     ],
     "keywordRefs": [
       "Burst"
@@ -13497,8 +13396,7 @@
     "name": "Hecarim",
     "cardCode": "01SI042",
     "keywords": [
-      "Overwhelm",
-      "Ephemeral"
+      "Overwhelm", "Ephemeral"
     ],
     "keywordRefs": [
       "Overwhelm"
@@ -13645,8 +13543,7 @@
     "name": "Shen's Stand United",
     "cardCode": "01IO032T2",
     "keywords": [
-      "Burst",
-      "Barrier"
+      "Burst", "Barrier"
     ],
     "keywordRefs": [
       "Burst"
@@ -13676,8 +13573,8 @@
     "attack": 7,
     "cost": 7,
     "health": 5,
-    "description": "<link=vocab.Play><style=Vocab>Play</style></link>: Kill the 2 lowest Power enemies if an ally died this round.",
-    "descriptionRaw": "Play: Kill the 2 lowest Power enemies if an ally died this round.",
+    "description": "<link=vocab.Play><style=Vocab>Play</style></link>: Kill the 2 <link=keyword.Weakest><style=Keyword>Weakest</style></link> enemies if an ally died this round.",
+    "descriptionRaw": "Play: Kill the 2 Weakest enemies if an ally died this round.",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "\"We were told... they called it a legend's journey. We were going to... for Demacia's future. We sailed with such hope. But all... all those lives... for what?\" - Arie Wrence, Demacian Soldier",
@@ -13702,10 +13599,10 @@
   {
     "associatedCards": [],
     "associatedCardRefs": [
-      "01FR024T3",
       "01FR024T2",
-      "01FR024T4",
-      "01FR024T1"
+      "01FR024T3",
+      "01FR024T1",
+      "01FR024T4"
     ],
     "assets": [
       {
@@ -13715,23 +13612,21 @@
     ],
     "region": "Freljord",
     "regionRef": "Freljord",
-    "attack": 4,
-    "cost": 6,
-    "health": 3,
-    "description": "<style=VocabNoTooltip>Attack</style>: Deal 1 to all enemies.",
-    "descriptionRaw": "Attack: Deal 1 to all enemies.",
-    "levelupDescription": "<link=keyword.Last Breath><sprite name=LastBreath><style=Keyword>Last Breath</style></link>: Revive me transformed into <link=card.transform><style=AssociatedCard>Eggnivia</style></link>.",
-    "levelupDescriptionRaw": "Last Breath: Revive me transformed into Eggnivia.",
+    "attack": 2,
+    "cost": 7,
+    "health": 4,
+    "description": "<style=VocabNoTooltip>Attack</style>: Deal 1 to all enemies.\r\n<link=keyword.Last Breath><sprite name=LastBreath><style=Keyword>Last Breath</style></link>: Revive me transformed into <link=card.transform><style=AssociatedCard>Eggnivia</style></link>.",
+    "descriptionRaw": "Attack: Deal 1 to all enemies.\r\nLast Breath: Revive me transformed into Eggnivia.",
+    "levelupDescription": "You're <link=keyword.Enlightened><style=Keyword>Enlightened</style></link>.",
+    "levelupDescriptionRaw": "You're Enlightened.",
     "flavorText": "\"I was born from this hard land, and it is mine to safeguard. Time, war, even death itself will not stop my vigil.\"",
     "artistName": "SIXMOREVODKA",
     "name": "Anivia",
     "cardCode": "01FR024",
     "keywords": [
-      "Can't Block",
       "Last Breath"
     ],
     "keywordRefs": [
-      "CantBlock",
       "LastBreath"
     ],
     "spellSpeed": "",
@@ -13802,9 +13697,7 @@
     "artistName": "SIXMOREVODKA",
     "name": "Intrepid Mariner",
     "cardCode": "01PZ042",
-    "keywords": [
-      "Elusive"
-    ],
+    "keywords": ["Elusive"],
     "keywordRefs": [],
     "spellSpeed": "",
     "spellSpeedRef": "",
@@ -13842,8 +13735,7 @@
     "name": "Lux",
     "cardCode": "01DE042",
     "keywords": [
-      "Barrier",
-      "Fleeting"
+      "Barrier", "Fleeting"
     ],
     "keywordRefs": [
       "Barrier"
@@ -14071,8 +13963,7 @@
     "name": "Steel Tempest",
     "cardCode": "01IO046",
     "keywords": [
-      "Fast",
-      "Stun"
+      "Fast", "Stun"
     ],
     "keywordRefs": [
       "Fast"
@@ -14212,20 +14103,16 @@
     "attack": 2,
     "cost": 1,
     "health": 1,
-    "description": "",
-    "descriptionRaw": "",
+    "description": "When you summon another ally, grant me <link=keyword.Challenger><sprite name=Challenger><style=Keyword>Challenger</style></link>.",
+    "descriptionRaw": "When you summon another ally, grant me Challenger.",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "These relatives of the silverwing raptors have the predatory instincts of their cousins alongside a dogged unfamiliarity with their own comparatively diminutive size.",
     "artistName": "SIXMOREVODKA",
     "name": "Fleetfeather Tracker",
     "cardCode": "01DE029",
-    "keywords": [
-      "Challenger"
-    ],
-    "keywordRefs": [
-      "Challenger"
-    ],
+    "keywords": ["Challenger"],
+    "keywordRefs": ["Challenger"],
     "spellSpeed": "",
     "spellSpeedRef": "",
     "rarity": "Common",
@@ -14258,9 +14145,7 @@
     "name": "Spirit's Refuge",
     "cardCode": "01IO037",
     "keywords": [
-      "Burst",
-      "Barrier",
-      "Lifesteal"
+      "Burst", "Barrier", "Lifesteal"
     ],
     "keywordRefs": [
       "Burst"
@@ -14288,8 +14173,8 @@
     "attack": 4,
     "cost": 4,
     "health": 1,
-    "description": "<link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Fleeting</style></link>.",
-    "descriptionRaw": "Fleeting.",
+    "description": "",
+    "descriptionRaw": "",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
     "flavorText": "\"Ah, the sweet smell of science! I have successfully upgraded my turrets! I must say... this model's appearance sends hypothermic waves through my vertebrae! Brr!\" - Heimerdinger's Lab Notes, Vol. 4",
@@ -14297,8 +14182,7 @@
     "name": "Mk4: Apex Turret",
     "cardCode": "01PZ056T8",
     "keywords": [
-      "Fearsome",
-      "Fleeting"
+      "Fearsome", "Fleeting"
     ],
     "keywordRefs": [
       "Fearsome"
@@ -14315,8 +14199,8 @@
   {
     "associatedCards": [],
     "associatedCardRefs": [
-      "01FR024T3",
       "01FR024",
+      "01FR024T3",
       "01FR024T1"
     ],
     "assets": [
@@ -14329,21 +14213,17 @@
     "regionRef": "Freljord",
     "attack": 0,
     "cost": 1,
-    "health": 1,
+    "health": 2,
     "description": "",
     "descriptionRaw": "",
-    "levelupDescription": "Start of Round: Transform me back into <link=card.level1><style=AssociatedCard>Anivia</style></link> and Level Up.",
-    "levelupDescriptionRaw": "Start of Round: Transform me back into Anivia and Level Up.",
+    "levelupDescription": "Start of Round: If you're <link=keyword.Enlightened><style=Keyword>Enlightened</style></link>, transform me back into <link=card.level1><style=AssociatedCard>Anivia</style></link> and Level Up.",
+    "levelupDescriptionRaw": "Start of Round: If you're Enlightened, transform me back into Anivia and Level Up.",
     "flavorText": "In the depths of winter's cold embrace, the Freljord's guardian awaits the hour of her return.",
     "artistName": "SIXMOREVODKA",
     "name": "Eggnivia",
     "cardCode": "01FR024T4",
-    "keywords": [
-      "Can't Block"
-    ],
-    "keywordRefs": [
-      "CantBlock"
-    ],
+    "keywords": [],
+    "keywordRefs": [],
     "spellSpeed": "",
     "spellSpeedRef": "",
     "rarity": "None",
@@ -14371,13 +14251,12 @@
     "descriptionRaw": "Grant an ally Elusive.",
     "levelupDescription": "",
     "levelupDescriptionRaw": "",
-    "flavorText": "\"Pilties always think they know everything, but their maps only show the places we told 'em about! Nothing like local knowledge. Which you can have... for a price.\" - Lem, Sumpsnipe Scavenger",
+    "flavorText": "\"Pilties always think they know everything, but their maps only show the places we told 'em about! Nothing like local knowledge. Which you can have... for a price.\" - Ajuna Lem, Sumpsnipe Scavenger",
     "artistName": "Kudos Productions",
     "name": "Sumpworks Map",
     "cardCode": "01PZ026",
     "keywords": [
-      "Burst",
-      "Elusive"
+      "Burst", "Elusive"
     ],
     "keywordRefs": [
       "Burst"
@@ -14414,8 +14293,7 @@
     "name": "Might",
     "cardCode": "01NX019",
     "keywords": [
-      "Burst",
-      "Overwhelm"
+      "Burst", "Overwhelm"
     ],
     "keywordRefs": [
       "Burst"
@@ -14510,7 +14388,7 @@
     ],
     "region": "Piltover & Zaun",
     "regionRef": "PiltoverZaun",
-    "attack": 2,
+    "attack": 3,
     "cost": 2,
     "health": 2,
     "description": "<link=vocab.Nexus Strike><style=Vocab>Nexus Strike</style></link>: Create in hand an exact copy of a random spell from the enemy's deck.",
@@ -14592,8 +14470,7 @@
     "name": "Solitary Monk",
     "cardCode": "01IO038",
     "keywords": [
-      "Elusive",
-      "Recall"
+      "Elusive", "Recall"
     ],
     "keywordRefs": [
       "Elusive"
@@ -14891,8 +14768,7 @@
     "name": "Karma's Insight of Ages",
     "cardCode": "01IO041T2",
     "keywords": [
-      "Burst",
-      "Enlightened"
+      "Burst", "Enlightened"
     ],
     "keywordRefs": [
       "Burst"
@@ -14931,8 +14807,7 @@
     "name": "Shadowshift",
     "cardCode": "01IO039",
     "keywords": [
-      "Fast",
-      "Recall"
+      "Fast", "Recall"
     ],
     "keywordRefs": [
       "Fast"
@@ -15070,8 +14945,7 @@
     "name": "Vile Feast",
     "cardCode": "01SI040",
     "keywords": [
-      "Fast",
-      "Drain"
+      "Fast", "Drain"
     ],
     "keywordRefs": [
       "Fast"
@@ -15213,8 +15087,7 @@
     "name": "Ki Guardian",
     "cardCode": "01IO055",
     "keywords": [
-      "Burst",
-      "Barrier"
+      "Burst", "Barrier"
     ],
     "keywordRefs": [
       "Burst"
@@ -15365,8 +15238,7 @@
     "name": "Guile",
     "cardCode": "01NX049",
     "keywords": [
-      "Slow",
-      "Stun"
+      "Slow", "Stun"
     ],
     "keywordRefs": [
       "Slow"
@@ -15432,7 +15304,7 @@
     "health": 5,
     "description": "",
     "descriptionRaw": "",
-    "levelupDescription": "I've struck twice<style=Variable></style>.",
+    "levelupDescription": "I've <link=vocab.Strike><style=Vocab>struck</style></link> twice<style=Variable></style>.",
     "levelupDescriptionRaw": "I've struck twice.",
     "flavorText": "\"You think me rigid. Single-minded. Predictable. I am rigid, for nothing can sway me. I am single-minded, for I believe in Demacia. And I am predictable, for I will surely defeat you.”",
     "artistName": "SIXMOREVODKA",
@@ -15590,8 +15462,7 @@
     "name": "Fading Memories",
     "cardCode": "01SI047",
     "keywords": [
-      "Burst",
-      "Ephemeral"
+      "Burst", "Ephemeral"
     ],
     "keywordRefs": [
       "Burst"

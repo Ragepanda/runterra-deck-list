@@ -7,8 +7,8 @@ hr {
 }
 
 .cardImg {
-	height: 70%;
-	width: auto;
+	height: 70% !important;
+	width: auto !important;
 }
 
 

@@ -46,11 +46,11 @@ class Card extends React.Component {
           </div>
 
           <div className="row">
-            <div className="col-sm-6">
+            <div className="col">
               <img className="cardImg img-fluid" src={"/img/cards/"+card.cardCode+".png"} alt={card.name} />
             </div>
   
-            <div className=" pt-4 cardSpecs col-sm-6">
+            <div className=" pt-4 cardSpecs col">
               <div className="row">
                 <div className="col">Name</div>
                 <div className="col">{card.name}</div>

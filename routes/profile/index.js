@@ -3,8 +3,8 @@ const router = require("express").Router();
 // const authR = require("./google");
 const authCheck = (req, res, next) =>{
     if(!req.user){
-        // if user is not logged in
-        res.send(req.user);
+
+        res.send([{isLoggedIn:false}, {isNotLoggedIn:true}]);
     }
     else{
         // if user is logged in
@@ -14,8 +14,9 @@ const authCheck = (req, res, next) =>{
 }
 
 router.get("/", authCheck, (req, res) => {
-    //res.send(req.user);
-    res.redirect('http://localhost:3000/');
+    console.log(req.user);
+    res.send(req.user);
+    //res.redirect('http://localhost:3000/');
 })
 
 

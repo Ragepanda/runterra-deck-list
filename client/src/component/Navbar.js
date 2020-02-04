@@ -31,6 +31,7 @@ class Navbar extends React.Component {
     this.closeModal = this.closeModal.bind(this);
     this.googleLogin = this.googleLogin.bind(this);
     this.checkAuth = this.checkAuth.bind(this);
+    this.logOut = this.logOut.bind(this);
   }
 
   openModal() {
@@ -58,8 +59,15 @@ class Navbar extends React.Component {
     console.log("Checking login info")
     api.checkLogin()
       .then((res) => {
-        console.log(res.user);
+        console.log(res.data);
       })
+  }
+
+  logOut(){
+    api.logOut()
+    .then((res)=>{
+      console.log("logged out");
+    })
   }
 
   //Navbar thing
@@ -111,6 +119,10 @@ class Navbar extends React.Component {
                 </div>
                 <div className="btn" onClick={this.checkAuth}>
                   Check if logged in
+                </div>
+
+                <div className="btn" onClick={this.logOut}>
+                  <a href="http://localhost:5000/auth/logout">Log Out</a>
                 </div>
               </Modal>
             </li>

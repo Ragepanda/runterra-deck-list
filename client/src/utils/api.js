@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default {
-
+    
     getTest: function(){
         var url = window.location.hostname;
         return axios.get("http://"+url+":5000/api/test/hello");
@@ -23,8 +23,18 @@ export default {
     },
 
     checkLogin: function(){
+        const config ={
+            withCredentials: true,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
         var url = window.location.hostname;
-        return axios.get("http://"+url+":5000/profile/")
+        return axios.get("http://localhost:5000/profile/", config)
+    },
+    logOut: function(){
+        var url = window.location.hostname;
+        return axios.get("http://"+url+":5000/auth/logout")
     },
     getArticleById: function(id){
         var url = window.location.hostname;

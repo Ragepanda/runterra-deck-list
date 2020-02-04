@@ -18,10 +18,14 @@ import Privacy from "./pages/Privacy/Privacy";
 import Terms from "./pages/Terms/Terms";
 import About from "./pages/About/About";
 
+
 import Navbar from "./component/Navbar";
+import cookieSession from "cookie-session";
 
 class App extends React.Component {
-
+  componentDidMount(){
+   
+  }
   render() {
     return (
       <Router>

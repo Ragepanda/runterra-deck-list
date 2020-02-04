@@ -2618,6 +2618,14 @@ convert-source-map@^0.3.3:
   version "0.3.5"
   resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-0.3.5.tgz#f1d802950af7dd2631a1febe0596550c86ab3190"
 
+cookie-session@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/cookie-session/-/cookie-session-1.4.0.tgz#c325aea685ceb9c8e4fd00b0313a46d547747380"
+  dependencies:
+    cookies "0.8.0"
+    debug "2.6.9"
+    on-headers "~1.0.2"
+
 cookie-signature@1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/cookie-signature/-/cookie-signature-1.0.6.tgz#e303a882b342cc3ee8ca513a79999734dab3ae2c"
@@ -2629,6 +2637,13 @@ cookie@0.3.1:
 cookie@0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.4.0.tgz#beb437e7022b3b6d49019d088665303ebe9c14ba"
+
+cookies@0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/cookies/-/cookies-0.8.0.tgz#1293ce4b391740a8406e3c9870e828c4b54f3f90"
+  dependencies:
+    depd "~2.0.0"
+    keygrip "~1.1.0"
 
 copy-concurrently@^1.0.0:
   version "1.0.5"
@@ -3099,6 +3114,10 @@ delegates@^1.0.0:
 depd@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.2.tgz#9bcd52e14c097763e749b274c4346ed2e560b5a9"
+
+depd@~2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/depd/-/depd-2.0.0.tgz#b696163cc757560d09cf22cc8fad1571b79e76df"
 
 des.js@^1.0.0:
   version "1.0.1"
@@ -5609,6 +5628,12 @@ jsx-ast-utils@^2.2.1:
     array-includes "^3.0.3"
     object.assign "^4.1.0"
 
+keygrip@~1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/keygrip/-/keygrip-1.1.0.tgz#871b1681d5e159c62a445b0c74b615e0917e7226"
+  dependencies:
+    tsscmp "1.0.6"
+
 killable@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/killable/-/killable-1.0.1.tgz#4c8ce441187a061c7474fb87ca08e2a638194892"
@@ -7808,7 +7833,6 @@ react-helmet@^5.2.1:
 react-html-parser@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/react-html-parser/-/react-html-parser-2.0.2.tgz#6dbe1ddd2cebc1b34ca15215158021db5fc5685e"
-  integrity sha512-XeerLwCVjTs3njZcgCOeDUqLgNIt/t+6Jgi5/qPsO/krUWl76kWKXMeVs2LhY2gwM6X378DkhLjur0zUQdpz0g==
   dependencies:
     htmlparser2 "^3.9.0"
 
@@ -9242,6 +9266,10 @@ ts-pnp@1.1.5, ts-pnp@^1.1.2:
 tslib@^1.8.1, tslib@^1.9.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
+
+tsscmp@1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/tsscmp/-/tsscmp-1.0.6.tgz#85b99583ac3589ec4bfef825b5000aa911d605eb"
 
 tsutils@^3.17.1:
   version "3.17.1"

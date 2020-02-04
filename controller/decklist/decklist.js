@@ -3,6 +3,7 @@ var db = require("../../models");
 module.exports ={
 
     getDecklists: function (req, res){
+        console.log(req.user);
         res.send(
             [
     

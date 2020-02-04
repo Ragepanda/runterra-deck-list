@@ -10,12 +10,17 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 //MAKE SURE TO WHITELIST ONLY OUR OWN WEBSITE AND ALLOW FOR NO OTHER OUTER REQUESTS
 //enable cross origin requests for different port numbers
-app.use(cors());
+app.use(cors({
+  origin:"http://localhost:3000",
+  methods:['GET','POST'],
+  credentials: true
+}));
 
 //cookies set up for sending encrypted data to front end
 app.use(cookieSession({
+  name: "login",
   maxAge: 24 *60 * 60 * 1000,
-  keys: ['stanisadoodoobutthole']
+  keys: ['stanisadoodoobutthole', 'stanisapoopoobutthole']
 }));
 
 //Middleware for passport

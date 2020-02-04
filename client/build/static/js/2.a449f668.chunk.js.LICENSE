@@ -12,6 +12,40 @@ object-assign
 */
 
 /*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <http://feross.org>
+ * @license  MIT
+ */
+
+/*!
+ * Adapted from jQuery UI core
+ *
+ * http://jqueryui.com
+ *
+ * Copyright 2014 jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://api.jqueryui.com/category/ui-core/
+ */
+
+/** @license React v16.8.6
+   * react.production.min.js
+   *
+   * Copyright (c) Facebook, Inc. and its affiliates.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE file in the root directory of this source tree.
+   */
+
+/*
+  object-assign
+  (c) Sindre Sorhus
+  @license MIT
+  */
+
+/*!
    * Fuse.js v3.4.5 - Lightweight fuzzy-search (http://fusejs.io)
    * 
    * Copyright (c) 2012-2017 Kirollos Risk (http://kiro.me)
@@ -45,6 +79,21 @@ and limitations under the License.
  */
 
 /** @license React v16.12.0
+ * react-is.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/*!
+  Copyright (c) 2017 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+
+/** @license React v16.12.0
  * react-dom.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -62,17 +111,8 @@ and limitations under the License.
  * LICENSE file in the root directory of this source tree.
  */
 
-/** @license React v16.12.0
- * react-is.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 /*!
-  Copyright (c) 2017 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
+  Copyright (c) 2015 Jed Watson.
+  Based on code that is Copyright 2013-2015, Facebook, Inc.
+  All rights reserved.
 */

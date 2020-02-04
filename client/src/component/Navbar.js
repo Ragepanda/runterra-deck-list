@@ -99,8 +99,15 @@ class Navbar extends React.Component {
                 <a className="dropdown-item" href="/set">Base Set</a>
               </div>
             </li>
-
+            {/* <li className="nav-item">
+              &nbsp;&nbsp;
+            </li>
             <li className="nav-item">
+              <a className="nav-link" href="/articles">Articles</a>
+            </li> */}
+
+
+            {/* <li className="nav-item">
               <a className="nav-link" id="modal-link" onClick={this.openModal}>Login</a>
               <Modal
                 isOpen={this.state.modalIsOpen}
@@ -125,13 +132,8 @@ class Navbar extends React.Component {
                   <a href="http://localhost:5000/auth/logout">Log Out</a>
                 </div>
               </Modal>
-            </li>
-            {/* <li className="nav-item">
-                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a className="dropdown-item" href="/set">Base Set</a>
-                    </div>
-                  </li>
-                </ul>
+            </li> */}
+            </ul>
                 <ul className="navbar-nav mr-right">
                   <li className="nav-item">
                     <a className="nav-link" href="/about">&nbsp;About Us</a>

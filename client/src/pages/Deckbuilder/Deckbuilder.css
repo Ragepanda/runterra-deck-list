@@ -26,6 +26,9 @@
     margin-bottom: -6px;
 }
 
+.noDisplay{
+    display: none;
+}
 
 .card-zoom{
     transition: transform .1s;
@@ -156,6 +159,18 @@
     border: 2px solid #D68FD6;
 }
 
+.cardQuantity {
+    width:35%;
+    max-width: 70px;
+    height:25%;
+    max-height: 50px;
+    font-size: 190%;
+    position: absolute;
+    top: 8px;
+    right: 16px;
+}
+
+
 .cardName {
     position: relative;
     z-index: 3;
@@ -190,7 +205,7 @@
     cursor: pointer;
     font-size: 20px;
     margin-left: -15px;
-    top: 25vh;
+    top: 30vh;
     z-index: 10;
     background: #011627;
     border: 2px solid #D68FD6;
@@ -252,7 +267,11 @@
     background: #011627;
     color: #FFF8F0;
     transition: all 0.3s;
+
 }
+
+
+
 
 .wrapper {
     display: flex;

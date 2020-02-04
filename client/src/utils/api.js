@@ -25,5 +25,9 @@ export default {
     checkLogin: function(){
         var url = window.location.hostname;
         return axios.get("http://"+url+":5000/profile/")
+    },
+    getArticleById: function(id){
+        var url = window.location.hostname;
+        return axios.get("http://"+url+":5000/api/article/getArticleById", {params: {id:id}});
     }
 }

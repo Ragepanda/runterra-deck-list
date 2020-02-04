@@ -115,6 +115,22 @@ class Navbar extends React.Component {
               </Modal>
             </li>
             {/* <li className="nav-item">
+                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a className="dropdown-item" href="/set">Base Set</a>
+                    </div>
+                  </li>
+                </ul>
+                <ul className="navbar-nav mr-right">
+                  <li className="nav-item">
+                    <a className="nav-link" href="/about">&nbsp;About Us</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="/privacy">Privacy Policy</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="/terms">Terms of Service</a>
+                  </li>
+                  {/* <li className="nav-item">
                     <a className="nav-link disabled" href="#">Login</a>
                   </li>
                   <li className="nav-item">

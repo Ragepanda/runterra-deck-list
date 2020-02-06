@@ -5,7 +5,7 @@ const port = process.env.PORT || 5000;
 const bodyParser = require("body-parser");
 const db = require("./models");
 const path = require("path");
-const cors = require('cors');
+// const cors = require('cors');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 //MAKE SURE TO WHITELIST ONLY OUR OWN WEBSITE AND ALLOW FOR NO OTHER OUTER REQUESTS

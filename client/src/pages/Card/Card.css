@@ -1,5 +1,7 @@
 hr {
-	background-color: #FFF8F0
+	background-color: #FFF8F0;
+	margin-top: .75rem;
+	margin-bottom: .75rem;
 }
 
 #cardList {
@@ -9,9 +11,20 @@ hr {
 .cardImg {
 	height: 70% !important;
 	width: auto !important;
+	max-width: 70% !important;
+	display: block !important;
+	margin: auto !important;
 }
 
 
+
 .cardSpecs{
-	font-size: 90%;
+	font-size: 75%;
+}
+
+.carousel-select{
+	top: 20%;
+	bottom: 70%;
+	margin-left: 5px;
+	margin-right: 5px;
 }

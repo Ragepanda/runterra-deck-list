@@ -2,6 +2,7 @@ import React from "react";
 
 import api from '../../utils/api';
 import { Helmet } from "react-helmet";
+import "./Articles.css"
 
 class Articles extends React.Component {
 	constructor(props) {
@@ -39,11 +40,16 @@ class Articles extends React.Component {
 	createRows(){
 		const list = this.state.articles.map((article, index) => {
 		return(
-			<div>
-				<img src={article.thumbnail}></img>
-				<a href={"/articles/" + article.name + "/" + article.id}>{article.title}</a>
-				<p>{article.description}</p>
+			<div className="col-12 col-sm-12 col-md-6 col-lg-4">
+			<div className="card bg-secondary fixed-height-card" style={{width: "18rem"}}>
+				<img src={article.thumbnail} className="articleCardImage"></img>
+				<div className="card-body">
+					<a classname="card-title" href={"/articles/" + article.title + "/" + article.id}>{article.title}</a>
+					<p className="desc-text">{article.date}</p>
+					<p className="desc-text">{article.description}</p>
+				</div>
 
+			</div>
 			</div>
 		);
 		});
@@ -69,9 +75,11 @@ class Articles extends React.Component {
          		<br/>
          		<br/>
          		<br/>
-				<h3>Article Head</h3>
-				<div>HELLO</div>
-				<div>{this.createRows()}</div>
+         		
+         		<div className="container-fluid" >
+         			<h2>Legends of Runeterra Articles</h2>
+					<div className="row">{this.createRows()}</div>
+				</div>
 
 			</div>
 		);}

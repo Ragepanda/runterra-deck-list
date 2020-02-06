@@ -5,16 +5,16 @@ const port = process.env.PORT || 5000;
 const bodyParser = require("body-parser");
 const db = require("./models");
 const path = require("path");
-// const cors = require('cors');
-const cookieSession = require('cookie-session');
-const passport = require('passport');
+const cors = require('cors');
+// const cookieSession = require('cookie-session');
+// const passport = require('passport');
 //MAKE SURE TO WHITELIST ONLY OUR OWN WEBSITE AND ALLOW FOR NO OTHER OUTER REQUESTS
 //enable cross origin requests for different port numbers
-// app.use(cors({
-//   origin:["http://localhost:3000","http://localhost:45678", "runeterranexus.com"],
-//   methods:['GET','POST'],
-//   credentials: true
-// }));
+app.use(cors({
+  origin:["http://localhost:3000","http://localhost:45678", "runeterranexus.com"],
+  methods:['GET','POST'],
+  credentials: true
+}));
 
 //cookies set up for sending encrypted data to front end
 // app.use(cookieSession({

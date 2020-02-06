@@ -17,11 +17,6 @@ export default {
         return axios.get("http://"+url+":5000/api/decklist/getDeckById", {params: {id:id}});
     },
 
-    getGoogleLogin: function(){
-        var url = window.location.hostname;
-        return axios.get("http://"+url+":5000/auth/google");
-    },
-
     checkLogin: function(){
         const config ={
             withCredentials: true,
@@ -30,12 +25,9 @@ export default {
             },
         };
         var url = window.location.hostname;
-        return axios.get("http://localhost:5000/profile/", config)
+        return axios.get("http://localhost:5000/auth/isLoggedIn", config)
     },
-    logOut: function(){
-        var url = window.location.hostname;
-        return axios.get("http://"+url+":5000/auth/logout")
-    },
+
     getArticles: function(){
         var url = window.location.hostname;
         return axios.get("http://"+url+":5000/api/article/getArticles");

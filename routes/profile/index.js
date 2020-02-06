@@ -4,7 +4,7 @@ const router = require("express").Router();
 const authCheck = (req, res, next) =>{
     if(!req.user){
 
-        res.send([{isLoggedIn:false}, {isNotLoggedIn:true}]);
+        res.send({isLoggedIn: false, id:null});
     }
     else{
         // if user is logged in
@@ -15,9 +15,11 @@ const authCheck = (req, res, next) =>{
 
 router.get("/", authCheck, (req, res) => {
     console.log(req.user);
-    res.send(req.user);
-    //res.redirect('http://localhost:3000/');
-})
+   // res.send({isLoggedIn: true, id:req.user.id});
+    res.redirect('http://localhost:3000/');
+});
+
+
 
 
 

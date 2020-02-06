@@ -86,7 +86,7 @@ class Card extends React.Component {
           <div className="row">
             { this.state.assocCards.length <= 1 && 
               <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <img className="cardImg img-fluid" src={"/img/cards/"+this.state.assocCards[this.state.cardIndex].cardCode+".png"} alt={this.state.assocCards[this.state.cardIndex].name} />
+                <img className="bigCardImg img-fluid" src={"/img/cards/"+this.state.assocCards[this.state.cardIndex].cardCode+".png"} alt={this.state.assocCards[this.state.cardIndex].name} />
               </div>
             }
 
@@ -95,7 +95,7 @@ class Card extends React.Component {
                 <div className="carousel-inner">
                 {this.state.assocCards.map( (assocCard,index) =>
                   <div className={index === 0 ? "carousel-item active" : "carousel-item"} key={index}>
-                    <img className="d-block cardImg img-fluid" src={"/img/cards/"+assocCard.cardCode+".png"} alt={assocCard.name}/>
+                    <img className="d-block bigCardImg img-fluid" src={"/img/cards/"+assocCard.cardCode+".png"} alt={assocCard.name}/>
                   </div>
                )}
                 </div>

@@ -8,18 +8,19 @@ hr {
 	padding-top: 50px;
 }
 
-.cardImg {
-	height: 70% !important;
-	width: auto !important;
-	max-width: 70% !important;
-	display: block !important;
-	margin: auto !important;
+.bigCardImg {
+	max-width: 75%;
+	height: auto;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
 }
 
 
 
 .cardSpecs{
-	font-size: 75%;
+	font-size: 85%;
 }
 
 .carousel-select{

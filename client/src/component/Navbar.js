@@ -172,6 +172,12 @@ class Navbar extends React.Component {
                   <a className="dropdown-item" href="/set">Base Set</a>
                 </div>
               </li>
+              <li className="nav-item">
+                &nbsp;&nbsp;
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/articles">Articles</a>
+              </li>
 
             </ul>
             <ul className="navbar-nav mr-right">

@@ -104,7 +104,7 @@ class Set extends React.Component {
               </a>
             </div>
             <ReactToooltip className="set-tooltips" place="bottom" effect="solid" id={card.cardCode}>
-              {card.keywords.length > 0 ? this.keywordTooltipText(card.keywords) : card.name}
+              {card.keywords.length > 0 ? this.keywordTooltipText(card.keywords) : card.descriptionRaw !== "" ?  card.descriptionRaw : card.name}
             </ReactToooltip>
           </div>);
       else

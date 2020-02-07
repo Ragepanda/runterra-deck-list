@@ -1,3 +1,5 @@
+
+
 .hover-images{
     height:250px;
     width: auto;
@@ -7,6 +9,14 @@
 
 .opaque{
 	opacity: 1 !important;
+}
+
+textarea{
+	border: 3px solid #D68FD6;
+	resize: none;
+	background-color: #011627;
+	color: #FFF8F0;
+	text-align: center;
 }
 
 /*.manaCurve{
@@ -66,7 +76,7 @@
 }
 .count{
 	margin-right: 5px;
-	color: #42e6f5;
+	color: #FFF8F0;
 	font-size: 125%;
 }
 

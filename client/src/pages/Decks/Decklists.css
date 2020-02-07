@@ -28,3 +28,14 @@
 #dList {
   padding-top: 50px;
 }
+
+.deck-like{
+    position: relative;
+    bottom: 100px;
+    left: 120px;
+}
+
+.deck-like:hover{
+    transform: scale(1.2);
+    color: #449922;
+}

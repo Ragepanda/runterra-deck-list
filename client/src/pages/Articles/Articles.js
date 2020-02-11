@@ -64,9 +64,9 @@ class Articles extends React.Component {
 		return(
 			<div className="container" >
            <Helmet>
-           <title>{ " | Legends of Runeterra Articles on Runeterra Nexus"}</title>
-           		<meta name="description" />
-           		<meta name="keywords" />
+           <title>{ "Best Legends of Runeterra Articles | Legends of Runeterra Articles on Runeterra Nexus"}</title>
+           		<meta name="description" content="Check out the best legends of runeterra articles on guides, strategy, meta and decks in legends of runeterra." />
+           		<meta name="keywords" content="articles,article,decks,deck,guide,guides,strategy,tactics,meta,legends,runeterra,lor"/>
            		<meta name="author" content="runeterranexus.com" />
            		<meta http-equiv="Content-Language" content="en-US" />
            		<meta name="rating" content="kids" />

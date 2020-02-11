@@ -44,7 +44,7 @@ class Articles extends React.Component {
 			<div className="card bg-secondary fixed-height-card" style={{width: "18rem"}}>
 				<img src={article.thumbnail} className="articleCardImage"></img>
 				<div className="card-body">
-					<a classname="card-title" href={"/articles/" + article.title + "/" + article.id}>{article.title}</a>
+					<a classname="card-title" href={"/articles/" + article.url.replace(/ /g, "_") + "/" + article.id}>{article.title}</a>
 					<p className="desc-text">{article.date}</p>
 					<p className="desc-text">{article.description}</p>
 				</div>

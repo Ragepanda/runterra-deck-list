@@ -178,9 +178,6 @@ class Navbar extends React.Component {
               <li className="nav-item">
                 &nbsp;&nbsp;
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/articles">Articles</a>
-              </li>
 
             </ul>
             <ul className="navbar-nav mr-right">

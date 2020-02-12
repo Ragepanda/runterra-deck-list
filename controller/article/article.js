@@ -37,6 +37,15 @@ module.exports ={
                 description: "Lets look at what you get in the starter bundle, and if it is worth picking up.",
 
             },
+            {
+                id: 4,
+                layout: "<h1 style='text-align: center;'>A Guide to Runeterra Shards</h1><h2 style='text-align: center;'>How to amass them, what to use them for, and shard cost breakdowns.</h2><h4 style='text-align: center;'>by Daniel Theodore<strong>&nbsp;2/11/2020</strong></h4><p>If you've played Legends of Runeterra for almost any time, you have come across shards.</p><p>They look like this:</p><p><br /><img src='/img/misc/shards.png' alt='runeterra guides - runeterra shards' width='66' height='66' /></p><p>And you can get them from a plethora of sources:</p><ul><li>Runeterra Chests</li><li>Opening Duplicate Runeterra Cards</li><li>Completing Runeterra Expedition Trials</li></ul><p>Now that you have all these shards, what can you do with them?<br />Currently during the Legends of Runeterra Beta, you can:</p><ul><li>Play Runeterra Expeditions for 3000 <img src='/img/misc/shards.png' alt='runeterra guides - runeterra expedition shard cost' width='17' height='17' /></li><li>Craft a Champion Runeterra Card for 3000 <img src='/img/misc/shards.png' alt='runeterra guides - runeterra champion shard cost' width='17' height='17' /></li><li>Craft an Epic Runeterra Card for 1200 <img src='/img/misc/shards.png' alt='runeterra guides - runeterra epic shard cost' width='17' height='17' /></li><li>Craft a Rare Runeterra Card for 600 <img src='/img/misc/shards.png' alt='runeterra guides - runeterra rare shard cost' width='17' height='17' /></li><li>Craft a Common Runeterra Card for 100 <img src='/img/misc/shards.png' alt='runeterra guides - runeterra common shard cost' width='16' height='16' /></li></ul><p>In the future there might be more uses for shards in Runeterra, but for now this is the totality of what you can do with your shards.</p>",
+                date: "02/11/2020",
+                thumbnail: "/img/misc/shards.png",
+                title: "Legends of Runeterra Shards Guide",
+                url: "Legends_of_Runeterra_Shards_Guide",
+                description: "Let's take a look at Runeterra shards: How to amass them and spend them."
+            },
 		]
 		);
 	},
@@ -74,6 +83,15 @@ module.exports ={
                 url: "Legends_of_Runeterra_Beta_Starter_Bundle",
                 description: "Lets look at what you get in the starter bundle, and if it is worth picking up.",
 
+            },
+            {
+                id: 4,
+                layout: "<h1 style='text-align: center;'>A Guide to Runeterra Shards</h1><h2 style='text-align: center;'>How to amass them, what to use them for, and shard cost breakdowns.</h2><h4 style='text-align: center;'>by Daniel Theodore<strong>&nbsp;2/11/2020</strong></h4><p>If you've played Legends of Runeterra for almost any time, you have come across shards.</p><p>They look like this:</p><p><br /><img src='/img/misc/shards.png' alt='runeterra guides - runeterra shards' width='66' height='66' /></p><p>And you can get them from a plethora of sources:</p><ul><li>Runeterra Chests</li><li>Opening Duplicate Runeterra Cards</li><li>Completing Runeterra Expedition Trials</li></ul><p>Now that you have all these shards, what can you do with them?<br />Currently during the Legends of Runeterra Beta, you can:</p><ul><li>Play Runeterra Expeditions for 3000 <img src='/img/misc/shards.png' alt='runeterra guides - runeterra expedition shard cost' width='17' height='17' /></li><li>Craft a Champion Runeterra Card for 3000 <img src='/img/misc/shards.png' alt='runeterra guides - runeterra champion shard cost' width='17' height='17' /></li><li>Craft an Epic Runeterra Card for 1200 <img src='/img/misc/shards.png' alt='runeterra guides - runeterra epic shard cost' width='17' height='17' /></li><li>Craft a Rare Runeterra Card for 600 <img src='/img/misc/shards.png' alt='runeterra guides - runeterra rare shard cost' width='17' height='17' /></li><li>Craft a Common Runeterra Card for 100 <img src='/img/misc/shards.png' alt='runeterra guides - runeterra common shard cost' width='16' height='16' /></li></ul><p>In the future there might be more uses for shards in Runeterra, but for now this is the totality of what you can do with your shards.</p>",
+                date: "02/11/2020",
+                thumbnail: "/img/misc/shards.png",
+                title: "Legends of Runeterra Shards Guide",
+                url: "Legends_of_Runeterra_Shards_Guide",
+                description: "Let's take a look at Runeterra shards: How to amass them and spend them."
             },
 		];
 		var article;

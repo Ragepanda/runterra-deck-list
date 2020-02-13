@@ -24,10 +24,12 @@ class Article extends React.Component {
             .then(res => {
                 //console.log(res.data);
                 var html = ReactHtmlParser(res.data.layout);
-                console.log(html);
+                //console.log(html);
                 this.setState({
                     isLoaded: true,
-                    layout: html
+                    layout: html,
+                    description: res.data.description,
+                    title: res.data.title
                 });
 
 
@@ -38,7 +40,7 @@ class Article extends React.Component {
                     //error: err
                 })
             });
-		console.log(this.state.layout);
+		//console.log(this.state.layout);
 	}
 
 	testLayout(){
@@ -61,9 +63,9 @@ class Article extends React.Component {
 		return(
 			<div className="container" >
            <Helmet>
-           <title>{ " | Legends of Runeterra Articles on Runeterra Nexus"}</title>
-           		<meta name="description" />
-           		<meta name="keywords" />
+           <title>{ this.state.title + " | Legends of Runeterra Articles on Runeterra Nexus"}</title>
+           		<meta name="description" content={this.state.description} />
+           		<meta name="keywords" content={this.state.keywords} />
            		<meta name="author" content="runeterranexus.com" />
            		<meta http-equiv="Content-Language" content="en-US" />
            		<meta name="rating" content="kids" />

@@ -285,7 +285,7 @@ class Deck extends React.Component {
 					<CopyToClipboard onCopy={this.onCopy} text={this.state.deckStr}>
 				<div className="text-center">
 						<div className="col">Deck Code:</div>
-						<div className="col"><textarea rows={1} cols={36} value={this.state.deckStr}/></div>
+						<div className="col"><textarea rows={1}  value={this.state.deckStr}/></div>
 				  		<div className="col">&nbsp;</div><button className="col btn-lg btn btn-outline " onClick={this.deckStrBtn}>Copy Deck Code To Clipboard </button><div className="col">&nbsp;</div>
 				</div>
 					</CopyToClipboard>

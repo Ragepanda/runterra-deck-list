@@ -41,15 +41,17 @@ class Articles extends React.Component {
 		const list = this.state.articles.map((article, index) => {
 		return(
 			<div className="col-12 col-sm-12 col-md-6 col-lg-4">
+			<a classname="card-title" href={"/articles/" + article.url.replace(/ /g, "_") + "/" + article.id}>
 			<div className="card bg-secondary fixed-height-card" style={{width: "18rem"}}>
 				<img src={article.thumbnail} className="articleCardImage"></img>
 				<div className="card-body">
-					<a classname="card-title" href={"/articles/" + article.url.replace(/ /g, "_") + "/" + article.id}>{article.title}</a>
+					{article.title}
 					<p className="desc-text">{article.date}</p>
 					<p className="desc-text">{article.description}</p>
 				</div>
 
 			</div>
+			</a>
 			</div>
 		);
 		});

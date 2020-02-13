@@ -61,7 +61,7 @@ class Article extends React.Component {
 
 	render(){
 		return(
-			<div className="container" >
+			<div className="container text-center bckgrd" >
            <Helmet>
            <title>{ this.state.title + " | Legends of Runeterra Articles on Runeterra Nexus"}</title>
            		<meta name="description" content={this.state.description} />

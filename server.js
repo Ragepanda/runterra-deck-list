@@ -6,8 +6,8 @@ const bodyParser = require("body-parser");
 const db = require("./models");
 const path = require("path");
 const cors = require('cors');
-// const cookieSession = require('cookie-session');
-// const passport = require('passport');
+const cookieSession = require('cookie-session');
+const passport = require('passport');
 //MAKE SURE TO WHITELIST ONLY OUR OWN WEBSITE AND ALLOW FOR NO OTHER OUTER REQUESTS
 //enable cross origin requests for different port numbers
 app.use(cors({
@@ -16,16 +16,15 @@ app.use(cors({
   credentials: true
 }));
 
-//cookies set up for sending encrypted data to front end
-// app.use(cookieSession({
-//   name: "login",
-//   maxAge: 24 *60 * 60 * 1000,
-//   keys: ['stanisadoodoobutthole', 'stanisapoopoobutthole']
-// }));
+app.use(cookieSession({
+  name: "login",
+  maxAge: 24 *60 * 60 * 1000,
+  keys: ['stanisadoodoobutthole', 'stanisapoopoobutthole']
+}));
 
-//Middleware for passport
-// app.use(passport.initialize());
-// app.use(passport.session());
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Middleware for automatically turning outgoing API calls into JSON format
 app.use(bodyParser.urlencoded({ extended: true }));

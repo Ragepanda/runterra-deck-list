@@ -28,6 +28,7 @@ class Profile extends React.Component {
 
     render() {
         if (this.state.isLoaded === false) {
+            //We need to code a log in page
             return <div><p>Loading...</p></div>
         }
 

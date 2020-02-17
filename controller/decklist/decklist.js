@@ -24,6 +24,15 @@ module.exports ={
         
     },
 
+    getCreatedDecks: function (req, res){
+        console.log("User for get Created Decks: "+ req.user.displayName);
+        db.decklist.findAll({where:{creatorId: req.user.id}})
+            .then(creatorDecks =>{
+                res.send(creatorDecks);
+            })
+        
+    },
+
     getDecklists: function (req, res){
         res.send(
             [

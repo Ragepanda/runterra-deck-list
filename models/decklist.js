@@ -17,6 +17,10 @@ module.exports = function (sequelize, DataTypes) {
         description: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        cardArtId: {
+            type: DataTypes.STRING,
+            defaultValue: "01DE001"
         }
     },
         { timestamps: true });

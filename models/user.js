@@ -14,7 +14,8 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         },
         cardArtId: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            defaultValue: "01DE001"
         },
 
     },

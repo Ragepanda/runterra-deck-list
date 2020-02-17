@@ -17,6 +17,12 @@ export default {
         return axios.get("http://"+url+":5000/api/decklist/getDeckById", {params: {id:id}});
     },
 
+    addNewDeck: function(id, deckCode, deckName, deckDescription){
+        var url = window.location.hostname;
+        return axios.post("http://"+url+":5000/api/decklist/addNewDeck", 
+        {id:id, deckCode:deckCode, deckName:deckName, deckDescription: deckDescription});
+    },
+
     checkLogin: function(){
         const config ={
             withCredentials: true,

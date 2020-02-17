@@ -129,14 +129,29 @@
 .buttonDiv {
     margin:0 auto;
     text-align: center;
-    width: 50%;
+    /* width: 50%; */
     display: inline-block;
     position: absolute;
-    left: 50px;
+    left: 100px;
 }
 
 .buttonDiv:hover{
     color: #011627 !important;
+}
+
+
+.saveDiv{
+    display: inline-block;
+    text-align: center;
+    margin-left:15px;
+    /* position: relative;
+    top: 60px;
+    left: 60px; */
+}
+
+.form-input{
+    display:block;
+    width: 80%;
 }
 
 .cmc {

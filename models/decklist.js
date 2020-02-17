@@ -23,7 +23,7 @@ module.exports = function (sequelize, DataTypes) {
     decklist.associate = function (models) {
         decklist.belongsTo(models.user,
             {
-                as: 'createdDecks',
+                as: 'creator',
                 foreignKey: 'creatorId'
             });
         decklist.belongsToMany(models.user,

@@ -14,8 +14,6 @@ const authCheck = (req, res, next) =>{
 }
 
 router.get("/", authCheck, (req, res) => {
-    console.log(req.user);
-   // res.send({isLoggedIn: true, id:req.user.id});
     res.redirect('http://localhost:3000/');
 });
 

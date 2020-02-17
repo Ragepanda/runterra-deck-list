@@ -61,7 +61,8 @@ class Card extends React.Component {
 
     var cardIndex = this.state.cardIndex;
     var length = this.state.assocCards.length;
-    this.setState({cardIndex: (cardIndex - 1) % length});
+    cardIndex = cardIndex == 0 ? length-1 : (cardIndex-1)%length;
+    this.setState({cardIndex: cardIndex});
   }
 
   render() {

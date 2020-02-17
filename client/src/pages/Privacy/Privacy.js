@@ -8,6 +8,26 @@ class Privacy extends React.Component {
   componentDidMount() {
 
   }
+
+  createHelmet() {
+
+    let metatitle = "Runeterra Nexus Privacy Policy | Best Legends of Runeterra Decks on Runeterra Nexus"; //will need to add a property for which set it is
+    let descrip = "This is the privacy policy for Runeterra Nexus. We are committed to bringing you the best Runeterra decks known to man."; //will need to add a property for which set it is
+    let metacontent = "cards,card library,lor,legend, nexus, legends,runeterra,deck,decklist,decklists,decks,set,sets,expansion,expansions, privacy,best"; //will need to add in property for which set it is
+
+    let helmet = <Helmet>
+      <title>{metatitle}</title>
+      <meta name="description" content={descrip} />
+      <meta name="keywords" content={metacontent} />
+      <meta name="author" content="runeterranexus.com" />
+      <meta http-equiv="Content-Language" content="en-US" />
+      <meta name="rating" content="kids" />
+      <meta http-equiv="content-type" content="text/html" charSet="utf-8" />
+    </Helmet>;
+
+    return helmet;
+  }
+
   render() {
     return(
     <div className="regBody container">

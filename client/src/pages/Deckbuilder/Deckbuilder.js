@@ -272,7 +272,7 @@ class Deckbuilder extends React.Component {
               }
             </div>
             <ReactToooltip className="deckbuilder-tooltips" place="bottom" effect="solid" id={"tooltip" + index}>
-              {card.keywords.length > 0 ? this.keywordTooltipText(card.keywords) : card.descriptionRaw}
+              {card.keywords.length > 0 ? this.keywordTooltipText(card.keywords) : card.descriptionRaw !== "" ?  card.descriptionRaw : card.name}
             </ReactToooltip>
           </div>);
       else

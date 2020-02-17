@@ -41,15 +41,17 @@ class Articles extends React.Component {
 		const list = this.state.articles.map((article, index) => {
 		return(
 			<div className="col-12 col-sm-12 col-md-6 col-lg-4">
+			<a classname="card-title" href={"/articles/" + article.url.replace(/ /g, "_") + "/" + article.id}>
 			<div className="card bg-secondary fixed-height-card" style={{width: "18rem"}}>
 				<img src={article.thumbnail} className="articleCardImage"></img>
 				<div className="card-body">
-					<a classname="card-title" href={"/articles/" + article.title + "/" + article.id}>{article.title}</a>
+					{article.title}
 					<p className="desc-text">{article.date}</p>
 					<p className="desc-text">{article.description}</p>
 				</div>
 
 			</div>
+			</a>
 			</div>
 		);
 		});
@@ -64,9 +66,9 @@ class Articles extends React.Component {
 		return(
 			<div className="container" >
            <Helmet>
-           <title>{ " | Legends of Runeterra Articles on Runeterra Nexus"}</title>
-           		<meta name="description" />
-           		<meta name="keywords" />
+           <title>{ "Best Legends of Runeterra Articles | Legends of Runeterra Articles on Runeterra Nexus"}</title>
+           		<meta name="description" content="Check out the best legends of runeterra articles on guides, strategy, meta and decks in legends of runeterra." />
+           		<meta name="keywords" content="articles,article,decks,deck,guide,guides,strategy,tactics,meta,legends,runeterra,lor"/>
            		<meta name="author" content="runeterranexus.com" />
            		<meta http-equiv="Content-Language" content="en-US" />
            		<meta name="rating" content="kids" />

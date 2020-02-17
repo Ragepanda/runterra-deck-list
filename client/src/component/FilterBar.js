@@ -60,7 +60,6 @@ class FilterBar extends React.Component {
             { name: "Burst" },
             { name: "Fleeting" },
             { name: "Fast" },
-            { name: "Overwhelm" },
             { name: "Quick Attack" },
             { name: "Tough" },
             { name: "Recall" },

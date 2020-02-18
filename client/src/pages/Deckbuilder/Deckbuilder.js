@@ -4,18 +4,36 @@ import baseSet from "../../card_info/set1.json";
 import keywordSet from "../../card_info/globals-en_us.json"
 import FilterBar from "../../component/FilterBar";
 import ReactToooltip from "react-tooltip";
-import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import Modal from "react-modal";
 import "./Deckbuilder.css";
+import api from "../../utils/api";
 const { DeckEncoder, Card } = require('runeterra'); //We need to import this card object to properly pass stuff to the encoder
 
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    background: "#011627"
+  },
+  overlay: { zIndex: 1000 }
+};
 
+Modal.setAppElement("#root");
 
-class Set extends React.Component {
+class Deckbuilder extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       card: {},
+      modalIsOpen: false,
+      isLoggedIn: null,
       isLoaded: false,
+      displayName: "",
       filteredSet: baseSet,
       decklist: [],
       deckStyled: [],
@@ -24,8 +42,10 @@ class Set extends React.Component {
       contentClass: "inactive",
       buttonClass: "inactive",
       mediumSidebarActive: "",
-      deckStr: "Please Add 40 Cards to Your Deck",
-      copied : false
+      deckStr: "Please Add Cards to Your Deck",
+      copied: false,
+      deckDescription: "",
+      deckName: ""
     };
     this.createHelmet = this.createHelmet.bind(this);
     this.setFilteredSet = this.setFilteredSet.bind(this);
@@ -37,6 +57,61 @@ class Set extends React.Component {
     this.openSidebar = this.openSidebar.bind(this);
     this.encodeDeck = this.encodeDeck.bind(this);
 
+    this.openModal = this.openModal.bind(this);
+    this.afterOpenModal = this.afterOpenModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.submitDeck = this.submitDeck.bind(this);
+    this.deckDescriptionChange = this.deckDescriptionChange.bind(this);
+    this.deckNameChange = this.deckNameChange.bind(this);
+  }
+
+  deckNameChange(e) {
+    //console.log(e.target.value);
+    this.setState({ deckName: e.target.value })
+  }
+
+  deckDescriptionChange(e) {
+    //console.log(e.target.value);
+    this.setState({ deckDescription: e.target.value })
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+  }
+  openModal() {
+    this.setState({ modalIsOpen: true });
+  }
+
+  afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    this.subtitle.style.color = '#FFF8F0';
+  }
+
+  closeModal() {
+    this.setState({ modalIsOpen: false });
+  }
+
+  submitDeck() {
+    console.log("Deck Submission with id: " + this.state.id);
+    if ((this.state.deckDescription.length === 0 || this.state.deckDescription === "You must write a description to submit") ||
+      (this.state.deckName.length === 0 || this.state.deckName === "You must enter a deck name to submit")) {
+
+      if (this.state.deckDescription.length === 0 || this.state.deckDescription === "You must write a description to submit") {
+        this.setState({ deckDescription: "You must write a description to submit" });
+      }
+
+      if (this.state.deckName.length === 0 || this.state.deckName === "You must enter a deck name to submit") {
+        this.setState({ deckName: "You must enter a deck name to submit" });
+      }
+    }
+
+    else {
+      api.addNewDeck(this.state.id, this.state.deckStr, this.state.deckName, this.state.deckDescription)
+        .then(res => {
+          console.log(res.data);
+        })
+    }
   }
 
   createHelmet() {
@@ -145,13 +220,7 @@ class Set extends React.Component {
         }
       }
     }
-
-    if (this.state.decklist.size === 40) {
-      this.encodeDeck();
-    }
-    else {
-      this.setState({ deckStr: "Please Add 40 Cards To Your Deck" });
-    }
+    this.encodeDeck()
     this.setState({ deckStyled: this.showDeck() });
   }
 
@@ -198,7 +267,7 @@ class Set extends React.Component {
           <div className={"col-6 col-sm-6 col-md-3 col-lg-2 p-3 card-zoom " + this.state.mediumSidebarActive} key={index}>
             <div data-tip data-for={"tooltip" + index} onClick={this.addToDeck}>
               <img className="image-container img-fluid" id={card.cardCode + "," + card.supertype + "," + card.regionRef + "," + card.name + "," + card.cost + "," + card.type} src={"/img/cards/" + card.cardCode + ".png"} alt={"Legends of Runeterra Deck Builder " + card.name} />
-              {this.state.decklist.hasOwnProperty(card.cardCode + "," + card.supertype + "," + card.regionRef + "," + card.name + "," + card.cost + "," + card.type) === true && this.state.decklist[card.cardCode + "," + card.supertype + "," + card.regionRef + "," + card.name + "," + card.cost + "," + card.type] > 0 && 
+              {this.state.decklist.hasOwnProperty(card.cardCode + "," + card.supertype + "," + card.regionRef + "," + card.name + "," + card.cost + "," + card.type) === true && this.state.decklist[card.cardCode + "," + card.supertype + "," + card.regionRef + "," + card.name + "," + card.cost + "," + card.type] > 0 &&
                 <div className="cardQuantity quanBack rounded text-center">{this.state.decklist[card.cardCode + "," + card.supertype + "," + card.regionRef + "," + card.name + "," + card.cost + "," + card.type] + "/3"}</div>
               }
             </div>
@@ -215,27 +284,29 @@ class Set extends React.Component {
 
   encodeDeck() {
     var deckStr;
-    if (this.state.decklist['size'] === 40) {
-      var newDeck = [];
-      Object.keys(this.state.decklist).map((prop, index) => {
-        if (prop.includes(",") && this.state.decklist[prop] > 0) {
-          var cardProps = prop.split(",");
-          newDeck.push(new Card(cardProps[0], this.state.decklist[prop]));
-        }
-      });
+    var newDeck = [];
+    Object.keys(this.state.decklist).map((prop, index) => {
+      if (prop.includes(",") && this.state.decklist[prop] > 0) {
+        var cardProps = prop.split(",");
+        newDeck.push(new Card(cardProps[0], this.state.decklist[prop]));
+      }
+    });
 
-      deckStr = DeckEncoder.encode(newDeck);
-      this.setState({ deckStr: deckStr });
-    }
-    else {
-      alert('Please add 40 cards to your deck.')
-    }
-
+    deckStr = DeckEncoder.encode(newDeck);
+    this.setState({ deckStr: deckStr });
   }
 
   componentDidMount() {
-    if (typeof this.state.filteredSet !== "undefined") {
-      this.setState({ isLoaded: true });
+
+    if (this.state.isLoggedIn === null) {
+      api.checkLogin()
+        .then(res => {
+          console.log(res.data);
+          if (typeof this.state.filteredSet !== "undefined") {
+            this.setState({ isLoggedIn: res.data.isLoggedIn, id: res.data.id, isLoaded: true, displayName: res.data.displayName })
+          }
+
+        })
     }
     this.setState({ sidebarClass: "active" });
     this.state.decklist['size'] = 0;
@@ -248,6 +319,41 @@ class Set extends React.Component {
     this.state.decklist['Ionia'] = 0;
     this.state.decklist['Noxus'] = 0;
     this.state.decklist['ShadowIsles'] = 0;
+  }
+
+  saveDeckModal() {
+    if (this.state.isloggedIn === null) {
+      return (<div></div>)
+    }
+    if (this.state.isLoggedIn === true) {
+      return (
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          style={customStyles}
+          contentLabel="Example Modal">
+          <h2 ref={subtitle => this.subtitle = subtitle}> Save Deck</h2>
+          <form onSubmit={this.handleSubmit}>
+            <label className="form-input"> Name: <input type="text" name="deckName" onChange={this.deckNameChange} value={this.state.deckName} /></label>
+            <label className="form-input">Description: <input type="text" name="deckDescription" onChange={this.deckDescriptionChange} value={this.state.deckDescription} /></label>
+            <button className="btn" onClick={this.submitDeck}>Submit</button>
+          </form>
+        </Modal>
+      )
+    }
+    else {
+      return (
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          style={customStyles}
+          contentLabel="Example Modal">
+          <h2>You're not logged in</h2>
+        </Modal>
+      )
+    }
   }
 
   removeCard(img) {
@@ -273,16 +379,18 @@ class Set extends React.Component {
   }
 
   onCopy = () => {
-    this.setState({copied: true});
+    this.setState({ copied: true });
   };
 
   deckStrBtn = () => {
-    if (this.state.decklist['size'] === 40){
-      alert('Deck String Copied to Clipboard!');
+    if (this.state.decklist['size'] > 0) {
+      this.encodeDeck();
+      alert('Deck Code copied to your clipboard')
     }
-    else{
-      alert('Please add 40 cards to your deck.');
+    else {
+      alert('Please Add Cards to your Decklist');
     }
+
   }
 
   showDeck() {
@@ -317,7 +425,7 @@ class Set extends React.Component {
       return <div><p>Loading...</p></div>
     }
     return (
-      
+
       <div className="wrapper" id="neg-margin">
         {this.createHelmet()}
         <nav id="sidebar" className={this.state.sidebarClass}>
@@ -363,14 +471,18 @@ class Set extends React.Component {
           </div>
           <div className="submitDiv">
             <CopyToClipboard onCopy={this.onCopy} text={this.state.deckStr}>
-              <button className="btn btn-outline buttonDiv" onClick={this.deckStrBtn}>Deck String</button>
+              <button className="btn btn-outline buttonDiv" onClick={this.deckStrBtn}>Code</button>
             </CopyToClipboard>
-            
+
             <div id="dismiss" onClick={this.hideBar}>
               {this.state.arrow}
             </div>
+
+            <button className="btn btn-outline saveDiv" id="modal-link" onClick={this.openModal}>Save</button>
+            {this.saveDeckModal()}
           </div>
-          <div className="noDisplay"><textarea rows={1} cols={1} readOnly value={this.state.deckStr}/></div>
+
+          <div className="noDisplay"><textarea rows={1} cols={1} readOnly value={this.state.deckStr} /></div>
         </nav>
         <div id="content" className={this.state.contentClass}>
           <FilterBar className="filter" setFilteredSet={this.setFilteredSet} />
@@ -385,4 +497,4 @@ class Set extends React.Component {
   }
 };
 
-export default Set;
+export default Deckbuilder;

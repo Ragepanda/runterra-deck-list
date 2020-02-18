@@ -17,6 +17,23 @@ export default {
         return axios.get("http://"+url+":5000/api/decklist/getDeckById", {params: {id:id}});
     },
 
+    addNewDeck: function(id, deckCode, deckName, deckDescription){
+        var url = window.location.hostname;
+        return axios.post("http://"+url+":5000/api/decklist/addNewDeck", 
+        {id:id, deckCode:deckCode, deckName:deckName, deckDescription: deckDescription});
+    },
+
+    getCreatedDecks: function(){
+        const config= {
+            withCredentials: true,
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        };
+        var url = window.location.hostname; 
+        return axios.get("http://"+url+":5000/api/decklist/getCreatedDecks", config)
+    },
+
     checkLogin: function(){
         const config ={
             withCredentials: true,
@@ -25,7 +42,7 @@ export default {
             },
         };
         var url = window.location.hostname;
-        return axios.get("http://localhost:5000/auth/isLoggedIn", config)
+        return axios.get("http://"+url+":5000/auth/isLoggedIn", config)
     },
 
     getArticles: function(){

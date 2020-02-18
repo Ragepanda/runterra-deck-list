@@ -39,3 +39,10 @@
     transform: scale(1.2);
     color: #449922;
 }
+
+.num-likes{
+    color: white;
+    position:relative;
+    bottom: 80px;
+    left: 100px;
+}

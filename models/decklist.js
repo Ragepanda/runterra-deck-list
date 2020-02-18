@@ -17,13 +17,17 @@ module.exports = function (sequelize, DataTypes) {
         description: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        cardArtId: {
+            type: DataTypes.STRING,
+            defaultValue: "01DE001"
         }
     },
         { timestamps: true });
     decklist.associate = function (models) {
         decklist.belongsTo(models.user,
             {
-                as: 'createdDecks',
+                as: 'creator',
                 foreignKey: 'creatorId'
             });
         decklist.belongsToMany(models.user,

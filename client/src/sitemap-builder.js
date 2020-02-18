@@ -9,7 +9,7 @@ function generateSitemap() {
     return (
       new Sitemap(router)
           .build("https://www.runeterranexus.com")
-          .save("./sitemap.xml")
+          .save("./build/sitemap.xml")
     );
 }
 

@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var user = sequelize.define("user", {
+    var User = sequelize.define("User", {
 
         displayName: {
             type: DataTypes.STRING,
@@ -20,22 +20,20 @@ module.exports = function (sequelize, DataTypes) {
 
     },
         { timestamps: true });
-    user.associate = function (models) {
-        user.hasMany(models.decklist, 
+    User.associate = function (models) {
+        User.hasMany(models.Decklist, 
         {
             as: 'createdDecks',
             foreignKey: 'createdDeckId'
         });
-        user.belongsToMany(models.decklist,
+        User.belongsToMany(models.Decklist,
             {
                 as: 'upvotes',
-                through: 'deckLikes',
-                foreignKey: 'likedDeckId',
-                otherKey: 'likeUserId'
+                through: 'deckLikes'
             });
     }
 
 
 
-    return user;
+    return User;
 };

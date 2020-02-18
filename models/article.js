@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var article = sequelize.define("article", {
+    var Article = sequelize.define("Article", {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -14,5 +14,5 @@ module.exports = function (sequelize, DataTypes) {
     },
         { timestamps: true });
 
-    return article;
+    return Article;
 };

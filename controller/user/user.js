@@ -3,14 +3,14 @@ var db = require("../../models");
 module.exports ={
 // Passport's Method for completing a login, or creating a new account.
     handleLogin: function(accountData, done){   
-        db.user.findOne({
+        db.User.findOne({
             where:{
                 accountId: accountData.id
             }
         })
         .then((entry) =>{            
             if(entry === null){
-                db.user.create({
+                db.User.create({
                     displayName: accountData.displayName,
                     accountType: 'google',
                     accountId: accountData.id
@@ -27,7 +27,7 @@ module.exports ={
 
 // Passport's Deserialize Overload method - Not used for site retrieval
     getUserById: function(id, done){
-        db.user.findOne({
+        db.User.findOne({
             where:{
                 id: id
             }

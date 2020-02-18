@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var decklist = sequelize.define("decklist", {
+    var Decklist = sequelize.define("Decklist", {
 
         likes: {
             type: DataTypes.INTEGER,
@@ -24,21 +24,19 @@ module.exports = function (sequelize, DataTypes) {
         }
     },
         { timestamps: true });
-    decklist.associate = function (models) {
-        decklist.belongsTo(models.user,
+    Decklist.associate = function (models) {
+        Decklist.belongsTo(models.User,
             {
                 as: 'creator',
                 foreignKey: 'creatorId'
             });
-        decklist.belongsToMany(models.user,
+        Decklist.belongsToMany(models.User,
             {
                 as: 'upvotes',
-                through: 'deckLikes',
-                foreignKey: 'likeUserId',
-                otherKey: 'likedDeckId'
+                through: 'deckLikes'
             });
     }
-    return decklist;
+    return Decklist;
 };
 
 // Things needed for a deck list NOW

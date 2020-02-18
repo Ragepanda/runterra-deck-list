@@ -22,4 +22,8 @@ router
 .route("/getCreatedDecks")
 .get(decklistController.getCreatedDecks);
 
+router
+.route("/likeDeck")
+.put(decklistController.likeDeck);
+
 module.exports = router;

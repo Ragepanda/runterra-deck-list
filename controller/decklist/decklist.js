@@ -2,12 +2,34 @@ var db = require("../../models");
 
 module.exports ={
 
+    likeDeck: function(req,res){
+        if(!req.user){
+            res.send({validUser:false});
+        }
+        else{
+            // db.deckLikes.create({likeUserId: req.user.id, likedDeckId: req.body.id})
+            // .then(result=>{
+            //     res.send({validUser:true, stuff:result.dataValues});
+            // })
+        db.User.findByPk(req.user.id)
+        .then(user =>{
+            user.setDecklist(req.body.id)
+            .then(newAssociation =>{
+                console.log(newAssociation);
+                res.send(newAssociation);
+            })
+            
+        })
+    }
+        
+    },
+
     addNewDeck: function(req,res){
         console.log("Add New Deck Route: "+req.body.id);
         console.log("deckCode: "+req.body.deckCode);
         console.log("deckName: "+req.body.deckName);;
         console.log("deckDescription: "+req.body.deckDescription);
-        db.decklist.create({
+        db.Decklist.create({
             likes:0,
             code: req.body.deckCode,
             name: req.body.deckName,
@@ -15,7 +37,7 @@ module.exports ={
             creatorId: req.body.id
         })
         .then((newDeck)=>{
-            db.decklist.findOne({where:{id:newDeck.dataValues.id}, include:'creator'})
+            db.Decklist.findOne({where:{id:newDeck.dataValues.id}, include:'creator'})
             .then(deckWithUser=>{
                 res.send(deckWithUser);
             })
@@ -26,7 +48,7 @@ module.exports ={
 
     getCreatedDecks: function (req, res){
         console.log("User for get Created Decks: "+ req.user.displayName);
-        db.decklist.findAll({where:{creatorId: req.user.id}})
+        db.Decklist.findAll({where:{creatorId: req.user.id}})
             .then(creatorDecks =>{
                 res.send(creatorDecks);
             })
@@ -34,8 +56,13 @@ module.exports ={
     },
 
     getDecklists: function (req, res){
-        res.send(
-            [
+        db.Decklist.findAll()
+            .then(allDecks =>{
+                res.send(allDecks);
+            })
+           
+        
+        var playData= [
               {
                 id: 1, 
                 code: 'CEBACAIAGYDQCBIOCATSQKRRGUBACAIAFEDACBIWDURCGKZYAEBACBIBEE', 
@@ -201,7 +228,7 @@ module.exports ={
             },
 
         ]
-    )
+    
     },
 
     getDeckById: function(req,res){

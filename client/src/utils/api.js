@@ -23,6 +23,17 @@ export default {
         {id:id, deckCode:deckCode, deckName:deckName, deckDescription: deckDescription});
     },
 
+    likeDeck: function(deckId){
+        const config= {
+            withCredentials: true,
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        };
+        var url = window.location.hostname; 
+        return axios.put("http://"+url+":5000/api/decklist/likeDeck", {id:deckId}, config)
+    },
+
     getCreatedDecks: function(){
         const config= {
             withCredentials: true,

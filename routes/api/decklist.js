@@ -23,6 +23,10 @@ router
 .get(decklistController.getCreatedDecks);
 
 router
+.route("/getLikedDecks")
+.get(decklistController.getLikedDecks);
+
+router
 .route("/likeDeck")
 .put(decklistController.likeDeck);
 

@@ -8,8 +8,14 @@ export default {
     },
 
     getDeckLists: function(){
+        const config= {
+            withCredentials: true,
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        };
         var url = window.location.hostname;
-        return axios.get("http://"+url+":5000/api/decklist/getDecklists");
+        return axios.get("http://"+url+":5000/api/decklist/getDecklists", config);
     },
 
     getDeckById: function(id){
@@ -43,6 +49,17 @@ export default {
         };
         var url = window.location.hostname; 
         return axios.get("http://"+url+":5000/api/decklist/getCreatedDecks", config)
+    },
+
+    getLikedDecks: function(){
+        const config= {
+            withCredentials: true,
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        };
+        var url = window.location.hostname; 
+        return axios.get("http://"+url+":5000/api/decklist/getLikedDecks", config)
     },
 
     checkLogin: function(){

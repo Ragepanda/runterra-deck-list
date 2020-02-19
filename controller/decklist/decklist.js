@@ -81,7 +81,8 @@ module.exports = {
             code: req.body.deckCode,
             name: req.body.deckName,
             description: req.body.deckDescription,
-            creatorId: req.body.id
+            creatorId: req.body.id,
+            cardArtId: req.body.deckImg
         })
             .then((newDeck) => {
                 db.Decklist.findOne({ where: { id: newDeck.dataValues.id }, include: 'creator' })

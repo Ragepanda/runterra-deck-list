@@ -23,10 +23,10 @@ export default {
         return axios.get("http://"+url+":5000/api/decklist/getDeckById", {params: {id:id}});
     },
 
-    addNewDeck: function(id, deckCode, deckName, deckDescription){
+    addNewDeck: function(id, deckCode, deckName, deckDescription, deckImg){
         var url = window.location.hostname;
         return axios.post("http://"+url+":5000/api/decklist/addNewDeck", 
-        {id:id, deckCode:deckCode, deckName:deckName, deckDescription: deckDescription});
+        {id:id, deckCode:deckCode, deckName:deckName, deckDescription: deckDescription, deckImg: deckImg});
     },
 
     likeDeck: function(deckId){

@@ -20,7 +20,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         cardArtId: {
             type: DataTypes.STRING,
-            defaultValue: "01DE001"
+            allowNull: false
         }
     },
         { timestamps: true });

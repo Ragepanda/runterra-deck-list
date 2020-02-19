@@ -45,7 +45,8 @@ class Deckbuilder extends React.Component {
       deckStr: "Please Add Cards to Your Deck",
       copied: false,
       deckDescription: "",
-      deckName: ""
+      deckName: "", 
+      deckImg: "01NX042"
     };
     this.createHelmet = this.createHelmet.bind(this);
     this.setFilteredSet = this.setFilteredSet.bind(this);
@@ -64,6 +65,7 @@ class Deckbuilder extends React.Component {
     this.submitDeck = this.submitDeck.bind(this);
     this.deckDescriptionChange = this.deckDescriptionChange.bind(this);
     this.deckNameChange = this.deckNameChange.bind(this);
+    this.deckImageChange = this.deckImageChange.bind(this);
   }
 
   deckNameChange(e) {
@@ -74,6 +76,10 @@ class Deckbuilder extends React.Component {
   deckDescriptionChange(e) {
     //console.log(e.target.value);
     this.setState({ deckDescription: e.target.value })
+  }
+
+  deckImageChange(e) {
+    this.setState({ deckImg: e.target.value })
   }
 
   handleSubmit(e) {
@@ -105,9 +111,8 @@ class Deckbuilder extends React.Component {
         this.setState({ deckName: "You must enter a deck name to submit" });
       }
     }
-
     else {
-      api.addNewDeck(this.state.id, this.state.deckStr, this.state.deckName, this.state.deckDescription)
+      api.addNewDeck(this.state.id, this.state.deckStr, this.state.deckName, this.state.deckDescription, this.state.deckImg)
         .then(res => {
           console.log(res.data);
         })
@@ -337,6 +342,42 @@ class Deckbuilder extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <label className="form-input"> Name: <input type="text" name="deckName" onChange={this.deckNameChange} value={this.state.deckName} /></label>
             <label className="form-input">Description: <input type="text" name="deckDescription" onChange={this.deckDescriptionChange} value={this.state.deckDescription} /></label>
+            <label className="form-input" htmlFor="deckImage">Deck Image: </label>
+
+              <select className="form-input" id="deckImage" onChange={this.deckImageChange}>
+                <option value="01NX042">Katarina</option>
+                <option value="01DE045">Fiora</option>
+                <option value="01DE042">Lux</option>
+                <option value="01PZ008">Teemo</option>
+                <option value="01FR039">Tryndamere</option>
+                <option value="01FR038">Ashe</option>
+                <option value="01IO015">Yasuo</option>
+                <option value="01PZ040">Jinx</option>
+                <option value="01IO009">Zed</option>
+                <option value="01IO032">Shen</option>
+                <option value="01IO041">Karma</option>
+                <option value="01NX006">Vladimir</option>
+                <option value="01FR024">Anivia</option>
+                <option value="01SI042">Hecarim</option>
+                <option value="01SI052">Thresh</option>
+                <option value="01DE012">Garen</option>
+                <option value="01NX020">Draven</option>
+                <option value="01DE022">Lucian</option>
+                <option value="01PZ056">Heimerdinger</option>
+                <option value="01FR009">Braum</option>
+                <option value="01NX038">Darius</option>
+                <option value="01SI053">Elise</option>
+                <option value="01SI030">Kalista</option>
+                <option value="01PZ036">Ezreal</option>
+                <option value="01NX048">Crimson Curator</option>
+                <option value="01SI033">Commander Ledros</option>
+                <option value="01SI035">Rhasa the Sunderer</option>
+                <option value="01FR043">Heart of the Fluft</option>
+                <option value="01DE031">Dawnspeakers</option>
+                <option value="01IO014">Greenglade Elder</option>
+                <option value="01DE054">Vanguard Redeemer</option>
+              </select>
+            <br/>
             <button className="btn" onClick={this.submitDeck}>Submit</button>
           </form>
         </Modal>

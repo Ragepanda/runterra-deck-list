@@ -31,9 +31,10 @@ class Profile extends React.Component {
                         if (this.state.isLoggedIn === true) {
                             api.getCreatedDecks()
                                 .then(res2 => {
-                                    this.setState({ createdDecks: res2.data, isLoadedIn: true },
-                                        () => {
-                                            console.log(this.state.createdDecks);
+                                    this.setState({ createdDecks: res2.data });
+                                    api.getLikedDecks()
+                                        .then(res3 =>{
+                                            this.setState({likedDecks: res3.data, isLoadedIn:true})
                                         })
                                 })
                         }
@@ -45,6 +46,14 @@ class Profile extends React.Component {
         return (
             this.state.createdDecks.map((deck, index) =>
                 <DeckItems deck={deck} key={index} />
+            )
+        )
+    }
+
+    loadLikedDecks(){
+        return(
+            this.state.likedDecks.map((deck, index)=>
+                <DeckItems deck={deck} key={deck.id}/>
             )
         )
     }
@@ -70,7 +79,9 @@ class Profile extends React.Component {
                             </div>
                         </Tab>
                         <Tab eventKey="likedDecks" title="Liked Decks">
-                            <p>Contact Stuff</p>
+                        <div className="row text-center">
+                                {this.loadLikedDecks()}
+                            </div>
                         </Tab>
                     </Tabs>
                 </div>

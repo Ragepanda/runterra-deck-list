@@ -1,9 +1,9 @@
 {
     "development":{
-        "username": "jVe6cCrfrO",
-        "password": "pdFALsXPEW",
-        "database": "jVe6cCrfrO",
-        "host": "remotemysql.com",
+        "username": "sql9323584",
+        "password": "9BwZNEbAYx",
+        "database": "sql9323584",
+        "host": "sql9.freemysqlhosting.net",
         "port": 3306,
         "dialect": "mysql"
       }

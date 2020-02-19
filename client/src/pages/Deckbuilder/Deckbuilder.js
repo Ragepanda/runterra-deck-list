@@ -30,7 +30,9 @@ class Deckbuilder extends React.Component {
     super(props);
     this.state = {
       card: {},
-      modalIsOpen: false,
+      saveModalIsOpen: false,
+      codeModalIsOpen: false,
+      deckCodeMessage: "",
       isLoggedIn: null,
       isLoaded: false,
       displayName: "",
@@ -58,9 +60,12 @@ class Deckbuilder extends React.Component {
     this.openSidebar = this.openSidebar.bind(this);
     this.encodeDeck = this.encodeDeck.bind(this);
 
-    this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    this.openSaveModal = this.openSaveModal.bind(this);
+    this.afterOpenSaveModal = this.afterOpenSaveModal.bind(this);
+    this.closeSaveModal = this.closeSaveModal.bind(this);
+    this.openCodeModal = this.openCodeModal.bind(this);
+    this.afterOpenCodeModal = this.afterOpenCodeModal.bind(this);
+    this.closeCodeModal = this.closeCodeModal.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.submitDeck = this.submitDeck.bind(this);
     this.deckDescriptionChange = this.deckDescriptionChange.bind(this);
@@ -85,17 +90,29 @@ class Deckbuilder extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
   }
-  openModal() {
-    this.setState({ modalIsOpen: true });
+  openSaveModal() {
+    this.setState({ saveModalIsOpen: true });
   }
 
-  afterOpenModal() {
+  afterOpenSaveModal() {
     // references are now sync'd and can be accessed.
     this.subtitle.style.color = '#FFF8F0';
   }
 
-  closeModal() {
-    this.setState({ modalIsOpen: false });
+  closeSaveModal() {
+    this.setState({ saveModalIsOpen: false });
+  }
+  openCodeModal() {
+    this.setState({ codeModalIsOpen: true });
+  }
+
+  afterOpenCodeModal() {
+    // references are now sync'd and can be accessed.
+    this.subtitle.style.color = '#FFF8F0';
+  }
+
+  closeCodeModal() {
+    this.setState({ codeModalIsOpen: false });
   }
 
   submitDeck() {
@@ -333,9 +350,9 @@ class Deckbuilder extends React.Component {
     if (this.state.isLoggedIn === true) {
       return (
         <Modal
-          isOpen={this.state.modalIsOpen}
-          onAfterOpen={this.afterOpenModal}
-          onRequestClose={this.closeModal}
+          isOpen={this.state.saveModalIsOpen}
+          onAfterOpen={this.afterOpenSaveModal}
+          onRequestClose={this.closeSaveModal}
           style={customStyles}
           contentLabel="Example Modal">
           <h2 ref={subtitle => this.subtitle = subtitle}> Save Deck</h2>
@@ -386,15 +403,29 @@ class Deckbuilder extends React.Component {
     else {
       return (
         <Modal
-          isOpen={this.state.modalIsOpen}
-          onAfterOpen={this.afterOpenModal}
-          onRequestClose={this.closeModal}
+          isOpen={this.state.saveModalIsOpen}
+          onAfterOpen={this.afterOpenSaveModal}
+          onRequestClose={this.closeSaveModal}
           style={customStyles}
           contentLabel="Example Modal">
           <h2>You're not logged in</h2>
         </Modal>
       )
     }
+  }
+
+  deckCodeModal(){
+    return (
+        <Modal
+          isOpen={this.state.codeModalIsOpen}
+          onAfterOpen={this.afterOpenCodeModal}
+          onRequestClose={this.closeCodeModal}
+          style={customStyles}
+          contentLabel="Example Modal">
+          <h2 ref={subtitle => this.subtitle = subtitle}> {this.state.deckCodeMessage}</h2>
+          <h5 ref={subtitle => this.subtitle = subtitle}> {this.state.deckStr}</h5>
+        </Modal>
+      ) 
   }
 
   removeCard(img) {
@@ -424,12 +455,16 @@ class Deckbuilder extends React.Component {
   };
 
   deckStrBtn = () => {
+    console.log("here");
     if (this.state.decklist['size'] > 0) {
       this.encodeDeck();
-      alert('Deck Code copied to your clipboard')
+      this.setState({ deckCodeMessage: "Code Copied to Clipboard" });
+      this.openCodeModal();
+
     }
     else {
-      alert('Please Add Cards to your Decklist');
+      this.setState({ deckCodeMessage: "Please add cards to deck" });
+      this.openCodeModal();
     }
 
   }
@@ -514,12 +549,13 @@ class Deckbuilder extends React.Component {
             <CopyToClipboard onCopy={this.onCopy} text={this.state.deckStr}>
               <button className="btn btn-outline buttonDiv" onClick={this.deckStrBtn}>Code</button>
             </CopyToClipboard>
+            {this.deckCodeModal()}
 
             <div id="dismiss" onClick={this.hideBar}>
               {this.state.arrow}
             </div>
 
-            <button className="btn btn-outline saveDiv" id="modal-link" onClick={this.openModal}>Save</button>
+            <button className="btn btn-outline saveDiv" id="modal-link" onClick={this.openSaveModal}>Save</button>
             {this.saveDeckModal()}
           </div>
 

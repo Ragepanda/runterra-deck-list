@@ -9,14 +9,16 @@ const authCheck = (req, res, next) =>{
     }
     else{
         // if user is logged in
-        console.log("User is logged in");
         next();
     }
 }
 
 router.get("/logout", (req, res) => {
     req.logout();
-    res.redirect('http://localhost:3000');
+    if(req.headers.host === "localhost:5000")
+        res.redirect('http://localhost:3000');
+    else
+        res.redirect('http://runeterranexus.com')
 })
 
 router.get("/google", passport.authenticate('google',
@@ -27,6 +29,7 @@ router.get("/google", passport.authenticate('google',
 
 router.get("/google/redirect", passport.authenticate('google'),(req, res) => {
    //res.send(req.user.displayName);
+   console.log(req.headers.host);
    res.redirect('/profile/')
 });
 

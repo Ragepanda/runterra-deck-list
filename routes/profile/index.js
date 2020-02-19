@@ -8,13 +8,15 @@ const authCheck = (req, res, next) =>{
     }
     else{
         // if user is logged in
-        console.log("User is logged in");
         next();
     }
 }
 
 router.get("/", authCheck, (req, res) => {
-    res.redirect('http://localhost:3000/');
+    if(req.headers.host === "localhost:5000")
+        res.redirect('http://localhost:3000');
+    else
+        res.redirect('http://runeterranexus.com')
 });
 
 

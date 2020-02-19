@@ -157,7 +157,6 @@ module.exports = {
                                     }
                                 }
                             }
-                            console.log(allDecks);
                             res.send(allDecks);
                         })
                 })
@@ -338,7 +337,6 @@ module.exports = {
 
     getDeckById: function (req, res) {
         var id = req.query.id;
-        //console.log(id);
         db.Decklist.findByPk(req.query.id, {include:'creator'})
         .then(deck=>{
             res.send(deck);

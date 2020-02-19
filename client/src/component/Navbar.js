@@ -99,7 +99,7 @@ class Navbar extends React.Component {
             <button onClick={this.closeModal}>close</button>
             <div>I am a modal</div>
             <div className="btn">
-              <a href="http://localhost:5000/auth/google"> Google </a>
+              <a href={"http://"+window.location.hostname+":5000/auth/google"}> Google </a>
             </div>
 
             <div className="btn" onClick={this.checkAuth}>
@@ -107,7 +107,7 @@ class Navbar extends React.Component {
                 </div>
 
             <div className="btn">
-              <a href="http://localhost:5000/auth/logout">Log Out</a>
+              <a href={"http://"+window.location.hostname+":5000/auth/logout"}>Log Out</a>
             </div>
           </Modal>
         </li>

@@ -14,10 +14,11 @@ class Profile extends React.Component {
             isLoggedIn: false,
             id: null,
             isLoadedIn: false,
-            displayName: "",
-            createdDecks: null
+            displayName: ""
         };
-
+        this.updateDecks = this.updateDecks.bind(this);
+        this.loadCreatedDecks = this.loadCreatedDecks.bind(this);
+        this.loadLikedDecks = this.loadLikedDecks.bind(this);
     }
 
 
@@ -31,7 +32,7 @@ class Profile extends React.Component {
                         if (this.state.isLoggedIn === true) {
                             api.getCreatedDecks()
                                 .then(res2 => {
-                                    this.setState({ createdDecks: res2.data });
+                                    this.setState({createdDecks: res2.data });
                                     api.getLikedDecks()
                                         .then(res3 =>{
                                             this.setState({likedDecks: res3.data, isLoadedIn:true})
@@ -42,10 +43,37 @@ class Profile extends React.Component {
             })
     }
 
+    updateDecks(){
+        console.log("Liked Decks updating");
+        api.getCreatedDecks()
+            .then((res)=>{             
+                    console.log(res.data);
+                    api.getLikedDecks()
+                    .then((res2) =>{
+                        this.setState({createdDecks: res.data, likedDecks: res2.data},()=>{
+                            console.log(res2.data);
+                        })
+                    })              
+            })
+        }
+    //     api.getLikedDecks()
+    //         .then(res=>{
+    //             this.setState({likedDecks: res.data},() =>{               
+    //             api.getCreatedDecks()
+    //                 .then(res2=>{
+    //                     console.log(res2);
+    //                     this.setState({createdDecks: res2.data},
+    //                     ()=>{
+    //                         console.log(this.state.createdDecks)});
+    //                 })
+    //             })
+    //         })
+    // }
+
     loadCreatedDecks() {
         return (
             this.state.createdDecks.map((deck, index) =>
-                <DeckItems deck={deck} key={index} />
+                <DeckItems updateDecks={this.updateDecks} deck={deck} key={deck.id} />
             )
         )
     }
@@ -53,7 +81,7 @@ class Profile extends React.Component {
     loadLikedDecks(){
         return(
             this.state.likedDecks.map((deck, index)=>
-                <DeckItems deck={deck} key={deck.id}/>
+                <DeckItems updateDecks={this.updateDecks} deck={deck} key={deck.id}/>
             )
         )
     }
@@ -73,7 +101,7 @@ class Profile extends React.Component {
                                 <p className="pb-4 pt-1">Welcome to your profile page {this.state.displayName}</p>
                             </div>
                         </Tab>
-                        <Tab eventKey="createdDecks" title="Created Decks" onSelect={console.log("Created Decks Selected")}>
+                        <Tab eventKey="createdDecks" title="Created Decks" onClick={console.log("Created Decks Selected")}>
                             <div className="row text-center">
                                 {this.loadCreatedDecks()}
                             </div>

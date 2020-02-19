@@ -70,12 +70,6 @@ module.exports = {
     },
 
     addNewDeck: function (req, res) {
-        console.log("Add New Deck Route: " + req.body.id);
-        console.log("deckCode: " + req.body.deckCode);
-        console.log("deckName: " + req.body.deckName);;
-        console.log("deckDescription: " + req.body.deckDescription);
-        console.log("URL Origin: " + req.get('host'));
-        console.log("Pathname: " + req.orinalUrl);
         db.Decklist.create({
             likes: 0,
             code: req.body.deckCode,
@@ -94,10 +88,36 @@ module.exports = {
     },
 
     getCreatedDecks: function (req, res) {
-        console.log("User for get Created Decks: " + req.user.displayName);
+
         db.Decklist.findAll({ where: { creatorId: req.user.id } })
             .then(creatorDecks => {
-                res.send(creatorDecks);
+                db.Decklist.findAll({
+                    where: { creatorId: req.user.id },
+                    include: [{
+                        model: db.User,
+                        as: 'upvotes',
+                        where: { id: req.user.id }
+                    }]
+                })
+                    .then(likedDecks => {
+                        var likedDeckIndex = 0;
+                        for (var x = 0; x < creatorDecks.length; x++) {
+                            if (likedDeckIndex === likedDecks.length) {
+                                creatorDecks[x].dataValues.likedByUser = false;
+                            }
+                            else {
+                                if (creatorDecks[x].dataValues.id === likedDecks[likedDeckIndex].dataValues.id) {
+                                    creatorDecks[x].dataValues.likedByUser = true;
+                                    likedDeckIndex++;
+                                }
+                                else {
+                                    creatorDecks[x].dataValues.likedByUser = false;
+                                }
+                            }
+                        }
+                        res.send(creatorDecks);
+                    })
+
             })
 
     },
@@ -110,10 +130,39 @@ module.exports = {
                 })
         }
         else {
-            db.Decklist.findAll()
-                .then(allDecks => {
-                    res.send(allDecks);
+
+            db.Decklist.findAll({
+                include: [{
+                    model: db.User,
+                    as: 'upvotes',
+                    where: { id: req.user.id }
+                }]
+            })
+                .then(likedDecks => {
+                    db.Decklist.findAll()
+                        .then(allDecks => {
+                            var likedDeckIndex = 0;
+                            for (var x = 0; x < allDecks.length; x++) {
+                                if (likedDeckIndex === likedDecks.length) {
+                                    allDecks[x].dataValues.likedByUser = false;
+                                }
+                                else {
+                                    if (allDecks[x].dataValues.id === likedDecks[likedDeckIndex].dataValues.id) {
+                                        allDecks[x].dataValues.likedByUser = true;
+                                        likedDeckIndex++;
+                                    }
+                                    else {
+                                        allDecks[x].dataValues.likedByUser = false;
+                                    }
+                                }
+                            }
+                            console.log(allDecks);
+                            res.send(allDecks);
+                        })
                 })
+
+
+
         }
 
 
@@ -289,6 +338,10 @@ module.exports = {
     getDeckById: function (req, res) {
         var id = req.query.id;
         //console.log(id);
+        db.Decklist.findByPk(req.query.id, {include:'creator'})
+        .then(deck=>{
+            res.send(deck);
+        })
         var cards = [
             {
                 id: 1,
@@ -440,15 +493,15 @@ module.exports = {
             },
 
         ];
-        var card;
+        // var card;
 
-        for (var x = 0; x < cards.length; x++) {
-            if (cards[x].id === parseInt(id)) {
-                card = cards[x];
-                break;
-            }
-        }
-        //console.log(card);
-        res.send(card);
+        // for (var x = 0; x < cards.length; x++) {
+        //     if (cards[x].id === parseInt(id)) {
+        //         card = cards[x];
+        //         break;
+        //     }
+        // }
+        // //console.log(card);
+        // res.send(card);
     }
 }

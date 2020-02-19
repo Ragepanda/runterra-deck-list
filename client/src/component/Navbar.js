@@ -31,10 +31,10 @@ class Navbar extends React.Component {
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
-    // this.googleLogin = this.googleLogin.bind(this);
-    // this.checkAuth = this.checkAuth.bind(this);
-    // this.logOut = this.logOut.bind(this);
-    // this.conditionalLoginRender = this.conditionalLoginRender.bind(this);
+
+    this.checkAuth = this.checkAuth.bind(this);
+    this.logOut = this.logOut.bind(this);
+    this.conditionalLoginRender = this.conditionalLoginRender.bind(this);
   }
 
   openModal() {
@@ -58,24 +58,24 @@ class Navbar extends React.Component {
   //     })
   // }
 
-  // checkAuth() {
-  //   console.log("Checking login info")
-  //   api.checkLogin()
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       this.setState({ isLoggedIn: res.data.isLoggedIn, id: res.data.id, isLoadedIn: true, displayName: res.data.displayName })
-  //     })
-  // }
+  checkAuth() {
+    console.log("Checking login info")
+    api.checkLogin()
+      .then((res) => {
+        console.log(res.data);
+        this.setState({ isLoggedIn: res.data.isLoggedIn, id: res.data.id, isLoadedIn: true, displayName: res.data.displayName })
+      })
+  }
 
-  // logOut() {
-  //   api.logOut()
-  //     .then((res) => {
-  //       console.log("logged out");
-  //     })
-  // }
+  logOut() {
+    api.logOut()
+      .then((res) => {
+        console.log("logged out");
+      })
+  }
 
   componentDidMount() {
-    // this.checkAuth();
+    this.checkAuth();
   }
 
   conditionalLoginRender() {
@@ -182,7 +182,7 @@ class Navbar extends React.Component {
             </ul>
             <ul className="navbar-nav mr-right">
              
-
+              {this.conditionalLoginRender()}    
 
               <li className="nav-item">
                 <a className="nav-link" href="/about">&nbsp;About Us</a>

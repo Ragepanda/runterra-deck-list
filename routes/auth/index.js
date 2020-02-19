@@ -31,7 +31,6 @@ router.get("/google/redirect", passport.authenticate('google'),(req, res) => {
 });
 
 router.get("/isLoggedIn", authCheck, (req, res) => {
-    console.log(req.user);
     res.send({isLoggedIn: true, id:req.user.id, displayName:req.user.displayName});
     
 });

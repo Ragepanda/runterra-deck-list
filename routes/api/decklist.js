@@ -14,4 +14,16 @@ router.
 route("/getDeckById")
 .get(decklistController.getDeckById);
 
+router
+.route("/addNewDeck")
+.post(decklistController.addNewDeck);
+
+router
+.route("/getCreatedDecks")
+.get(decklistController.getCreatedDecks);
+
+router
+.route("/likeDeck")
+.put(decklistController.likeDeck);
+
 module.exports = router;

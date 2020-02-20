@@ -4,19 +4,20 @@ import {
   Switch
 } from 'react-router';
 
+
 export default(
-    <Route>
-      <Route path="/" />
-      <Route path="/card/:name" />
-      <Route path="/set/" />
-      <Route path="/deck_lists/" />
-      <Route path="/deck_lists/:deckName/:id" />
-      <Route path="/deck_builder" />
-      <Route path="/profile" />
-      <Route path="/articles/:article/:id" />
-      <Route path="/articles"/>
-      <Route path="/privacy" />
-      <Route path="/terms" />
-      <Route path="/about" />
-    </Route>
+  <Switch>
+    <Route exact path="/"  />
+    <Route exact path="/card/:name"  />
+    <Route exact path="/set/"  />
+    <Route exact path="/deck_lists/"  />
+    <Route exact path="/deck_lists/:deckName/:id"  />
+    <Route exact path="/deck_builder"  />
+    <Route exact path="/profile"  />
+    <Route exact path="/articles/:article/:id"  />
+    <Route exact path="/articles" />
+    <Route exact path="/privacy"  />
+    <Route exact path="/terms"  />
+    <Route exact path="/about"  />
+  </Switch>
 );

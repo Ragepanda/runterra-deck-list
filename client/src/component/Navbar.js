@@ -127,7 +127,7 @@ class Navbar extends React.Component {
 
             <a className="dropdown-item" href="/profile">Liked Decks</a>
 
-            <a className="dropdown-item" href="http://localhost:5000/auth/logout">Log Out</a>
+            <a className="dropdown-item" href={"http://"+window.location.hostname+":5000/auth/logout"}>Log Out</a>
           </div>
         </li>
 

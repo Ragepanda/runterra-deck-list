@@ -181,8 +181,8 @@ class Navbar extends React.Component {
 
             </ul>
             <ul className="navbar-nav mr-right">
-             
-              {this.conditionalLoginRender()}    
+             {this.conditionalLoginRender()}
+  
 
               <li className="nav-item">
                 <a className="nav-link" href="/about">&nbsp;About Us</a>

@@ -33,12 +33,11 @@
     "serve": "^11.3.0"
   },
   "scripts": {
-    "sitemap": "node ./src/sitemap-builder.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "postbuild": "yarn run sitemap && react-snap"
+    "postbuild": "react-snap"
   },
   "reactSnap": {
     "waitFor": 10000

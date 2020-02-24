@@ -46,7 +46,7 @@ class Deckbuilder extends React.Component {
       contentClass: "inactive",
       buttonClass: "inactive",
       mediumSidebarActive: "",
-      deckStr: "Please Add Cards to Your Deck",
+      deckStr: "Insert Deck Code Here...",
       copied: false,
       deckDescription: "",
       deckName: "",
@@ -73,6 +73,7 @@ class Deckbuilder extends React.Component {
     this.deckDescriptionChange = this.deckDescriptionChange.bind(this);
     this.deckNameChange = this.deckNameChange.bind(this);
     this.deckImageChange = this.deckImageChange.bind(this);
+    this.decodeDeck = this.decodeDeck.bind(this);
   }
 
   deckNameChange(e) {
@@ -223,12 +224,16 @@ class Deckbuilder extends React.Component {
   }
 
   addToDeck(img) {
+    this.newCardToSidebar(img.target.id);
+  }
 
-    var cardProps = img.target.id.split(",");
+  newCardToSidebar(id){
+    console.log(id);
+    var cardProps = id.split(",");
     if (this.validEntry(cardProps)) {
-      if (this.state.decklist.hasOwnProperty(img.target.id) === true) {
-        if (this.state.decklist[img.target.id] < 3) {
-          this.state.decklist[img.target.id] = this.state.decklist[img.target.id] + 1;
+      if (this.state.decklist.hasOwnProperty(id) === true) {
+        if (this.state.decklist[id] < 3) {
+          this.state.decklist[id] = this.state.decklist[id] + 1;
           this.state.decklist['size'] += 1;
           this.state.decklist[cardProps[2]] += 1;
           if (cardProps[1] === "Champion") {
@@ -243,7 +248,7 @@ class Deckbuilder extends React.Component {
         }
       }
       else {
-        this.state.decklist[img.target.id] = 1;
+        this.state.decklist[id] = 1;
         this.state.decklist['size'] += 1;
         this.state.decklist[cardProps[2]] += 1;
         if (cardProps[1] === "Champion") {
@@ -331,6 +336,27 @@ class Deckbuilder extends React.Component {
 
     deckStr = DeckEncoder.encode(newDeck);
     this.setState({ deckStr: deckStr });
+  }
+
+
+  decodeDeck(deckStr) {
+    try{
+      this.addCodeDeck(DeckEncoder.decode(this.state.deckStr));
+    }
+    catch(e){
+      this.setState({deckStr: "Invalid Deck Code!"});
+    }
+  }
+
+  addCodeDeck(deckObj){
+
+    for (var dIndx = 0; dIndx < deckObj.length; dIndx++) {
+      for (var sIndx = 0; sIndx < baseSet.length; sIndx++){
+        if (deckObj[dIndx].code === baseSet[sIndx].cardCode){
+          for (var cIndx = 0; cIndx < deckObj[dIndx].count; cIndx++){this.newCardToSidebar(baseSet[sIndx].cardCode + "," + baseSet[sIndx].supertype + "," + baseSet[sIndx].regionRef + "," + baseSet[sIndx].name + "," + baseSet[sIndx].cost + "," + baseSet[sIndx].type);}
+        }
+      }
+    }
   }
 
   componentDidMount() {
@@ -477,7 +503,7 @@ class Deckbuilder extends React.Component {
     }
     this.setState(this.state);
     this.setState({ deckStyled: this.showDeck() });
-
+    this.encodeDeck();
   }
 
   onCopy = () => {
@@ -485,7 +511,7 @@ class Deckbuilder extends React.Component {
   };
 
   deckStrBtn = () => {
-    console.log("here");
+    //console.log("here");
     if (this.state.decklist['size'] > 0) {
       this.encodeDeck();
       this.setState({ deckCodeMessage: "Code Copied to Clipboard" });
@@ -497,6 +523,10 @@ class Deckbuilder extends React.Component {
       this.openCodeModal();
     }
 
+  }
+
+  codeChange = (event) => {
+    this.setState({deckStr: event.target.value})
   }
 
   showDeck() {
@@ -577,7 +607,7 @@ class Deckbuilder extends React.Component {
           </div>
           <div className="submitDiv">
             <CopyToClipboard onCopy={this.onCopy} text={this.state.deckStr}>
-              <button className="btn btn-outline buttonDiv" onClick={this.deckStrBtn}>Code</button>
+              <button className="btn btn-outline buttonDiv" onClick={this.deckStrBtn}>Copy</button>
             </CopyToClipboard>
             {this.deckCodeModal()}
 
@@ -589,7 +619,8 @@ class Deckbuilder extends React.Component {
             {this.saveDeckModal()}
           </div>
 
-          <div className="noDisplay"><textarea rows={1} cols={1} readOnly value={this.state.deckStr} /></div>
+          <div className="textareaDiv"><textarea value={this.state.deckStr} onChange={this.codeChange} /></div>
+          <div className="textareaDiv"><button className="btn btn-outline" onClick={this.decodeDeck}>Add Deck from Code</button></div>
         </nav>
         <div id="content" className={this.state.contentClass}>
           <FilterBar className="filter" setFilteredSet={this.setFilteredSet} />

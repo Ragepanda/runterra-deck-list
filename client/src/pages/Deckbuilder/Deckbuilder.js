@@ -463,9 +463,6 @@ class Deckbuilder extends React.Component {
             IsLoggedIn
                 </div>
 
-          <div className="btn">
-            <a href={"http://"+window.location.hostname+":5000/auth/logout"}>Log Out</a>
-          </div>
         </Modal>
       )
     }

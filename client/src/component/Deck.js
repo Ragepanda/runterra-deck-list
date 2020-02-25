@@ -45,7 +45,7 @@ class Deck extends React.Component {
     render() {
         if (this.state.isLoaded === true) {
             return (
-                <div className="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 p-4 deck-box" key={this.state.deck.id}>
+                <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 p-4 deck-box" key={this.state.deck.id}>
                     <a data-tip data-for={this.state.deck.id} href={"/deck_lists/" + this.state.deck.name.replace(/ /g, "_") + "/" + this.state.deck.id} className="deck-link">
                         <img className="image-container img-fluid deck-image" src={"/img/cards/" + this.state.deck.cardArtId + "-full.png"} alt={"Legends of Runeterra Decks " + this.state.deck.name} />
                         <div className="deck-name">{this.state.deck.name}</div>

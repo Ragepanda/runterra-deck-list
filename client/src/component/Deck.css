@@ -1,7 +1,10 @@
 .deck-box{
-    position: relative;
-    text-align: center;
-    transition: transform .1s;     
+     position: relative;
+  text-align: center;
+  transition: transform .1s; 
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.0);
+  height: 450px;      
 }
 
 .deck-name {
@@ -17,7 +20,7 @@ transform: translate(-50%, -50%);
 }
 
 .deck-image{
-  border-radius: 50%;
+  width: 100%;
 }
 
 

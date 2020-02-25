@@ -46,7 +46,7 @@ class Deckbuilder extends React.Component {
       contentClass: "inactive",
       buttonClass: "inactive",
       mediumSidebarActive: "",
-      deckStr: "Please Add Cards to Your Deck",
+      deckStr: "Insert Deck Code Here...",
       copied: false,
       deckDescription: "",
       deckName: "",
@@ -73,6 +73,7 @@ class Deckbuilder extends React.Component {
     this.deckDescriptionChange = this.deckDescriptionChange.bind(this);
     this.deckNameChange = this.deckNameChange.bind(this);
     this.deckImageChange = this.deckImageChange.bind(this);
+    this.decodeDeck = this.decodeDeck.bind(this);
   }
 
   deckNameChange(e) {
@@ -86,6 +87,7 @@ class Deckbuilder extends React.Component {
   }
 
   deckImageChange(e) {
+    //console.log(e.target.value);
     this.setState({ deckImg: e.target.value })
   }
 
@@ -223,12 +225,16 @@ class Deckbuilder extends React.Component {
   }
 
   addToDeck(img) {
+    this.newCardToSidebar(img.target.id);
+  }
 
-    var cardProps = img.target.id.split(",");
+  newCardToSidebar(id){
+    console.log(id);
+    var cardProps = id.split(",");
     if (this.validEntry(cardProps)) {
-      if (this.state.decklist.hasOwnProperty(img.target.id) === true) {
-        if (this.state.decklist[img.target.id] < 3) {
-          this.state.decklist[img.target.id] = this.state.decklist[img.target.id] + 1;
+      if (this.state.decklist.hasOwnProperty(id) === true) {
+        if (this.state.decklist[id] < 3) {
+          this.state.decklist[id] = this.state.decklist[id] + 1;
           this.state.decklist['size'] += 1;
           this.state.decklist[cardProps[2]] += 1;
           if (cardProps[1] === "Champion") {
@@ -243,7 +249,7 @@ class Deckbuilder extends React.Component {
         }
       }
       else {
-        this.state.decklist[img.target.id] = 1;
+        this.state.decklist[id] = 1;
         this.state.decklist['size'] += 1;
         this.state.decklist[cardProps[2]] += 1;
         if (cardProps[1] === "Champion") {
@@ -333,6 +339,27 @@ class Deckbuilder extends React.Component {
     this.setState({ deckStr: deckStr });
   }
 
+
+  decodeDeck(deckStr) {
+    try{
+      this.addCodeDeck(DeckEncoder.decode(this.state.deckStr));
+    }
+    catch(e){
+      this.setState({deckStr: "Invalid Deck Code!"});
+    }
+  }
+
+  addCodeDeck(deckObj){
+
+    for (var dIndx = 0; dIndx < deckObj.length; dIndx++) {
+      for (var sIndx = 0; sIndx < baseSet.length; sIndx++){
+        if (deckObj[dIndx].code === baseSet[sIndx].cardCode){
+          for (var cIndx = 0; cIndx < deckObj[dIndx].count; cIndx++){this.newCardToSidebar(baseSet[sIndx].cardCode + "," + baseSet[sIndx].supertype + "," + baseSet[sIndx].regionRef + "," + baseSet[sIndx].name + "," + baseSet[sIndx].cost + "," + baseSet[sIndx].type);}
+        }
+      }
+    }
+  }
+
   componentDidMount() {
 
     if (this.state.isLoggedIn === null) {
@@ -359,10 +386,39 @@ class Deckbuilder extends React.Component {
   }
 
   saveDeckModal() {
+    //console.log(this.state.decklist);
+    //console.log(this.state.deckStr);
+    var tempDeck = [];
+    var cards = [];
+    if(this.state.deckStr != "Insert Deck Code Here..." && this.state.deckStr != "Invalid Deck Code!"){
+
+        tempDeck = DeckEncoder.decode(this.state.deckStr);
+        for (var dIndx = 0; dIndx < tempDeck.length; dIndx++) {
+          //console.log(tempDeck[dIndx].code)
+          for (var sIndx = 0; sIndx < baseSet.length; sIndx++){
+            if(tempDeck[dIndx].code == baseSet[sIndx].cardCode)
+              var info = {name: baseSet[sIndx].name, code: baseSet[sIndx].cardCode}
+              cards[dIndx]= info;
+          }
+        }
+        this.state.deckImg =cards[0].code;
+    }
+    var imageList = "not ready";
+    //console.log(tempDeck);
+
+    if(tempDeck.length > 0){
+      //console.log(cards[0].code);
+
+      imageList = cards.map((card) =>
+      <option value={card.code}>{card.name}</option>);
+    }
+    
+      
+  
     if (this.state.isloggedIn === null) {
       return (<div></div>)
     }
-    if (this.state.isLoggedIn === true) {
+    if (this.state.isLoggedIn === true && imageList != "not ready") {
       return (
         <Modal
           isOpen={this.state.saveModalIsOpen}
@@ -377,37 +433,8 @@ class Deckbuilder extends React.Component {
             <label className="form-input" htmlFor="deckImage">Deck Image: </label>
 
             <select className="form-input" id="deckImage" onChange={this.deckImageChange}>
-              <option value="01NX042">Katarina</option>
-              <option value="01DE045">Fiora</option>
-              <option value="01DE042">Lux</option>
-              <option value="01PZ008">Teemo</option>
-              <option value="01FR039">Tryndamere</option>
-              <option value="01FR038">Ashe</option>
-              <option value="01IO015">Yasuo</option>
-              <option value="01PZ040">Jinx</option>
-              <option value="01IO009">Zed</option>
-              <option value="01IO032">Shen</option>
-              <option value="01IO041">Karma</option>
-              <option value="01NX006">Vladimir</option>
-              <option value="01FR024">Anivia</option>
-              <option value="01SI042">Hecarim</option>
-              <option value="01SI052">Thresh</option>
-              <option value="01DE012">Garen</option>
-              <option value="01NX020">Draven</option>
-              <option value="01DE022">Lucian</option>
-              <option value="01PZ056">Heimerdinger</option>
-              <option value="01FR009">Braum</option>
-              <option value="01NX038">Darius</option>
-              <option value="01SI053">Elise</option>
-              <option value="01SI030">Kalista</option>
-              <option value="01PZ036">Ezreal</option>
-              <option value="01NX048">Crimson Curator</option>
-              <option value="01SI033">Commander Ledros</option>
-              <option value="01SI035">Rhasa the Sunderer</option>
-              <option value="01FR043">Heart of the Fluft</option>
-              <option value="01DE031">Dawnspeakers</option>
-              <option value="01IO014">Greenglade Elder</option>
-              <option value="01DE054">Vanguard Redeemer</option>
+              {imageList}
+              
             </select>
             <br />
             <button className="btn" onClick={this.submitDeck}>Submit</button>
@@ -477,7 +504,7 @@ class Deckbuilder extends React.Component {
     }
     this.setState(this.state);
     this.setState({ deckStyled: this.showDeck() });
-
+    this.encodeDeck();
   }
 
   onCopy = () => {
@@ -485,7 +512,7 @@ class Deckbuilder extends React.Component {
   };
 
   deckStrBtn = () => {
-    console.log("here");
+    //console.log("here");
     if (this.state.decklist['size'] > 0) {
       this.encodeDeck();
       this.setState({ deckCodeMessage: "Code Copied to Clipboard" });
@@ -497,6 +524,10 @@ class Deckbuilder extends React.Component {
       this.openCodeModal();
     }
 
+  }
+
+  codeChange = (event) => {
+    this.setState({deckStr: event.target.value})
   }
 
   showDeck() {
@@ -577,7 +608,7 @@ class Deckbuilder extends React.Component {
           </div>
           <div className="submitDiv">
             <CopyToClipboard onCopy={this.onCopy} text={this.state.deckStr}>
-              <button className="btn btn-outline buttonDiv" onClick={this.deckStrBtn}>Code</button>
+              <button className="btn btn-outline buttonDiv" onClick={this.deckStrBtn}>Copy</button>
             </CopyToClipboard>
             {this.deckCodeModal()}
 
@@ -589,7 +620,8 @@ class Deckbuilder extends React.Component {
             {this.saveDeckModal()}
           </div>
 
-          <div className="noDisplay"><textarea rows={1} cols={1} readOnly value={this.state.deckStr} /></div>
+          <div className="textareaDiv"><textarea value={this.state.deckStr} onChange={this.codeChange} /></div>
+          <div className="textareaDiv"><button className="btn btn-outline" onClick={this.decodeDeck}>Add Deck from Code</button></div>
         </nav>
         <div id="content" className={this.state.contentClass}>
           <FilterBar className="filter" setFilteredSet={this.setFilteredSet} />

@@ -12422,43 +12422,6 @@
     "associatedCardRefs": [],
     "assets": [
       {
-        "gameAbsolutePath": "http://dd.b.pvp.net/0_9_0_0/set1/en_us/img/cards/01IO049.png",
-        "fullAbsolutePath": "http://dd.b.pvp.net/0_9_0_0/set1/en_us/img/cards/01IO049-full.png"
-      }
-    ],
-    "region": "Ionia",
-    "regionRef": "Ionia",
-    "attack": 0,
-    "cost": 4,
-    "health": 0,
-    "description": "Stop a fast spell, slow spell, or <link=keyword.Skill><sprite name=PlaySkillMark><style=Keyword>Skill</style></link>.",
-    "descriptionRaw": "Stop a fast spell, slow spell, or Skill.",
-    "levelupDescription": "",
-    "levelupDescriptionRaw": "",
-    "flavorText": "No.",
-    "artistName": "Kudos Productions",
-    "name": "Deny",
-    "cardCode": "01IO049",
-    "keywords": [
-      "Fast"
-    ],
-    "keywordRefs": [
-      "Fast"
-    ],
-    "spellSpeed": "Fast",
-    "spellSpeedRef": "Fast",
-    "rarity": "Rare",
-    "rarityRef": "Rare",
-    "subtype": "",
-    "supertype": "",
-    "type": "Spell",
-    "collectible": true
-  },
-  {
-    "associatedCards": [],
-    "associatedCardRefs": [],
-    "assets": [
-      {
         "gameAbsolutePath": "http://dd.b.pvp.net/Set1/en_us/img/cards/01NX031.png",
         "fullAbsolutePath": "http://dd.b.pvp.net/Set1/en_us/img/cards/01NX031-full.png"
       }

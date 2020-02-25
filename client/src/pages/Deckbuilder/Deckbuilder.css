@@ -36,6 +36,16 @@
     z-index:1;
 }
 
+.textareaDiv {
+    text-align: center;
+    margin-top: 15px;
+
+}
+
+.textareaDiv textarea{
+    border: 1px solid #FFF8F0;
+}
+
 .card-zoom:hover{
     transform: scale(1.1);
     position: relative;

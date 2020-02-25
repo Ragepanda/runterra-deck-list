@@ -87,6 +87,7 @@ class Deckbuilder extends React.Component {
   }
 
   deckImageChange(e) {
+    //console.log(e.target.value);
     this.setState({ deckImg: e.target.value })
   }
 
@@ -385,10 +386,39 @@ class Deckbuilder extends React.Component {
   }
 
   saveDeckModal() {
+    //console.log(this.state.decklist);
+    //console.log(this.state.deckStr);
+    var tempDeck = [];
+    var cards = [];
+    if(this.state.deckStr != "Insert Deck Code Here..." && this.state.deckStr != "Invalid Deck Code!"){
+
+        tempDeck = DeckEncoder.decode(this.state.deckStr);
+        for (var dIndx = 0; dIndx < tempDeck.length; dIndx++) {
+          //console.log(tempDeck[dIndx].code)
+          for (var sIndx = 0; sIndx < baseSet.length; sIndx++){
+            if(tempDeck[dIndx].code == baseSet[sIndx].cardCode)
+              var info = {name: baseSet[sIndx].name, code: baseSet[sIndx].cardCode}
+              cards[dIndx]= info;
+          }
+        }
+        this.state.deckImg =cards[0].code;
+    }
+    var imageList = "not ready";
+    //console.log(tempDeck);
+
+    if(tempDeck.length > 0){
+      //console.log(cards[0].code);
+
+      imageList = cards.map((card) =>
+      <option value={card.code}>{card.name}</option>);
+    }
+    
+      
+  
     if (this.state.isloggedIn === null) {
       return (<div></div>)
     }
-    if (this.state.isLoggedIn === true) {
+    if (this.state.isLoggedIn === true && imageList != "not ready") {
       return (
         <Modal
           isOpen={this.state.saveModalIsOpen}
@@ -403,37 +433,8 @@ class Deckbuilder extends React.Component {
             <label className="form-input" htmlFor="deckImage">Deck Image: </label>
 
             <select className="form-input" id="deckImage" onChange={this.deckImageChange}>
-              <option value="01NX042">Katarina</option>
-              <option value="01DE045">Fiora</option>
-              <option value="01DE042">Lux</option>
-              <option value="01PZ008">Teemo</option>
-              <option value="01FR039">Tryndamere</option>
-              <option value="01FR038">Ashe</option>
-              <option value="01IO015">Yasuo</option>
-              <option value="01PZ040">Jinx</option>
-              <option value="01IO009">Zed</option>
-              <option value="01IO032">Shen</option>
-              <option value="01IO041">Karma</option>
-              <option value="01NX006">Vladimir</option>
-              <option value="01FR024">Anivia</option>
-              <option value="01SI042">Hecarim</option>
-              <option value="01SI052">Thresh</option>
-              <option value="01DE012">Garen</option>
-              <option value="01NX020">Draven</option>
-              <option value="01DE022">Lucian</option>
-              <option value="01PZ056">Heimerdinger</option>
-              <option value="01FR009">Braum</option>
-              <option value="01NX038">Darius</option>
-              <option value="01SI053">Elise</option>
-              <option value="01SI030">Kalista</option>
-              <option value="01PZ036">Ezreal</option>
-              <option value="01NX048">Crimson Curator</option>
-              <option value="01SI033">Commander Ledros</option>
-              <option value="01SI035">Rhasa the Sunderer</option>
-              <option value="01FR043">Heart of the Fluft</option>
-              <option value="01DE031">Dawnspeakers</option>
-              <option value="01IO014">Greenglade Elder</option>
-              <option value="01DE054">Vanguard Redeemer</option>
+              {imageList}
+              
             </select>
             <br />
             <button className="btn" onClick={this.submitDeck}>Submit</button>

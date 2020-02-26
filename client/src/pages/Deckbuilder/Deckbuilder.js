@@ -6,6 +6,7 @@ import FilterBar from "../../component/FilterBar";
 import ReactToooltip from "react-tooltip";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Modal from "react-modal";
+import LogInModal from "../../component/LogInModal";
 import "./Deckbuilder.css";
 import api from "../../utils/api";
 const { DeckEncoder, Card } = require('runeterra'); //We need to import this card object to properly pass stuff to the encoder
@@ -63,7 +64,6 @@ class Deckbuilder extends React.Component {
     this.encodeDeck = this.encodeDeck.bind(this);
 
     this.openSaveModal = this.openSaveModal.bind(this);
-    this.afterOpenSaveModal = this.afterOpenSaveModal.bind(this);
     this.closeSaveModal = this.closeSaveModal.bind(this);
     this.openCodeModal = this.openCodeModal.bind(this);
     this.afterOpenCodeModal = this.afterOpenCodeModal.bind(this);
@@ -98,10 +98,6 @@ class Deckbuilder extends React.Component {
     this.setState({ saveModalIsOpen: true });
   }
 
-  afterOpenSaveModal() {
-    // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#FFF8F0';
-  }
 
   closeSaveModal() {
     this.setState({ saveModalIsOpen: false });
@@ -451,21 +447,8 @@ class Deckbuilder extends React.Component {
           onRequestClose={this.closeSaveModal}
           style={customStyles}
           contentLabel="Log In Modal">
-          <h2 ref={subtitle => this.subtitle = subtitle}>Login</h2>
-          <h2 ref={subtitle => this.subtitle = subtitle}>Test Login</h2>
-          <button onClick={this.closeModal}>close</button>
-          <div>I am a modal</div>
-          <div className="btn">
-            <a href={"http://"+window.location.hostname+":5000/auth/google"}> Google </a>
-          </div>
+          <LogInModal/>
 
-          <div className="btn" onClick={this.checkAuth}>
-            IsLoggedIn
-                </div>
-
-          <div className="btn">
-            <a href={"http://"+window.location.hostname+":5000/auth/logout"}>Log Out</a>
-          </div>
         </Modal>
       )
     }

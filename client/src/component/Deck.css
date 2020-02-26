@@ -1,3 +1,4 @@
+
 .deck-box{
      position: relative;
   text-align: center;
@@ -42,6 +43,7 @@ transform: translate(-50%, -50%);
   transform: scale(1.2);
 }
 
+
 #dList {
 padding-top: 50px;
 }
@@ -52,17 +54,13 @@ bottom: 100px;
 left: 120px;
 }
 
-.deck-like:hover{
-transform: scale(1.2);
-color: #449922;
-}
-
 .num-likes{
 color: white;
 position:relative;
 bottom: 80px;
 left: 100px;
 }
+
 
 .regionImgRow{
   position:relative;
@@ -75,3 +73,44 @@ left: 100px;
   height: 100%;
   width: 100%;
 }
+
+
+  
+  .deck-like:hover{
+      transform: scale(1.2);
+  }
+  
+  
+ 
+  
+  .deck-name {
+      position: absolute;
+      width: 100%;
+      font-size: 110%;
+      top: 10%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+              text-shadow:
+          -1px -1px 0 #000,
+          1px -1px 0 #000,
+          -1px 1px 0 #000,
+          1px 1px 0 #000;
+    }
+
+    .deck-box:hover{
+        transform: scale(1.2);
+      }
+
+    .deck-delete{
+            position: relative;
+            bottom: 97%;
+           left: 48%;
+            
+    }
+
+    .deck-delete:hover{
+        transform: scale(1.2);
+      }
+      
+  
+

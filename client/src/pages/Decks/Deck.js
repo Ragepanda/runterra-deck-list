@@ -125,9 +125,9 @@ class Deck extends React.Component {
 			this.state.spells.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name));
 			const spellList = this.state.spells.map((spell,index) =>
 				<div className="cardContainer" key={index}>
-				<span className="count">{spell.count}</span>
+				<b className="count">{spell.count}</b>
 				<span className={spell.rarity}></span>
-				<a className={spell.region} data-tip data-for={spell.cardCode} href={"/card/" + spell.name.replace(/ /g, "_").replace(/:/g, "")}>{spell.name}
+				<a className={spell.region} data-tip data-for={spell.cardCode} href={"/card/" + spell.name.replace(/ /g, "_").replace(/:/g, "")}>
 				<div className={"cardTiles " + spell.regionRef + " rounded divText"} key={index}  >
 				  <div className="row justify-content-center"   >
 				    <div className="col-1 cmc marginTop"  >
@@ -151,25 +151,25 @@ class Deck extends React.Component {
 			//console.log(this.state.followers[3].region);
 			this.state.followers.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name));
 			const followersList = this.state.followers.map((followers,index) =>
-				<div className="cardContainer" key={index}>
-				<span className="count">{followers.count}</span>
+			<div className="cardContainer" key={index}>
+				<b className="count">{followers.count}</b>
 				<span className={followers.rarity}></span>
-				<a className={followers.region} data-tip data-for={followers.cardCode} href={"/card/" + followers.name.replace(/ /g, "_").replace(/:/g, "")}>{followers.name}
+				<a className={followers.region} data-tip data-for={followers.cardCode} href={"/card/" + followers.name.replace(/ /g, "_").replace(/:/g, "")}>
 				<div className={"cardTiles " + followers.regionRef + " rounded divText"} key={index}  >
-				  <div className="row justify-content-center"   >
-				    <div className="col-1 cmc marginTop"  >
-				      <img className="mana-image" src={"/img/misc/mana" + followers.cost + ".png"} alt={"Legends of Runeterra Decks " + this.state.deckName + " " + followers.name}    />
-				    </div>
+					<div className="row justify-content-center"   >
+						<div className="col-1 cmc marginTop"  >
+				     		<img className="mana-image" src={"/img/misc/mana" + followers.cost + ".png"} alt={"Legends of Runeterra Decks " + this.state.deckName + " " + followers.name}    />
+				    	</div>
 
-				    <div className="col-7 cardName marginTop text-center align-middle"  >
-				      <span className="card-name-sidebar"  >{followers.name}</span>
-				    </div>
-				  </div>
-				  <img className="image-container img-fluid card-art-deckbuilder"   src={"/img/cards/" + followers.cardCode + ".png"} alt={"Legends of Runeterra Decks " + followers.name} />
+				    	<div className="col-7 cardName marginTop text-center align-middle"  >
+				      		<span className="card-name-sidebar"  >{followers.name}</span>
+				    	</div>
+				  	</div>
+				  	<img className="image-container img-fluid card-art-deckbuilder"   src={"/img/cards/" + followers.cardCode + ".png"} alt={"Legends of Runeterra Decks " + followers.name} />
 				</div>
 				</a>
 				<ReactToooltip className="opaque" place="right" type="none" id={followers.cardCode}><img className="hover-images" src={"/img/cards/" + followers.cardCode + ".png"} alt={"Legends of Runeterra Decks card " + followers.name} /></ReactToooltip>
-				</div>);
+			</div>);
 			return (followersList);
 		}
 	}
@@ -180,9 +180,9 @@ class Deck extends React.Component {
 				this.state.champions.sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name));
 			const championsList = this.state.champions.map((champions,index) =>
 				<div className="cardContainer" key={index}>
-				<span className="count">{champions.count}</span>
+				<b className="count">{champions.count} </b>
 				<span className={champions.rarity}></span>
-				<a className={champions.region} data-tip data-for={champions.cardCode} href={"/card/" + champions.name.replace(/ /g, "_").replace(/:/g, "")}>{champions.name}
+				<a className={champions.region} data-tip data-for={champions.cardCode} href={"/card/" + champions.name.replace(/ /g, "_").replace(/:/g, "")}>
 				<div className={"cardTiles " + champions.regionRef + " rounded divText"} key={index}  >
 				  <div className="row justify-content-center"   >
 				    <div className="col-1 cmc marginTop"  >
@@ -282,13 +282,8 @@ class Deck extends React.Component {
 
 				<h2 className="headers">{this.state.deckName}</h2>
 				<p>{this.state.description}</p>
-					<CopyToClipboard onCopy={this.onCopy} text={this.state.deckStr}>
-				<div className="text-center">
-						<div className="col">Deck Code:</div>
-						<div className="col"><textarea rows={1}  value={this.state.deckStr}/></div>
-				  		<div className="col">&nbsp;</div><button className="col btn-lg btn btn-outline " onClick={this.deckStrBtn}>Copy Deck Code To Clipboard </button><div className="col">&nbsp;</div>
-				</div>
-					</CopyToClipboard>
+				<hr></hr>
+					
 				<div className="row">
 					<div className="col-lg-6 col-sm-12 col-xs-12 col-xl-6 col-md-6 deckList">
 						<h4 className="headers">Champions</h4>
@@ -305,6 +300,33 @@ class Deck extends React.Component {
 						</li>
 					</div>	
 					<div className="col-lg-6 col-sm-12 col-xs-12 col-xl-6 col-md-6 rhs">
+					<div className="row manaCurve justify-content-center">
+							<div className="col col-xl col-lg col-sm col-xs col-md">
+								{this.makeManaCurveChart()}
+							</div>
+						</div>
+						<hr></hr>
+
+					<div className="row cardTypeBreakdown justify-content-center">
+							<div className="col col-xl col-lg col-sm col-xs col-md">
+								<span className="counter">{this.state.numComm}</span>
+								<img className="rareImg" src="/img/misc/common.png" alt={"Legends of Runeterra Decks " + this.state.deckName + " common rarity count" }></img>
+								<span className="counter">{this.state.numRare}</span>
+								<img className="rareImg" src="/img/misc/rare.png" alt={"Legends of Runeterra Decks " + this.state.deckName + " rare rarity count" }></img>
+								<span className="counter">{this.state.numEpic}</span>
+								<img className="rareImg" src="/img/misc/epic.png" alt={"Legends of Runeterra Decks " + this.state.deckName + " epic rarity count" }></img>
+								<span className="counter">{this.state.numLegn}</span>
+								<img className="rareImg" src="/img/misc/champion.png" alt={"Legends of Runeterra Decks " + this.state.deckName + " champion rarity count" }></img>
+							</div>
+						</div>
+						<hr></hr>
+						<div className="row cardTypeBreakdown justify-content-center">
+							<div className="col col-xl col-lg col-sm col-xs col-md">
+								<span className="counter">{this.state.numShards}</span>
+								<img className="rareImg" src="/img/misc/shards.png" alt={"Legends of Runeterra Decks " + this.state.deckName + " shards cost to craft" }></img>
+							</div>
+						</div>
+						<hr></hr>
 
 						<div className="row justify-content-center">
 							<div className="regionBreakdown col col-xl col-lg col-md col-sm col-xs">
@@ -318,6 +340,7 @@ class Deck extends React.Component {
 								
 							</div>
 						</div>
+						<hr></hr>
 						<div className="row justify-content-center">
 							<div className="cardTypeBreakdown col col-xl col-lg col-sm col-xs col-md">
 								<span className="counter">{this.state.numChamp}</span>
@@ -328,29 +351,15 @@ class Deck extends React.Component {
 								<img className="typeImg" src="/img/misc/spell-icon.png" alt={"Legends of Runeterra Decks " + this.state.deckName + " spell count" }></img>
 							</div>
 						</div>
-						<div className="row cardTypeBreakdown justify-content-center">
-							<div className="col col-xl col-lg col-sm col-xs col-md">
-								<span className="counter">{this.state.numComm}</span>
-								<img className="rareImg" src="/img/misc/common.png" alt={"Legends of Runeterra Decks " + this.state.deckName + " common rarity count" }></img>
-								<span className="counter">{this.state.numRare}</span>
-								<img className="rareImg" src="/img/misc/rare.png" alt={"Legends of Runeterra Decks " + this.state.deckName + " rare rarity count" }></img>
-								<span className="counter">{this.state.numEpic}</span>
-								<img className="rareImg" src="/img/misc/epic.png" alt={"Legends of Runeterra Decks " + this.state.deckName + " epic rarity count" }></img>
-								<span className="counter">{this.state.numLegn}</span>
-								<img className="rareImg" src="/img/misc/champion.png" alt={"Legends of Runeterra Decks " + this.state.deckName + " champion rarity count" }></img>
-							</div>
-						</div>
-						<div className="row cardTypeBreakdown justify-content-center">
-							<div className="col col-xl col-lg col-sm col-xs col-md">
-								<span className="counter">{this.state.numShards}</span>
-								<img className="rareImg" src="/img/misc/shards.png" alt={"Legends of Runeterra Decks " + this.state.deckName + " shards cost to craft" }></img>
-							</div>
-						</div>
-						<div className="row manaCurve justify-content-center">
-							<div className="col col-xl col-lg col-sm col-xs col-md">
-								{this.makeManaCurveChart()}
-							</div>
-						</div>
+						<hr></hr>
+						<CopyToClipboard onCopy={this.onCopy} text={this.state.deckStr}>
+				<div className="text-center">
+						<div className="col">Deck Code:</div>
+						<div className="col"><textarea rows={1}  value={this.state.deckStr}/></div>
+				  		<div className="col">&nbsp;</div><button className="col btn-lg btn btn-outline " onClick={this.deckStrBtn}>Copy Deck Code To Clipboard </button><div className="col">&nbsp;</div>
+				</div>
+					</CopyToClipboard>
+					<hr></hr>
 
 					</div>
 

@@ -33,9 +33,10 @@ transform: translate(-50%, -50%);
 }
 
 .deck-image{
-      object-fit: cover;
-      height: 394px;
-      width: 100%;
+  //border-radius: 50%;       
+  object-fit: cover;
+  height: 394px;
+  width: 100%;
 }
 
 
@@ -103,8 +104,8 @@ left: 100px;
 
     .deck-delete{
             position: relative;
-            bottom: 97%;
-           left: 48%;
+            bottom: 400px;
+           left: 180px;
             
     }
 

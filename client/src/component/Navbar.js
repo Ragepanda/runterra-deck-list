@@ -2,6 +2,7 @@ import React from "react";
 import Modal from "react-modal";
 import './Navbar.css';
 import api from "../utils/api";
+import LogInModal from "./LogInModal";
 import { NavLink } from 'react-router-dom'
 
 // API key for google AIzaSyCYlZotlxeVbEfGEhzQBSyqdxfLKcsYkWA
@@ -31,7 +32,7 @@ class Navbar extends React.Component {
     };
 
     this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
+    // this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
 
     this.checkAuth = this.checkAuth.bind(this);
@@ -43,10 +44,10 @@ class Navbar extends React.Component {
     this.setState({ modalIsOpen: true });
   }
 
-  afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#f00';
-  }
+  // afterOpenModal() {
+  //   // references are now sync'd and can be accessed.
+  //   this.subtitle.style.color = '#f00';
+  // }
 
   closeModal() {
     this.setState({ modalIsOpen: false });
@@ -97,22 +98,8 @@ class Navbar extends React.Component {
             style={customStyles}
             contentLabel="Example Modal"
           >
+            <LogInModal />
 
-            <h2 ref={subtitle => this.subtitle = subtitle}>Login</h2>
-            <h2 ref={subtitle => this.subtitle = subtitle}>Test Login</h2>
-            <button onClick={this.closeModal}>close</button>
-            <div>I am a modal</div>
-            <div className="btn">
-              <a href={"http://" + window.location.hostname + ":5000/auth/google"}> Google </a>
-            </div>
-
-            <div className="btn" onClick={this.checkAuth}>
-              IsLoggedIn
-                </div>
-
-            <div className="btn">
-              <a href={"http://" + window.location.hostname + ":5000/auth/logout"}>Log Out</a>
-            </div>
           </Modal>
         </li>,
         <li className="nav-item">

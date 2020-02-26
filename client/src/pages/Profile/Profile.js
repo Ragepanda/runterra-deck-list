@@ -73,7 +73,7 @@ class Profile extends React.Component {
     loadCreatedDecks() {
         return (
             this.state.createdDecks.map((deck, index) =>
-                <DeckItems updateDecks={this.updateDecks} deck={deck} key={deck.id} />
+                <DeckItems profilePage={true} updateDecks={this.updateDecks} deck={deck} key={deck.id} />
             )
         )
     }

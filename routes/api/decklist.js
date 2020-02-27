@@ -30,4 +30,8 @@ router
 .route("/likeDeck")
 .put(decklistController.likeDeck);
 
+router
+.route("/deleteDeck")
+.delete(decklistController.deleteDeck);
+
 module.exports = router;

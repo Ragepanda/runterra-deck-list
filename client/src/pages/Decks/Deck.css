@@ -29,6 +29,7 @@
 	border-color: #B1FE6A;
 	border-style: solid;
   	border-width: 2px;
+  	margin-left: 15px;
   	margin-right: 10px;
 }
 .Epic{
@@ -37,6 +38,7 @@
 	border-color: #F080FE;
 	border-style: solid;
 	border-width: 2px;
+	margin-left: 15px;
   	margin-right: 10px;
 }
 .Rare{
@@ -45,6 +47,7 @@
 	border-color: #4CB4FA;
 	border-style: solid;
 	border-width: 2px;
+	margin-left: 15px;
   	margin-right: 10px;
 }
 .Champion{
@@ -53,21 +56,24 @@
 	border-color: #FAD750;
 	border-style: solid;
   	border-width: 2px;
+  	margin-left: 15px;
   	margin-right: 10px;
 }
 
 /*Region Borders*/
 
 .mana-image{
+	height: 32px !important;
 }
 
 .manacost{
-	height: 60%;
-	width: 50px;
+	
 	overflow: hidden;
 	padding-right: 10px;
+
 }
 .count{
+	position: absolute;
 	margin-right: 5px;
 	color: #FFF8F0;
 	font-size: 125%;
@@ -169,7 +175,10 @@ ul.a{
 }
 
 .cardContainer{
-	margin-bottom: -25px;
+	
+	margin-bottom: 52px;
+	height: 0px;
+	width: 0px;
 }
 
 /*Region Borders*/
@@ -201,6 +210,14 @@ ul.a{
 .cardTiles.ShadowIsles{
 
     border: 3px solid #05754A !important ;
+}
+
+.col-xs-12{
+	margin: auto;
+}
+
+.col-sm-12{
+	margin: auto;
 }
 
 

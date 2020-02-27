@@ -5,6 +5,9 @@ import ReactToooltip from 'react-tooltip';
 import DeckItem from "../../component/Deck";
 import "./Decklists.css";
 
+const { DeckEncoder, Card } = require('runeterra'); //We need to import this card object to properly pass stuff to the encoder
+
+
 
 
 class Deck extends React.Component {

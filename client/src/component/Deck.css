@@ -1,4 +1,50 @@
 
+.deck-box{
+     position: relative;
+  text-align: center;
+  transition: transform .1s; 
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.0);
+  height: 450px;      
+}
+
+.deck-name {
+position: absolute;
+top: 10%;
+left: 50%;
+transform: translate(-50%, -50%);
+        text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+.deck-card{
+  /*border-style: solid;*/
+  position: absolute;
+  width: 300px;
+  height: 400px; 
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  
+}
+
+.deck-image{
+  border-radius: 10px;        
+  object-fit: cover;
+  height: 394px;
+  width: 100%;
+}
+
+
+.deck-box:hover{
+  transform: scale(1.2);
+}
+
+
 #dList {
 padding-top: 50px;
 }
@@ -16,37 +62,27 @@ bottom: 80px;
 left: 100px;
 }
 
-.deck-box{
-    position: relative;
-    text-align: center;
-    transition: transform .1s; 
-    border-style: solid;
-    border-color: rgba(0, 0, 0, 0.0);
-    height: 450px;    
-  }
-  
-  .deck-card{
-    /*border-style: solid;*/
-    position: absolute;
-    width: 300px;
-    height: 400px; 
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    
-  }
+
+.regionImgRow{
+  position:relative;
+  bottom: 175px;
+  left: 0px;
+  width: 275px;
+  height: 150px;
+}
+.deckRegionImg{
+  height: 100%;
+  width: 100%;
+}
+
+
   
   .deck-like:hover{
       transform: scale(1.2);
   }
   
   
-  .deck-image{
-        object-fit: cover;
-        height: 394px;
-  }
+ 
   
   .deck-name {
       position: absolute;
@@ -68,8 +104,8 @@ left: 100px;
 
     .deck-delete{
             position: relative;
-            bottom: 97%;
-           left: 48%;
+            bottom: 400px;
+           left: 180px;
             
     }
 
@@ -78,3 +114,4 @@ left: 100px;
       }
       
   
+

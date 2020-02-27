@@ -9,6 +9,7 @@ import Modal from "react-modal";
 import LogInModal from "../../component/LogInModal";
 import "./Deckbuilder.css";
 import api from "../../utils/api";
+import DotLoader from "../../../node_modules/react-spinners/DotLoader";
 const { DeckEncoder, Card } = require('runeterra'); //We need to import this card object to properly pass stuff to the encoder
 
 const customStyles = {
@@ -19,10 +20,18 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    background: "#011627"
+    background: "#011627",
+    width: 420,
+    height: 470
   },
   overlay: { zIndex: 1000 }
 };
+
+const dotLoaderStyles = {
+  position: "relative",
+  top: "20%",
+  margin: "auto"
+}
 
 Modal.setAppElement("#root");
 
@@ -31,9 +40,11 @@ class Deckbuilder extends React.Component {
     super(props);
     this.state = {
       card: {},
+      alertState: "alert-hidden",
       modalIsOpen: false,
       loginModalIsOpen: false,
       saveModalIsOpen: false,
+      saveModalLoading: false,
       codeModalIsOpen: false,
       deckCodeMessage: "",
       isLoggedIn: null,
@@ -63,6 +74,7 @@ class Deckbuilder extends React.Component {
     this.openSidebar = this.openSidebar.bind(this);
     this.encodeDeck = this.encodeDeck.bind(this);
 
+    this.saveModalRender = this.saveModalRender.bind(this);
     this.openSaveModal = this.openSaveModal.bind(this);
     this.closeSaveModal = this.closeSaveModal.bind(this);
     this.openCodeModal = this.openCodeModal.bind(this);
@@ -142,10 +154,65 @@ class Deckbuilder extends React.Component {
       }
     }
     else {
-      api.addNewDeck(this.state.id, this.state.deckStr, this.state.deckName, this.state.deckDescription, this.state.deckImg)
-        .then(res => {
-          console.log(res.data);
-        })
+      this.setState({ saveModalLoading: true }, () => {
+        api.addNewDeck(this.state.id, this.state.deckStr, this.state.deckName, this.state.deckDescription, this.state.deckImg)
+          .then(res => {
+            this.closeSaveModal();
+            this.setState({ deckName: "", deckDescription: "", decklist: [], deckStyled: [], deckStr: "Insert Deck Code Here...", filteredSet: baseSet, copied: false },
+              () => {
+                this.setState({ sidebarClass: "active" });
+                this.state.decklist['size'] = 0;
+                this.state.decklist['champions'] = 0;
+                this.state.decklist['followers'] = 0;
+                this.state.decklist['spells'] = 0;
+                this.state.decklist['Demacia'] = 0;
+                this.state.decklist['PiltoverZaun'] = 0;
+                this.state.decklist['Freljord'] = 0;
+                this.state.decklist['Ionia'] = 0;
+                this.state.decklist['Noxus'] = 0;
+                this.state.decklist['ShadowIsles'] = 0;
+                this.setState({ alertState: "alert-shown" },
+                  () => {
+                    setTimeout(() => {
+                      this.setState({ alertState: "alert-hidden", saveModalLoading: false })
+                    }, 3000);
+                  })
+
+              })
+          })
+      })
+    }
+  }
+
+  saveModalRender(imageList) {
+    if (this.state.saveModalLoading === false) {
+      const saveModal = [
+        <h2 ref={subtitle => this.subtitle = subtitle}> Save Deck</h2>,
+        <form onSubmit={this.handleSubmit}>
+          <label className="form-input"> Deck Name: <input type="text" name="deckName" onChange={this.deckNameChange} value={this.state.deckName} /></label>
+          <label className="form-input">Description: <textarea rows="6" columns="120" className="description" name="deckDescription" onChange={this.deckDescriptionChange} value={this.state.deckDescription} /></label>
+          <label className="form-input" htmlFor="deckImage">Deck Image: </label>
+
+          <select className="form-input" id="deckImage" onChange={this.deckImageChange}>
+            {imageList}
+
+          </select>
+          <br />
+          <button className="btn" onClick={this.submitDeck}>Submit</button>
+        </form>]
+
+      return saveModal;
+    }
+
+    else {
+      return (
+        [<DotLoader
+          size={250}
+          color={"#8A3DF9"}
+          css={dotLoaderStyles}
+        />,
+        <h3 className="loading-text">Saving Deck...</h3>]
+      );
     }
   }
 
@@ -224,7 +291,7 @@ class Deckbuilder extends React.Component {
     this.newCardToSidebar(img.target.id);
   }
 
-  newCardToSidebar(id){
+  newCardToSidebar(id) {
     console.log(id);
     var cardProps = id.split(",");
     if (this.validEntry(cardProps)) {
@@ -337,20 +404,20 @@ class Deckbuilder extends React.Component {
 
 
   decodeDeck(deckStr) {
-    try{
+    try {
       this.addCodeDeck(DeckEncoder.decode(this.state.deckStr));
     }
-    catch(e){
-      this.setState({deckStr: "Invalid Deck Code!"});
+    catch (e) {
+      this.setState({ deckStr: "Invalid Deck Code!" });
     }
   }
 
-  addCodeDeck(deckObj){
+  addCodeDeck(deckObj) {
 
     for (var dIndx = 0; dIndx < deckObj.length; dIndx++) {
-      for (var sIndx = 0; sIndx < baseSet.length; sIndx++){
-        if (deckObj[dIndx].code === baseSet[sIndx].cardCode){
-          for (var cIndx = 0; cIndx < deckObj[dIndx].count; cIndx++){this.newCardToSidebar(baseSet[sIndx].cardCode + "," + baseSet[sIndx].supertype + "," + baseSet[sIndx].regionRef + "," + baseSet[sIndx].name + "," + baseSet[sIndx].cost + "," + baseSet[sIndx].type);}
+      for (var sIndx = 0; sIndx < baseSet.length; sIndx++) {
+        if (deckObj[dIndx].code === baseSet[sIndx].cardCode) {
+          for (var cIndx = 0; cIndx < deckObj[dIndx].count; cIndx++) { this.newCardToSidebar(baseSet[sIndx].cardCode + "," + baseSet[sIndx].supertype + "," + baseSet[sIndx].regionRef + "," + baseSet[sIndx].name + "," + baseSet[sIndx].cost + "," + baseSet[sIndx].type); }
         }
       }
     }
@@ -386,31 +453,33 @@ class Deckbuilder extends React.Component {
     //console.log(this.state.deckStr);
     var tempDeck = [];
     var cards = [];
-    if(this.state.deckStr != "Insert Deck Code Here..." && this.state.deckStr != "Invalid Deck Code!"){
+    if (this.state.deckStr != "Insert Deck Code Here..." && this.state.deckStr != "Invalid Deck Code!") {
 
-        tempDeck = DeckEncoder.decode(this.state.deckStr);
-        for (var dIndx = 0; dIndx < tempDeck.length; dIndx++) {
-          //console.log(tempDeck[dIndx].code)
-          for (var sIndx = 0; sIndx < baseSet.length; sIndx++){
-            if(tempDeck[dIndx].code == baseSet[sIndx].cardCode)
-              var info = {name: baseSet[sIndx].name, code: baseSet[sIndx].cardCode}
-              cards[dIndx]= info;
-          }
+      tempDeck = DeckEncoder.decode(this.state.deckStr);
+      for (var dIndx = 0; dIndx < tempDeck.length; dIndx++) {
+        //console.log(tempDeck[dIndx].code)
+        for (var sIndx = 0; sIndx < baseSet.length; sIndx++) {
+          if (tempDeck[dIndx].code == baseSet[sIndx].cardCode)
+            var info = { name: baseSet[sIndx].name, code: baseSet[sIndx].cardCode }
+          cards[dIndx] = info;
         }
-        this.state.deckImg =cards[0].code;
+      }
+      //IS THIS THE REASON THE CARDS HAVE THE FIRST CARD'S IMAGE?
+      // if (cards.length > 0)
+      //   this.state.deckImg = cards[0].code;
     }
     var imageList = "not ready";
     //console.log(tempDeck);
 
-    if(tempDeck.length > 0){
+    if (tempDeck.length > 0) {
       //console.log(cards[0].code);
 
       imageList = cards.map((card) =>
-      <option value={card.code}>{card.name}</option>);
+        <option value={card.code}>{card.name}</option>);
     }
-    
-      
-  
+
+
+
     if (this.state.isloggedIn === null) {
       return (<div></div>)
     }
@@ -422,19 +491,7 @@ class Deckbuilder extends React.Component {
           onRequestClose={this.closeSaveModal}
           style={customStyles}
           contentLabel="Example Modal">
-          <h2 ref={subtitle => this.subtitle = subtitle}> Save Deck</h2>
-          <form onSubmit={this.handleSubmit}>
-            <label className="form-input"> Name: <input type="text" name="deckName" onChange={this.deckNameChange} value={this.state.deckName} /></label>
-            <label className="form-input">Description: <input type="text" name="deckDescription" onChange={this.deckDescriptionChange} value={this.state.deckDescription} /></label>
-            <label className="form-input" htmlFor="deckImage">Deck Image: </label>
-
-            <select className="form-input" id="deckImage" onChange={this.deckImageChange}>
-              {imageList}
-              
-            </select>
-            <br />
-            <button className="btn" onClick={this.submitDeck}>Submit</button>
-          </form>
+          {this.saveModalRender(imageList)}
         </Modal>
       )
     }
@@ -447,25 +504,25 @@ class Deckbuilder extends React.Component {
           onRequestClose={this.closeSaveModal}
           style={customStyles}
           contentLabel="Log In Modal">
-          <LogInModal/>
+          <LogInModal />
 
         </Modal>
       )
     }
   }
 
-  deckCodeModal(){
+  deckCodeModal() {
     return (
-        <Modal
-          isOpen={this.state.codeModalIsOpen}
-          onAfterOpen={this.afterOpenCodeModal}
-          onRequestClose={this.closeCodeModal}
-          style={customStyles}
-          contentLabel="Example Modal">
-          <h2 ref={subtitle => this.subtitle = subtitle}> {this.state.deckCodeMessage}</h2>
-          <h5 ref={subtitle => this.subtitle = subtitle}> {this.state.deckStr}</h5>
-        </Modal>
-      ) 
+      <Modal
+        isOpen={this.state.codeModalIsOpen}
+        onAfterOpen={this.afterOpenCodeModal}
+        onRequestClose={this.closeCodeModal}
+        style={customStyles}
+        contentLabel="Example Modal">
+        <h2 ref={subtitle => this.subtitle = subtitle}> {this.state.deckCodeMessage}</h2>
+        <h5 ref={subtitle => this.subtitle = subtitle}> {this.state.deckStr}</h5>
+      </Modal>
+    )
   }
 
   removeCard(img) {
@@ -510,7 +567,7 @@ class Deckbuilder extends React.Component {
   }
 
   codeChange = (event) => {
-    this.setState({deckStr: event.target.value})
+    this.setState({ deckStr: event.target.value })
   }
 
   showDeck() {
@@ -548,6 +605,9 @@ class Deckbuilder extends React.Component {
 
       <div className="wrapper" id="neg-margin">
         {this.createHelmet()}
+        <div className={"alert " + this.state.alertState}>
+          <h3>Your deck has been successfully submitted</h3>
+        </div>
         <nav id="sidebar" className={this.state.sidebarClass}>
           <div className="sidebar-header text-center">
             <h5>Current Deck</h5>
@@ -603,7 +663,7 @@ class Deckbuilder extends React.Component {
             {this.saveDeckModal()}
           </div>
 
-          <div className="textareaDiv"><textarea value={this.state.deckStr} onChange={this.codeChange} /></div>
+          <div className="textareaDiv"><textarea class="deck-code" value={this.state.deckStr} onChange={this.codeChange} /></div>
           <div className="textareaDiv"><button className="btn btn-outline" onClick={this.decodeDeck}>Add Deck from Code</button></div>
         </nav>
         <div id="content" className={this.state.contentClass}>

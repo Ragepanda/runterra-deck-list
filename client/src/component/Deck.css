@@ -33,7 +33,7 @@ transform: translate(-50%, -50%);
 }
 
 .deck-image{
-  //border-radius: 50%;       
+  border-radius: 10px;        
   object-fit: cover;
   height: 394px;
   width: 100%;

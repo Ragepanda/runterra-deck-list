@@ -162,6 +162,7 @@
 .form-input{
     display:block;
     width: 80%;
+    margin-right:0px;
 }
 
 .cmc {
@@ -244,6 +245,44 @@
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
+.description{
+	border: 3px solid #FFF8F0;
+	resize: none;
+	background-color: #011627;
+    color: #FFF8F0;
+    width: 280px;
+    position: relative;
+}
+
+.alert-hidden{
+    visibility: hidden;
+    opacity:0;
+    transition: opacity 0.5s, visibility 1s;
+    
+  }
+  
+  .alert-shown{
+    opacity:1;
+    transition: opacity 0.25s;
+  }
+  
+  .alert{
+    position: fixed;
+    left:50%;
+    right: 50%;
+    top:30%;
+    width:350px;
+    background-color: #011627;
+    color: #FFF8F0;
+    text-align: center;
+    z-index:10000;
+  }
+
+  .loading-text{
+      text-align:center;
+      position: relative;
+      bottom: 200px;
+  }
 
 .container-fluid {
   

@@ -60,6 +60,13 @@ body{
 	color:#FFF8F0 !important;
 }
 
+.deck-code{
+	border: 3px solid #D68FD6;
+	resize: none;
+	background-color: #011627;
+	color: #FFF8F0;
+	text-align: center;
+}
 
 
 @media screen and (max-width: 767px){   

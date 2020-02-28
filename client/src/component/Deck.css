@@ -1,12 +1,19 @@
 
 .deck-box{
-     position: relative;
  
+  position: relative;
+  text-align: center;
   transition: transform .1s; 
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.0);
   height: 450px;  
   width: 350px;    
+}
+
+.deletion-box{
+  position: relative;
+  text-align: center;
+  height: 450px;
 }
 
 .deck-name {
@@ -113,9 +120,14 @@ padding-top: 50px;
     }
 
     .deck-delete{
+
       position: relative;
       bottom: 400px;
-      left: 180px;
+
+            position: relative;
+            bottom: 380px;
+           left: 150px;
+
             
     }
 

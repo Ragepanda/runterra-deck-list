@@ -2,15 +2,22 @@ import React from 'react';
 import ReactToooltip from 'react-tooltip';
 import api from "../utils/api";
 import "./Deck.css";
+import CircleLoader from "../../node_modules/react-spinners/CircleLoader";
 
 const { DeckEncoder, Card } = require('runeterra'); //We need to import this card object to properly pass stuff to the encoder
 
+const circleLoaderStyles = {
+    position: "relative",
+    top: "40%",
+    margin: "auto"
+}
 
 class Deck extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             deck: null,
+            deletion: false,
             isLoaded: false,
             regionOne: "none",
             regionTwo: "none"
@@ -23,13 +30,13 @@ class Deck extends React.Component {
     likeDeck() {
         api.likeDeck(this.props.deck.id)
             .then(res => {
-                    console.log(res.data);
-                    this.setState({deck:{...this.state.deck, likes: res.data.likes, likedByUser: !this.state.deck.likedByUser }}, ()=>{
-                        if(this.props.updateDecks){
-                            this.props.updateDecks();
-                        }
-                    });
-                    
+                console.log(res.data);
+                this.setState({ deck: { ...this.state.deck, likes: res.data.likes, likedByUser: !this.state.deck.likedByUser } }, () => {
+                    if (this.props.updateDecks) {
+                        this.props.updateDecks();
+                    }
+                });
+
 
             })
     }
@@ -39,52 +46,52 @@ class Deck extends React.Component {
         var tempRegionOne = "none";
         var tempRegionTwo = "none";
         console.log(deck[0].code);
-        for(var i = 0; i<deck.length; i++){
-            if(deck[i].code.includes("SI")){
-                if(tempRegionOne != "icon-shadowisles" && tempRegionOne != "none"){
+        for (var i = 0; i < deck.length; i++) {
+            if (deck[i].code.includes("SI")) {
+                if (tempRegionOne != "icon-shadowisles" && tempRegionOne != "none") {
                     tempRegionTwo = "icon-shadowisles";
                 }
-                else{
+                else {
                     tempRegionOne = "icon-shadowisles";
                 }
             }
-             if(deck[i].code.includes("DE")){
-                if(tempRegionOne != "icon-demacia" && tempRegionOne != "none"){
+            if (deck[i].code.includes("DE")) {
+                if (tempRegionOne != "icon-demacia" && tempRegionOne != "none") {
                     tempRegionTwo = "icon-demacia";
                 }
-                else{
+                else {
                     tempRegionOne = "icon-demacia";
                 }
             }
-             if(deck[i].code.includes("NX")){
-                if(tempRegionOne != "icon-noxus" && tempRegionOne != "none"){
+            if (deck[i].code.includes("NX")) {
+                if (tempRegionOne != "icon-noxus" && tempRegionOne != "none") {
                     tempRegionTwo = "icon-noxus";
                 }
-                else{
+                else {
                     tempRegionOne = "icon-noxus";
                 }
             }
-             if(deck[i].code.includes("PZ")){
-                if(tempRegionOne != "icon-piltoverzaun" && tempRegionOne != "none"){
+            if (deck[i].code.includes("PZ")) {
+                if (tempRegionOne != "icon-piltoverzaun" && tempRegionOne != "none") {
                     tempRegionTwo = "icon-piltoverzaun";
                 }
-                else{
+                else {
                     tempRegionOne = "icon-piltoverzaun";
                 }
             }
-             if(deck[i].code.includes("IO")){
-                if(tempRegionOne != "icon-ionia" && tempRegionOne != "none"){
+            if (deck[i].code.includes("IO")) {
+                if (tempRegionOne != "icon-ionia" && tempRegionOne != "none") {
                     tempRegionTwo = "icon-ionia";
                 }
-                else{
+                else {
                     tempRegionOne = "icon-ionia";
                 }
             }
-             if(deck[i].code.includes("FR")){
-                if(tempRegionOne != "icon-freljord" && tempRegionOne != "none"){
+            if (deck[i].code.includes("FR")) {
+                if (tempRegionOne != "icon-freljord" && tempRegionOne != "none") {
                     tempRegionTwo = "icon-freljord";
                 }
-                else{
+                else {
                     tempRegionOne = "icon-freljord";
                 }
             }
@@ -100,33 +107,42 @@ class Deck extends React.Component {
         console.log(this.state.regionTwo);
     }
 
-    likedByUser(){
-        if(this.state.deck.likedByUser===false || this.state.deck.likedByUser===undefined){
+    likedByUser() {
+        if (this.state.deck.likedByUser === false || this.state.deck.likedByUser === undefined) {
             return "#8a3df9";
         }
-        else{
+        else {
             return '#D68FD6';
         }
     }
 
-    deleteDeck(){
-        console.log("With one hand I'll eat this potato chip and with the other... I'll DELETE!")
-    }
 
-    deleteButtonRender(){
-        if(this.props.profilePage === true){
-            return(
-            <svg height="25" wdith="25" viewBox="0 0 25 25" className="deck-delete" fill="#FF0000" onClick={this.deleteDeck} > 
-                <path d="M 24.1797 4.92969 L 16.5977 12.5117 L 24.1797 20.0938 C 25.3047 21.2227 25.3047 23.0508 24.1797 24.1797 C 23.6133 24.7422 22.875 25.0234 22.1367 25.0234 C 21.3984 25.0234 20.6602 24.7422 20.0977 24.1797 L 12.5117 16.5938 L 4.92969 24.1797 C 4.36719 24.7422 3.625 25.0234 2.88672 25.0234 C 2.14844 25.0234 1.41016 24.7422 0.847656 24.1797 C -0.28125 23.0508 -0.28125 21.2227 0.847656 20.0938 L 8.42969 12.5117 L 0.847656 4.92969 C -0.28125 3.80078 -0.28125 1.97266 0.847656 0.84375 C 1.97266 -0.28125 3.80078 -0.28125 4.92969 0.84375 L 12.5117 8.42969 L 20.0938 0.84375 C 21.2227 -0.28125 23.0508 -0.28125 24.1758 0.84375 C 25.3047 1.97266 25.3047 3.80078 24.1797 4.92969 Z M 24.1797 4.92969">
-                </path>
-            </svg>
+    deleteButtonRender() {
+        if (this.props.profilePage === true) {
+            return (
+                <svg height="25" wdith="25" viewBox="0 0 25 25" className="deck-delete" fill="#FF0000" onClick={this.deleteDeck} >
+                    <path d="M 24.1797 4.92969 L 16.5977 12.5117 L 24.1797 20.0938 C 25.3047 21.2227 25.3047 23.0508 24.1797 24.1797 C 23.6133 24.7422 22.875 25.0234 22.1367 25.0234 C 21.3984 25.0234 20.6602 24.7422 20.0977 24.1797 L 12.5117 16.5938 L 4.92969 24.1797 C 4.36719 24.7422 3.625 25.0234 2.88672 25.0234 C 2.14844 25.0234 1.41016 24.7422 0.847656 24.1797 C -0.28125 23.0508 -0.28125 21.2227 0.847656 20.0938 L 8.42969 12.5117 L 0.847656 4.92969 C -0.28125 3.80078 -0.28125 1.97266 0.847656 0.84375 C 1.97266 -0.28125 3.80078 -0.28125 4.92969 0.84375 L 12.5117 8.42969 L 20.0938 0.84375 C 21.2227 -0.28125 23.0508 -0.28125 24.1758 0.84375 C 25.3047 1.97266 25.3047 3.80078 24.1797 4.92969 Z M 24.1797 4.92969">
+                    </path>
+                </svg>
             )
         }
     }
 
-    renderRegionImg(){
-        if(this.state.regionTwo != "none"){
-            return(
+    deleteDeck() {
+        this.setState({deletion:true},()=>{
+            api.deleteDeck(this.state.deck.id)
+            .then(res => {
+                if (res.data.deletion === true) {
+                    this.props.updateDecks();
+                }
+            })
+        })
+        
+    }
+
+    renderRegionImg() {
+        if (this.state.regionTwo != "none") {
+            return (
                 <div className="row regionImgRow">
                 <div className="deckImgHolder">
                     <img className="deckRegionImg" src={"/img/regions/" + this.state.regionOne + ".png"}></img>
@@ -134,11 +150,12 @@ class Deck extends React.Component {
                 <div className="deckImgHolder">
                     <img className="deckRegionImg" src={"/img/regions/" + this.state.regionTwo + ".png"}></img>
                 </div>
+
                 </div>
             );
         }
-        else{
-            return(
+        else {
+            return (
                 <div className="row regionImgRow">
                  <div className="deckImgHolder">
                     <img className="deckRegionImg" src={"/img/regions/" + this.state.regionOne + ".png"}></img>
@@ -152,8 +169,24 @@ class Deck extends React.Component {
 
     render() {
         if (this.state.isLoaded === true) {
-            return (
-                <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 p-4 deck-box" key={this.state.deck.id}>
+
+            if (this.state.deletion === true) {
+                return (
+                    <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 p-4 deletion-box" key={this.state.deck.id}>
+                        
+                            <CircleLoader
+                                size={100}
+                                color={"#8A3DF9"}
+                                css={circleLoaderStyles}
+                            />
+                            <h3>Deleting Deck...</h3>
+                        
+                    </div>
+                )
+            }
+            else {
+                return (
+                    <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 p-4 deck-box" key={this.state.deck.id}>
                 <div className="deck-card">
                     <a data-tip data-for={this.state.deck.id} href={"/deck_lists/" + this.state.deck.name.replace(/ /g, "_") + "/" + this.state.deck.id} className="deck-link">
                         <img className=" deck-image" src={"/img/cards/" + this.state.deck.cardArtId + "-full.png"} alt={"Legends of Runeterra Decks " + this.state.deck.name} />
@@ -174,7 +207,9 @@ class Deck extends React.Component {
                     </ReactToooltip>
                     </div>
                 </div>
-            )
+                )
+            }
+
         }
         else {
             return (

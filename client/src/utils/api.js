@@ -29,6 +29,20 @@ export default {
         {id:id, deckCode:deckCode, deckName:deckName, deckDescription: deckDescription, deckImg: deckImg});
     },
 
+    deleteDeck: function(id){
+        var url = window.location.hostname;
+        const config= {
+            withCredentials: true,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            data:{
+                id: id
+            } 
+        };
+        return axios.delete("http://"+url+":5000/api/decklist/deleteDeck", config)
+    },
+
     likeDeck: function(deckId){
         const config= {
             withCredentials: true,

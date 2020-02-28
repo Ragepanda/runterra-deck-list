@@ -12,7 +12,7 @@ const passport = require('passport');
 //enable cross origin requests for different port numbers
 app.use(cors({
   origin:["http://localhost:3000","http://localhost:45678", "http://localhost:61240","http://runeterranexus.com"],
-  methods:['GET','POST', 'PUT'],
+  methods:['GET','POST', 'PUT', 'DELETE'],
   credentials: true
 }));
 

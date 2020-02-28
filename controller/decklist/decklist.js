@@ -2,6 +2,23 @@ var db = require("../../models");
 
 module.exports = {
 
+    deleteDeck: function(req, res){
+        console.log(req.body.id);
+        if (!req.user) {
+            res.send({ validUser: false, deletion:true })
+        }
+        else{
+            db.Decklist.destroy({
+                where:{
+                    id:req.body.id
+                }
+            })
+            .then(()=>{
+                res.send({validUser:true, deletion:true})
+            })
+        }
+    },
+
     getLikedDecks: function (req, res) {
         // db.Decklist.findAll({where:})
         if (!req.user) {

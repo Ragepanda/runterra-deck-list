@@ -128,10 +128,10 @@ class Deck extends React.Component {
         if(this.state.regionTwo != "none"){
             return(
                 <div className="row regionImgRow">
-                <div >
+                <div className="deckImgHolder">
                     <img className="deckRegionImg" src={"/img/regions/" + this.state.regionOne + ".png"}></img>
                 </div>
-                <div >
+                <div className="deckImgHolder">
                     <img className="deckRegionImg" src={"/img/regions/" + this.state.regionTwo + ".png"}></img>
                 </div>
                 </div>
@@ -140,7 +140,7 @@ class Deck extends React.Component {
         else{
             return(
                 <div className="row regionImgRow">
-                 <div>
+                 <div className="deckImgHolder">
                     <img className="deckRegionImg" src={"/img/regions/" + this.state.regionOne + ".png"}></img>
                 </div>
                 </div>
@@ -154,8 +154,9 @@ class Deck extends React.Component {
         if (this.state.isLoaded === true) {
             return (
                 <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 p-4 deck-box" key={this.state.deck.id}>
+                <div className="deck-card">
                     <a data-tip data-for={this.state.deck.id} href={"/deck_lists/" + this.state.deck.name.replace(/ /g, "_") + "/" + this.state.deck.id} className="deck-link">
-                        <img className="image-container img-fluid deck-image" src={"/img/cards/" + this.state.deck.cardArtId + "-full.png"} alt={"Legends of Runeterra Decks " + this.state.deck.name} />
+                        <img className=" deck-image" src={"/img/cards/" + this.state.deck.cardArtId + "-full.png"} alt={"Legends of Runeterra Decks " + this.state.deck.name} />
                         <div className="deck-name">{this.state.deck.name}</div>
                     </a>
 
@@ -171,6 +172,7 @@ class Deck extends React.Component {
                     <ReactToooltip className="set-tooltips" place="top" effect="solid" id={this.state.deck.id.toString()}>
                         <p>{this.state.deck.description}</p>
                     </ReactToooltip>
+                    </div>
                 </div>
             )
         }

@@ -22,7 +22,7 @@ class Articles extends React.Component {
                 //console.log(res.data);
                 this.setState({
                     isLoaded: true,
-                    articles: res.data
+                    articles: res.data.sort((a,b) => a.id > b.id ? -1 : 1)
                 });
 
 

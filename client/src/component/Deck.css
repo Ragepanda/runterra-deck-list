@@ -92,6 +92,18 @@ padding-top: 50px;
   
 }
 
+.champIcon{
+  position:relative;
+  bottom: 145px;
+  left: 4px;
+  width: 15%;
+}
+
+.noChampIcon{
+   position:relative;
+  bottom: 125px;
+  left: 4px;
+}
 
   
   .deck-like:hover{

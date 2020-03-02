@@ -2,7 +2,7 @@
 .deck-box{
  
   position: relative;
-  text-align: center;
+  text-align: justify;
   transition: transform .1s; 
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.0);
@@ -103,10 +103,11 @@ padding-top: 50px;
   
   .deck-name {
       position: absolute;
-      width: 100%;
-      font-size: 110%;
-      top: 10%;
-      left: 50%;
+      width: 75%;
+      font-size: 170%;
+      top: 13%;
+      left: 120px;
+      height: 100px;
       transform: translate(-50%, -50%);
               text-shadow:
           -1px -1px 0 #000,

@@ -178,7 +178,7 @@ class Deck extends React.Component {
     renderChampions(){
         if(this.state.champions.length > 0){
             var champImages = this.state.champions.map((champ) =>
-            <img className="champIcon" src={"img/champs/" + champ + "Square.png"} alt={champ}></img>);
+            <img className="champIcon" src={"/img/champs/" + champ + "Square.png"} alt={champ}></img>);
             return(
                 <div>
                     {champImages}
@@ -188,7 +188,7 @@ class Deck extends React.Component {
         else{
             return(
                 <div className="noChampIcon">
-                    NO CHAMPIONS
+                    
                 </div>
             );
         }

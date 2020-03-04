@@ -21,3 +21,10 @@
 .bckgrd {
 	background-color: #011627 !important;
 }
+
+
+.img-center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}

@@ -72,7 +72,10 @@ class Home extends React.Component{
                   <div className="text-center"><a className="pinkLink" href="/deck_lists">Best Legends of Runeterra Decks</a></div>
                 </div>
 
-                
+                <br/><br/><br/>
+                <div>And check out our podcast, Run the Terra, with Adam, Stan, and the only Grandmaster in Legends of Runeterra, Grandmaster Dan.</div>
+                <h3>Run the Terra</h3>
+                <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/786201091&color=%23d68fd6&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
   
             </div>
             );

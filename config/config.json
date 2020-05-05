@@ -6,7 +6,6 @@
         "host": "127.0.0.1",
         "port": 3306,
         "dialect": "mysql"
-        
       },
     "google":{
       "clientID":"123414071099-pf3vnpggq3di81fb9c3lfa1j786vsk7g.apps.googleusercontent.com",

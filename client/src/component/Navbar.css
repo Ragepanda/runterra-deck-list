@@ -14,10 +14,22 @@ li.dropdown:hover > .dropdown-menu {
 
 
 .navbar-dark .navbar-nav .nav-link {
+    text-align: center;
     color: rgba(255,248,240,1);
 
 }
 
+@media only screen and (min-width: 992px) {
+    .navbar-dark .navbar-nav .nav-link {
+    font-size: .8rem;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .navbar-dark .navbar-nav .nav-link {
+    font-size: 1rem;
+    }
+}
 
 .dropdown-toggle::after{
 

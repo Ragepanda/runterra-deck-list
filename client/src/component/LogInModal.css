@@ -1,0 +1,12 @@
+#logInModal{
+    width: 200px;
+    height: 150px;
+    text-align: center;
+}
+
+#modalClose{
+    position: relative;
+    bottom: 60px;
+    left: 90px;
+    
+}

@@ -176,9 +176,13 @@ class Deck extends React.Component {
     }
 
     renderChampions(){
+        var championClass ="champIcon";
+        if(this.props.profilePage === true){
+            championClass ="profileChampIcon"
+        }
         if(this.state.champions.length > 0){
             var champImages = this.state.champions.map((champ) =>
-            <img className="champIcon" src={"img/champs/" + champ + "Square.png"} alt={champ}></img>);
+            <img className={championClass} src={"img/champs/" + champ + "Square.png"} alt={champ}></img>);
             return(
                 <div>
                     {champImages}

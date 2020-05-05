@@ -10,6 +10,14 @@
     padding-top: 60px;
 }
 
+@media only screen and (min-width: 1025px) {
+    #side-margin{
+        width: 80%;
+        margin: auto;
+    }
+  }
+
+
 .set-tooltips{
 	background-color: #011627 !important;
     width:215px !important;

@@ -1,10 +1,15 @@
 {
     "development":{
-        "username": "jVe6cCrfrO",
-        "password": "nSzDOMZm7T",
-        "database": "jVe6cCrfrO",
-        "host": "remotemysql.com",
+        "username": "root",
+        "password": "",
+        "database": "runeterra-local",
+        "host": "127.0.0.1",
         "port": 3306,
         "dialect": "mysql"
-      }
+      },
+    "google":{
+      "clientID":"123414071099-pf3vnpggq3di81fb9c3lfa1j786vsk7g.apps.googleusercontent.com",
+      "clientSecret":"neIT-aX3y7t4xytPip2noMWQ"
+    }
 }
+

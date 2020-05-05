@@ -113,9 +113,9 @@ class Deck extends React.Component {
                     <div className="setName text-center pt-4"><h2>Legends of Runeterra Decklists</h2></div>
                     <div className="setName text-center pb-5 pt-1"><p>This is the deck list of Legends of Runeterra decks in the Legends of Runeterra base set. Runeterra Hub is the spot to view new Legends of Runeterra decks.</p></div>
 
-                    <div className="row text-center">
+                    
                         {this.createRows()}
-                    </div>
+                    
                 </div>
             )
         }

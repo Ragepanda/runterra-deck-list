@@ -99,6 +99,13 @@ padding-top: 50px;
   width: 15%;
 }
 
+.profileChampIcon{
+  position:relative;
+  bottom: 165px;
+  left: 4px;
+  width: 15%;
+}
+
 .noChampIcon{
    position:relative;
   bottom: 125px;
@@ -133,15 +140,9 @@ padding-top: 50px;
     }
 
     .deck-delete{
-
-      position: relative;
-      bottom: 400px;
-
-            position: relative;
-            bottom: 380px;
-           left: 150px;
-
-            
+       position: relative;
+        bottom: 380px;
+        left: 265px;        
     }
 
     .deck-delete:hover{

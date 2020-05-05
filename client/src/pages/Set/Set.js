@@ -104,7 +104,7 @@ class Set extends React.Component {
               </a>
             </div>
             <ReactToooltip className="set-tooltips" place="bottom" effect="solid" id={card.cardCode}>
-              {card.keywords.length > 0 ? this.keywordTooltipText(card.keywords) : card.descriptionRaw !== "" ?  card.descriptionRaw : card.name}
+              {card.keywords.length > 0 ? this.keywordTooltipText(card.keywords) : card.descriptionRaw !== "" ? card.descriptionRaw : card.name}
             </ReactToooltip>
           </div>);
       else
@@ -131,8 +131,9 @@ class Set extends React.Component {
         <FilterBar setFilteredSet={this.setFilteredSet} />
         <div className="setName text-center pt-4"><h2>Legends of Runeterra Base Set</h2></div>
         <div className="setName text-center pb-5 pt-1"><p>This is the list of Legends of Runeterra cards in the Legends of Runeterra base set. Runeterra Hub is the spot to view new Legends of Runeterra sets.</p></div>
-
-        <div className="row">{this.createRows()}</div>
+        <div id="side-margin">
+          <div className="row">{this.createRows()}</div>
+        </div>
       </div>
     );
   }

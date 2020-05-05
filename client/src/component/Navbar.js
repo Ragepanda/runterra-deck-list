@@ -90,17 +90,7 @@ class Navbar extends React.Component {
 
       navItem = [
         <li className="nav-item">
-          <div className="nav-link" id="modal-link" onClick={this.openModal}>Login</div>
-          <Modal
-            isOpen={this.state.modalIsOpen}
-            onAfterOpen={this.afterOpenModal}
-            onRequestClose={this.closeModal}
-            style={customStyles}
-            contentLabel="Example Modal"
-          >
-            <LogInModal />
-
-          </Modal>
+          <a className="nav-link" href={"http://" + window.location.hostname + ":5000/auth/google"}> Log In </a>
         </li>,
         <li className="nav-item">
           <a className="nav-link" href="/about">&nbsp;About Us</a>

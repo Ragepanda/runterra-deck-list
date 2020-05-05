@@ -12,8 +12,8 @@
 
 .deletion-box{
   position: relative;
-  text-align: center;
-  height: 450px;
+  height: 460px;
+
 }
 
 .deck-name {
@@ -93,9 +93,7 @@ padding-top: 50px;
 }
 
 .champIcon{
-  position:relative;
-  bottom: 145px;
-  left: 4px;
+  margin-left: 3px;
   width: 15%;
 }
 
@@ -107,9 +105,17 @@ padding-top: 50px;
 }
 
 .noChampIcon{
-   position:relative;
+  position:relative;
   bottom: 125px;
   left: 4px;
+}
+
+.champIconHolder{
+  position:relative;
+  bottom: 145px;
+  left: 4px;
+  height: 50px;
+  
 }
 
   

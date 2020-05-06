@@ -8,6 +8,7 @@ const path = require("path");
 const cors = require('cors');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
+const config = require("./config/config.json");
 //MAKE SURE TO WHITELIST ONLY OUR OWN WEBSITE AND ALLOW FOR NO OTHER OUTER REQUESTSserv
 //enable cross origin requests for different port numbers
 app.use(cors({
@@ -19,7 +20,7 @@ app.use(cors({
 app.use(cookieSession({
   name: "login",
   maxAge: 24 *60 * 60 * 1000,
-  keys: ['stanisadoodoobutthole', 'stanisapoopoobutthole']
+  keys: [config.cookieSecrets.key1, config.cookieSecrets.key1]
 }));
 
 

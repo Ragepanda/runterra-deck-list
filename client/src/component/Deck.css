@@ -98,8 +98,8 @@ padding-top: 50px;
 }
 
 .profileChampIcon{
-  position:relative;
-  bottom: 165px;
+  position: absolute;
+  bottom: 35px;
   left: 4px;
   width: 15%;
 }

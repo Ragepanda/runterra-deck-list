@@ -23,7 +23,11 @@
 
 
 
-.Common{
+.COMMON{
+	position: relative;
+	z-index: 3;
+	top: 38px;
+	right: 7px;
 	width: 24px;
 	height: 48px;
 	border-color: #B1FE6A;
@@ -32,7 +36,11 @@
   	margin-left: 15px;
   	margin-right: 10px;
 }
-.Epic{
+.EPIC{
+	position: relative;
+	z-index: 3;
+	top: 38px;
+	right: 7px;
 	width: 24px;
 	height: 48px;
 	border-color: #F080FE;
@@ -41,7 +49,11 @@
 	margin-left: 15px;
   	margin-right: 10px;
 }
-.Rare{
+.RARE{
+	position: relative;
+	z-index: 3;
+	top: 38px;
+	right: 7px;
 	width: 24px;
 	height: 48px;
 	border-color: #4CB4FA;
@@ -51,6 +63,10 @@
   	margin-right: 10px;
 }
 .Champion{
+	position: relative;
+	z-index: 3;
+	top: 38px;
+	right: 7px;
 	width: 24px;
 	height: 48px;
 	border-color: #FAD750;
@@ -73,10 +89,13 @@
 
 }
 .count{
-	position: absolute;
-	margin-right: 5px;
+	position: relative;
+	z-index: 3;
+	top: 38px;
+	left: 5px;
 	color: #FFF8F0;
 	font-size: 125%;
+	font: bold;
 }
 
 .counter{

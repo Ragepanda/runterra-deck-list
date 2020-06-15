@@ -4,6 +4,13 @@ import api from "../utils/api";
 import baseSet from "../card_info/set1.json";
 import "./Deck.css";
 import CircleLoader from "../../node_modules/react-spinners/CircleLoader";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
+  
 
 const { DeckEncoder, Card } = require('runeterra'); //We need to import this card object to properly pass stuff to the encoder
 
@@ -229,10 +236,10 @@ class Deck extends React.Component {
                 return (
                     <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 p-4 deck-box" key={this.state.deck.id}>
                 <div className="deck-card">
-                    <a data-tip data-for={this.state.deck.id} href={"/deck_lists/" + this.state.deck.name.replace(/ /g, "_") + "/" + this.state.deck.id} className="deck-link">
+                    <Link data-tip data-for={this.state.deck.id} to={"/deck_lists/" + this.state.deck.name.replace(/ /g, "_") + "/" + this.state.deck.id} className="deck-link">
                         <img className=" deck-image" src={"/img/cards/" + this.state.deck.cardArtId + "-full.png"} alt={"Legends of Runeterra Decks " + this.state.deck.name} />
                         <div className="deck-name">{this.state.deck.name}</div>
-                    </a>
+                    </Link>
 
                     <svg height="25" wdith="25" viewBox="0 0 25 25" className="deck-like" fill={this.likedByUser()} onClick={this.likeDeck}>
                         <path d="M 23.2695 10.5742 L 12.8516 0.152344 C 12.7539 0.0546875 12.6211 0 12.4844 0 C 12.3438 0 12.2148 0.0546875 12.1133 0.152344 L 1.73047 10.5742 C 1.58203 10.7227 1.53516 10.9492 1.61719 11.1406 C 1.69922 11.3359 1.88672 11.4609 2.09766 11.4609 L 7.82422 11.4609 L 7.82422 24.4805 C 7.82422 24.7656 8.05859 25 8.34375 25 L 16.6758 25 C 16.9648 25 17.1953 24.7656 17.1953 24.4805 L 17.1953 11.4609 L 22.9023 11.4609 C 23.1133 11.4609 23.3008 11.3359 23.3828 11.1406 C 23.4648 10.9453 23.418 10.7227 23.2695 10.5742 Z M 23.2695 10.5742"></path>

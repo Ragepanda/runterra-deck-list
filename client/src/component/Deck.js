@@ -98,6 +98,14 @@ class Deck extends React.Component {
                     tempRegionOne = "icon-freljord";
                 }
             }
+            if (deck[i].code.includes("BW")) {
+                if (tempRegionOne != "icon-bilgewater" && tempRegionOne != "none") {
+                    tempRegionTwo = "icon-bilgewater";
+                }
+                else {
+                    tempRegionOne = "icon-bilgewater";
+                }
+            }
             for(var j = 0; j < baseSet.length; j++){
                 if(deck[i].code == baseSet[j].cardCode && baseSet[j].rarity == "Champion"){
                     tempChampions.push(baseSet[j].name);

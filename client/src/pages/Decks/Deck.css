@@ -168,7 +168,7 @@ ul.a{
     overflow: hidden;
     width: 250px;
     height: 52px;
-    transform: translate(10%, -77%);
+    /* transform: translate(10%, -77%); */
     cursor: pointer;    
 
     
@@ -182,6 +182,11 @@ ul.a{
 }
 
 /*Region Borders*/
+.cardTiles.Bilgewater{
+
+    border: 3px solid #c9aa71 !important ;
+    
+}
 .cardTiles.Ionia{
 
     border: 3px solid #C0587A !important ;

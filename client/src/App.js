@@ -19,6 +19,7 @@ import Privacy from "./pages/Privacy/Privacy";
 import Terms from "./pages/Terms/Terms";
 import About from "./pages/About/About";
 import Profile from "./pages/Profile/Profile";
+import Links from "./pages/Links/Links";
 
 import Navbar from "./component/Navbar";
 import cookieSession from "cookie-session";
@@ -45,6 +46,7 @@ class App extends React.Component {
             <Route exact path="/privacy" component={Privacy} />
             <Route exact path="/terms" component={Terms} />
             <Route exact path="/about" component={About} />
+            <Route exact path="/links" component={Links} />
           </Switch>
         </div>
       </Router>

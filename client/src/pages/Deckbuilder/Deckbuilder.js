@@ -10,6 +10,7 @@ import LogInModal from "../../component/LogInModal";
 import "./Deckbuilder.css";
 import api from "../../utils/api";
 import DotLoader from "../../../node_modules/react-spinners/DotLoader";
+import debounce from "lodash.debounce";
 const { DeckEncoder, Card } = require('runeterra'); //We need to import this card object to properly pass stuff to the encoder
 
 const customStyles = {
@@ -62,7 +63,13 @@ class Deckbuilder extends React.Component {
       copied: false,
       deckDescription: "",
       deckName: "",
-      deckImg: "01NX042"
+      deckImg: "01NX042",
+
+
+      renderedCards: 48, 
+      error: false,
+      hasMore: true,
+      isLoading: false
     };
     this.createHelmet = this.createHelmet.bind(this);
     this.setFilteredSet = this.setFilteredSet.bind(this);
@@ -86,6 +93,39 @@ class Deckbuilder extends React.Component {
     this.deckNameChange = this.deckNameChange.bind(this);
     this.deckImageChange = this.deckImageChange.bind(this);
     this.decodeDeck = this.decodeDeck.bind(this);
+
+    window.onscroll = debounce(() => {
+      const {
+        loadUsers,
+        state: {
+          error,
+          isLoading,
+          hasMore,
+        },
+      } = this;
+
+      // Bails early if:
+      // * there's an error
+      // * it's already loading
+      // * there's nothing left to load
+      if (error || isLoading || !hasMore) return;
+      
+      var style = getComputedStyle(document.getElementById("positioning"), null);
+      // Checks that the page has scrolled to the bottom
+      console.log("Inner Height: " + Math.round(parseInt(style.getPropertyValue("height").split(".")[0])) + " scrollTop: " + document.documentElement.scrollTop + " offsetHeight: " + document.documentElement.offsetHeight)
+
+      if (Math.round(parseInt(style.getPropertyValue("height").split(".")[0]))-600 < document.documentElement.scrollTop
+        
+      ) {
+        //window.innerHeight
+        // Math.round(style.getPropertyValue("height")) + document.documentElement.scrollTop >
+        // document.documentElement.offsetHeight -10
+        this.setState({ renderedCards: this.state.renderedCards + 12 }, () => {
+          console.log("More loaded in");
+        })
+
+      }
+    }, 100);
   }
 
   deckNameChange(e) {
@@ -165,6 +205,7 @@ class Deckbuilder extends React.Component {
                 this.state.decklist['champions'] = 0;
                 this.state.decklist['followers'] = 0;
                 this.state.decklist['spells'] = 0;
+                this.state.decklist['Bilgewater'] = 0;
                 this.state.decklist['Demacia'] = 0;
                 this.state.decklist['PiltoverZaun'] = 0;
                 this.state.decklist['Freljord'] = 0;
@@ -355,6 +396,7 @@ class Deckbuilder extends React.Component {
   validRegions(cardRegion) {
     var rCtr = 0;
     var regions = [];
+    if (this.state.decklist['Bilgewater'] > 0) { rCtr += 1; regions.push('Bilgewater') };
     if (this.state.decklist['Demacia'] > 0) { rCtr += 1; regions.push('Demacia') };
     if (this.state.decklist['PiltoverZaun'] > 0) { rCtr += 1; regions.push('PiltoverZaun') };
     if (this.state.decklist['Freljord'] > 0) { rCtr += 1; regions.push('Freljord') };
@@ -367,8 +409,10 @@ class Deckbuilder extends React.Component {
 
 
   createRows() {
+    var numberRendered = 0;
     const list = this.state.filteredSet.map((card, index) => {
-      if (card.rarity !== "None" && card.keywords.indexOf("Skill") === -1 && card.name !== "Accelerated Purrsuit" && this.validRegions(card.regionRef) === true)
+      if (card.rarity !== "None" && card.keywords.indexOf("Skill") === -1 && card.name !== "Accelerated Purrsuit" && this.validRegions(card.regionRef) === true && numberRendered < this.state.renderedCards) {
+        numberRendered++;
         return (
           <div className={"col-6 col-sm-6 col-md-3 col-lg-2 p-3 card-zoom " + this.state.mediumSidebarActive} key={index}>
             <div data-tip data-for={"tooltip" + index} onClick={this.addToDeck}>
@@ -381,6 +425,7 @@ class Deckbuilder extends React.Component {
               {card.keywords.length > 0 ? this.keywordTooltipText(card.keywords) : card.descriptionRaw !== "" ? card.descriptionRaw : card.name}
             </ReactToooltip>
           </div>);
+      }
       else
         return " ";
 
@@ -440,6 +485,7 @@ class Deckbuilder extends React.Component {
     this.state.decklist['champions'] = 0;
     this.state.decklist['followers'] = 0;
     this.state.decklist['spells'] = 0;
+    this.state.decklist['Bilgewater'] = 0;
     this.state.decklist['Demacia'] = 0;
     this.state.decklist['PiltoverZaun'] = 0;
     this.state.decklist['Freljord'] = 0;
@@ -667,12 +713,12 @@ class Deckbuilder extends React.Component {
           <div className="textareaDiv"><button className="btn btn-outline" onClick={this.decodeDeck}>Add Deck from Code</button></div>
         </nav>
         <div id="content" className={this.state.contentClass}>
-          <FilterBar className="filter" setFilteredSet={this.setFilteredSet} />
+          <FilterBar className="filter" setFilteredSet={this.setFilteredSet} renderedCards={this.state.renderedCards} />
           <div id="sidebarBtn" className={this.state.buttonClass + " " + "rounded text-center"} onClick={this.openSidebar}>&#62;</div>
 
           <div className="setName text-center pt-4"><h2>Legends of Runeterra Deck Builder</h2></div>
           <div className="setName text-center pb-5 pt-1"><p>This is a Legends of Runeterra Deck builder. This deck builder will let you filter cards by type, keywords and name. The Legends of Runeterra Deck builder here on Runeterra Nexus is the best way to create new Runeterra decks.</p></div>
-          <div className="row positioning">{this.createRows()}</div>
+          <div className="row positioning" id="positioning">{this.createRows()}</div>
         </div>
       </div>
     );

@@ -27,6 +27,7 @@ class FilterBar extends React.Component {
             noxToggle: false,
             pilToggle: false,
             shaToggle: false,
+            bilToggle: false,
 
             chamToggle: false,
             spelToggle: false,
@@ -86,6 +87,7 @@ class FilterBar extends React.Component {
             cmc6Classname: "btn btn-outline btn-sm rounded-square",
             cmc7Classname: "btn btn-outline btn-sm rounded-square",
 
+            bilClassname: "btn btn-outline btn-sm rounded-square",
             demClassname: "btn btn-outline btn-sm rounded-square",
             freClassname: "btn btn-outline btn-sm rounded-square",
             ionClassname: "btn btn-outline btn-sm rounded-square",
@@ -118,6 +120,7 @@ class FilterBar extends React.Component {
         this.noxState = this.noxState.bind(this);
         this.pilState = this.pilState.bind(this);
         this.shaState = this.shaState.bind(this);
+        this.bilState = this.bilState.bind(this);
 
         this.chamState = this.chamState.bind(this);
         this.spelState = this.spelState.bind(this);
@@ -146,6 +149,7 @@ class FilterBar extends React.Component {
         this.setState({ cardRows: this.createRows() });
         this.setState({ kwObject: this.state.kwObject.sort((a, b) => a.name.localeCompare(b.name)) });
         this.setState({ searchText: "" });
+        this.filterCards();
     }
 
 
@@ -229,7 +233,7 @@ class FilterBar extends React.Component {
 
     allFalseFactions() {
         if (this.state.demToggle === false && this.state.freToggle === false && this.state.ionToggle === false &&
-            this.state.noxToggle === false && this.state.pilToggle === false && this.state.shaToggle === false) {
+            this.state.noxToggle === false && this.state.pilToggle === false && this.state.shaToggle === false && this.state.bilToggle === false) {
             return true;
         }
         else {
@@ -467,7 +471,27 @@ class FilterBar extends React.Component {
 
     }
 
+    bilState(e) {
+        e.preventDefault();
+        if (this.state.bilToggle === false) {
+            this.setState({ bilToggle: true });
+            this.setState({ bilClassname: "btn btn-sm btn-outline active" });
+            this.setState({ factionFilter: [...this.state.factionFilter, "bilgewater"] }, () => {
+                this.createRows();
+            });
+        }
 
+        else {
+            this.setState({ bilToggle: false });
+            this.setState({ bilClassname: "btn btn-sm btn-outline" });
+            var arrayHolder = [...this.state.factionFilter];
+            arrayHolder.splice(this.state.factionFilter.indexOf("bilgewater"), 1);
+            this.setState({ factionFilter: arrayHolder }, () => {
+                this.createRows();
+            });
+        }
+
+    }
 
     demState(e) {
         e.preventDefault();
@@ -860,6 +884,7 @@ class FilterBar extends React.Component {
                                                 <button type="button" className={this.state.noxClassname + " col-5 col-xs-5  col-sm-5   col-md-5 col-lg-auto        mt-0    mt-md-1 mt-lg-1 mb-1 mr-1"} onClick={this.noxState}>Noxus</button>
                                                 <button type="button" className={this.state.pilClassname + " col-11 col-xs-11 col-sm-11 col-md-5 col-lg-auto        mt-0    mt-md-1 mt-lg-1 mb-1 mr-1"} onClick={this.pilState}>Piltover&Zaun</button>
                                                 <button type="button" className={this.state.shaClassname + " col-11 col-xs-11 col-sm-11 col-md-5 col-lg-auto        mt-0    mt-md-1 mt-lg-1 mb-md-1 mr-1"} onClick={this.shaState}>Shadow Isles</button>
+                                                <button type="button" className={this.state.bilClassname + " col-11 col-xs-11 col-sm-11 col-md-5 col-lg-auto m-lg-1 mt-1    mt-md-1 mt-lg-1 mb-1 mr-1"} onClick={this.bilState}>Bilgewater</button>
                                             </div>
                                         </div>
                                         <div className="card-body card-body-left col-6 col-xs-6 col-lg-6 col-md-6 col-sm-6 col-lg-6">

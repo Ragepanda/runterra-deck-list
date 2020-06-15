@@ -4,6 +4,7 @@ import baseSet from "../../card_info/set1.json";
 import keywordSet from "../../card_info/globals-en_us.json"
 import FilterBar from "../../component/FilterBar";
 import ReactToooltip from "react-tooltip";
+import debounce from "lodash.debounce";
 import "./Set.css"
 
 
@@ -14,12 +15,44 @@ class Set extends React.Component {
     this.state = {
       card: {},
       isLoaded: false,
-      filteredSet: baseSet
+      filteredSet: baseSet,
+      renderedCards: 48,
+      error: false,
+      hasMore: true,
+      isLoading: false
     };
     this.createHelmet = this.createHelmet.bind(this);
     this.setFilteredSet = this.setFilteredSet.bind(this);
     this.createRows = this.createRows.bind(this);
     this.generatePathData = this.generatePathData.bind(this);
+
+    window.onscroll = debounce(() => {
+      const {
+        loadUsers,
+        state: {
+          error,
+          isLoading,
+          hasMore,
+        },
+      } = this;
+
+      // Bails early if:
+      // * there's an error
+      // * it's already loading
+      // * there's nothing left to load
+      if (error || isLoading || !hasMore) return;
+
+      // Checks that the page has scrolled to the bottom
+      if (
+        window.innerHeight + document.documentElement.scrollTop
+        === document.documentElement.offsetHeight
+      ) {
+        this.setState({renderedCards: this.state.renderedCards+12}, ()=>{
+          console.log("More loaded in");
+        })
+        
+      }
+    }, 100);
   }
 
   createHelmet() {
@@ -92,10 +125,12 @@ class Set extends React.Component {
       return;
     }
   }
-
+  
   createRows() {
+    var numberRendered = 0;
     const list = this.state.filteredSet.map((card, index) => {
-      if (card.rarity !== "None" && card.keywords.indexOf("Skill") === -1 && card.name !== "Accelerated Purrsuit")
+      if (card.rarity !== "None" && card.keywords.indexOf("Skill") === -1 && card.name !== "Accelerated Purrsuit" && numberRendered<this.state.renderedCards){
+        numberRendered++;
         return (
           <div className="col-6 col-sm-6 col-md-4 col-lg-2 p-3" key={index}>
             <div>
@@ -107,6 +142,7 @@ class Set extends React.Component {
               {card.keywords.length > 0 ? this.keywordTooltipText(card.keywords) : card.descriptionRaw !== "" ? card.descriptionRaw : card.name}
             </ReactToooltip>
           </div>);
+      }
       else
         return " "
     });
@@ -128,7 +164,7 @@ class Set extends React.Component {
 
       <div className="container-fluid" id="neg-margin">
         {this.createHelmet()}
-        <FilterBar setFilteredSet={this.setFilteredSet} />
+        <FilterBar setFilteredSet={this.setFilteredSet} renderedCards={this.state.renderedCards} />
         <div className="setName text-center pt-4"><h2>Legends of Runeterra Base Set</h2></div>
         <div className="setName text-center pb-5 pt-1"><p>This is the list of Legends of Runeterra cards in the Legends of Runeterra base set. Runeterra Hub is the spot to view new Legends of Runeterra sets.</p></div>
         <div id="side-margin">

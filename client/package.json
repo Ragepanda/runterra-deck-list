@@ -16,6 +16,7 @@
     "chart.js": "^2.9.3",
     "cookie-session": "^1.4.0",
     "global": "^4.4.0",
+    "lodash.debounce": "^4.0.8",
     "multiselect-react-dropdown": "^1.3.0",
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.16",
@@ -46,7 +47,7 @@
   },
   "reactSnap": {
     "include": [
-      "/200.html"
+      "/links"
     ]
   },
   "browserslist": {

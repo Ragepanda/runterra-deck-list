@@ -190,7 +190,7 @@ class Deck extends React.Component {
         }
         if(this.state.champions.length > 0){
             var champImages = this.state.champions.map((champ) =>
-            <img className={championClass} src={"img/champs/" + champ + "Square.png"} alt={champ}></img>);
+            <img className={championClass} src={"/img/champs/" + champ + "Square.png"} alt={champ}></img>);
             return(
                 <div className="champIconHolder">
                     {champImages}

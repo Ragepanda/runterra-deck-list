@@ -17,6 +17,7 @@ Runeterra Nexus is a React/Node/Express/MySQL app made for the game Runeterra, a
  * Check out this [video demonstration](https://www.youtube.com/watch?v=DVJZuoRDpSo)
  
  
+ ***
 
 
 **Deck Display Page**
@@ -24,6 +25,8 @@ Runeterra Nexus is a React/Node/Express/MySQL app made for the game Runeterra, a
 <img src=example-1.gif></img>
 
 Here you can see our deck lists page and individual deck page, which allow the user to view their own and other users' decks, as well as analyze the decks for in-game currency cost, mana curves and other important trends. 
+
+***
 
 
 **Deck Builder Example**
@@ -33,11 +36,17 @@ Here you can see our deck lists page and individual deck page, which allow the u
 With the deck builder tool, the user can draft a deck with failsafes to prevent the creation of an illegal deck. This includes assuring that no more than two factions, no more than six champions and no more than forty total cards are selected. One can then name, write a description for and save a deck under their login. The deck builder has refined filter tools for helping to find exact cards in the set of nearly 500 cards. 
 
 
+***
+
+
 **Set Viewer Filter Tools**
 
 <img src=example-3.gif></img>
 
 This set viewer offers the same filter tools as the deck builder, but allows the user to navigate to individual card pages to learn more details about them, as well as their alternate forms and byproduct cards that don't appear in the set viewer/deck builder. 
+
+
+***
 
 
 **Deck Deletion, Likes and Profile**

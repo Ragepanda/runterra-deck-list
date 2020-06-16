@@ -9,9 +9,13 @@ Runeterra Nexus is a React/Node/Express/MySQL app made for the game Runeterra, a
  * react-spinners for load animations
  * chart.js for displaying "mana curves" for decks
 
+
 **See It In Action**
+
 Visit our production website at: http://runeterranexus.com
-or 
+
+or
+ 
 Check out this [video demonstration](https://www.youtube.com/watch?v=DVJZuoRDpSo)
 
 

@@ -9,7 +9,26 @@ Prominent Technologies and Packages:
  * react-spinners for load animations
  * chart.js for displaying "mana curves" for decks
 
-<img src=runeterra.gif></img>
+
+**Deck Display Page**
+
+<img src=example-1.gif></img>
+
+
+**Deck Builder Example**
+
+<img src=example-2.gif></img>
+
+
+**Set Viewer Filter Tools**
+
+<img src=example-3.gif></img>
+
+
+**Deck Deletion, Likes and Profile**
+
+<img src=example-4.gif></img>
+
 
 Visit our production website at: http://runeterranexus.com
 

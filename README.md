@@ -8,3 +8,9 @@ Prominent Technologies and Packages:
  * lodash.debounce for infinite scrolling
  * react-spinners for load animations
  * chart.js for displaying "mana curves" for decks
+
+<img src=runeterra.gif></img>
+
+Visit our production website at: http://runeterranexus.com
+
+Check out this [video demonstration](https://www.youtube.com/watch?v=DVJZuoRDpSo)

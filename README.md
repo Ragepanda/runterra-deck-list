@@ -12,7 +12,7 @@ Runeterra Nexus is a React/Node/Express/MySQL app made for the game Runeterra, a
 
 **See It In Action**
 
- * Visit our production website at: http://runeterranexus.com
+ * ~~Visit our production website at: http://runeterranexus.com~~ The website stopped being supported in 2021
 
  * Check out this [video demonstration](https://www.youtube.com/watch?v=DVJZuoRDpSo)
  

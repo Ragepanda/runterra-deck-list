@@ -16,6 +16,6 @@
     "react-helmet": "^5.2.1",
     "react-router-dom": "^5.1.2",
     "react-search-box": "^2.0.2",
-    "sequelize": "^5.21.3"
+    "sequelize": "^6.28.2"
   }
 }
